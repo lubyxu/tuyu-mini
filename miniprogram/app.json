@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/home/index",
     "pages/index/index",
     "pages/goods-list/index",
     "pages/examples/index",
@@ -15,7 +16,8 @@
     "pages/cloudbaseModuleDetail/index",
     "pages/cloudbaseModuleInstallTips/index",
     "pages/cloudbaseModuleGuide/index",
-    "pages/business/index"
+    "pages/business/index",
+    "pages/osd-ar/index"
   ],
   "subpackages": [
     {
@@ -47,7 +49,7 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/home/index",
         "text": "快速开始",
         "iconPath": "images/icons/home.png",
         "selectedIconPath": "images/icons/home-active.png"

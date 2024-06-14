@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container">
+  <button bindtap="jumpMapPage">点我去地图页面</button>
+  <button bindtap="jumpOSDPage">点我去鼓楼冰箱贴识别页面</button>
+</view>
