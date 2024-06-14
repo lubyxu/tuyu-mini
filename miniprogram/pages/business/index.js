@@ -167,5 +167,11 @@ Page({
         url: `/pages/cloudbaseModuleGuide/index?title=${title}&subtitle=${subtitle}&level=${level}`,
       });
     }
+  },
+
+  jumpMapPage(e) {
+    wx.navigateTo({
+      url: `/map/pages/index/index`,
+    });
   }
 });

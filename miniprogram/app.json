@@ -21,12 +21,12 @@
     {
       "root": "map",
       "pages": [
-        "index/index"
+        "pages/index/index"
       ]
     }
   ],
   "preloadRule": {
-    "map/index/index": {
+    "map/pages/index/index": {
       "network": "all",
       "packages": ["__APP__"]
     }

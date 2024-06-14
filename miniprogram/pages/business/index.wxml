@@ -3,6 +3,7 @@
   <view class="title">业务示例</view>
   <view class="top_tip">使用云开发快速实现业务功能</view>
   <view class="power" wx:key="title" wx:for="{{businessList}}" wx:for-item="business">
+    <button bindtap="jumpMapPage">点我去地图页面</button>
     <view class="power_info" data-index="{{index}}" data-type="{{ business.type }}" bindtap="onClickBusinessInfo">
       <view class="power_info_text">
         <view class="power_info_text_title">

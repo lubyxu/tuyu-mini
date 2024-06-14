@@ -1,1 +1,10 @@
-/* map/index/index.wxss */
+/**index.wxss**/
+.container {
+  width: 100%;
+  height: 800rpx;
+}
+
+ec-canvas {
+  width: 100%;
+  height: 100%;
+}
