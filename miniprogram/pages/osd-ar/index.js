@@ -40,6 +40,7 @@ Component({
   methods: {
     init() {
       this.initGL()
+      this.addOSDMarker()
     },
     afterVKSessionCreated() {
       this.session.on('addAnchors', anchors => {
@@ -56,6 +57,12 @@ Component({
             frameWidth: anchor.size.width * width,
             frameHeight: anchor.size.height * height,
           })
+
+          setTimeout(() => {
+            wx.navigateTo({
+              url: `/map/pages/index/index`,
+            });
+          }, 1500);
         }
       })
       this.session.on('updateAnchors', anchors => {
@@ -77,36 +84,6 @@ Component({
         this.setData({
           frameShow: false,
         })
-      })
-    },
-    chooseMedia() {
-      wx.chooseMedia({
-        count: 1,
-        mediaType: ['image'],
-        success: res => {
-          console.log('chooseMedia res', res)
-          const imgUrl = res.tempFiles[0].tempFilePath
-          wx.getImageInfo({
-            src: imgUrl,
-            success: res => {
-              const {
-                width,
-                height
-              } = res
-              console.log('getImageInfo res', res)
-              this.setData({
-                imgUrl: imgUrl,
-              })
-            },
-            fail: res => {
-              console.error(res)
-            }
-          })
-
-        },
-        fail: res => {
-          console.error(res)
-        }
       })
     },
     render(frame) {
@@ -132,31 +109,20 @@ Component({
     addOSDMarker() {
       if (this.markerId) return
       const fs = wx.getFileSystemManager()
-      // const filePath = `${wx.env.USER_DATA_PATH}/osd-ar.jpg`
-      const filePath = 'https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/card-asstes/%E9%AD%94%E6%96%B9.jpg?sign=5b9cf8b0209840e13a76a0f5c5f63aec&t=1718346033'
+      const filePath = `${wx.env.USER_DATA_PATH}/osd-ar.jpg`
 
-      // const download = callback => wx.downloadFile({
-      //     // 此处设置为osd识别对象的地址
-      //     url: 'https://res.wx.qq.com/op_res/h7DtLCbw1wzG7mzwlyfmmTDYUjq6pwCAHN5Ep0xA9PDvSa_knfz1Vg5E6vSKxxWG2mnHVzl2qBC789tQwNl_pw',
-      //     success(res) {
-      //         fs.saveFile({
-      //             filePath,
-      //             tempFilePath: res.tempFilePath,
-      //             success: callback,
-      //         })
-      //     }
-      // })
-
-      const download = callback => {
-        fs.saveFile({
-          filePath,
-          tempFilePath: this.data.imgUrl,
-          success: callback,
-          fail: res => {
-            console.error(res)
+      const download = callback => wx.downloadFile({
+          // 此处设置为osd识别对象的地址
+          url: 'https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/card-asstes/guaishou.jpg?sign=b7eee6bd0139165644231c2e0d1c4fa9&t=1718354148',
+          success(res) {
+              fs.saveFile({
+                  filePath,
+                  tempFilePath: res.tempFilePath,
+                  success: callback,
+              })
           }
-        })
-      }
+      })
+
       const add = () => {
         console.log('[addMarker] --> ', filePath)
         this.markerId = this.session.addOSDMarker(filePath)
@@ -165,29 +131,27 @@ Component({
         })
       }
 
-      add()
-
-      // const getFilePathNow = () => {
-      //   return this.data.filePathNow;
-      // }
-      // fs.stat({
-      //   path: filePath,
-      //   success(res) {
-      //     let path = getFilePathNow()
-      //     if (path != filePath) {
-      //       if (res.stats.isFile() && path) {
-      //         fs.unlinkSync(path)
-      //       }
-      //       download(add)
-      //     } else {
-      //       add()
-      //     }
-      //   },
-      //   fail: (res) => {
-      //     console.error(res)
-      //     download(add)
-      //   }
-      // })
+      const getFilePathNow = () => {
+        return this.data.filePathNow;
+      }
+      fs.stat({
+        path: filePath,
+        success(res) {
+          let path = getFilePathNow()
+          if (path != filePath) {
+            if (res.stats.isFile() && path) {
+              fs.unlinkSync(path)
+            }
+            download(add)
+          } else {
+            add()
+          }
+        },
+        fail: (res) => {
+          console.error(res)
+          download(add)
+        }
+      })
     },
     removeOSDMarker() {
       if (this.markerId) {

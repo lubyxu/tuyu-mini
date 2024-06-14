@@ -35,7 +35,7 @@ export default function getBehavior() {
                 height,
               })
             }
-            calcSize(info.windowWidth, info.windowHeight * 0.6)
+            calcSize(info.windowWidth, info.windowHeight)
 
             this.initVK()
           })
@@ -99,7 +99,7 @@ export default function getBehavior() {
             },
             OSD: true,
           },
-          version: 'v1',
+          version: 'v2',
           gl: this.gl
         })
         session.start(err => {

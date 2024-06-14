@@ -1,0 +1,23 @@
+{
+  "name": "tuyu-mini",
+  "version": "1.0.0",
+  "description": "这是云开发的快速启动指引，其中演示了如何上手使用云开发的三大基础能力：",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faker-web/tuyu-mini.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faker-web/tuyu-mini/issues"
+  },
+  "homepage": "https://github.com/faker-web/tuyu-mini#readme",
+  "dependencies": {
+    "threejs-miniprogram": "0.0.8"
+  }
+}
