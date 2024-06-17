@@ -1,0 +1,61 @@
+.notification-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-box {
+    display: flex;
+}
+
+.left,.right {
+    width: 38rpx;
+    height: 80rpx;
+}
+
+.right {
+    position: relative;
+    left: -8rpx;
+}
+
+.middle {
+    display: flex;
+    align-items: center;
+    height: 60rpx;
+    width: fit-content;
+    position: relative;
+    top: 14rpx;
+    left: -8rpx;
+    background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/middle.png?sign=5d6dc56ca3f3a330f2fc6443c608b5c8&t=1718607547');
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+    padding-left: 32rpx;
+}
+
+.medal {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.middle-text {
+    font-family: 'PingFang SC';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: -0.21px;
+
+    color: #B11F06;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.middle-name {
+    font-weight: 600;
+    margin: 0 10rpx;
+}

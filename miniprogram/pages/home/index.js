@@ -22,7 +22,16 @@ Page({
     vertical: false,
     autoplay: false,
     interval: 2000,
-    duration: 500
+    duration: 500,
+    card: [{
+      url: 'https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/item-gulou.png?sign=a81ca215a44a3ef1b0acd8efc12863bb&t=1718609830',
+      title: '北京',
+      subTitle: '鼓楼·冬季之美'
+    }, {
+      url: 'https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/item-gulou.png?sign=a81ca215a44a3ef1b0acd8efc12863bb&t=1718609830',
+      title: '北京',
+      subTitle: '鼓楼·冬季之美'
+    }]
   },
 
   jumpMapPage(e) {

@@ -1,0 +1,14 @@
+<view class="notification-box">
+    <view class="image-box">
+        <image class="left" src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/left.png?sign=f7435b4c3120279c3a32893aa66f7602&t=1718607522" />
+        <view class="middle">
+            <image class="medal" src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/medal.png?sign=52a0d82e426fbbe7467bb626443adbae&t=1718608350" />
+            <text class="middle-text">恭喜您已经获得</text>
+            <text class="middle-text">1</text>
+            <text class="middle-text">枚</text>
+            <text class="middle-text middle-name">北京鼓楼</text>
+            <text class="middle-text">勋章～</text>
+        </view>
+        <image class="right" src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/right.png?sign=d4b2633be6922131077aa6a6bd561293&t=1718607536" />
+    </view>
+</view>

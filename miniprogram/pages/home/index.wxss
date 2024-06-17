@@ -32,3 +32,14 @@ page {
 .banner-item {
   width: 100%;
 }
+
+.top-section {
+  background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/top-bg.png?sign=94705f3f7681be02d607f3984fda6c88&t=1718606479');
+  background-color: transparent; 
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-size: 100%;
+  position: relative;
+  top: -40rpx;
+  padding-top: 80rpx;
+}
