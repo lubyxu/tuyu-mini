@@ -10,6 +10,15 @@ Page({
     }
   },
 
+  onShow: function() {
+ 
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
+      })
+    }
+  },
+
   data: {
     defaultData: {
       title: "我的主页", // 导航栏标题
@@ -20,8 +29,9 @@ Page({
     ],
     indicatorDots: true,
     vertical: false,
-    autoplay: false,
-    interval: 2000,
+    autoplay: true,
+    circular: true,
+    interval: 5000,
     duration: 500,
     card: [{
       url: 'https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/item-gulou.png?sign=a81ca215a44a3ef1b0acd8efc12863bb&t=1718609830',

@@ -1,4 +1,4 @@
-import * as echarts from '../../ec-canvas/echarts';
+import * as echarts from '../ec-canvas/echarts';
 import geoJson from './mapData.js';
 
 const app = getApp();
@@ -99,6 +99,12 @@ Page({
     }
   },
 
-  onReady() {
+  onShow: function() {
+ 
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 1
+      })
+    }
   }
 });

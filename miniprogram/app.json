@@ -1,38 +1,9 @@
 {
   "pages": [
     "pages/home/index",
-    "pages/index/index",
-    "pages/goods-list/index",
-    "pages/examples/index",
-    "pages/user-center/index",
-    "pages/exampleDetail/index",
-    "pages/deployService/index",
-    "pages/updateRecord/index",
-    "pages/updateRecordResult/index",
-    "pages/updateRecordSuccess/index",
-    "pages/sumRecord/index",
-    "pages/sumRecordResult/index",
-    "pages/web/index",
-    "pages/cloudbaseModuleDetail/index",
-    "pages/cloudbaseModuleInstallTips/index",
-    "pages/cloudbaseModuleGuide/index",
-    "pages/business/index",
-    "pages/osd-ar/index"
+    "pages/osd-ar/index",
+    "pages/map/index/index"
   ],
-  "subpackages": [
-    {
-      "root": "map",
-      "pages": [
-        "pages/index/index"
-      ]
-    }
-  ],
-  "preloadRule": {
-    "map/pages/index/index": {
-      "network": "all",
-      "packages": ["__APP__"]
-    }
-  },
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
@@ -56,7 +27,7 @@
         "selectedIconPath": "images/icons/icon-1-active.png"
       },
       {
-        "pagePath": "pages/examples/index",
+        "pagePath": "pages/map/index/index",
         "text": "基础能力",
         "iconPath": "images/icons/icon-2.png",
         "selectedIconPath": "images/icons/icon-2-active.png"
