@@ -2,6 +2,10 @@
     margin: 32rpx 32rpx 0 32rpx;
 }
 
+.card-scroll {
+    height: 700rpx;
+}
+
 .card-title {
     display: flex;
 }

@@ -1,21 +1,28 @@
-<view class="card-list">
+<view
+    class="card-list"
+>
     <view class="card-title">
         <image class="logo" src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/logo.png?sign=5f13ec1661c9f65044f281927d20ffa2&t=1718609672"/>
         <view class="card-title-text">图鱼文创系列</view>
     </view>
-    <view
-        wx:for="{{cardData}}"
-        wx:key="index"
-        style="background-image: url({{item.url}});"
-        class="card-item"
+    <scroll-view
+        class="card-scroll"
+        scroll-y
     >
-        <image
+        <view
+            style="background-image: url({{item.url}});"
+            class="card-item"
+            wx:for="{{cardData}}"
+            wx:key="index"
+        >
+            <image
             class="nav-icon"
             src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/nav.png?sign=b0f836800c217024b5595c19d0a71974&t=1718610955"
-        />
-        <view class="desc-box">
-            <text class="desc-title">{{item.title}}</text>
-            <text class="desc-subtitle">{{item.subTitle}}</text>
+            />
+            <view class="desc-box">
+                <text class="desc-title">{{item.title}}</text>
+                <text class="desc-subtitle">{{item.subTitle}}</text>
+            </view>
         </view>
-    </view>
+    </scroll-view>
 </view>
