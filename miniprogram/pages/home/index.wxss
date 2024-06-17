@@ -1,9 +1,8 @@
 /**index.wxss**/
 
 page {
-  padding-top: 54rpx;
   padding-bottom: 60rpx;
-  background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/bg.png?sign=07ba12fe8d959da9350ec5e52fe1ac02&t=1718590486');
+  background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/bg.png?sign=a3a9252b855cd0136201f606514d211d&t=1718604868');
 }
 
 .swiper .wx-swiper-dots {
@@ -23,9 +22,13 @@ page {
   width: 24rpx;
   height: 24rpx;
   position: relative;
-  background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/Vector.png?sign=b68e7328734305eee3e30802023d3fec&t=1718591905');
+  background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/Vector.png?sign=4a7cec29b953e252e0254d41f534682f&t=1718604911');
   background-color: transparent; 
   background-size:cover;
   background-repeat:no-repeat;
   background-position: center;
+}
+
+.banner-item {
+  width: 100%;
 }

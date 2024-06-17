@@ -3,6 +3,7 @@
     width: 100%;
     top: 0;
     color: #fff;
+    z-index: 999;
 }
 .nav-bar .icon{
     width: 64rpx;

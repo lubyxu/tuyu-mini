@@ -2,13 +2,19 @@
 <view>
   <navigation-bar default-data="{{defaultData}}"></navigation-bar>
   <view class="page-section page-section-spacing swiper">
-    <swiper indicator-dots="{{indicatorDots}}"
-      autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <swiper
+      indicator-dots="{{indicatorDots}}"
+      autoplay="{{autoplay}}"
+      interval="{{interval}}"
+      duration="{{duration}}"
+      style="height: 234px;"
+    >
       <block wx:for="{{background}}" wx:key="*this">
         <swiper-item>
-          <view class="swiper-item {{item}}"></view>
+          <image src="{{item}}" class="banner-item"/>
         </swiper-item>
       </block>
     </swiper>
+    <!-- <image src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/banner%20(1).png?sign=1fb30d417f9c1c1ac840157f136f42c6&t=1718604950" /> -->
   </view>
 </view>
