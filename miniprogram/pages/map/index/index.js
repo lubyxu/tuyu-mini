@@ -1,110 +1,151 @@
-import * as echarts from '../ec-canvas/echarts';
-import geoJson from './mapData.js';
+import * as echarts from '../ec-canvas/echarts.js';
+import geoJson, { type } from './mapData.js';
 
-const app = getApp();
+let myMap = null
 
-function initChart(canvas, width, height, dpr) {
-  const chart = echarts.init(canvas, null, {
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    ec: {
+      onInit: initChartMap
+    },
+  },
+})
+
+/**
+ * 生成1000以内的随机数
+ */
+function randomData() {
+  return Math.round(Math.random() * 1000);
+}
+
+/**
+ * 全国疫情分布地图
+ */
+function initChartMap(canvas, width, height) {
+  myMap = echarts.init(canvas, null, {
     width: width,
-    height: height,
-    devicePixelRatio: dpr // new
+    height: height
   });
-  canvas.setChart(chart);
-
-  echarts.registerMap('henan', geoJson);
-
+  canvas.setChart(myMap);
+  echarts.registerMap('china', geoJson); // 绘制中国地图
   const option = {
     tooltip: {
       trigger: 'item',
-      formatter: '{b}: {c}'
+      backgroundColor: "#FFF",
+      padding: [
+        10,  // 上
+        15,  // 右
+        8,   // 下
+        15,  // 左
+      ],
+      extraCssText: 'box-shadow: 2px 2px 10px rgba(21, 126, 245, 0.35);',
+      textStyle: {
+        fontFamily: "'Microsoft YaHei', Arial, 'Avenir', Helvetica, sans-serif",
+        color: '#005dff',
+        fontSize: 12,
+      },
+      formatter: `{b} :  {c}`
     },
-
-    visualMap: {
-      min: 0,
-      max: 100,
-      left: 'left',
-      top: 'bottom',
-      text: ['高', '低'], // 文本，默认为数值文本
-      calculable: true
-    },
-    series: [{
-      type: 'map',
-      mapType: 'henan',
-      label: {
-        normal: {
-          show: true
+    geo: [
+      {
+        // 地理坐标系组件
+        map: "china",
+        roam: true,      // 可以缩放和平移
+        aspectScale: 0.8, // 比例
+        scaleLimit: { // 缩放级别限制  
+          min: 0.5,  
+          max: 2  
         },
-        emphasis: {
-          textStyle: {
-            color: '#fff'
+        layoutCenter: ["50%", "38%"], // position位置
+        layoutSize: 360,              // 地图大小，保证了不超过 360x360 的区域
+        label: {
+          // 图形上的文本标签
+          normal: {
+            show: true,
+            textStyle: {
+              color: "rgba(0, 0, 0, 0.9)",
+              fontSize: '8'
+            }
+          },
+          emphasis: { // 高亮时样式
+            color: "#333"
+          }
+        },
+        itemStyle: {
+          // 图形上的地图区域
+          normal: {
+            borderColor: "rgba(0,0,0,0.2)",
+            areaColor: "#005dff"
+          },
+          emphasis: {
+            // 高亮时
+            areaColor: "#99CC33",
+            shadowOffsetX: 0,
+            shadowOffsetY: 0,
+            shadowBlur: 10,
+            borderWidth: 0,
+            shadowColor: "rgba(0, 93, 255, 0.2)"
           }
         }
-      },
-      itemStyle: {
-
-        normal: {
-          borderColor: '#389BB7',
-          areaColor: '#fff',
+      }
+    ],
+    series: [
+      {
+        type: 'map',
+        mapType: 'china',
+        geoIndex: 0,
+        roam: true, // 鼠标是否可以缩放
+        label: {
+          normal: {
+            show: true
+          },
+          emphasis: {
+            show: true
+          }
         },
-        emphasis: {
-          areaColor: '#389BB7',
-          borderWidth: 0
-        }
-      },
-      animation: false,
-
-      data: [
-        { name: '郑州市', value: 100 },
-        { name: '洛阳市', value: 10 },
-        { name: '开封市', value: 20 },
-        { name: '信阳市', value: 30 },
-        { name: '驻马店市', value: 40 },
-        { name: '南阳市', value: 41 },
-        { name: '周口市', value: 15 },
-        { name: '许昌市', value: 25 },
-        { name: '平顶山市', value: 35 },
-        { name: '新乡市', value: 35 },
-        { name: '漯河市', value: 35 },
-        { name: '商丘市', value: 35 },
-        { name: '三门峡市', value: 35 },
-        { name: '济源市', value: 35 },
-        { name: '焦作市', value: 35 },
-        { name: '安阳市', value: 35 },
-        { name: '鹤壁市', value: 35 },
-        { name: '濮阳市', value: 35 },
-        { name: '开封市', value: 45 }
-      ]
-
-    }],
-
+        data: [
+          { name: '北京', value: randomData(), roam: true },
+          { name: '天津', value: randomData(), roam: true },
+          { name: '上海', value: randomData(), roam: true },
+          { name: '重庆', value: randomData() },
+          { name: '河北', value: randomData(), roam: true },
+          { name: '河南', value: randomData() },
+          { name: '云南', value: randomData() },
+          { name: '辽宁', value: randomData() },
+          { name: '黑龙江', value: randomData() },
+          { name: '湖南', value: randomData() },
+          { name: '安徽', value: randomData() },
+          { name: '山东', value: randomData() },
+          { name: '新疆', value: randomData() },
+          { name: '江苏', value: randomData() },
+          { name: '浙江', value: randomData() },
+          { name: '江西', value: randomData() },
+          { name: '湖北', value: randomData() },
+          { name: '广西', value: randomData() },
+          { name: '甘肃', value: randomData() },
+          { name: '山西', value: randomData() },
+          { name: '内蒙古', value: randomData() },
+          { name: '陕西', value: randomData() },
+          { name: '吉林', value: randomData() },
+          { name: '福建', value: randomData() },
+          { name: '贵州', value: randomData() },
+          { name: '广东', value: randomData() },
+          { name: '青海', value: randomData() },
+          { name: '西藏', value: randomData() },
+          { name: '四川', value: randomData() },
+          { name: '宁夏', value: randomData() },
+          { name: '海南', value: randomData() },
+          { name: '台湾', value: randomData() },
+          { name: '香港', value: randomData() },
+          { name: '澳门', value: randomData() }
+        ]
+      }]
   };
 
-  chart.setOption(option);
-
-  return chart;
+  myMap.setOption(option);
+  return myMap
 }
-
-Page({
-  onShareAppMessage: function (res) {
-    return {
-      title: 'ECharts 可以在微信小程序中使用啦！',
-      path: '/map/pages/index/index',
-      success: function () { },
-      fail: function () { }
-    }
-  },
-  data: {
-    ec: {
-      onInit: initChart
-    }
-  },
-
-  onShow: function() {
- 
-    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 1
-      })
-    }
-  }
-});
