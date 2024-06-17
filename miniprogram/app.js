@@ -13,7 +13,22 @@ App({
         traceUser: true,
       });
     }
-
-    this.globalData = {};
+    // https://developers.weixin.qq.com/community/develop/article/doc/000a8c989307888cbe1abbf675f413
+    const that = this;
+    // 获取系统信息
+    const systemInfo = wx.getSystemInfoSync();
+    // 胶囊按钮位置信息
+    const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
+    // 导航栏高度 = 状态栏高度 + 44
+    this.globalData = {
+      navBarHeight: 0, // 导航栏高度
+      menuRight: 0, // 胶囊距右方间距（方保持左、右间距一致）
+      menuBotton: 0, // 胶囊距底部间距（保持底部间距一致）
+      menuHeight: 0, // 胶囊高度（自定义内容可与胶囊高度保证一致）
+    };
+    that.globalData.navBarHeight = systemInfo.statusBarHeight + 44;
+    that.globalData.menuRight = systemInfo.screenWidth - menuButtonInfo.right;
+    that.globalData.menuBotton = menuButtonInfo.top - systemInfo.statusBarHeight;
+    that.globalData.menuHeight = menuButtonInfo.height;
   }
 });

@@ -1,0 +1,7 @@
+<view class="nav-bar" style="height:{{navBarHeight}}px;">
+    <image
+        class="icon"
+        src="../../images/icons/scan.png"
+        style="height:{{menuHeight}}px;min-height:{{menuHeight}}px;line-height:{menuHeight}}px;left:{{menuRight}}px;bottom:{{menuBotton}}px;"
+    />
+</view>

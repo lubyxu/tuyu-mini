@@ -1,5 +1,14 @@
 <!--index.wxml-->
-<view class="container">
-  <button bindtap="jumpMapPage">点我去地图页面</button>
-  <button bindtap="jumpOSDPage">点我去鼓楼冰箱贴识别页面</button>
+<view>
+  <navigation-bar default-data="{{defaultData}}"></navigation-bar>
+  <view class="page-section page-section-spacing swiper">
+    <swiper indicator-dots="{{indicatorDots}}"
+      autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item>
+          <view class="swiper-item {{item}}"></view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
 </view>

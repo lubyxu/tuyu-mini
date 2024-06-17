@@ -1,0 +1,12 @@
+.nav-bar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    color: #fff;
+}
+.nav-bar .icon{
+    width: 64rpx;
+    height: 64rpx;
+    position: absolute;
+    padding-left: 14px;
+}
