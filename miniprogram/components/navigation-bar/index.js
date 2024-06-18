@@ -18,6 +18,10 @@ Component({
     },
     attached: function() {},
     methods: {
-        
+        jumpOcr() {
+            wx.navigateTo({
+                url: '/pages/osd-ar/index',
+            })
+        },
     }
 })

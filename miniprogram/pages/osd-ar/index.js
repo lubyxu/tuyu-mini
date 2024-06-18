@@ -45,6 +45,7 @@ Component({
     afterVKSessionCreated() {
       this.session.on('addAnchors', anchors => {
         const anchor = anchors[0]
+        console.log('anchor==', anchor, anchor.id, anchor.markerId, this.markerId )
         const {
           width,
           height
