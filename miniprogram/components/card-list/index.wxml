@@ -8,6 +8,8 @@
     <scroll-view
         class="card-scroll"
         scroll-y
+        bindscrolltolower="bindscrolltolower"
+        lower-threshold='150'
     >
         <view
             style="background-image: url({{item.url}});"

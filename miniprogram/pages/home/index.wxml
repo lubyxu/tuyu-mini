@@ -18,6 +18,6 @@
   </view>
   <view class="top-section">
     <notification></notification>
-    <cardList cardData="{{card}}"></cardList>
+    <cardList cardData="{{card}}" bind:scrollBottom="scrollBottom"></cardList>
   </view>
 </view>

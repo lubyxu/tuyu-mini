@@ -7,15 +7,15 @@ cloud.init({
 const db = cloud.database()
 
 exports.main = async (event, context) => {
-  const {
-    paggeNo,
-    paggeSize
-  } = event
-  const data = await db
-    .collection('products')
-    .where({
-      
-    })
-    .get()
-  return data
+  try {
+    const data = await db
+      .collection('swiper')
+      .get()
+    return {
+      success: true,
+      data: data.data
+    }
+  } catch (err) {
+    throw err
+  }
 };

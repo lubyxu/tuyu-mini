@@ -8,13 +8,22 @@ const db = cloud.database()
 
 exports.main = async (event, context) => {
   const { pageNo, pageSize } = event
-  const data = await db
+  try {
+    const data = await db
     .collection('products')
     .where({
       effective: true
     })
-    .skip(pageNo)
+    .skip(pageNo * pageSize)
     .limit(pageSize)
     .get()
-  return data
+  const total = await db.collection('products').count({})
+  return {
+    data: data.data,
+    total: total.total,
+    success: true
+  }
+  } catch (err) {
+    throw err
+  }
 };

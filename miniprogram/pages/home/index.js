@@ -15,10 +15,12 @@ Page({
   },
 
   data: {
+    swiper: [],
+    card: [],
     pageSize: 10,
     pageNo: 0,
-    swiper: [],
-    products: [],
+    total: 0,
+    fetchProductsInit: true,
     defaultData: {
       title: "我的主页", // 导航栏标题
     },
@@ -28,7 +30,6 @@ Page({
     circular: true,
     interval: 5000,
     duration: 500,
-    card: []
   },
 
   jumpMapPage(e) {
@@ -53,30 +54,30 @@ Page({
 
   async getInitData() {
     try {
-      const data = await Promise.all([this.getSwiperData(), this.getPoducts()])
-      const swiperData = await callCloudDataBaseCallback(data[0])
-      const productsData = await callCloudDataBaseCallback(data[1])
-      const cardData = productsData.map((item) => {
-        return item.card
-      })
-      console.log('productsData', productsData)
-      this.setData({
-        swiper: swiperData,
-        card: cardData
-      })
+      await this.getSwiperData()
+      await this.getPoducts()
     } catch (err) {
       console.log('err', err)
     }
   },
 
-  getSwiperData() {
-    return wx.cloud.callFunction({
+  async getSwiperData() {
+    let swiperData = await wx.cloud.callFunction({
       name: 'getSwiper',
       data: {},
+    })
+    console.log('swiperData', swiperData)
+    swiperData = swiperData?.result?.data
+    this.setData({
+      swiper: swiperData,
     })
   },
 
   async getPoducts() {
+    const hasMore = this.data.fetchProductsInit || this.data.total > this.data.swiper.length
+    if (!hasMore) {
+      return
+    }
     const data = await wx.cloud.callFunction({
       name: 'getProducts',
       data: {
@@ -84,9 +85,22 @@ Page({
         pageSize: this.data.pageSize
       },
     })
+    console.log('products', data)
+    const { total, data: productsData } = data?.result
+    const cardData = productsData.map((item) => {
+      return item.card
+    })
     this.setData({
-      pageSize: this.data.pageSize + 1
+      pageNo: this.data.pageNo + 1,
+      card: [...this.data.card, ...cardData],
+      total,
+      fetchProductsInit: false
     })
     return data
   },
+
+  scrollBottom() {
+    console.log('父组件收到scroll bottom事件')
+    this.getPoducts()
+  }
 });

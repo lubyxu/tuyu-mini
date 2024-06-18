@@ -8,7 +8,7 @@ Component({
     cardData: {
       type: [Object],
       value: [],
-  }
+    }
   },
 
   /**
@@ -16,6 +16,13 @@ Component({
    */
   data: {
 
+  },
+
+  methods: {
+    bindscrolltolower() {
+      console.log('scroll bottom')
+      this.triggerEvent('scrollBottom')
+    },
   },
 
   pageLifetimes: {
