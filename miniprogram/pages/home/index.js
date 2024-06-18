@@ -74,7 +74,7 @@ Page({
   },
 
   async getPoducts() {
-    const hasMore = this.data.fetchProductsInit || this.data.total > this.data.swiper.length
+    const hasMore = this.data.fetchProductsInit || this.data.total > this.data.card.length
     if (!hasMore) {
       return
     }
