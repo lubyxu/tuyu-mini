@@ -1,6 +1,6 @@
 // app.js
 App({
-  onLaunch: function () {
+  onLaunch: async function () {
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力');
     } else {
@@ -30,5 +30,12 @@ App({
     that.globalData.menuRight = systemInfo.screenWidth - menuButtonInfo.right;
     that.globalData.menuBotton = menuButtonInfo.top - systemInfo.statusBarHeight;
     that.globalData.menuHeight = menuButtonInfo.height;
+
+    const data = await wx.cloud.callFunction({
+      name: 'getOpenId',
+    })
+
+    const { openid } = data?.result
+    that.globalData.openid = openid
   }
 });

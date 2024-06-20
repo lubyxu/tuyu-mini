@@ -8,6 +8,7 @@
     <rich-text nodes="{{nodes}}"></rich-text>
     <view class="detail-bottom-content">
       <image
+        bindtap="chooseImageTap"
         class="detail-content-add"
         src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/add-image-icon.png?sign=8af1e8f164b37d336dfe861ccd97fc3e&t=1718868738"
       />

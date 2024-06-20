@@ -10,7 +10,7 @@
         {
           "name": "首页-快速开始",
           "pathName": "pages/detail/index",
-          "query": "",
+          "query": "pid=100001",
           "launchMode": "default",
           "scene": null
         },
