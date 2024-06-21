@@ -7,13 +7,13 @@ cloud.init({
 const db = cloud.database()
 
 exports.main = async (event, context) => {
-  const { _id } = event
+  const { pid } = event
   try {
     const data = await db
     .collection('products')
     .where({
       effective: true,
-      _id
+      pid
     })
     .get()
     return data.data[0]

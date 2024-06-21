@@ -7,14 +7,12 @@ Page({
     nodes:[],
     title: '',
     topImage: '',
-    openid: '',
     pid: "",
   },
 
   onLoad: function (options) {
     this.setData({
-      pid: app.globalData.pid,
-      openid: app.globalData.openid,
+      pid: options.pid,
     })
   },
 
@@ -26,13 +24,25 @@ Page({
     try {
       wx.showLoading({
         title: '加载中',
-      })      
+      })
+      await this.getUserInfo()
       await this.getPoduct()
       wx.hideLoading()
     } catch (err) {
       wx.hideLoading()
       console.log('err', err)
     }
+  },
+
+  async getUserInfo() {
+    if (app.globalData.openid) {
+      return
+    }
+    const data = await wx.cloud.callFunction({
+      name: 'getOpenId',
+    })
+    const { openid } = data?.result
+    app.globalData.openid = openid
   },
 
   getNodes(content) {
@@ -64,13 +74,12 @@ Page({
     const data = await wx.cloud.callFunction({
       name: 'getProduct',
       data: {
-        _id: this.data._id
+        pid: this.data.pid
       },
     })
     const { detail } = data.result
     const { backgroud = '', content = [], title = '', topImage = '' } = detail
     const nodes = this.getNodes(content)
-    console.log('nodes', nodes)
     this.setData({
       backgroud,
       nodes,
@@ -91,7 +100,6 @@ Page({
 
   async chooseImageSuccess(res) {
     const tempFilePaths = res.tempFilePaths
-    console.log('tempFilePaths', tempFilePaths)
     const uploadPromises = []
     for (let i = 0; i < tempFilePaths.length; i++) {
       uploadPromises.push(this.uploadImageToCloud(tempFilePaths[i], i))
@@ -123,7 +131,7 @@ Page({
     await wx.cloud.callFunction({
       name: 'bind',
       data: {
-        openid: this.data.openid,
+        openid: app.globalData.openid,
         pid: this.data.pid,
         imageList,
       },
@@ -133,9 +141,9 @@ Page({
   uploadImageToCloud(filePath, index) {
     return new Promise((resolve, reject) => {
       const fileType = filePath.split('.')[1]
-      console.log('cloudpath', `user-image/${this.data.openid}_${this.data.pid}_${index}.${fileType}`)
+      console.log('cloudpath', `user-image/${app.globalData.openid}_${this.data.pid}_${index}.${fileType}`)
       wx.cloud.uploadFile({
-        cloudPath: `user-image/${this.data.openid}_${this.data.pid}_${index}.${fileType}`,
+        cloudPath: `user-image/${app.globalData.openid}_${this.data.pid}_${index}.${fileType}`,
         filePath,
         success: resolve,
         fail: reject

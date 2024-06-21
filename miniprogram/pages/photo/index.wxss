@@ -1,0 +1,143 @@
+.photo-page {
+  width: 100%;
+  height: 100vh;
+}
+
+.photo-top-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/photo-tiny-bg.png?sign=a01574f986bf50a15dbe5cd9ec97b899&t=1718937514');
+  background-color: transparent; 
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+
+.photo-top-section-image {
+  width: 100%;
+  height: 934rpx;
+}
+
+.photo-top-section-content {
+  margin-top: 130rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48rpx;
+  line-height: 68rpx;
+  text-align: center;
+  letter-spacing: -0.452rpx;
+  color: #902619;
+}
+
+.photo-top-section-name {
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 56px;
+  /* identical to box height */
+  text-align: center;
+  letter-spacing: -0.229592px;
+  color: #902619;
+}
+
+.photo-bottom-btn {
+  width: 316rpx;
+  height: 70rpx;
+  margin-top: 71rpx;
+}
+
+.photo-content {
+  width: 100%;
+  height: 1080rpx;
+  position: relative;
+}
+
+.photo-content .wx-swiper-dots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-content .wx-swiper-dot {
+  width: 12rpx;
+  height: 12rpx;
+  background: #D18068;
+  border-radius: 12rpx;
+}
+
+.photo-content .wx-swiper-dot.wx-swiper-dot-active {
+  width: 24rpx;
+  height: 24rpx;
+  position: relative;
+  background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/Vector.png?sign=4a7cec29b953e252e0254d41f534682f&t=1718604911');
+  background-color: transparent; 
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position: center;
+}
+
+.banner-item {
+  width: 100%;
+  height: 1080rpx;
+}
+
+.photo-content-image {
+  position: relative;
+  top: -242rpx;
+  width: 100%;
+  height: 242rpx;
+  background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/photo-swiper-bg.png?sign=dd33dd44d54ec1fa88d7232a42bd0dce&t=1718949510');
+  background-color: transparent; 
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position: center;
+}
+
+.photo-bottom-bg {
+  position: relative;
+  top: -242rpx;
+  margin-bottom: -242rpx;
+  background-color: transparent; 
+  background-size: 100% 2704rpx;
+  background-repeat:no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 2704rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-bottom-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  margin-top: 2140rpx;
+}
+
+.detail-content-add {
+  width: 636rpx;
+  height: 128rpx;
+}
+
+.detail-content-add-text {
+  margin-top: 15px;
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #828282;
+}

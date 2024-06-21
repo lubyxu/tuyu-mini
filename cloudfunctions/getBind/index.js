@@ -7,20 +7,19 @@ cloud.init({
 const db = cloud.database()
 
 exports.main = async (event, context) => {
-  const { openid, pid, imageList } = event
+  const { pid, openid } = event
   try {
-   await db
-    .collection('bind')
-    .add({
-      data: {
-        openid,
-        pid,
-        imageList,
-        date: db.serverDate()
-      }
-    })
+   const data = await db.collection('bind')
+   .where({
+     pid,
+     openid
+   })
+   .get()
     return {
-      success: true
+      success: true,
+      pid,
+      openid,
+      data: data?.data?.[0]
     }
   } catch (err) {
     throw err

@@ -8,9 +8,16 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/photo/index",
+          "pathName": "pages/photo/index",
+          "query": "pid=000001",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "首页-快速开始",
           "pathName": "pages/detail/index",
-          "query": "pid=100001",
+          "query": "pid=000001",
           "launchMode": "default",
           "scene": null
         },
