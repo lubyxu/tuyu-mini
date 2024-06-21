@@ -100,7 +100,6 @@ Page({
   },
 
   scrollBottom() {
-    console.log('父组件收到scroll bottom事件')
     this.getPoducts()
   }
 });

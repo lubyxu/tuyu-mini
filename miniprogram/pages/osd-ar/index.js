@@ -8,6 +8,7 @@ Component({
   behaviors: [getBehavior(), yuvBehavior],
   data: {
     theme: 'light',
+    url: '',
     frameShow: false,
     frameX: 0,
     frameY: 0,
@@ -25,7 +26,6 @@ Component({
       }
       },
       ready() {
-      console.log("页面准备完全")
         this.setData({
           theme: wx.getSystemInfoSync().theme || 'light'
         })
@@ -35,6 +35,11 @@ Component({
             this.setData({theme})
           })
         }
+      },
+      onLoad: function (options) {
+        this.setData({
+          url: options.url,
+        })
       },
   },
   methods: {
@@ -61,7 +66,7 @@ Component({
 
           setTimeout(() => {
             wx.navigateTo({
-              url: `/map/pages/index/index`,
+              url: `/map/pages/detail/index`,
             });
           }, 1500);
         }

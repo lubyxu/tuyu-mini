@@ -1,4 +1,4 @@
-import * as echarts from '../ec-canvas/echarts.js';
+import * as echarts from '../../../components/ec-canvas/echarts.js';
 import geoJson, { type } from './mapData.js';
 
 let myMap = null
