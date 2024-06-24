@@ -1,5 +1,4 @@
-const { envList } = require('../../envList.js');
-const { callCloudDataBaseCallback } = require('../../utils/cloud.js')
+const app = getApp()
 
 Page({
   onShareAppMessage() {
@@ -11,6 +10,9 @@ Page({
 
   onShow: function() {
     this.setTabBar()
+  },
+
+  onReady() {
     this.getInitData()
   },
 
@@ -54,11 +56,35 @@ Page({
 
   async getInitData() {
     try {
-      await this.getSwiperData()
-      await this.getPoducts()
+      await Promise.all([this.getSwiperData(), this.getBind()])
+      this.getPoducts()
     } catch (err) {
       console.log('err', err)
     }
+  },
+
+  async getUserInfo() {
+    if (app.globalData.openid) {
+      return app.globalData.openid
+    }
+    const data = await wx.cloud.callFunction({
+      name: 'getOpenId',
+    })
+    const { openid } = data?.result
+    app.globalData.openid = openid
+  },
+
+  async getBind() {
+    const openid = await this.getUserInfo()
+    const data = await wx.cloud.callFunction({
+      name: 'getBind',
+      data: {
+        openid
+      },
+    })
+    console.log('bind data =>', data)
+    const { data: list = [] } = data?.result
+    this.bindProductsIds = list.map(({ pid }) => pid) || []
   },
 
   async getSwiperData() {
@@ -88,7 +114,7 @@ Page({
     console.log('products', data)
     const { total, data: productsData } = data?.result
     const cardData = productsData.map((item) => {
-      return { ...item.card, id: item?.pid, ocr: item?.osd?.picture }
+      return { ...item.card, id: item?.pid, ocr: item?.osd?.picture, bind: this?.bindProductsIds?.includes(item?.pid) }
     })
     this.setData({
       pageNo: this.data.pageNo + 1,
@@ -106,8 +132,12 @@ Page({
   ocrClick(e) {
     const { id, ocr } = e.detail
     console.log('ocr click', e.detail)
+    const { bind } = e.detail
+    const url = bind
+      ? `/pages/detail/index?pid=${id}&bind=${bind}}`
+      : `/pages/osd-ar/index?pid=${id}&url=${encodeURIComponent(ocr)}`
     wx.navigateTo({
-      url: `/pages/osd-ar/index?pid=${id}&url=${encodeURIComponent(ocr)}`,
+      url
     });
   }
 });

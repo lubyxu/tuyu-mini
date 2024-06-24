@@ -8,11 +8,13 @@ Page({
     title: '',
     topImage: '',
     pid: "",
+    bind: false
   },
 
   onLoad: function (options) {
     this.setData({
       pid: options.pid,
+      bind: options.bind,
     })
   },
 
@@ -89,7 +91,13 @@ Page({
     console.log('products', data)
   },
 
-  chooseImageTap() {
+  chooseOrPreviewImageTap() {
+    if (this.data.bind) {
+      wx.navigateTo({
+        url: `/pages/photo/index?pid=${this.data.pid}`,
+      });
+      return
+    }
     wx.chooseImage({
       count: 2,
       sizeType: ['original', 'compressed'],

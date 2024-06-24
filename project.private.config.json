@@ -8,6 +8,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "首页",
+          "pathName": "pages/home/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/photo/index",
           "pathName": "pages/photo/index",
           "query": "pid=000001",
@@ -19,12 +26,6 @@
           "pathName": "pages/detail/index",
           "query": "pid=000001",
           "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "商品列表",
-          "pathName": "pages/goods-list/index",
-          "query": "",
           "scene": null
         },
         {

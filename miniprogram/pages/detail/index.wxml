@@ -7,12 +7,13 @@
     </view>
     <rich-text nodes="{{nodes}}"></rich-text>
     <view class="detail-bottom-content">
-      <image
-        bindtap="chooseImageTap"
+      <view
+        bindtap="chooseOrPreviewImageTap"
         class="detail-content-add"
-        src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/add-image-icon.png?sign=8af1e8f164b37d336dfe861ccd97fc3e&t=1718868738"
-      />
-      <text class="detail-content-add-text">最多添加 2 张图片</text>
+      >
+        {{ bind ? '预览图片' : '添加图片' }}
+      </view>
+      <text wv-if="{{!bind}}" class="detail-content-add-text">最多添加 2 张图片</text>
     </view>
   </view>
 </view>
