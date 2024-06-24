@@ -3,12 +3,14 @@ import yuvBehavior from './yuvBehavior'
 
 const NEAR = 0.001
 const FAR = 1000
+const app = getApp()
 
 Component({
   behaviors: [getBehavior(), yuvBehavior],
   data: {
     theme: 'light',
     url: '',
+    pid: '',
     frameShow: false,
     frameX: 0,
     frameY: 0,
@@ -16,46 +18,30 @@ Component({
     frameHeight: 0,
   },
   lifetimes: {
-      /**
-      * 生命周期函数--监听页面加载
-      */
-      detached() {
-      console.log("页面detached")
-      if (wx.offThemeChange) {
-        wx.offThemeChange()
-      }
-      },
-      ready() {
-        this.setData({
-          theme: wx.getSystemInfoSync().theme || 'light'
-        })
-
-        if (wx.onThemeChange) {
-          wx.onThemeChange(({theme}) => {
-            this.setData({theme})
-          })
-        }
-      },
-      onLoad: function (options) {
-        this.setData({
-          url: options.url,
-        })
-      },
+    ready: function () {
+      const pages = getCurrentPages()
+      const page = pages[pages.length - 1]
+      console.log(';options', page.options.url, page.options.pid)
+      this.setData({
+        url: decodeURIComponent(page?.options?.url),
+        pid: page?.options?.pid,
+      })
+    }
   },
   methods: {
-    init() {
+    async init() {
       this.initGL()
-      this.addOSDMarker()
     },
     afterVKSessionCreated() {
+      console.log('all osk', this.session.getAllOSDMarker())
       this.session.on('addAnchors', anchors => {
         const anchor = anchors[0]
-        console.log('anchor==', anchor, anchor.id, anchor.markerId, this.markerId )
+        console.log('anchor==', anchor, anchor.id, anchor.markerId)
         const {
           width,
           height
         } = this.data
-        if (anchor && this.markerId) {
+        if (anchor && app?.globalData?.ocr?.[this.data.pid]) {
           this.setData({
             frameShow: true,
             frameX: anchor.origin.x * width,
@@ -66,7 +52,7 @@ Component({
 
           setTimeout(() => {
             wx.navigateTo({
-              url: `/map/pages/detail/index`,
+              url: `/pages/detail/index?pid=${this.data.pid}`,
             });
           }, 1500);
         }
@@ -113,13 +99,14 @@ Component({
       this.renderer.state.setCullFace(this.THREE.CullFaceNone)
     },
     addOSDMarker() {
-      if (this.markerId) return
+      // this.removeOSDMarker()
       const fs = wx.getFileSystemManager()
-      const filePath = `${wx.env.USER_DATA_PATH}/osd-ar.jpg`
+      const filePath = `${wx.env.USER_DATA_PATH}/${this.data.pid}.png`
+      fs.unlinkSync(filePath)
 
       const download = callback => wx.downloadFile({
           // 此处设置为osd识别对象的地址
-          url: 'https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/card-asstes/guaishou.jpg?sign=b7eee6bd0139165644231c2e0d1c4fa9&t=1718354148',
+          url: this.data.url,
           success(res) {
               fs.saveFile({
                   filePath,
@@ -130,43 +117,26 @@ Component({
       })
 
       const add = () => {
-        console.log('[addMarker] --> ', filePath)
-        this.markerId = this.session.addOSDMarker(filePath)
+        const markerId = this.session.addOSDMarker(filePath)
+        if (!app.globalData.ocr) {
+          app.globalData.ocr = {}
+        }
+        app.globalData.ocr = {
+          ...app.globalData.ocr,
+          [this.data.pid]: markerId
+        }
+        console.log('[addMarker] --> ', filePath, markerId)   
         this.setData({
-          "filePathNow": filePath
+          "filePathNow": filePath,
         })
       }
-
-      const getFilePathNow = () => {
-        return this.data.filePathNow;
-      }
-      fs.stat({
-        path: filePath,
-        success(res) {
-          let path = getFilePathNow()
-          if (path != filePath) {
-            if (res.stats.isFile() && path) {
-              fs.unlinkSync(path)
-            }
-            download(add)
-          } else {
-            add()
-          }
-        },
-        fail: (res) => {
-          console.error(res)
-          download(add)
-        }
-      })
+      download(add)
+      
     },
     removeOSDMarker() {
-      if (this.markerId) {
-        this.session.removeOSDMarker(this.markerId)
-        this.markerId = null
+      if (app?.globalData?.ocr?.[this.data.pid]) {
+        this.session.removeOSDMarker( app?.globalData?.ocr?.[this.data.pid])
       }
-    },
-    getAllOSDMarker() {
-      console.log(this.session.getAllOSDMarker())
     },
   },
 })

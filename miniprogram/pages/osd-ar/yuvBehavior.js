@@ -4,39 +4,39 @@ const yuvBehavior = Behavior({
             const gl = this.gl = this.renderer.getContext()
             const currentProgram = gl.getParameter(gl.CURRENT_PROGRAM)
             const vs = `
-        attribute vec2 a_position;
-        attribute vec2 a_texCoord;
-        uniform mat3 displayTransform;
-        varying vec2 v_texCoord;
-        void main() {
-          vec3 p = displayTransform * vec3(a_position, 0);
-          gl_Position = vec4(p, 1);
-          v_texCoord = a_texCoord;
-        }
-      `
-            const fs = `
-        precision highp float;
-
-        uniform sampler2D y_texture;
-        uniform sampler2D uv_texture;
-        varying vec2 v_texCoord;
-        void main() {
-          vec4 y_color = texture2D(y_texture, v_texCoord);
-          vec4 uv_color = texture2D(uv_texture, v_texCoord);
-
-          float Y, U, V;
-          float R ,G, B;
-          Y = y_color.r;
-          U = uv_color.r - 0.5;
-          V = uv_color.a - 0.5;
-          
-          R = Y + 1.402 * V;
-          G = Y - 0.344 * U - 0.714 * V;
-          B = Y + 1.772 * U;
-          
-          gl_FragColor = vec4(R, G, B, 1.0);
-        }
-      `
+                attribute vec2 a_position;
+                attribute vec2 a_texCoord;
+                uniform mat3 displayTransform;
+                varying vec2 v_texCoord;
+                void main() {
+                vec3 p = displayTransform * vec3(a_position, 0);
+                gl_Position = vec4(p, 1);
+                v_texCoord = a_texCoord;
+                }
+            `
+                    const fs = `
+                precision highp float;
+        
+                uniform sampler2D y_texture;
+                uniform sampler2D uv_texture;
+                varying vec2 v_texCoord;
+                void main() {
+                vec4 y_color = texture2D(y_texture, v_texCoord);
+                vec4 uv_color = texture2D(uv_texture, v_texCoord);
+        
+                float Y, U, V;
+                float R ,G, B;
+                Y = y_color.r;
+                U = uv_color.r - 0.5;
+                V = uv_color.a - 0.5;
+                
+                R = Y + 1.402 * V;
+                G = Y - 0.344 * U - 0.714 * V;
+                B = Y + 1.772 * U;
+                
+                gl_FragColor = vec4(R, G, B, 1.0);
+                }
+            `
             const vertShader = gl.createShader(gl.VERTEX_SHADER)
             gl.shaderSource(vertShader, vs)
             gl.compileShader(vertShader)

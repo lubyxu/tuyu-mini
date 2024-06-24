@@ -113,6 +113,11 @@ Page({
         icon: 'success',
         title: '上传图片成功～'
       })
+      setTimeout(() => {
+        wx.navigateTo({
+          url: `/pages/photo/index?pid=${this.data.pid}`,
+        });
+      }, 1000);
     } catch (err) {
       console.log(err)
       wx.showToast({

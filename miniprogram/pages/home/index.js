@@ -88,7 +88,7 @@ Page({
     console.log('products', data)
     const { total, data: productsData } = data?.result
     const cardData = productsData.map((item) => {
-      return item.card
+      return { ...item.card, id: item?.pid, ocr: item?.osd?.picture }
     })
     this.setData({
       pageNo: this.data.pageNo + 1,
@@ -101,5 +101,13 @@ Page({
 
   scrollBottom() {
     this.getPoducts()
+  },
+
+  ocrClick(e) {
+    const { id, ocr } = e.detail
+    console.log('ocr click', e.detail)
+    wx.navigateTo({
+      url: `/pages/osd-ar/index?pid=${id}&url=${encodeURIComponent(ocr)}`,
+    });
   }
 });

@@ -18,8 +18,10 @@
             wx:key="index"
         >
             <image
-            class="nav-icon"
-            src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/nav.png?sign=b0f836800c217024b5595c19d0a71974&t=1718610955"
+                class="nav-icon"
+                bind:tap="ocrClick"
+                data-item="{{item}}"
+                src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/nav.png?sign=b0f836800c217024b5595c19d0a71974&t=1718610955"
             />
             <view class="desc-box">
                 <text class="desc-title">{{item.title}}</text>

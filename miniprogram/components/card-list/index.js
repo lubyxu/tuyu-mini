@@ -15,13 +15,16 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    
   },
 
   methods: {
     bindscrolltolower() {
-      console.log('scroll bottom')
       this.triggerEvent('scrollBottom')
+    },
+    ocrClick(e) {
+      const item = e.currentTarget.dataset.item
+      this.triggerEvent('ocrClick', item)
     },
   },
 

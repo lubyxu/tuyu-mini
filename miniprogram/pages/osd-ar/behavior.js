@@ -107,6 +107,8 @@ export default function getBehavior() {
 
           console.log('@@@@@@@@ VKSession.version', session.version)
 
+          this.addOSDMarker()
+
           const canvas = this.canvas
 
           const calcSize = (width, height, pixelRatio) => {
