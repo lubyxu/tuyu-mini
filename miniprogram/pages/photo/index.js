@@ -54,6 +54,7 @@ Page({
         openid: `${app.globalData.openid}`
       },
     })
+    console.log('data=>', data)
     const { imageList: photos = [],  date: serverDate } = data?.result?.data
     console.log('products', data)
     console.log('photos', photos)
@@ -80,4 +81,10 @@ Page({
     })
     console.log('products', data)
   },
+
+  jumpMap() {
+    wx.switchTab({
+      url: '/pages/map/index/index'
+    })
+  }
 });
