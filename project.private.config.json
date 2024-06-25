@@ -8,6 +8,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "地图页面",
+          "pathName": "pages/map/index/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "首页",
           "pathName": "pages/home/index",
           "query": "",

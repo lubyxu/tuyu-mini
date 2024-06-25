@@ -1,4 +1,8 @@
 /**index.wxss**/
+page {
+  background: #CFBC9B;
+}
+
 .container {
   width: 100%;
   height: 800rpx;
