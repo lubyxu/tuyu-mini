@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class="photo-page">
+  <navigation-bar default-data="{{defaultData}}"></navigation-bar>
   <view class="photo-top-section">
     <image src="{{topBackgroundImage}}" class="photo-top-section-image"/>
     <view class="photo-top-section-content">

@@ -124,7 +124,7 @@
   flex-direction: column;
   align-items: center;
   justify-self: center;
-  margin-top: 2140rpx;
+  margin-top: 2124rpx;
 }
 
 .detail-content-add {

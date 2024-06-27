@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view>
-  <navigation-bar default-data="{{defaultData}}"></navigation-bar>
+  <!-- <navigation-bar default-data="{{defaultData}}"></navigation-bar> -->
   <view class="page-section page-section-spacing swiper">
     <swiper
       indicator-dots="{{indicatorDots}}"

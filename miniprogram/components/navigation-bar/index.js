@@ -18,9 +18,9 @@ Component({
     },
     attached: function() {},
     methods: {
-        jumpOcr() {
-            wx.navigateTo({
-                url: '/pages/osd-ar/index',
+        switchTab() {
+            wx.switchTab({
+                url: '/pages/home/index',
             })
         },
     }

@@ -1,8 +1,8 @@
 <view class="nav-bar" style="height:{{navBarHeight}}px;">
     <cover-image
         class="icon"
-        src="../../images/icons/scan.png"
-        style="height:{{menuHeight}}px;min-height:{{menuHeight}}px;line-height:{menuHeight}}px;left:{{menuRight}}px;bottom:{{menuBotton}}px;"
-        bind:tap="jumpOcr"
+        src="../../images/icons/home.png"
+        style="line-height:{menuHeight}}px;left:{{menuRight}}px;bottom:{{menuBotton}}px;"
+        bind:tap="switchTab"
     />
 </view>

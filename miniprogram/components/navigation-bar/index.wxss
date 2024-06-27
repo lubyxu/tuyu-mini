@@ -6,8 +6,9 @@
     z-index: 999;
 }
 .nav-bar .icon{
-    width: 64rpx;
-    height: 64rpx;
+    width: 40rpx;
+    height: 40rpx;
     position: absolute;
-    padding-left: 14px;
+    padding-left: 10rpx;
+    margin-bottom: 26rpx;
 }

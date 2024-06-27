@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view>
+  <navigation-bar default-data="{{defaultData}}"></navigation-bar>
   <image src="{{topImage}}" class="top-image" />
   <view class="detail-content">
     <image 
