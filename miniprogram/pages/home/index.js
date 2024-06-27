@@ -64,14 +64,17 @@ Page({
   },
 
   async getUserInfo() {
+    console.log('app.globalData.openid', app.globalData.openid)
     if (app.globalData.openid) {
       return app.globalData.openid
     }
     const data = await wx.cloud.callFunction({
       name: 'getOpenId',
     })
+    console.log('data?.result', data?.result)
     const { openid } = data?.result
     app.globalData.openid = openid
+    return openid
   },
 
   async getBind() {

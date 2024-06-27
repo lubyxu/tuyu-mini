@@ -102,7 +102,7 @@ Component({
       // this.removeOSDMarker()
       const fs = wx.getFileSystemManager()
       const filePath = `${wx.env.USER_DATA_PATH}/${this.data.pid}.png`
-      fs.unlinkSync(filePath)
+      // fs.unlinkSync(filePath)
 
       const download = callback => wx.downloadFile({
           // 此处设置为osd识别对象的地址
@@ -113,6 +113,10 @@ Component({
                   tempFilePath: res.tempFilePath,
                   success: callback,
               })
+          },
+          fail(err) {
+            console.log('download 图片失败')
+            console.log(err)
           }
       })
 
