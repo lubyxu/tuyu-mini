@@ -3,7 +3,7 @@ const app = getApp()
 
 Page({
   data: {
-    backgroud: '',
+    background: '',
     nodes:[],
     title: '',
     topImage: '',
@@ -80,10 +80,10 @@ Page({
       },
     })
     const { detail } = data.result
-    const { backgroud = '', content = [], title = '', topImage = '' } = detail
+    const { background = '', content = [], title = '', topImage = '' } = detail
     const nodes = this.getNodes(content)
     this.setData({
-      backgroud,
+      background,
       nodes,
       title,
       topImage

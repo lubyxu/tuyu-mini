@@ -27,13 +27,13 @@ exports.main = async (event, context) => {
     })
     .end()
 
-    const current = data?.list[0]
+    const current = data?.list?.[0] || {}
     current.product = current?.product?.[0]
     return {
       success: true,
       pid,
       openid,
-      data: getSingleBind ? current : data.list
+      data: getSingleBind ? current : data?.list
     }
   } catch (err) {
     throw err

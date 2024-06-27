@@ -76,6 +76,7 @@ Page({
 
   async getBind() {
     const openid = await this.getUserInfo()
+    console.log('openid', openid)
     const data = await wx.cloud.callFunction({
       name: 'getBind',
       data: {

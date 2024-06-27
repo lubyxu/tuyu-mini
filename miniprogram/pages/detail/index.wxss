@@ -10,17 +10,36 @@ page {
   height: 650rpx;
 }
 
-.detail-content {
-  /* background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/top-bg.png?sign=94705f3f7681be02d607f3984fda6c88&t=1718606479'); */
-  background-color: transparent; 
+.detail-content-image {
+  width: 100%;
+  height: 220rpx;
   position: relative;
-  background-size: cover;
+  margin-top: -120rpx;
+}
+
+.detail-bottom-box {
+  position: relative;
+  top: -120rpx;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.detail-content {
+  position: relative;
   top: -80rpx;
   padding-top: 80rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.nodes-box {
+  background-color: transparent; 
+  background-size: cover;
+
+
 }
 
 .detail-content-title {
@@ -56,6 +75,7 @@ page {
   justify-self: center;
   position: fixed;
   bottom: 80rpx;
+  width: 100%;
 }
 
 .detail-content-add {

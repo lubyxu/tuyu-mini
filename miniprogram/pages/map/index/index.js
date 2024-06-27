@@ -85,10 +85,7 @@ var convertData = function(selectData, data) {
   for (var i = 0; i < data.length; i++) {
       var geoCoord = geoCoordMap[data[i].name];
       if (geoCoord) {
-          res.push({
-              name: data[i].name,
-              value: geoCoord.concat(data[i].value),
-          });
+          res.push(geoCoord);
       }
   }
   return res;
@@ -108,9 +105,7 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {
-    that: this,
-  
+  data: {  
     ec: {
       onInit: async (...args) => {
       
@@ -131,10 +126,30 @@ Page({
         await initChartMap(selectData, ...args)
       }
     },
+
+    len: 0,
   },
 
   onShow: function() {
     this.setTabBar()
+    this.onInitData()
+  },
+
+  async onInitData() {
+    const userInfo = await wx.cloud.callFunction({
+      name: 'getOpenId',
+    })
+    const { openid } = userInfo?.result
+    const data = await wx.cloud.callFunction({
+      name: 'getBind',
+      data: {
+        openid
+      },
+    })
+    const selectData = (data?.result?.data || [])
+    this.setData({
+      len: selectData.length
+    })
   },
 
   setTabBar() {
@@ -154,6 +169,9 @@ function initChartMap(selectData, canvas, width, height) {
   canvas.setChart(myMap);
   echarts.registerMap('china', geoJson); // 绘制中国地图
   const option = {
+    grid: {
+      top: '10%'
+    }, 
     geo: [
       {
         // 地理坐标系组件
@@ -182,13 +200,6 @@ function initChartMap(selectData, canvas, width, height) {
     ],
 
     series: [
-      {
-        type: 'map',
-        mapType: 'china',
-        geoIndex: 0,
-        data: mapData
-      },
-
       {
         type: "scatter",
         roam: false,

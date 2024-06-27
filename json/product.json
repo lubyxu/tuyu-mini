@@ -1,8 +1,8 @@
 {
     "data": [{
-        "province": "北京市",
+        "province": "北京",
         "city": "北京市",
-        "name": "小怪兽",
+        "name": "鼓楼",
         "pid": "000001",
         "effective": true,
         "card": {
@@ -11,12 +11,12 @@
             "subTitle": "鼓楼·冬季之美"
         },
         "osd": {
-            "picture": "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/card-asstes/guaishou.jpg?sign=b7eee6bd0139165644231c2e0d1c4fa9&t=1718354148"
+            "picture": "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/gulou.jpg?sign=03bca79246ea0b8b2b1f22b7185f3994&t=1719304890"
         },
         "detail": {
             "topImage": "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/gulou/gulou-detail-top.png?sign=92cf4765a73ab156ee4f0c1bd37f9ad7&t=1718693020",
             "title": "北京鼓楼·冬季之美",
-            "backgroud": "",
+            "background": "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/bgdetail-bottom-bg.png?sign=7298a9ce7c54d6912fb5fc7392c9648f&t=1719304676",
             "content": [
                 [
                     { "text": "北京鼓楼的" },
