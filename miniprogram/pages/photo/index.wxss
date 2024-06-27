@@ -102,6 +102,7 @@
   background-size:cover;
   background-repeat:no-repeat;
   background-position: center;
+  z-index: 999;
 }
 
 .photo-bottom-bg {

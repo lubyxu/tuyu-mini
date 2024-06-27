@@ -17,7 +17,7 @@
     </swiper>
   </view>
   <view class="top-section">
-    <notification></notification>
+    <!-- <notification></notification> -->
     <cardList cardData="{{card}}" bind:scrollBottom="scrollBottom" bind:ocrClick="ocrClick"></cardList>
   </view>
 </view>
