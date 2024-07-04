@@ -1,7 +1,11 @@
-<cover-view class="tab-bar">
+<view class="tab-bar">
+  <cover-image
+    class="bg-img"
+    src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/tab-bar-bg.png?sign=33f979ba4310e3f0fae473fc39ada9e8&t=1720085322"
+  ></cover-image>
   <cover-view class="tab-bar-border"></cover-view>
   <cover-view wx:for="{{list}}" wx:key="index" class="tab-bar-item" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab">
     <cover-image src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></cover-image>
     <cover-view class="{{selected === index ? 'tab-bar-text-active' : 'tab-bar-text'}}">{{item.text}}</cover-view>
   </cover-view>
-</cover-view>
+</view>
