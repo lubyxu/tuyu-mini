@@ -32,6 +32,7 @@ Page({
     circular: true,
     interval: 5000,
     duration: 500,
+    showLoading: true
   },
 
   jumpMapPage(e) {
@@ -57,7 +58,9 @@ Page({
   async getInitData() {
     try {
       await Promise.all([this.getSwiperData(), this.getBind()])
-      this.getPoducts()
+      await this.getPoducts()
+      console.log('showLoading', this.data.showLoading)
+      this.setData({ showLoading: false })
     } catch (err) {
       console.log('err', err)
     }

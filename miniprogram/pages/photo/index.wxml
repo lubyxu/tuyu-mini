@@ -6,7 +6,7 @@
     <view class="photo-top-section-content">
       <text>我的轨迹在</text>
       <text class="photo-top-section-name">{{name}}</text>
-      <text wx-if="{{date}}">{{date}}</text>
+      <text class="photo-top-section-date" wx-if="{{date}}">{{date}}</text>
     </view>
     <image
       class="photo-bottom-btn"

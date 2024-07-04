@@ -12,7 +12,6 @@
   width: 100%;
   height: 100%;
   background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/photo-tiny-bg.png?sign=a01574f986bf50a15dbe5cd9ec97b899&t=1718937514');
-  background-color: transparent; 
   background-size:cover;
   background-repeat:no-repeat;
 }
@@ -50,9 +49,13 @@
   color: #902619;
 }
 
+.photo-top-section-date {
+  font-size: 32rpx;
+}
+
 .photo-bottom-btn {
   width: 316rpx;
-  height: 70rpx;
+  height: 80rpx;
   margin-top: 71rpx;
 }
 
@@ -98,7 +101,6 @@
   width: 100%;
   height: 242rpx;
   background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/photo-swiper-bg.png?sign=dd33dd44d54ec1fa88d7232a42bd0dce&t=1718949510');
-  background-color: transparent; 
   background-size:cover;
   background-repeat:no-repeat;
   background-position: center;
@@ -109,7 +111,6 @@
   position: relative;
   top: -242rpx;
   margin-bottom: -242rpx;
-  background-color: transparent; 
   background-size: 100% 2704rpx;
   background-repeat:no-repeat;
   background-position: center;

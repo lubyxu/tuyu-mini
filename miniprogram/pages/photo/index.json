@@ -1,5 +1,6 @@
 {
   "navigationStyle": "custom",
+  "disableScroll": false,
   "usingComponents": {
     "cloud-tip-modal": "/components/cloudTipModal/index",
     "navigation-bar": "/components/navigation-bar/index",

@@ -67,4 +67,5 @@ ec-canvas {
 .detail-content-add-text {
   margin: 0 6rpx;
   font-size: 20px;
+  font-weight: 500;
 }

@@ -10,6 +10,8 @@
         scroll-y
         bindscrolltolower="bindscrolltolower"
         lower-threshold='150'
+        enhanced="true"
+        show-scrollbar="{{false}}"
     >
         <view
             style="background-image: url({{item.url}});"

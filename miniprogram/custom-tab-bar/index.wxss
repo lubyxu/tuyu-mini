@@ -8,12 +8,11 @@
   height: 88px;
   background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/bg.png?sign=07ba12fe8d959da9350ec5e52fe1ac02&t=1718590486');
   display: flex;
-  padding-bottom: env(safe-area-inset-bottom);
-
+  z-index: 999;
 }
  
 .tab-bar-border {
-  background-color: rgba(0, 0, 0, 0.33);
+  background-color: #fff5ea;
   position: absolute;
   left: 0;
   top: 0;
@@ -38,4 +37,26 @@
  
 .tab-bar-item cover-view {
   font-size: 10px;
+}
+
+.tab-bar-text, .tab-bar-text-active {
+  margin-top: 6px;
+  /* 馆藏珍品 */
+
+  width: 40px;
+  height: 16px;
+
+  font-family: 'Neue Frutiger World';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: -0.21px;
+  color: #333333;
+}
+
+.tab-bar-text-active {
+  color: #F7393F;
+  font-weight: 600;
 }

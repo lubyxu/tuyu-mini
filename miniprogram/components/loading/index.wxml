@@ -1,0 +1,12 @@
+<view class="loading-container">
+    <view class="loading-container-box">
+        <view class="loading-container-loading-box">
+
+        </view>
+        <image
+            src="cloud://cloud1-0gq8f3qi3903d318.636c-cloud1-0gq8f3qi3903d318-1327253936/app-assets/loading-logo.png"
+            class="loading-container-loading-logo"
+        />
+        <view class="loading-container-loading-name">图鱼文化创意管</view>
+    </view>
+</view>
