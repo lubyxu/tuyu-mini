@@ -164,7 +164,8 @@ Page({
 function initChartMap(selectData, canvas, width, height) {
   myMap = echarts.init(canvas, null, {
     width: width,
-    height: height
+    height: height,
+    devicePixelRatio: 3
   });
   canvas.setChart(myMap);
   echarts.registerMap('china', geoJson); // 绘制中国地图

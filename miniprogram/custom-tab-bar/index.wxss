@@ -57,6 +57,6 @@
 }
 
 .tab-bar-text-active {
-  color: #F7393F;
+  color: #ce3219;
   font-weight: 600;
 }

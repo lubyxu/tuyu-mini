@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view>
   <loading wx-if="{{showLoading}}" />
-  <view wx-if="{{!showLoading}}" class="page-section">
+  <view wx-if="{{!showLoading}}" class="page-section swiper">
     <view>
       <swiper
         indicator-dots="{{indicatorDots}}"
