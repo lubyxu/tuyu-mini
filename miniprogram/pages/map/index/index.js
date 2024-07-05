@@ -171,7 +171,7 @@ function initChartMap(selectData, canvas, width, height) {
   echarts.registerMap('china', geoJson); // 绘制中国地图
   const option = {
     grid: {
-      top: '10%'
+      top: '0%'
     }, 
     geo: [
       {
@@ -181,7 +181,7 @@ function initChartMap(selectData, canvas, width, height) {
         roam: false,      // 可以缩放和平移
         aspectScale: 0.8, // 比例
         layoutCenter: ["50%", "38%"], // position位置
-        layoutSize: 360,              // 地图大小，保证了不超过 360x360 的区域
+        layoutSize: 370,              // 地图大小，保证了不超过 360x360 的区域
         label: {
           // 图形上的文本标签
           normal: {
@@ -211,7 +211,7 @@ function initChartMap(selectData, canvas, width, height) {
           return "image://" + "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/select.png?sign=45fc85b0cd7261e87426faa8f39a44e5&t=1719297078";
         },
         z: 2,
-        symbolSize: [12, 16]
+        symbolSize: [14, 18]
       }
     ]
   };

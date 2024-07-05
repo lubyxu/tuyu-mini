@@ -10,6 +10,8 @@
       枚勋章
   </view>
   </view>
-  <ec-canvas id="mychart-dom-area" canvas-id="mychart-area" ec="{{ ec }}"></ec-canvas>
+  <view class="map-container">
+    <ec-canvas id="mychart-dom-area" canvas-id="mychart-area" ec="{{ ec }}"></ec-canvas>  
+  </view>
   <view class="bottom-img"></view>
 </view>
