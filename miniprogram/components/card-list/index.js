@@ -19,9 +19,6 @@ Component({
   },
 
   methods: {
-    bindscrolltolower() {
-      this.triggerEvent('scrollBottom')
-    },
     ocrClick(e) {
       const item = e.currentTarget.dataset.item
       this.triggerEvent('ocrClick', item)

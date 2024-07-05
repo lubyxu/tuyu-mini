@@ -35,7 +35,8 @@ Page({
     circular: true,
     interval: 5000,
     duration: 500,
-    showLoading: true
+    showLoading: true,
+    titleBarVisible: false
   },
 
   jumpMapPage(e) {
@@ -109,7 +110,7 @@ Page({
   },
 
   async getPoducts() {
-    const hasMore = this.data.fetchProductsInit || this.data.total > this.data.card.length
+    const hasMore = this.data.fetchProductsInit || this.data.total <= this.data.card.length
     if (!hasMore) {
       return
     }
@@ -127,7 +128,7 @@ Page({
     })
     this.setData({
       pageNo: this.data.pageNo + 1,
-      card: [...this.data.card, ...cardData],
+      card: [...this.data.card, ...cardData, ...cardData, ...cardData, ...cardData, ...cardData, ...cardData, ...cardData],
       total,
       fetchProductsInit: false
     })
@@ -148,5 +149,21 @@ Page({
     wx.navigateTo({
       url
     });
+  },
+
+  bindscrolltoupper() {
+    console.log('滚动到顶部')
+    this.setData({ titleBarVisible: false })
+  },
+
+  bindscroll(e) {
+    const { scrollTop } = e.detail
+    console.log('scrollTop', scrollTop, this.data.titleBarVisible)
+    if (scrollTop > 80 && !this.data.titleBarVisible) {
+      this.setData({ titleBarVisible: true })
+    }
+    if (scrollTop < 80 && this.data.titleBarVisible) {
+      this.setData({ titleBarVisible: false })
+    }
   }
 });

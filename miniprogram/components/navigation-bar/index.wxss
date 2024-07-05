@@ -5,10 +5,35 @@
     color: #fff;
     z-index: 999;
 }
+
+.nav-bar-with-title {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    color: #fff;
+    z-index: 999;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .nav-bar .icon{
     width: 40rpx;
     height: 40rpx;
     position: absolute;
     padding-left: 10rpx;
     margin-bottom: 26rpx;
+}
+
+.title-bar-title {
+    position: absolute;
+    font-family: 'PingFang SC';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 24px;
+    /* identical to box height, or 141% */
+    text-align: center;
+    color: rgba(0, 0, 34, 0.85);
 }

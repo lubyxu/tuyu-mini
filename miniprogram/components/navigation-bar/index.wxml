@@ -1,5 +1,10 @@
-<view class="nav-bar" style="height:{{navBarHeight}}px;">
+<view class="{{ title ?  'nav-bar-with-title' : 'nav-bar'}}" style="height:{{navBarHeight}}px;">
+    <view
+        wx-if="{{title}}"
+        class="title-bar-title"
+        style="line-height:{{menuHeight}}px;bottom:{{menuBotton}}px;">{{title}}</view>
     <cover-image
+        wx-if="{{!title}}"
         class="icon"
         src="../../images/icons/home.png"
         style="line-height:{menuHeight}}px;left:{{menuRight}}px;bottom:{{menuBotton}}px;"
