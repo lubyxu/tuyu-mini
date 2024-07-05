@@ -65,3 +65,8 @@
     letter-spacing: -0.21px;
     color: #FFBD8F;
 }
+
+.desc-subtitle {
+    font-size: 22px;
+    font-weight: 600;
+}

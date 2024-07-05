@@ -18,6 +18,10 @@
       </swiper>
     </view>
     <view class="top-section">
+      <image
+        src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/bg-01.png?sign=703902c75fd6cc3ee26d36cf55e01064&t=1720144358"
+        class="top-section-img"
+      />
       <cardList cardData="{{card}}" bind:scrollBottom="scrollBottom" bind:ocrClick="ocrClick"></cardList>
     </view>
   </view>

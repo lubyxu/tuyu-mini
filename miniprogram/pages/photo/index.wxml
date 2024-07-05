@@ -1,48 +1,54 @@
 <!--index.wxml-->
-<view class="photo-page">
-  <navigation-bar default-data="{{defaultData}}"></navigation-bar>
-  <view class="photo-top-section">
-    <image src="{{topBackgroundImage}}" class="photo-top-section-image"/>
-    <view class="photo-top-section-content">
-      <text>我的轨迹在</text>
-      <text class="photo-top-section-name">{{name}}</text>
-      <text class="photo-top-section-date" wx-if="{{date}}">{{date}}</text>
-    </view>
-    <image
-      class="photo-bottom-btn"
-      src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/photo-bottom-btn.png?sign=57ad188e08669f39edd2278a918b6105&t=1718949046"
-    />
-  </view>
-  <view class="photo-content">
-    <swiper
-      indicator-dots="true"
-      autoplay="true"
-      vertical="true"
-      interval="5000"
-      duration="500"
-      style="height: 1080rpx"
-    >
-      <block wx:for="{{photos}}" wx:key="*this">
-        <swiper-item>
-          <image src="{{item}}" class="banner-item"/>
-        </swiper-item>
-      </block>
-    </swiper>
-    <cover-view
-      class="photo-content-image"
-    ></cover-view>
-    <view
-      class="photo-bottom-bg"
-      style="background-image: url('{{bottomImage}}');"
-    >
-      <view class="detail-bottom-content">
+<view>
+  <loading wx-if="{{showLoading}}" />
+  <view wx-if="{{!showLoading}}">
+    <view class="photo-page">
+      <navigation-bar default-data="{{defaultData}}"></navigation-bar>
+      <view class="photo-top-section">
+        <image src="{{topBackgroundImage}}" class="photo-top-section-image"/>
+        <view class="photo-top-section-content">
+          <text>我的轨迹在</text>
+          <text class="photo-top-section-name">{{name}}</text>
+          <text class="photo-top-section-date" wx-if="{{date}}">{{date}}</text>
+        </view>
         <image
-          bindtap="jumpMap"
-          class="detail-content-add"
-          src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/jump-map-btn.png?sign=a4351231623ddd3df3cb69c74cb2f544&t=1718954142"
+          class="photo-bottom-btn"
+          src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/photo-bottom-btn.png?sign=57ad188e08669f39edd2278a918b6105&t=1718949046"
         />
-        <text class="detail-content-add-text">点击查看详情</text>
+      </view>
+      <view class="photo-content">
+        <swiper
+          indicator-dots="true"
+          autoplay="true"
+          vertical="true"
+          interval="5000"
+          duration="500"
+          style="height: 1080rpx"
+        >
+          <block wx:for="{{photos}}" wx:key="*this">
+            <swiper-item>
+              <image src="{{item}}" class="banner-item"/>
+            </swiper-item>
+          </block>
+        </swiper>
+        <cover-view
+          class="photo-content-image"
+        ></cover-view>
+        <view
+          class="photo-bottom-bg"
+          style="background-image: url('{{bottomImage}}');"
+        >
+          <view class="detail-bottom-content">
+            <image
+              bindtap="jumpMap"
+              class="detail-content-add"
+              src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/jump-map-btn.png?sign=a4351231623ddd3df3cb69c74cb2f544&t=1718954142"
+            />
+            <text class="detail-content-add-text">点击查看详情</text>
+          </view>
+        </view>
       </view>
     </view>
   </view>
 </view>
+

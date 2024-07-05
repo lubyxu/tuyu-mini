@@ -1,10 +1,10 @@
 {
   "navigationBarTitleText": "业务示例",
   "usingComponents": {
-    "cloud-tip-modal": "/components/cloudTipModal/index",
     "navigation-bar": "/components/navigation-bar/index",
     "notification": "/components/notification/index",
-    "cardList": "/components/card-list/index"
+    "cardList": "/components/card-list/index",
+    "loading": "/components/loading/index"
   },
   "navigationStyle": "custom"
 }

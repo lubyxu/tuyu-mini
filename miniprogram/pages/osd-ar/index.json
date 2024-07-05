@@ -2,5 +2,5 @@
   "usingComponents": {},
   "disableScroll": true,
   "renderer": "webview",
-"navigationBarTitleText": "单样本检测(OSD)"
+  "navigationBarTitleText": "冰箱贴AR检测"
 }

@@ -7,9 +7,17 @@ page {
 
 .page-section {
   padding-bottom: 60rpx;
-  background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/bg.png?sign=a3a9252b855cd0136201f606514d211d&t=1718604868');
-    width: 100vw;
+  background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/bg-02.png?sign=5028f3b71b8083a94ac6daf788e32723&t=1720144655');
+  width: 100vw;
   height: 100vh;
+}
+
+.top-section-img {
+  width: 100%;
+  height: 221rpx;
+  z-index: -1;
+  position: absolute;
+  top: 0;
 }
 
 .swiper .wx-swiper-dots {

@@ -8,7 +8,8 @@ Page({
     title: '',
     topImage: '',
     pid: "",
-    bind: false
+    bind: false,
+    showLoading: true
   },
 
   onLoad: function (options) {
@@ -24,14 +25,10 @@ Page({
 
   async getInitData() {
     try {
-      wx.showLoading({
-        title: '加载中',
-      })
       await this.getUserInfo()
       await this.getPoduct()
-      wx.hideLoading()
+      this.setData({ showLoading: false })
     } catch (err) {
-      wx.hideLoading()
       console.log('err', err)
     }
   },

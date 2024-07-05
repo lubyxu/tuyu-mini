@@ -59,7 +59,6 @@ Page({
     try {
       await Promise.all([this.getSwiperData(), this.getBind()])
       await this.getPoducts()
-      console.log('showLoading', this.data.showLoading)
       this.setData({ showLoading: false })
     } catch (err) {
       console.log('err', err)

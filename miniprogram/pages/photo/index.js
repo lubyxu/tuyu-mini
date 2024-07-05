@@ -9,6 +9,7 @@ Page({
     name: '',
     photos: [],
     date: '',
+    showLoading: true
   },
 
   onLoad: function (options) {
@@ -23,14 +24,10 @@ Page({
 
   async getInitData() {
     try {
-      wx.showLoading({
-        title: '加载中',
-      })
       await this.getUserInfo()
       await Promise.all([this.getBind(), this.getPoduct()])
-      wx.hideLoading()
+      this.setData({ showLoading: false })
     } catch (err) {
-      wx.hideLoading()
       console.log('err', err)
     }
   },
