@@ -3,6 +3,7 @@ Component({
     selected: 0,
     color: "#999999",
     selectedColor: "#F7393F",
+    isShow: false,
     list: [
       {
         "pagePath": "pages/home/index",

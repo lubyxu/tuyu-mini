@@ -12,8 +12,11 @@ Page({
     this.setTabBar()
   },
 
-  onReady() {
-    this.getInitData()
+  async onReady() {
+    await this.getInitData()
+    this.getTabBar().setData({
+      isShow: true
+    })
   },
 
   data: {

@@ -1,4 +1,4 @@
-<view class="tab-bar">
+<view class="tab-bar" wx-if="{{isShow}}">
   <cover-image
     class="bg-img"
     src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/tab-bar-bg.png?sign=33f979ba4310e3f0fae473fc39ada9e8&t=1720085322"

@@ -3,11 +3,12 @@
 page {
   width: 100vw;
   height: 100vh;
+  background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/bg-02.png?sign=5028f3b71b8083a94ac6daf788e32723&t=1720144655');
+  background-size: 100vw 100vh;
 }
 
 .page-section {
   padding-bottom: 60rpx;
-  background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/bg-02.png?sign=5028f3b71b8083a94ac6daf788e32723&t=1720144655');
   width: 100vw;
   height: 100vh;
 }
