@@ -152,17 +152,15 @@ Page({
   },
 
   bindscrolltoupper() {
-    console.log('滚动到顶部')
     this.setData({ titleBarVisible: false })
   },
 
   bindscroll(e) {
     const { scrollTop } = e.detail
-    console.log('scrollTop', scrollTop, this.data.titleBarVisible)
-    if (scrollTop > 80 && !this.data.titleBarVisible) {
+    if (scrollTop > 80) {
       this.setData({ titleBarVisible: true })
     }
-    if (scrollTop < 80 && this.data.titleBarVisible) {
+    if (scrollTop < 80) {
       this.setData({ titleBarVisible: false })
     }
   }

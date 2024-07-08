@@ -37,3 +37,21 @@
     text-align: center;
     color: rgba(0, 0, 34, 0.85);
 }
+
+.fadein{
+ -webkit-transition: all 1.5s;  
+ -moz-transition: all 1.5s;  
+ -ms-transition: all 1.5s;  
+ -o-transition: all 1.5s;  
+ transition: all 1.5s;  
+ opacity: 1;
+}
+
+.fadeout{
+ -webkit-transition: all 1.5s;  
+ -moz-transition: all 1.5s;  
+ -ms-transition: all 1.5s;  
+ -o-transition: all 1.5s;  
+ transition: all 1.5s;  
+ opacity: 0;
+}

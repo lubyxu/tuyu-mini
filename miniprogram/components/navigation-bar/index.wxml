@@ -1,4 +1,5 @@
-<view class="{{ title ?  'nav-bar-with-title' : 'nav-bar'}}" style="height:{{navBarHeight}}px;">
+
+<view class="{{ title ?  'nav-bar-with-title' : 'nav-bar'}} {{className}}" style="height:{{navBarHeight}}px;">
     <view
         wx-if="{{title}}"
         class="title-bar-title"
@@ -11,3 +12,4 @@
         bind:tap="switchTab"
     />
 </view>
+

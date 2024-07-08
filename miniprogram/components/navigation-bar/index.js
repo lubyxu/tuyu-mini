@@ -5,7 +5,11 @@ Component({
         title: {
             type: String,
             observer: function(newVal, oldVal) {}
-        }
+        },
+        className: {
+            type: String,
+            observer: function(newVal, oldVal) {}
+        },
     },
     data: {
         navBarHeight: app.globalData.navBarHeight,
