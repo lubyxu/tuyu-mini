@@ -128,7 +128,7 @@ Page({
     })
     this.setData({
       pageNo: this.data.pageNo + 1,
-      card: [...this.data.card, ...cardData, ...cardData, ...cardData, ...cardData, ...cardData, ...cardData, ...cardData],
+      card: [...this.data.card, ...cardData],
       total,
       fetchProductsInit: false
     })
