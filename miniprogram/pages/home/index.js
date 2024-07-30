@@ -123,9 +123,11 @@ Page({
     })
     console.log('products', data)
     const { total, data: productsData } = data?.result
-    const cardData = productsData.map((item) => {
+    let cardData = productsData.map((item) => {
       return { ...item.card, id: item?.pid, ocr: item?.osd?.picture, bind: this?.bindProductsIds?.includes(item?.pid) }
     })
+    cardData.sort((a, b) => a.id / 1 - b.id / 1)
+    console.log('sort products', cardData)
     this.setData({
       pageNo: this.data.pageNo + 1,
       card: [...this.data.card, ...cardData],

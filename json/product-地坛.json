@@ -1,0 +1,57 @@
+{
+    "data": [{
+        "province": "北京",
+        "city": "北京市",
+        "name": "北京地坛",
+        "pid": "000005",
+        "effective": true,
+        "card": {
+            "url": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E5%9C%B0%E5%9D%9B/ditan-card-banner.png?sign=4a4bd4148e5e47cf754641c35e2d7262&t=1722329953",
+            "title": "北京地坛",
+            "subTitle": "未来可期",
+            "fontColor": "#77270d"
+        },
+        "osd": {
+            "picture": "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/gulou.jpg?sign=03bca79246ea0b8b2b1f22b7185f3994&t=1719304890"
+        },
+        "detail": {
+            "topImage": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E5%9C%B0%E5%9D%9B/ditan-detail-top.png?sign=74961fef930ae1d2b64d05689b6358a7&t=1722329971",
+            "title": "北京地坛·未来可期",
+            "background": "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/bgdetail-bottom-bg.png?sign=7298a9ce7c54d6912fb5fc7392c9648f&t=1719304676",
+            "content": [
+                [
+                    { "text": "踏入地坛的领域，喧嚣被隔离在墙外。" }
+                ],
+                [
+                    { "text": "古老的气息弥漫，宁静在心中悄然盛开。" }
+                ],
+                [
+                    { "text": "我看见，岁月的痕迹刻在石柱，" }
+                ],
+                [
+                    { "text": "沧桑的故事藏在松柏。" }
+                ],
+                [
+                    { "text": "草地的芬芳，混合着历史的韵味，让人感怀。" }
+                ],
+                [
+                    { "text": "阳光透过枝叶的缝隙洒下，" }
+                ],
+                [
+                    { "text": "像是时光的眼眸注视着一切。" }
+                ],
+                [
+                    { "text": "我愿静静守在这里， "}
+                ],
+                [
+                    { "text": "倾听岁月的低语，与灵魂对话" }
+                ]
+            ]
+        },
+        "photoPage": {
+            "topBackgroundImage": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E5%A4%A9%E5%9D%9B/photo-top-img.png?sign=9b198e08459631ab54dcf3c40d36210c&t=1722328381",
+            "bottomImage": "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/photo-bottom-min.png?sign=9119dab0a19e0b33aa99a654899ea0ff&t=1719468829",
+            "name": "北京天坛"
+        }
+    }]
+}

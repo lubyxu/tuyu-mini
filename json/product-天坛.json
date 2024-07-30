@@ -1,0 +1,59 @@
+{
+    "data": [{
+        "province": "北京",
+        "city": "北京市",
+        "name": "天坛",
+        "pid": "000002",
+        "effective": true,
+        "card": {
+            "url": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E5%A4%A9%E5%9D%9B/tiantan-card.png?sign=1356c67d844a7400725a9dc2ce744487&t=1722327600",
+            "title": "Tamplte of Heaven",
+            "subTitle": "北京·天坛"
+        },
+        "osd": {
+            "picture": "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/gulou.jpg?sign=03bca79246ea0b8b2b1f22b7185f3994&t=1719304890"
+        },
+        "detail": {
+            "topImage": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E5%A4%A9%E5%9D%9B/tiantan-card.png?sign=55b37e9db228a5d53f32cca34a9ac860&t=1722327887",
+            "title": "北京·天坛",
+            "background": "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/bgdetail-bottom-bg.png?sign=7298a9ce7c54d6912fb5fc7392c9648f&t=1719304676",
+            "content": [
+                [
+                    { "text": "天坛的夜，" },
+                    { "text": "繁星", "type": "keyword" },
+                    { "text": "璀璨。" }
+                ],
+                [
+                    { "text": "灯火辉映着古老的垣墙。" }
+                ],
+                [
+                    { "text": "圜丘上，仿佛回荡着往昔" },
+                    { "text": "祭祀", "type": "keyword" },
+                    { "text": "的颂章" }
+                ],
+                [
+                    { "text": "黑夜渐退，晨曦微亮，" }
+                ],
+                [
+                    { "text": "祈年殿的轮廓在曙光中渐现。" }
+                ],
+                [
+                    { "text": "曾经" },
+                    { "text": "帝王", "type": "keyword" },
+                    { "text": "的虔诚祈愿，在此刻苏醒。" }
+                ],
+                [
+                    { "text": "白昼接替黑夜，历史与今朝交融，" }
+                ],
+                [
+                    { "text": "天坛的神圣，在时光交错中永恒流淌。" }
+                ]
+            ]
+        },
+        "photoPage": {
+            "topBackgroundImage": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E5%A4%A9%E5%9D%9B/photo-top-img.png?sign=9b198e08459631ab54dcf3c40d36210c&t=1722328381",
+            "bottomImage": "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/photo-bottom-min.png?sign=9119dab0a19e0b33aa99a654899ea0ff&t=1719468829",
+            "name": "北京天坛"
+        }
+    }]
+}
