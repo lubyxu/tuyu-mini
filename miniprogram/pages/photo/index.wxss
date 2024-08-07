@@ -22,7 +22,7 @@
 }
 
 .photo-top-section-content {
-  margin-top: 130rpx;
+  /* margin-top: 130rpx;s */
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -51,7 +51,8 @@
         "photoPage": {
             "topBackgroundImage": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E5%9C%B0%E5%9D%9B/ditan-photo-top.png?sign=22bc24341f805c58f5bb34b188dbeab3&t=1722823089",
             "bottomImage": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E5%9C%B0%E5%9D%9B/ditan-photo-bottom.png?sign=d0d6ee9e2e49589c1c800ac12de12a90&t=1723000034",
-            "name": "北京地坛"
+            "name": "北京地坛",
+            "topBackgroundImage2": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/common/photo-top-bg.png?sign=012fd9f04e834f3652cc4fb4ef9e6a4f&t=1723014732"
         }
     }]
 }

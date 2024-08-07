@@ -5,6 +5,7 @@ Page({
   data: {
     pid: "",
     topBackgroundImage: '',
+    topBackgroundImage2: '',
     bottomImage: '',
     name: '',
     photos: [],
@@ -70,9 +71,15 @@ Page({
       },
     })
     const { photoPage } = data.result
-    const { topBackgroundImage = '', bottomImage = [], name = '' } = photoPage
+    const {
+      topBackgroundImage = '',
+      topBackgroundImage2 = 'https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/photo-tiny-bg.png?sign=a01574f986bf50a15dbe5cd9ec97b899&t=1718937514',
+      bottomImage = [],
+      name = ''
+    } = photoPage
     this.setData({
       topBackgroundImage,
+      topBackgroundImage2,
       bottomImage,
       name,
     })

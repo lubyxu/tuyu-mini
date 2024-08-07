@@ -4,7 +4,7 @@
   <view wx-if="{{!showLoading}}">
     <view class="photo-page">
       <navigation-bar default-data="{{defaultData}}"></navigation-bar>
-      <view class="photo-top-section">
+      <view class="photo-top-section" style="background-image: url('{{topBackgroundImage2}}');">
         <image src="{{topBackgroundImage}}" class="photo-top-section-image"/>
         <view class="photo-top-section-content">
           <text>我的轨迹在</text>
