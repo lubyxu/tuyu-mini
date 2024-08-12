@@ -4,7 +4,7 @@
         "city": "北京市",
         "name": "鼓楼格格",
         "pid": "000004",
-        "effective": true,
+        "effective": false,
         "card": {
             "url": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/gege/gege-card-banner.png?sign=1765e895f99c353fce7bba1f505e55df&t=1722329589",
             "title": "Drum Tower",
@@ -13,10 +13,10 @@
             "top": "56px"
         },
         "osd": {
-            "picture": "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/gulou.jpg?sign=03bca79246ea0b8b2b1f22b7185f3994&t=1719304890"
+            "picture": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/gege/gege-osd.jpg?sign=ece78318830bc8ea2e16cfbada44f327&t=1723427487"
         },
         "detail": {
-            "topImage": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/gege/gege-detail-top.png?sign=e6c41ea1dd9051a4a800290c5cb7ad1f&t=1722329689",
+            "topImage": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/gege/gege-detail-top.png?sign=4e0d3b1e86a2e2596c57320f3003a14c&t=1723427102",
             "title": "北京鼓楼·格格",
             "background": "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/bgdetail-bottom-bg.png?sign=7298a9ce7c54d6912fb5fc7392c9648f&t=1719304676",
             "content": [

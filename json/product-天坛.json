@@ -4,7 +4,7 @@
         "city": "北京市",
         "name": "天坛",
         "pid": "000002",
-        "effective": true,
+        "effective": false,
         "card": {
             "url": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E5%A4%A9%E5%9D%9B/tiantan-card.png?sign=f192f263fa5126ae27a682e346f8321b&t=1722824402",
             "title": "Tamplte of Heaven",
