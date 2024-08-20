@@ -4,7 +4,7 @@
         "city": "北京市",
         "name": "鼓楼格格",
         "pid": "000004",
-        "effective": false,
+        "effective": true,
         "card": {
             "url": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/gege/gege-card-banner.png?sign=1765e895f99c353fce7bba1f505e55df&t=1722329589",
             "title": "Drum Tower",

@@ -9,14 +9,14 @@ Page({
   },
 
   onShow: function() {
-    this.setTabBar()
+    // this.setTabBar()
   },
 
   async onReady() {
     await this.getInitData()
-    this.getTabBar().setData({
-      isShow: true
-    })
+    // this.getTabBar().setData({
+    //   isShow: true
+    // })
   },
 
   data: {

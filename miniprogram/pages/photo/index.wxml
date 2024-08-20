@@ -38,14 +38,14 @@
           class="photo-bottom-bg"
           style="background-image: url('{{bottomImage}}');"
         >
-          <view class="detail-bottom-content">
+          <!-- <view class="detail-bottom-content">
             <image
               bindtap="jumpMap"
               class="detail-content-add"
               src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/jump-map-btn.png?sign=a4351231623ddd3df3cb69c74cb2f544&t=1718954142"
             />
             <text class="detail-content-add-text">点击查看详情</text>
-          </view>
+          </view> -->
         </view>
       </view>
     </view>

@@ -4,9 +4,9 @@
 
         </view>
         <image
-            src="../../images/loading-logo.png"
+            src="../../images/logo.svg"
             class="loading-container-loading-logo"
         />
-        <view class="loading-container-loading-name">图鱼文化创意管</view>
+        <view class="loading-container-loading-name">福鱼文化</view>
     </view>
 </view>

@@ -13,7 +13,7 @@ page {
 }
 
 .card-scroll {
-  height: 89.5vh;
+  height: 95vh;
 }
 
 .page-section {

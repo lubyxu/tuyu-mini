@@ -131,7 +131,7 @@ Page({
   },
 
   onShow: function() {
-    this.setTabBar()
+    // this.setTabBar()
     this.onInitData()
   },
 
