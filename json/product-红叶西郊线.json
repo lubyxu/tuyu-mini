@@ -1,0 +1,60 @@
+{
+    "data": [{
+        "province": "北京",
+        "city": "北京市",
+        "name": "北京西郊线",
+        "pid": "000007",
+        "effective": true,
+        "card": {
+            "url": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E7%BA%A2%E5%8F%B6/hongye-banner.png?sign=8de1cf3441a0a6676d6796da20ef3996&t=1724292861",
+            "title": "Drum Tower",
+            "subTitle": "北京西郊线",
+            "left": "182px",
+            "top": "53px",
+            "fontColor": "#77270d"
+        },
+        "osd": {
+            "picture": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E7%BA%A2%E5%8F%B6/hongye-osd.jpg?sign=879b5fa266fce676bf632a87e09269a3&t=1724293173"
+        },
+        "detail": {
+            "topImage": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E7%BA%A2%E5%8F%B6/hongye-detail.png?sign=0d5a66a80451dc23277063bd7c3164f0&t=1724292880",
+            "title": "北京西郊线",
+            "background": "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/bgdetail-bottom-bg.png?sign=7298a9ce7c54d6912fb5fc7392c9648f&t=1719304676",
+            "content": [
+                [
+                    { "text": "沿着时光的轨迹，北京西郊线蜿蜒前行。" }
+                ],
+                [
+                    { "text": "似一条灵动的彩带，穿梭在繁华与宁静之间。" }
+                ],
+                [
+                    { "text": "车窗外，青山如黛，绿树成荫，" }
+                ],
+                [
+                    { "text": "颐和园的碧波荡漾，万寿山的翠影摇曳。" }
+                ],
+                [
+                    { "text": "植物园中繁花似锦，芬芳四溢，" }
+                ],
+                [
+                    { "text": "香山的红叶如火，层林尽染。" }
+                ],
+                [
+                    { "text": "古老的站台，见证着岁月的变迁，" }
+                ],
+                [
+                    { "text": "每一次停靠，都是心灵的短暂休憩。"}
+                ],
+                [
+                    { "text": "西郊线，连接着梦想与远方，永不停息。" }
+                ]
+            ]
+        },
+        "photoPage": {
+            "topBackgroundImage": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E7%BA%A2%E5%8F%B6/hongye-photo-top.png?sign=55e217c7efe04190c8174b6e57fd7ed7&t=1724307525",
+            "bottomImage": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E8%A5%BF%E9%83%8A%E7%BA%BF/xiaojiao-photo-bottom.png?sign=0e7466db4f0d77fcf8a6b186e247d89c&t=1723449293",
+            "name": "北京西郊线",
+            "topBackgroundImage2": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/common/photo-top-bg.png?sign=012fd9f04e834f3652cc4fb4ef9e6a4f&t=1723014732"
+        }
+    }]
+}
