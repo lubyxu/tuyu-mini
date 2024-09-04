@@ -147,7 +147,7 @@ Page({
     const { bind } = e.detail
     const url = bind
       ? `/pages/detail/index?pid=${id}&bind=${bind}}`
-      : `/pages/osd-ar/index?pid=${id}&url=${encodeURIComponent(ocr)}`
+      : `/pages/osd-ar/index?pid=${id}&url=${encodeURI(ocr)}`
     wx.navigateTo({
       url
     });

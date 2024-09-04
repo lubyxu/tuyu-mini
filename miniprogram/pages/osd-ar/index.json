@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+      "yyeva": "yyeva-wechat"
+  },
   "disableScroll": true,
   "renderer": "webview",
   "navigationBarTitleText": "冰箱贴AR检测"

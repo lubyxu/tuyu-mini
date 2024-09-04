@@ -2,7 +2,7 @@
 <view>
   <loading wx-if="{{showLoading}}" />
   <view wx-if="{{!showLoading}}" class="page-section swiper">
-    <navigation-bar className="{{titleBarVisible ? 'fadein' : 'fadeout'}}" title="图鱼文化创意馆"></navigation-bar>
+   <navigation-bar className="{{titleBarVisible ? 'fadein' : 'fadeout'}}" title="图鱼文化创意馆"></navigation-bar>
     <view class="scroll-view-container">
       <scroll-view
         class="card-scroll"

@@ -8,6 +8,22 @@ const app = getApp()
 Component({
   behaviors: [getBehavior(), yuvBehavior],
   data: {
+    options: {
+      "alphaDirection": "left",
+      "mode": "Fill",
+      "useMetaData": true,
+      "loop": true,
+      "useFrameCache": false,
+      "useVideoDBCache": false,
+      "mute": true,
+      "forceBlob": false,
+      "showVideo": false,
+      "showPlayerInfo": true,
+      "useAccurate": true,
+      "logLevel": "info",
+      "renderType": "webgl",
+      videoUrl: 'https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E9%BC%93%E6%A5%BC/gulou.mp4?sign=57d77f82d80478c42222392ee97e880d&t=1725428557'
+    },
     theme: 'light',
     url: '',
     pid: '',
@@ -23,7 +39,8 @@ Component({
       const page = pages[pages.length - 1]
       console.log(';options', page.options.url, page.options.pid)
       this.setData({
-        url: decodeURIComponent(page?.options?.url),
+        url: decodeURI(page?.options?.url),
+        // url: 'https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E9%BC%93%E6%A5%BC/gulou-photo-1.png?sign=07a243f1e3a64bdc91ba1b22041e3dd7&t=1725431444',
         pid: page?.options?.pid,
       })
     }
@@ -41,6 +58,7 @@ Component({
           width,
           height
         } = this.data
+        console.log('app?.globalData?.ocr?.[this.data.pid]', app?.globalData?.ocr?.[this.data.pid])
         if (anchor && app?.globalData?.ocr?.[this.data.pid]) {
           this.setData({
             frameShow: true,
@@ -50,11 +68,11 @@ Component({
             frameHeight: anchor.size.height * height,
           })
 
-          setTimeout(() => {
-            wx.navigateTo({
-              url: `/pages/detail/index?pid=${this.data.pid}`,
-            });
-          }, 1500);
+          // setTimeout(() => {
+          //   wx.navigateTo({
+          //     url: `/pages/detail/index?pid=${this.data.pid}`,
+          //   });
+          // }, 1500);
         }
       })
       this.session.on('updateAnchors', anchors => {

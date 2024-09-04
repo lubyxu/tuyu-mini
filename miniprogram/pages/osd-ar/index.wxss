@@ -2,3 +2,13 @@
   width: 100vw;
   height: 100vh;
 }
+
+.yyeva-tuyu {
+  width: 50vw;
+  height: 50vh;
+    /* background-image: url('https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E9%BC%93%E6%A5%BC/%E9%BC%93%E6%A5%BC.webp?sign=da4b4baa8f7dbdfae279ab7160aad986&t=1725341616');
+  background-color: transparent; 
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position: center; */
+}
