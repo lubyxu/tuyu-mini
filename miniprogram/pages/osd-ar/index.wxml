@@ -1,5 +1,6 @@
 <view class="container page" data-weui-theme="{{theme}}">
   <canvas type="webgl" id="webgl" class="osd-canvas">
-    <yyeva wx:if="{{frameShow}}" options="{{options}}" class="yyeva-tuyu" onEnd="{{onEnd}}" />
+    <yyeva wx:if="{{frameShow}}" options="{{options}}" class="yyeva-tuyu" bind:onEnd="onEnd" bind:onStart="onStart" 
+ />
   </canvas>
 </view>

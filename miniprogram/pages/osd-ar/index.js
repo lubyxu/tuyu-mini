@@ -12,7 +12,7 @@ Component({
       "alphaDirection": "left",
       "mode": "Fill",
       "useMetaData": true,
-      "loop": true,
+      "loop": false,
       "useFrameCache": false,
       "useVideoDBCache": false,
       "mute": true,
@@ -39,24 +39,32 @@ Component({
       const page = pages[pages.length - 1]
       console.log(';options', page.options.url, page.options.pid)
       this.setData({
-        url: decodeURI(page?.options?.url),
+        url: decodeURIComponent(page?.options?.url),
         pid: page?.options?.pid,
       })
+      console.log('page?.options?.videoUrl', page?.options)
       if (page?.options?.videoUrl) {
         this.setData({
-          videoUrl: decodeURI(page?.options?.videoUrl),
+          options: {
+            ...this.data.options,
+            videoUrl: (decodeURIComponent(page?.options?.videoUrl))
+          }
         })
       }
     }
   },
   methods: {
-    async init() {
-      this.initGL()
+    onStart() {
+      console.log('onStart')
     },
     onEnd() {
+      console.log('onEnd')
       wx.navigateTo({
         url: `/pages/detail/index?pid=${this.data.pid}`,
       });
+    },
+    async init() {
+      this.initGL()
     },
     afterVKSessionCreated() {
       console.log('all osk', this.session.getAllOSDMarker())
@@ -76,7 +84,7 @@ Component({
             frameWidth: anchor.size.width * width,
             frameHeight: anchor.size.height * height,
           })
-          if (!this.data.videoUrl) {
+          if (!this.data?.options?.videoUrl) {
             wx.navigateTo({
               url: `/pages/detail/index?pid=${this.data.pid}`,
             });
