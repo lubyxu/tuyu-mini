@@ -11,7 +11,8 @@
             "subTitle": "鼓楼·冬季之美"
         },
         "osd": {
-            "picture": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E9%BC%93%E6%A5%BC/gulou-osd.png?sign=5c85f051f37ef4c4491f034f9e322fa5&t=1725344760"
+            "picture": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E9%BC%93%E6%A5%BC/gulou-osd.png?sign=5c85f051f37ef4c4491f034f9e322fa5&t=1725344760",
+            "videoUrl": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E9%BC%93%E6%A5%BC/gulou.mp4?sign=0e5ace284ed99d2952ec524cd4331f87&t=1725864341"
         },
         "detail": {
             "topImage": "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/gulou/gulou-detail-top.png?sign=92cf4765a73ab156ee4f0c1bd37f9ad7&t=1718693020",

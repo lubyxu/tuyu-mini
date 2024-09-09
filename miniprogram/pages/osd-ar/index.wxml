@@ -1,10 +1,5 @@
 <view class="container page" data-weui-theme="{{theme}}">
   <canvas type="webgl" id="webgl" class="osd-canvas">
-    <!-- <yyeva wx:if="{{frameShow}}" options="{{options}}" class="yyeva-tuyu"/> -->
-    
-    <!-- <cover-image wx:if="{{frameShow}}" style="position: absolute; top: {{frameY}}px; left: {{frameX}}px; width: {{frameWidth}}px; height: {{frameHeight}}px;" src="https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E9%BC%93%E6%A5%BC/%E9%BC%93%E6%A5%BC.webp?sign=da4b4baa8f7dbdfae279ab7160aad986&t=1725341616">
-
-    </cover-image> -->
-    <cover-image wx:if="{{frameShow}}" src="https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E9%BC%93%E6%A5%BC/%E9%BC%93%E6%A5%BC.webp?sign=da4b4baa8f7dbdfae279ab7160aad986&t=1725341616" style="position: absolute; top: {{frameY}}px; left: {{frameX}}px; width: {{frameWidth}}px; height: {{frameHeight}}px;"></cover-image>
+    <yyeva wx:if="{{frameShow}}" options="{{options}}" class="yyeva-tuyu" onEnd="{{onEnd}}" />
   </canvas>
 </view>

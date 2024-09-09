@@ -124,7 +124,7 @@ Page({
     console.log('products', data)
     const { total, data: productsData } = data?.result
     let cardData = productsData.map((item) => {
-      return { ...item.card, id: item?.pid, ocr: item?.osd?.picture, bind: this?.bindProductsIds?.includes(item?.pid) }
+      return { ...item.card, id: item?.pid, ocr: item?.osd?.picture, videoUrl: item?.osd?.videoUrl, bind: this?.bindProductsIds?.includes(item?.pid) }
     })
     cardData.sort((a, b) => a.id / 1 - b.id / 1)
     console.log('sort products', cardData)
@@ -142,12 +142,12 @@ Page({
   },
 
   ocrClick(e) {
-    const { id, ocr } = e.detail
+    const { id, ocr, videoUrl } = e.detail
     console.log('ocr click', e.detail)
     const { bind } = e.detail
     const url = bind
       ? `/pages/detail/index?pid=${id}&bind=${bind}}`
-      : `/pages/osd-ar/index?pid=${id}&url=${encodeURI(ocr)}`
+      : `/pages/osd-ar/index?pid=${id}&url=${encodeURI(ocr)}&videoUrl=${encodeURI(videoUrl)}`
     wx.navigateTo({
       url
     });
