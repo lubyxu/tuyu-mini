@@ -3,8 +3,9 @@ const app = getApp()
 Page({
   onShareAppMessage() {
     return {
-      title: 'swiper',
-      path: 'page/component/pages/swiper/swiper'
+      title: '福鱼文创',
+      path: 'pages/home/index',
+      imageUrl: 'URL_ADDRESS'
     }
   },
 
@@ -141,13 +142,55 @@ Page({
     this.getPoducts()
   },
 
-  ocrClick(e) {
+  authSetting() {
+    return new Promise((resolve, reject) => {
+      wx.getSetting({
+        success(res) {
+          console.log('res.authSetting', res.authSetting['scope.camera'])
+          if (!res.authSetting['scope.camera']) {
+            wx.authorize({
+              scope: 'scope.camera',
+              success: resolve,
+              fail: () => {
+                wx.showModal({
+                  title: '请先授权摄像机权限',
+                  content: '否则无法使用',
+                  success (res) {
+                    if (res.confirm) {
+                      wx.openSetting()
+                    } else if (res.cancel) {
+                      reject("取消授权")
+                    }
+                  }
+                })               
+              },
+            })
+          } else {
+            resolve()
+          }
+        }
+      })
+    })
+  },
+
+  async ocrClick(e) {
     const { id, ocr, videoUrl } = e.detail
     console.log('ocr click', e.detail)
     const { bind } = e.detail
     const url = bind
       ? `/pages/detail/index?pid=${id}&bind=${bind}}`
       : `/pages/osd-ar/index?pid=${id}&videoUrl=${encodeURIComponent(videoUrl)}&url=${encodeURIComponent(ocr)}`
+    if (!bind) {
+      try {
+        await this.authSetting()
+      } catch (err) {
+        wx.showToast({
+          icon: 'error',
+          title: '授权失败'
+        })
+        return
+      }
+    }
     wx.navigateTo({
       url
     });

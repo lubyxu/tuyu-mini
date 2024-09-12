@@ -3,7 +3,7 @@
 >
     <view class="card-title">
         <image class="logo" src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/logo.png?sign=5f13ec1661c9f65044f281927d20ffa2&t=1718609672"/>
-        <view class="card-title-text">图鱼文创系列</view>
+        <view class="card-title-text">福鱼文创系列</view>
     </view>
     <view
         style="background-image: url({{item.url}});"
