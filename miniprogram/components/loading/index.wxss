@@ -28,7 +28,7 @@
     align-items: center;
     justify-content: center;
     border-top: #fff;
-    background: conic-gradient(from 0deg at 50.89% 50%, #97F7E0 0deg, #2C6BFF 360deg);
+    background: conic-gradient(from 0deg at 50.89% 50%, #E7D4D6 0deg, #970005 360deg);
     border-radius: 50%;
     width: 56px;
     height: 56px;
