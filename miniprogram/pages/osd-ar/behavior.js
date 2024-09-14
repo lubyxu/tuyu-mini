@@ -95,11 +95,11 @@ export default function getBehavior() {
         const session = this.session = wx.createVKSession({
           track: {
             plane: {
-              mode: 3
+              mode: 1
             },
             OSD: true,
           },
-          version: 'v2',
+          version: 'v1',
           gl: this.gl
         })
         session.start(err => {

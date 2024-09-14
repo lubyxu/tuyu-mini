@@ -32,18 +32,19 @@ Component({
     frameY: 0,
     frameWidth: 0,
     frameHeight: 0,
+    routing: false
   },
+
   lifetimes: {
     ready: function () {
       const pages = getCurrentPages()
       const page = pages[pages.length - 1]
-      console.log(';options', page.options.url, page.options.pid)
+      console.log(';options', decodeURIComponent(page?.options?.url), page.options.pid)
       this.setData({
         url: decodeURIComponent(page?.options?.url),
         pid: page?.options?.pid,
       })
-      console.log('page?.options?.videoUrl', page?.options)
-      if (page?.options?.videoUrl) {
+      if (page?.options?.videoUrl && page?.options?.videoUrl !== 'undefined') {
         this.setData({
           options: {
             ...this.data.options,
@@ -51,7 +52,10 @@ Component({
           }
         })
       }
-    }
+    },
+    moved() {
+      this.removeOSDMarker()
+    },
   },
   methods: {
     onStart() {
@@ -66,30 +70,36 @@ Component({
     async init() {
       this.initGL()
     },
+
+    successCallback() {
+      if (this.routing) return
+      this.setData({
+        routing: true
+      })
+      const videoUrl = this.data?.options?.videoUrl
+      if (!videoUrl) {
+        wx.navigateTo({
+          url: `/pages/detail/index?pid=${this.data.pid}`,
+        });
+      } else {
+        console.log('有videourl 展示动画')
+        this.setData({
+          frameShow: true,
+        })
+      }
+      this.setData({
+        routing: false
+      })
+    },
     afterVKSessionCreated() {
       console.log('all osk', this.session.getAllOSDMarker())
       this.session.on('addAnchors', anchors => {
         const anchor = anchors[0]
-        console.log('anchor==', anchor, anchor.id, anchor.markerId)
         const {
           width,
           height
         } = this.data
-        console.log('app?.globalData?.ocr?.[this.data.pid]', app?.globalData?.ocr?.[this.data.pid])
-        if (anchor && app?.globalData?.ocr?.[this.data.pid]) {
-          this.setData({
-            frameShow: true,
-            frameX: anchor.origin.x * width,
-            frameY: anchor.origin.y * height,
-            frameWidth: anchor.size.width * width,
-            frameHeight: anchor.size.height * height,
-          })
-          if (!this.data?.options?.videoUrl) {
-            wx.navigateTo({
-              url: `/pages/detail/index?pid=${this.data.pid}`,
-            });
-          }
-        }
+        this.successCallback()
       })
       this.session.on('updateAnchors', anchors => {
         const anchor = anchors[0]
@@ -98,18 +108,13 @@ Component({
           height
         } = this.data
         if (anchor) {
-          this.setData({
-            frameX: anchor.origin.x * width,
-            frameY: anchor.origin.y * height,
-            frameWidth: anchor.size.width * width,
-            frameHeight: anchor.size.height * height,
-          })
+          this.successCallback()
         }
       })
       this.session.on('removeAnchors', anchors => {
-        this.setData({
-          frameShow: false,
-        })
+        // this.setData({
+        //   frameShow: false,
+        // })
       })
     },
     render(frame) {
