@@ -12,7 +12,8 @@
             "top": "56px"
         },
         "osd": {
-            "picture": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/gege/gege-osd.jpg?sign=ece78318830bc8ea2e16cfbada44f327&t=1723427487"
+            "picture": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/gege/gege-osd.jpg?sign=ece78318830bc8ea2e16cfbada44f327&t=1723427487",
+            "videoUrl": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/gege/gege.mp4?sign=1b04b9fc3a6772cace944cfdd4f524d7&t=1726835686"
         },
         "detail": {
             "topImage": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/gege/gege-detail-top.png?sign=4e0d3b1e86a2e2596c57320f3003a14c&t=1723427102",

@@ -54,6 +54,7 @@ Component({
       }
     },
     moved() {
+      console.log('moved')
       this.removeOSDMarker()
     },
   },
@@ -178,6 +179,7 @@ Component({
     },
     removeOSDMarker() {
       if (app?.globalData?.ocr?.[this.data.pid]) {
+        console.log('移除maker')
         this.session.removeOSDMarker( app?.globalData?.ocr?.[this.data.pid])
       }
     },
