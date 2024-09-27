@@ -22,6 +22,8 @@
 }
 
 .photo-top-section-content {
+  margin-left: 72px;
+  flex: 1;
   /* margin-top: 130rpx;s */
   display: flex;
   flex-direction: column;
@@ -54,15 +56,33 @@
 }
 
 .photo-bottom-btn {
-  width: 316rpx;
-  height: 80rpx;
-  margin-top: 71rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 65px;
+}
+
+.photo-bottom-btn-text {
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: -0.229592px;
+  color: #902619;
 }
 
 .photo-content {
   width: 100%;
   height: 1080rpx;
   position: relative;
+}
+
+.down-icon {
+  width: 24px;
+  height: 24px;
 }
 
 .photo-content .wx-swiper-dots {
@@ -142,4 +162,26 @@
   font-size: 12px;
   line-height: 16px;
   color: #828282;
+}
+
+.location-box {
+  display: flex;
+  align-items: center;
+}
+
+.flex-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-right: 16px;
+}
+
+.location-icon {
+  width: 31px;
+  height: 31px;
+}
+
+.share-icon {
+  width: 56px;
+  height: 56px;
 }

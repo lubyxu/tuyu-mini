@@ -6,15 +6,30 @@
       <navigation-bar default-data="{{defaultData}}"></navigation-bar>
       <view class="photo-top-section" style="background-image: url('{{topBackgroundImage2}}');">
         <image src="{{topBackgroundImage}}" class="photo-top-section-image"/>
-        <view class="photo-top-section-content">
-          <text>我的轨迹在</text>
-          <text class="photo-top-section-name">{{name}}</text>
-          <text class="photo-top-section-date" wx-if="{{date}}">{{date}}</text>
+        <view class="flex-box">
+          <view class="photo-top-section-content">
+            <view class="location-box">
+              <text>我的轨迹在</text>
+              <image
+                src="https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/common/location.png?sign=cd57dbb55b80c300decad9881819feb8&t=1727404408"
+                class="location-icon"
+              />
+            </view>
+            <text class="photo-top-section-name">{{name}}</text>
+            <text class="photo-top-section-date" wx-if="{{date}}">{{date}}</text>
+          </view>
+            <image
+              src="https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/common/share-icon.png?sign=9af0408603a75bedd258cc3cf994229f&t=1727404907"
+              class="share-icon"
+            />
         </view>
-        <image
-          class="photo-bottom-btn"
-          src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/photo-bottom-btn.png?sign=57ad188e08669f39edd2278a918b6105&t=1718949046"
-        />
+        <view class="photo-bottom-btn">
+          <text class="photo-bottom-btn-text">下滑查看更多回忆</text>
+          <image
+            src="https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/common/down.png?sign=1b40a48f9fa92cc794c28083a1e55b22&t=1727405884"
+            class="down-icon"
+          />
+        </view>
       </view>
       <view class="photo-content">
         <swiper
