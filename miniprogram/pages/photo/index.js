@@ -90,5 +90,75 @@ Page({
     wx.switchTab({
       url: '/pages/map/index/index'
     })
-  }
+  },
+
+  async bind(uploadResult) {
+    const imageList = uploadResult.map(({ fileID }) => {
+      return fileID
+    })
+    return await wx.cloud.callFunction({
+      name: 'bind',
+      data: {
+        openid: app.globalData.openid,
+        pid: this.data.pid,
+        imageList,
+      },
+    })
+  },
+
+  uploadImageToCloud(filePath, index) {
+    return new Promise((resolve, reject) => {
+      const fileType = filePath.split('.')[1]
+      const cloudPath = `user-image/${app.globalData.openid}_${this.data.pid}_${index}_${`${Math.random()}`.slice(2,6)}.${fileType}`
+      wx.cloud.uploadFile({
+        cloudPath,
+        filePath,
+        success: resolve,
+        fail: reject
+      })
+    })
+  },
+
+  updateImage() {
+    wx.chooseImage({
+      count: 2,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: this.chooseImageSuccess
+    })
+  },
+
+  async chooseImageSuccess(res) {
+    const tempFilePaths = res.tempFilePaths
+    const uploadPromises = []
+    for (let i = 0; i < tempFilePaths.length; i++) {
+      uploadPromises.push(this.uploadImageToCloud(tempFilePaths[i], i))
+    }
+    try {
+      wx.showToast({
+        icon: 'loading',
+        title: '上传图片中',
+      })
+      const uploadResult = await Promise.all(uploadPromises)
+      console.log('uploadResult', uploadResult)
+      await this.bind(uploadResult)
+      wx.showToast({
+        icon: 'success',
+        title: '上传图片成功～',
+        duration: 2000
+      })
+      this.setData({
+        photos: tempFilePaths,
+      })
+    } catch (err) {
+      console.log(err)
+      wx.showToast({
+        icon: 'error',
+        title: '上传图片失败～',
+        duration: 2000
+      })
+    } finally {
+      wx.hideLoading()
+    }
+  },
 });
