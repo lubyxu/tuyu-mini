@@ -10,7 +10,8 @@ Page({
     name: '',
     photos: [],
     date: '',
-    showLoading: true
+    showLoading: true,
+    showPoster: false,
   },
 
   onLoad: function (options) {
@@ -161,4 +162,10 @@ Page({
       wx.hideLoading()
     }
   },
+
+  showPoster() {
+    this.setData({
+      showPoster: true
+    })
+  }
 });

@@ -1,0 +1,27 @@
+<view class="poster-container">
+    <painter
+        customStyle='margin-top: 149px;width: 310px;height: 440px'
+        palette="{{posterData}}"
+        use2D="{{use2D}}"
+        widthPixels="1000"
+        bind:imgOK="onImgOK"
+    />
+     <view class="bottom-modal" wx-if="{{showDoawnload}}">
+        <view class="bottom-modal-header">
+            <view class="bottom-modal-text">
+                分享
+            </view>
+            <image
+                src="../../images/close.svg"
+                class="bottom-modal-close-icon"
+            />
+        </view>
+        <view class="bottom-modal-icon-box" bindtap="download">
+            <image
+                src="../../images/download.svg"
+                class="bottom-modal-download-icon"
+            />
+        </view>
+        <text class="bottom-modal-tips">保存后可分享至聊天、朋友圈、小红书等社媒渠道。</text>
+     </view>
+</view>
