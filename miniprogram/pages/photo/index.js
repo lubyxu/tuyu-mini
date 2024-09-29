@@ -15,6 +15,7 @@ Page({
   },
 
   onLoad: function (options) {
+    console.log('options.pid', options.pid)
     this.setData({
       pid: options.pid,
     })

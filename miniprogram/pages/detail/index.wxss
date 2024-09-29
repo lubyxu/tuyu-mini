@@ -71,17 +71,18 @@ page {
 
 .detail-bottom-content {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-self: center;
+  flex-direction: row;
+  justify-content: space-around;
   width: 100%;
   margin-top: 74rpx;
+  padding: 0 24px;
+  box-sizing: border-box;
 }
 
-.detail-content-add {
-  width: 230px;
+.detail-content-add, .detail-content-ar {
+  width: 156px;
   height: 56px;
-  background: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/detail-btn-bg.png?sign=d20f91f3e0a9ec45d2ae8375d3c9ab74&t=1719215792');
+  background: url('https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/common/small-btn.png?sign=416f64081e8dd3c9c710b216558fa449&t=1727578222');
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -90,15 +91,11 @@ page {
   font-family: 'PingFang SC';
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
-  /* identical to box height */
+  font-size: 18px;
   text-align: center;
   letter-spacing: -0.427208px;
-
   color: #FFBD8F;
-
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
-
 }
 
 .detail-content-add-text {

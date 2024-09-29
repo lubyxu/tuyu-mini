@@ -642,7 +642,7 @@ Component({
       }
       this.setData(
         {
-          photoStyle: `width:${this.canvasWidthInPx}px;height:${this.canvasHeightInPx}px;`,
+          photoStyle: `width:${310}px;height:${440}px;`,
         },
         function () {
           this.downloadImages(this.properties.palette).then(async palette => {
@@ -650,9 +650,12 @@ Component({
               this.photoContext = await this.getCanvasContext(this.properties.use2D, 'photo');
             }
             if (needScale) {
-              const scale = getApp().systemInfo.pixelRatio;
+              // const scale = getApp().systemInfo.pixelRatio;
+              const scale = 1;
               this.photoContext.width = this.canvasWidthInPx * scale;
               this.photoContext.height = this.canvasHeightInPx * scale;
+              console.log(this.photoContext.width, this.photoContext.width)
+
               this.photoContext.scale(scale, scale);
             }
             new Pen(this.photoContext, palette).paint(() => {

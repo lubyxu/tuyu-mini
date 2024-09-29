@@ -1,4 +1,5 @@
 const app = getApp()
+import { authCamera } from '../../utils/auth'
 
 Page({
   onShareAppMessage() {
@@ -142,47 +143,18 @@ Page({
     this.getPoducts()
   },
 
-  authSetting() {
-    return new Promise((resolve, reject) => {
-      wx.getSetting({
-        success(res) {
-          console.log('res.authSetting', res.authSetting['scope.camera'])
-          if (!res.authSetting['scope.camera']) {
-            wx.authorize({
-              scope: 'scope.camera',
-              success: resolve,
-              fail: () => {
-                wx.showModal({
-                  title: '请先授权摄像机权限',
-                  content: '否则无法使用',
-                  success (res) {
-                    if (res.confirm) {
-                      wx.openSetting()
-                    } else if (res.cancel) {
-                      reject("取消授权")
-                    }
-                  }
-                })               
-              },
-            })
-          } else {
-            resolve()
-          }
-        }
-      })
-    })
-  },
 
   async ocrClick(e) {
     const { id, ocr, videoUrl } = e.detail
     console.log('ocr click', e.detail)
     const { bind } = e.detail
+
     const url = bind
-      ? `/pages/detail/index?pid=${id}&bind=${bind}}`
+      ? `/pages/detail/index?pid=${id}&bind=${bind}&videoUrl=${encodeURIComponent(videoUrl)}&url=${encodeURIComponent(ocr)}`
       : `/pages/osd-ar/index?pid=${id}&videoUrl=${encodeURIComponent(videoUrl)}&url=${encodeURIComponent(ocr)}`
     if (!bind) {
       try {
-        await this.authSetting()
+        await authCamera()
       } catch (err) {
         wx.showToast({
           icon: 'error',
@@ -191,6 +163,7 @@ Page({
         return
       }
     }
+
     wx.navigateTo({
       url
     });

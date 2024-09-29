@@ -18,12 +18,17 @@
         </view>
         <view class="detail-bottom-content">
           <view
+            bindtap="gotoAR"
+            class="detail-content-ar"
+          >
+            AR冰箱贴
+          </view>
+          <view
             bindtap="chooseOrPreviewImageTap"
             class="detail-content-add"
           >
-            {{ bind ? '预览图片' : '添加图片' }}
+            {{ bind ? '查看回忆' : '生成回忆' }}
           </view>
-          <text wv-if="{{!bind}}" class="detail-content-add-text">最多添加 2 张图片</text>
         </view>
       </view>
     </view>

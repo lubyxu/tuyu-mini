@@ -32,7 +32,8 @@ Component({
     frameY: 0,
     frameWidth: 0,
     frameHeight: 0,
-    routing: false
+    routing: false,
+    replace: false
   },
 
   lifetimes: {
@@ -43,6 +44,7 @@ Component({
       this.setData({
         url: decodeURIComponent(page?.options?.url),
         pid: page?.options?.pid,
+        replace: page?.options?.replace === 'true'
       })
       if (page?.options?.videoUrl && page?.options?.videoUrl !== 'undefined') {
         this.setData({
@@ -62,56 +64,49 @@ Component({
     onStart() {
       console.log('onStart')
     },
-    onEnd() {
-      console.log('onEnd')
+    onRouter() {
+      if (this.data.replace) {
+        wx.navigateBack()
+        return
+      }
       wx.navigateTo({
         url: `/pages/detail/index?pid=${this.data.pid}`,
       });
+    },
+    onEnd() {
+      this.onRouter()
     },
     async init() {
       this.initGL()
     },
 
-    successCallback() {
-      if (this.routing) return
-      this.setData({
-        routing: true
-      })
-      const videoUrl = this.data?.options?.videoUrl
-      if (!videoUrl) {
-        wx.navigateTo({
-          url: `/pages/detail/index?pid=${this.data.pid}`,
-        });
-      } else {
-        console.log('有videourl 展示动画')
+    onSuccess(anchors) {
+      try {
+        if (this.routing) return
         this.setData({
-          frameShow: true,
+          routing: true
         })
+        const videoUrl = this.data?.options?.videoUrl
+        if (!videoUrl) {
+          this.onRouter()
+        } else {
+          console.log('有videourl 展示动画')
+          this.setData({
+            frameShow: true,
+          })
+        }
+        this.setData({
+          routing: false
+        })
+      } catch(err) {
+        console.error(err)
       }
-      this.setData({
-        routing: false
-      })
+     
     },
     afterVKSessionCreated() {
-      console.log('all osk', this.session.getAllOSDMarker())
-      this.session.on('addAnchors', anchors => {
-        const anchor = anchors[0]
-        const {
-          width,
-          height
-        } = this.data
-        this.successCallback()
-      })
-      this.session.on('updateAnchors', anchors => {
-        const anchor = anchors[0]
-        const {
-          width,
-          height
-        } = this.data
-        if (anchor) {
-          this.successCallback()
-        }
-      })
+      console.log('all==' , this.session.getAllOSDMarker())
+      this.session.on('addAnchors', this.onSuccess.bind(this))
+      this.session.on('updateAnchors', this.onSuccess.bind(this))
       this.session.on('removeAnchors', anchors => {
         // this.setData({
         //   frameShow: false,
@@ -139,10 +134,8 @@ Component({
       this.renderer.state.setCullFace(this.THREE.CullFaceNone)
     },
     addOSDMarker() {
-      // this.removeOSDMarker()
       const fs = wx.getFileSystemManager()
       const filePath = `${wx.env.USER_DATA_PATH}/${this.data.pid}.png`
-      // fs.unlinkSync(filePath)
 
       const download = callback => wx.downloadFile({
           // 此处设置为osd识别对象的地址
@@ -170,17 +163,17 @@ Component({
           [this.data.pid]: markerId
         }
         console.log('[addMarker] --> ', filePath, markerId)   
+        console.log('all=1=' , this.session.getAllOSDMarker())
         this.setData({
           "filePathNow": filePath,
         })
       }
       download(add)
-      
     },
     removeOSDMarker() {
-      if (app?.globalData?.ocr?.[this.data.pid]) {
-        console.log('移除maker')
-        this.session.removeOSDMarker( app?.globalData?.ocr?.[this.data.pid])
+      if (this.markerId) {
+        this.session.removeOSDMarker(this.markerId)
+        this.markerId = null
       }
     },
   },

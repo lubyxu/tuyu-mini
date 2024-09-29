@@ -1,5 +1,6 @@
 const { envList } = require('../../envList.js');
 const app = getApp()
+import { authCamera } from '../../utils/auth'
 
 Page({
   data: {
@@ -9,13 +10,17 @@ Page({
     topImage: '',
     pid: "",
     bind: false,
+    videoUrl: '',
+    url: '',
     showLoading: true
   },
 
   onLoad: function (options) {
     this.setData({
       pid: options.pid,
-      bind: options.bind,
+      bind: options.bind === 'false' ? false : true,
+      videoUrl: options.videoUrl,
+      url: options.url,
     })
   },
 
@@ -159,5 +164,20 @@ Page({
         fail: reject
       })
     })
-  }
+  },
+
+  async gotoAR() {
+    try {
+      await authCamera()
+    } catch (err) {
+      wx.showToast({
+        icon: 'error',
+        title: '授权失败'
+      })
+      return
+    }
+    wx.navigateTo({
+      url: `/pages/osd-ar/index?pid=${this.data.pid}&videoUrl=${this.data.videoUrl}&url=${this.data.url}&replace=true`
+    });
+  },
 });
