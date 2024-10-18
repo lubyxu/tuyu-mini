@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "景点",
+  "usingComponents": {
+    "loading": "/components/loading/index"
+  },
+  "navigationStyle": "custom"
+}

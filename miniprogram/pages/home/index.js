@@ -22,6 +22,12 @@ Page({
   },
 
   data: {
+    navBarHeight: app.globalData.navBarHeight,
+    menuRight: app.globalData.menuRight,
+    menuBotton: app.globalData.menuBotton,
+    menuHeight: app.globalData.menuHeight,
+    menuTop: app.globalData.menuTop,
+    position: "北京",
     swiper: [],
     card: [],
     pageSize: 10,
@@ -38,7 +44,22 @@ Page({
     interval: 5000,
     duration: 500,
     showLoading: true,
-    titleBarVisible: false
+    titleBarVisible: false,
+    selected: 0,
+    selectList: [
+      {
+        text: "首页",
+        iconPath: "../../images/icons/icon-1.svg",
+        selectedIconPath: "../../images/icons/icon-1-active.svg",
+        index: 0,
+      },
+      {
+        text: "地图",
+        iconPath: "../../images/icons/icon-2.svg",
+        selectedIconPath: "../../images/icons/icon-2-active.svg",
+        index: 1,
+      }
+    ]
   },
 
   jumpMapPage(e) {
@@ -181,5 +202,18 @@ Page({
     if (scrollTop < 80) {
       this.setData({ titleBarVisible: false })
     }
-  }
+  },
+
+  switchTab(event) {
+    const idx = event.currentTarget.dataset.id
+    this.setData({
+      selected: idx
+    })
+  },
+
+  onFind() {
+    wx.navigateTo({
+      url: '/pages/area/index',
+    });
+  },
 });

@@ -8,7 +8,7 @@
         wx-if="{{!title}}"
         class="icon"
         src="../../images/icons/home.png"
-        style="line-height:{menuHeight}}px;left:{{menuRight}}px;bottom:{{menuBotton}}px;"
+        style="line-height:{{menuHeight}}px;left:{{menuRight}}px;bottom:{{menuBotton}}px;"
         bind:tap="switchTab"
     />
 </view>

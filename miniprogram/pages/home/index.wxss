@@ -3,8 +3,9 @@
 page {
   width: 100vw;
   height: 100vh;
-  background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/bg-02.png?sign=5028f3b71b8083a94ac6daf788e32723&t=1720144655');
-  background-size: 100vw 100vh;
+  /* background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/bg-02.png?sign=5028f3b71b8083a94ac6daf788e32723&t=1720144655'); */
+  background-color: #fafafa;
+
 }
 
 .scroll-view-container {
@@ -67,4 +68,80 @@ page {
   position: relative;
   top: -40rpx;
   padding-top: 80rpx;
+}
+
+/* V2 */
+.banner {
+  width: 100%;
+  height: 380rpx;
+  background-image: url('https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/v2/common/home_bg.png?sign=38680ab653fb0d172aa6506a889a7613&t=1729230413');
+  background-size:cover;
+}
+
+.position-box {
+    /* position: absolute; */
+    padding-top:  110rpx;
+    margin-left: 28rpx;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.positon-icon {
+    width: 48rpx;
+    height: 48rpx;
+}
+
+.position-text {
+    font-family: 'PingFang SC';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #000000;
+    margin-left: 4px;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  /* justify-content: space-between; */
+}
+
+.nav-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 96rpx;
+  margin: 0 auto;
+}
+
+.nav-box:last-child {
+  margin-left: 0;
+}
+
+.tab-bar-text, .tab-bar-text-active {
+  width: 40px;
+  height: 16px;
+
+  font-family: 'Neue Frutiger World';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32rpx;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: -0.21px;
+  color: #333333;
+}
+
+.tab-bar-text-active {
+  color: #ce3219;
+  font-weight: 600;
+}
+
+.nav-icon {
+  width: 32rpx;
+  height: 32rpx;
 }

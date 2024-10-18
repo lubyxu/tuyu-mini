@@ -23,6 +23,9 @@ Component({
       const item = e.currentTarget.dataset.item
       this.triggerEvent('ocrClick', item)
     },
+    onFind() {
+      this.triggerEvent('onFind')
+    }
   },
 
   pageLifetimes: {

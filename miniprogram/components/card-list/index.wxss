@@ -4,6 +4,7 @@
 
 .card-title {
     display: flex;
+    align-items: center;
 }
 
 .logo {
@@ -20,9 +21,9 @@
     text-align: center;
     letter-spacing: -0.21px;
     color: #3D2210;
-    flex: none;
-    order: 1;
     flex-grow: 0;
+    flex: 1;
+    text-align: left;
 }
 
 .card-item {
@@ -72,3 +73,7 @@
     font-weight: 600;
 }
 
+.find-icon {
+    width: 28rpx;
+    height: 28rpx;
+}

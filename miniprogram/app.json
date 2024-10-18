@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/index",
+    "pages/area/index",
     "pages/osd-ar/index",
     "pages/map/index/index",
     "pages/detail/index",

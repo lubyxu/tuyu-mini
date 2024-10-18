@@ -1,0 +1,8 @@
+<!--index.wxml-->
+<view>
+  <loading wx-if="{{showLoading}}" />
+  <view wx-if="{{!showLoading}}" class="page-section swiper">
+    <text>123</text>
+    
+  </view>
+</view>
