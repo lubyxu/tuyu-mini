@@ -4,6 +4,23 @@ App({
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力');
     } else {
+
+      wx.loadFontFace({
+        family: 'FZKai-Z03S',
+        scopes: ['webview', 'native'],
+        global: true,
+        source: 'url("https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/font/FZKai-Z03S-Regular.woff2?sign=1d82cd22be5dcedc6e5d0759d0027395&t=1727666864")',  //此处需替换为真实字体地址
+        success(res) {
+          console.log('引入字体成功', res.status)
+        },
+        fail: function (res) {
+          console.log('引入字体失败', res.status)
+        },
+        complete: function (res) {
+          console.log(res.status)
+        }
+      });
+
       console.log('wx.cloud.DYNAMIC_CURRENT_ENV', wx.cloud.DYNAMIC_CURRENT_ENV)
       wx.cloud.init({
         // env 参数说明：

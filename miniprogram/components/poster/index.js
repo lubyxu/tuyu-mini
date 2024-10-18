@@ -115,13 +115,13 @@ Component({
         },
         {
           "type": "image",
-          "url": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E9%BC%93%E6%A5%BC/posster-gulou-item.png?sign=65094d6ac62e9d579f7b5e68b10b4adb&t=1727422441",
+          "url": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/common/qrcodee.png?sign=66a087fc0ee7df982c51ea62bdc34889&t=1727665669",
           "css": {
-            "width": "56px",
-            "height": "56px",
+            "width": "60px",
+            "height": "60px",
             "borderRadius": "5px",
-            "top": "349px",
-            "left": "70px",
+            "top": "345px",
+            "left": "68px",
           }
         },
         {
@@ -140,7 +140,7 @@ Component({
         },
         {
           "type": "text",
-          "text": "钟鼓楼|老街旧巷,",
+          "text": "可可可钟鼓楼|老街旧巷,",
           "css": {
             "color": "#000000",
             "width": "300px",
