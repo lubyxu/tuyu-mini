@@ -1,0 +1,4 @@
+<!--components/path-note-list/index.wxml-->
+<view>
+    <tabs />
+</view>

@@ -1,0 +1,34 @@
+/* components/path-note-list/tab/index.wxss */
+.path-note {
+	border-radius: 8px;
+	padding: 4px 8px;
+	/* border: 1px solid #000; */
+	font-size: 14px;
+	color: #333;
+	background-color: #fff;
+}
+
+.path-note.active {
+	color: #fff;
+	background: linear-gradient(to bottom, #f14a3f, #ff953d);
+}
+
+.path-note .square {
+	display: none;
+}
+
+.path-note.active .square {
+	display: block;
+	border: 6px solid #ff953d;
+	border-radius: 2px;
+	border-left-color: transparent;
+	border-top-color: transparent;
+	transform: rotate(45deg);
+	position: absolute;
+	width: 0;
+	height: 0;
+	bottom: -3px;
+	left: 50%;
+	margin-left: -7px;
+	z-index: -1;
+}

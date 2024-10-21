@@ -25,7 +25,6 @@ Component({
     },
     attached: function() {},
     ready() {
-        debugger
         console.log('navigation-bar ready', this.properties.showBack)
         if (!this.properties.title && !this.properties.showBack) {
             this.setData({
