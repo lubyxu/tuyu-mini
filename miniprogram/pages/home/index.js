@@ -213,7 +213,7 @@ Page({
 
   onFind() {
     wx.navigateTo({
-      url: '/pages/area/index',
+      url: '/pages/scenic-map/index',
     });
   },
 });

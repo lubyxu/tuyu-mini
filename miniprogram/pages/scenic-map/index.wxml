@@ -1,0 +1,47 @@
+<!--index.wxml-->
+<view>
+  <navigation-bar showBack="{{true}}" />
+  <loading wx-if="{{showLoading}}" />
+  <view wx-if="{{!showLoading}}" class="page-section swiper">
+     <map
+      id="myMap"
+      style="width: 100%; height: 100vh;"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      bindmarkertap="markertap"
+      bindcallouttap="callouttap"
+      bindlabeltap="labeltap"
+      markers="{{markers}}"
+      scale="{{scale}}"
+    >
+      <cover-image
+        class="return-icon"
+        style="line-height:{{menuHeight}}px;left:{{menuRight}}px;bottom:{{menuBotton}}px;"
+        src="https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/v2/common/area.png?sign=47a843587fc2732f56d8cedb9805fa9b&t=1729474429"
+      />
+      <cover-view slot="callout">
+        <block wx:for="{{markers}}" wx:key="id">
+          <cover-view class="custom-callout-box"  marker-id="{{item.id}}">
+            <cover-view  class="custom-callout-container {{!item.register && 'custom-callout-container-unregister'}}">
+              <cover-image  class="custom-callout-icon" src="{{item.icon}}"></cover-image>
+              <cover-view class="custom-callout-content" >
+                <cover-view class="custom-callout-title" >{{item.title}}</cover-view>
+                <cover-view class="custom-callout-subtitle" >{{item.register ? '已打卡' : '未打卡'}}</cover-view>
+              </cover-view>
+        
+            </cover-view>
+            <cover-image wx-if="{{item.register}}" class="custom-callout-register-icon" src="{{registerIcon}}"></cover-image>
+          </cover-view>
+        </block>
+      </cover-view>
+      <cover-view class="scenic-card">
+        <cover-view class="scenic-card-title">
+          <cover-image
+            class="scenic-card-title-icon"
+            src="../../images/fold.svg"
+          />
+        </cover-view>
+      </cover-view>
+    </map>
+  </view>
+</view>

@@ -10,6 +10,10 @@ Component({
             type: String,
             observer: function(newVal, oldVal) {}
         },
+        showBack: {
+            type: Boolean,
+            observer: function(newVal, oldVal) {}
+        },
     },
     data: {
         navBarHeight: app.globalData.navBarHeight,
@@ -17,8 +21,18 @@ Component({
         menuBotton: app.globalData.menuBotton,
         menuHeight: app.globalData.menuHeight,
         menuTop: app.globalData.menuTop,
+        showHome: false,
     },
     attached: function() {},
+    ready() {
+        debugger
+        console.log('navigation-bar ready', this.properties.showBack)
+        if (!this.properties.title && !this.properties.showBack) {
+            this.setData({
+                showHome: true
+            })
+        }
+    },
     methods: {
         switchTab() {
             wx.switchTab({

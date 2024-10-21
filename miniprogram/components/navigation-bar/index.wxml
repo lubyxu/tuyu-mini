@@ -5,9 +5,16 @@
         class="title-bar-title"
         style="line-height:{{menuHeight}}px;bottom:{{menuBotton}}px;">{{title}}</view>
     <cover-image
-        wx-if="{{!title}}"
+        wx-if="{{showHome}}"
         class="icon"
         src="../../images/icons/home.png"
+        style="line-height:{{menuHeight}}px;left:{{menuRight}}px;bottom:{{menuBotton}}px;"
+        bind:tap="switchTab"
+    />
+    <cover-image
+        wx-if="{{showBack}}"
+        class="icon"
+        src="../../images/back.svg"
         style="line-height:{{menuHeight}}px;left:{{menuRight}}px;bottom:{{menuBotton}}px;"
         bind:tap="switchTab"
     />

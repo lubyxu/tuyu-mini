@@ -1,0 +1,106 @@
+.page-section-gap{
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}
+
+.page-body-button {
+  margin-bottom: 30rpx;
+}
+
+.custom-callout-box {
+    position: relative;
+    width: 260rpx;
+    height: 90rpx;  
+    display: flex;
+    align-items: flex-end;
+}
+
+.custom-callout-container {
+    position: relative;
+    display: flex;
+    width: 260rpx;
+    height: 78rpx;
+    border: 1px solid #4cad5f;
+    border-radius: 30rpx;
+    background-color: #fff;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.08));
+}
+
+.custom-callout-container-unregister {
+    border: 1px solid #e9e9e9;
+}
+
+.custom-callout-icon {
+    width: 74rpx;
+    height: 78rpx;
+}
+
+.custom-callout-content {
+    padding: 10rpx 0;
+    box-sizing: border-box;
+    margin-left: 8rpx;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.custom-callout-title {
+    font-family: 'PingFang SC';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22rpx;
+    line-height: 30rpx;
+    color: #000000;
+}
+
+.custom-callout-subtitle {
+    font-family: 'PingFang SC';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18rpx;
+    line-height: 26rpx;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.custom-callout-register-icon {
+    width: 48rpx;
+    height: 48rpx;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.card-item-container {
+    width: 100%;
+    height: 388rpx;
+    background-color: red;
+}
+
+.return-icon {
+    position: absolute;
+    width: 64rpx;
+    height: 64rpx;
+}
+
+.scenic-card {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 388rpx;
+    border-radius: 30rpx;
+    background-color: #fff;
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
+}
+
+.scenic-card-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40rpx;
+}
+
+.scenic-card-title-icon {
+    width: 72rpx;
+    height: 8rpx;
+}
