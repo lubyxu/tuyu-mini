@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "tabs": "./tab/index"
+    "tabs": "./tab/index",
+    "auth-guard": "../../components/auth-guard/index"
   }
 }

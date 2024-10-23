@@ -1,4 +1,10 @@
 <!--components/path-note-list/index.wxml-->
 <view>
     <tabs />
+    <view>
+        <view class="btn-add-to-plan relative" bind:tap="onAddToPlan">
+            添加到我的计划 login
+            <auth-guard class="absolute t-0 l-0 r-0 b-0"></auth-guard>
+        </view>
+    </view>
 </view>

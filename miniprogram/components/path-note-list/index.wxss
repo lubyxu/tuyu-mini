@@ -1,1 +1,7 @@
 /* components/path-note-list/index.wxss */
+
+.btn-add-to-plan {
+	font-weight: normal;
+	background-color: red;
+	color: #fff;
+}

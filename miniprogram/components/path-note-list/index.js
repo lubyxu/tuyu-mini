@@ -1,6 +1,9 @@
 // components/path-note-list/index.js
-Component({
 
+Component({
+  options: {
+    addGlobalClass: true
+  },
   /**
    * 组件的属性列表
    */

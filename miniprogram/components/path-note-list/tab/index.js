@@ -1,4 +1,6 @@
 // components/path-note-list/tab/index.js
+import { getTabs } from '../service/group';
+
 Component({
   options: {
     addGlobalClass: true
@@ -13,12 +15,18 @@ Component({
    * 组件的初始数据
    */
   data: {
-    curKey: 'plan',
-    tabs: [
-      { key: 'plan', name: '我的计划', icon: '' },
-      { key: 'hot-path', name: '热门路线', icon: '' },
-      { key: 'citywalk', name: 'Citywalk', icon: '' },
-    ]
+    curKey: '',
+    tabs: []
+  },
+
+  lifetimes: {
+    attached: async function () {
+      const tabs = await getTabs();
+      this.setData({
+        tabs: tabs.map(item => ({ key: item.id, name: item.name })),
+        curKey: tabs[0].id,
+      });
+    }
   },
 
   /**
@@ -27,7 +35,6 @@ Component({
   methods: {
     onClick(e) {
       const index = e.currentTarget.dataset.index;
-      console.log('---index', index)
       this.setData({
         curKey: this.data.tabs[index].key
       });

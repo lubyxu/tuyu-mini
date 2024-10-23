@@ -1,9 +1,17 @@
-export function request() {
+export function request({ url, data, method }) {
 	return new Promise(function (resolve, reject) {
 		wx.request({
-			url: 'url',
+			method,
+			url: `https://storyhub.cc${url}`,
+			data: JSON.stringify(data),
 			success: function (res) {
-				resolve(res);
+				const ret = res.data;
+				console.log(ret);
+				if (ret.errno !== 10000) {
+					reject(ret.errmsg);
+					return;
+				}
+				resolve(ret.data);
 			},
 			fail: function (e) {
 				reject(e)
