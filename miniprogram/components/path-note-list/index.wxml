@@ -7,4 +7,7 @@
             <auth-guard class="absolute t-0 l-0 r-0 b-0"></auth-guard>
         </view>
     </view>
+    <button bindtap="getUserProfile"> 获取头像昵称 </button>
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">手机</button>
+    <chinese-button bind:click="onClick"> 快速登录 </chinese-button>
 </view>

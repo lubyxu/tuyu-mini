@@ -1,3 +1,5 @@
+import { request } from "./req"
+
 export function authCamera() {
   return new Promise((resolve, reject) => {
     wx.getSetting({
@@ -27,4 +29,35 @@ export function authCamera() {
       }
     })
   })
+}
+
+
+/**
+ * 
+ * @returns { avatar: string; token: string; openid: string; nickname: string }
+ */
+
+export function getUser() {
+  return new Promise((resolve, reject) => {
+    wx.login({
+      success: async function ({ code }) {
+        try {
+          const ret = await request({ url: '/fuyu/user/code', data: { code } });
+        }
+        catch (e) {
+          const {errno} = e;
+          if (errno === 2000) {
+            
+          }
+        }
+      },
+      fail: reject
+    })
+  });
+}
+
+async function registerAccount(code) {
+
+  const ret = await request({ url: '/fuyu/user/create/code', data: { code }});
+  return ret.data
 }

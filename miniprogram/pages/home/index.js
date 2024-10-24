@@ -12,9 +12,15 @@ Page({
 
   onShow: function() {
     // this.setTabBar()
+    wx.login({
+      success: (res) => {
+        console.log('res', res)
+      },
+    })
   },
 
   async onReady() {
+    
     await this.getInitData()
     // this.getTabBar().setData({
     //   isShow: true
