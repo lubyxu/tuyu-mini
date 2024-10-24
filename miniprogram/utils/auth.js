@@ -34,7 +34,7 @@ export function authCamera() {
 
 /**
  * 
- * @returns { avatar: string; token: string; openid: string; nickname: string }
+ * @returns { open_id: string; }
  */
 
 export function getUser() {
@@ -47,7 +47,8 @@ export function getUser() {
         catch (e) {
           const {errno} = e;
           if (errno === 2000) {
-            
+            const data = await registerAccount(code);
+            resolve(data);
           }
         }
       },
@@ -56,8 +57,12 @@ export function getUser() {
   });
 }
 
+/**
+ * 
+ * @param {string} code 
+ * @returns { open_id: string }
+ */
 async function registerAccount(code) {
-
   const ret = await request({ url: '/fuyu/user/create/code', data: { code }});
   return ret.data
 }
