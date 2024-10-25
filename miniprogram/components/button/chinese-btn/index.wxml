@@ -1,0 +1,4 @@
+<!--components/button/chinese-btn/index.wxml-->
+<view class="chinese-style-btn" style="width: {{width}}px" bind:tap="onClick">
+  <slot></slot>
+</view>

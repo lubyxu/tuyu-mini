@@ -1,0 +1,5 @@
+<!--components/auth-guard/index.wxml-->
+<view class="btn-auth-container">
+    <button wx:if="{{!isLogin}}" class="btn-auth" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+	</button>
+</view>

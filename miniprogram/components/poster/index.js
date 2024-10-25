@@ -169,13 +169,11 @@ Component({
       return new Promise((resolve, reject) => {
         wx.getSetting({
           success(res) {
-            debugger
             if (!res.authSetting['scope.writePhotosAlbum']) {
               wx.authorize({
                 scope: 'scope.writePhotosAlbum',
                 success: resolve,
                 fail: () => {
-                  debugger
                   wx.showModal({
                     title: '请先授权保存到相册',
                     content: '否则无法使用',

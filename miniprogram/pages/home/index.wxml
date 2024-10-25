@@ -24,9 +24,11 @@
     </cover-view>
   </view>
 
-    <view class="scroll-view-container">
+    <view class="scroll-view-container" wx:if="{{selected === 0}}">
       <cardList cardData="{{card}}" bind:scrollBottom="scrollBottom" bind:ocrClick="ocrClick" bind:onFind="onFind"></cardList>
     </view>
-    
+    <view class="scroll-view-container" wx:else>
+      <path-notes />
+    </view>
   </view>
 </view>

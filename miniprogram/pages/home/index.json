@@ -4,7 +4,8 @@
     "navigation-bar": "/components/navigation-bar/index",
     "notification": "/components/notification/index",
     "cardList": "/components/card-list/index",
-    "loading": "/components/loading/index"
+    "loading": "/components/loading/index",
+    "path-notes": "/components/path-note-list"
   },
   "navigationStyle": "custom"
 }

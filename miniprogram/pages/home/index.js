@@ -12,9 +12,15 @@ Page({
 
   onShow: function() {
     // this.setTabBar()
+    wx.login({
+      success: (res) => {
+        console.log('res', res)
+      },
+    })
   },
 
   async onReady() {
+    
     await this.getInitData()
     // this.getTabBar().setData({
     //   isShow: true
@@ -45,7 +51,7 @@ Page({
     duration: 500,
     showLoading: true,
     titleBarVisible: false,
-    selected: 0,
+    selected: 1,
     selectList: [
       {
         text: "首页",
@@ -54,7 +60,7 @@ Page({
         index: 0,
       },
       {
-        text: "地图",
+        text: "路书",
         iconPath: "../../images/icons/icon-2.svg",
         selectedIconPath: "../../images/icons/icon-2-active.svg",
         index: 1,

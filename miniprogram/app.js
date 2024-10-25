@@ -1,3 +1,5 @@
+import { getUser } from "./utils/auth";
+
 // app.js
 App({
   onLaunch: async function () {
@@ -54,7 +56,9 @@ App({
       name: 'getOpenId',
     })
 
+    // const {data} = await getUser();
+
     const { openid } = data?.result
     that.globalData.openid = openid
-  }
+  },
 });

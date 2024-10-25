@@ -1,0 +1,20 @@
+/* components/auth-guard/index.wxss */
+.btn-auth-container {
+	width: 100%;
+	height: 100%;
+}
+
+.btn-auth {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: transparent;
+}
+
+.btn-auth:active {
+	background-color: transparent;
+	box-shadow: none;
+	outline: none;
+}

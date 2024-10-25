@@ -1,0 +1,23 @@
+/* components/button/chinese-btn/index.wxss */
+.chinese-style-btn {
+	position: relative;
+	height: 56px;
+	background-image: url(https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2F6XBeD_UGMkHC9MsmNeT2v%2Fbtn-%E5%B7%A6%E4%BE%A7.svg), url(https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2F88p375TxtRHlS98qZ6-gb%2Fbtn-right.svg);
+	background-repeat: no-repeat;
+	background-position: left, right;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+}
+
+.chinese-style-btn::before {
+	z-index: -1;
+	position: absolute;
+	left: 23px;
+	right: 23px;
+	top: 0;
+	bottom: 0;
+	content: " ";
+	background: url(https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FyfsjPYHMoG7HYsiHZKMtg%2Fbtn-1px.svg) repeat-x;
+}
