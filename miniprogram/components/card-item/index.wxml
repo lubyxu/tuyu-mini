@@ -1,0 +1,27 @@
+<view
+    style="background-image: url({{background}});"
+    class="card-item"
+    bind:tap="ocrClick"
+>
+    <view class="preview-box">
+        <image src="{{preview}}" class="preview" />
+    </view>
+    <view wx-if="{{showProducts}}" class="product-list">
+        <view 
+            wx:for="{{products}}"
+            class="product-box {{item.id === selectId && 'product-box-selected'}}"
+            data-id="{{item.id}}"
+            bind:tap="onSelect"
+        >
+            <image
+                wx:key="{{item.id}}"
+                class="product-item"
+                src="{{item.preview}}"
+            />
+        </view>
+    </view>
+    <view class="desc-box" style="color:{{fontColor}};left:{{left}};top:{{top}}">
+        <text class="desc-title">{{title}}</text>
+        <text class="desc-subtitle">{{subtitle}}</text>
+    </view>
+</view>
