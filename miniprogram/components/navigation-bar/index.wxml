@@ -1,9 +1,9 @@
 
-<view class="{{ title ?  'nav-bar-with-title' : 'nav-bar'}} {{className}}" style="height:{{navBarHeight}}px;">
-    <view
+<cover-view class="{{ title ?  'nav-bar-with-title' : 'nav-bar'}} {{className}}" style="height:{{navBarHeight}}px;">
+    <cover-view
         wx-if="{{title}}"
         class="title-bar-title"
-        style="line-height:{{menuHeight}}px;bottom:{{menuBotton}}px;">{{title}}</view>
+        style="line-height:{{menuHeight}}px;bottom:{{menuBotton}}px;">{{title}}</cover-view>
     <cover-image
         wx-if="{{showHome}}"
         class="icon"
@@ -13,10 +13,10 @@
     />
     <cover-image
         wx-if="{{showBack}}"
-        class="icon"
-        src="../../images/back.svg"
+        class="return-big-icon"
+        src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/return-icon.png"
         style="line-height:{{menuHeight}}px;left:{{menuRight}}px;bottom:{{menuBotton}}px;"
-        bind:tap="switchTab"
+        bind:tap="navigateBack"
     />
-</view>
+</cover-view>
 

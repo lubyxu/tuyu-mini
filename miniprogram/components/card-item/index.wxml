@@ -1,28 +1,28 @@
-<view
+<cover-view
     style="background-image: url({{background}});"
     class="card-item"
     bind:tap="ocrClick"
 >
-    <view class="preview-box">
-        <image src="{{preview}}" class="preview" />
-    </view>
-    <view wx-if="{{showProducts}}" class="product-list">
-        <view 
+    <cover-view class="preview-box">
+        <cover-image src="{{preview}}" class="preview" />
+    </cover-view>
+    <cover-view wx-if="{{showProducts}}" class="product-list">
+        <cover-view 
             wx:for="{{_products}}"
             class="product-box {{item.id === selectId && 'product-box-selected'}}"
             data-id="{{item.id}}"
             bind:tap="onSelect"
         >
-            <image
+            <cover-image
                 wx:key="{{item.id}}"
                 class="product-item"
                 src="{{item.preview}}"
             />
-        </view>
-    </view>
-    <view class="desc-box" style="color:{{light ? '#ffbd8f': '#77270d'}};left:{{left}};top:{{top}}">
+        </cover-view>
+    </cover-view>
+    <cover-view class="desc-box" style="color:{{light ? '#ffbd8f': '#77270d'}};left:{{left}};top:{{top}}">
         <text class="desc-title">{{title}}</text>
         <text class="desc-subtitle">{{subtitle}}</text>
-    </view>
-    <image wx-if="{{!isVisited}}" src="../../images/visited.svg" class="visited-icon" />
-</view>
+    </cover-view>
+    <cover-image wx-if="{{!isVisited}}" src="../../images/visited.svg" class="visited-icon" />
+</cover-view>

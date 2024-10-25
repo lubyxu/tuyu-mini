@@ -1,7 +1,5 @@
 import { request } from '../../utils/req';
 
-const app = getApp()
-
 Page({
   data: {
     markers: [],
@@ -14,11 +12,6 @@ Page({
     latitude: 23.096994,
     longitude: 113.324520,
     registerIcon: 'https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/v2/common/register-icon.png?sign=f219eefd568b63e4843f16ae204b6ada&t=1729477487',
-    navBarHeight: app.globalData.navBarHeight,
-    menuRight: app.globalData.menuRight,
-    menuBotton: app.globalData.menuBotton,
-    menuHeight: app.globalData.menuHeight,
-    menuTop: app.globalData.menuTop,
   },
 
   onReady: function (e) {

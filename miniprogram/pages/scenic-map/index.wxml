@@ -1,6 +1,5 @@
 <!--index.wxml-->
 <view>
-  <navigation-bar showBack="{{true}}" />
   <loading wx-if="{{showLoading}}" />
   <view wx-if="{{!showLoading}}" class="page-section swiper">
      <map
@@ -14,11 +13,7 @@
       markers="{{markers}}"
       scale="{{scale}}"
     >
-      <cover-image
-        class="return-icon"
-        style="line-height:{{menuHeight}}px;left:{{menuRight}}px;bottom:{{menuBotton}}px;"
-        src="https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/v2/common/area.png?sign=47a843587fc2732f56d8cedb9805fa9b&t=1729474429"
-      />
+      <navigation-bar showBack="{{true}}" />
       <cover-view slot="callout">
         <block wx:for="{{markers}}" wx:key="id">
           <cover-view class="custom-callout-box"  marker-id="{{item.id}}">
@@ -38,12 +33,12 @@
         <cover-view class="scenic-card-title" bind:tap="onChange">
           <cover-image
             class="scenic-card-title-icon"
-            src="../../images/fold.svg"
+            src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/fold.png"
           />
         </cover-view>
-        <view class="card-container" wx-if="{{showScenicCard}}" >
+        <cover-view class="card-container" wx-if="{{showScenicCard}}" >
           <card-item products="{{products}}" isVisited="{{isVisited}}" />
-        </view>
+        </cover-view>
       </cover-view>
     </map>
   </view>

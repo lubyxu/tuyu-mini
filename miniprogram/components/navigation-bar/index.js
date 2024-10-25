@@ -38,5 +38,8 @@ Component({
                 url: '/pages/home/index',
             })
         },
+        navigateBack() {
+            wx.navigateBack()
+        }
     }
 })
