@@ -6,6 +6,12 @@
     z-index: 999;
 }
 
+.home-icon {
+    position: absolute;
+    width: 40rpx;
+    height: 40rpx;
+}
+
 .nav-bar-with-title {
     position: fixed;
     width: 100%;

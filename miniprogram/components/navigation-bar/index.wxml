@@ -6,10 +6,10 @@
         style="line-height:{{menuHeight}}px;bottom:{{menuBotton}}px;">{{title}}</cover-view>
     <cover-image
         wx-if="{{showHome}}"
-        class="icon"
+        class="home-icon"
         src="../../images/icons/home.png"
         style="line-height:{{menuHeight}}px;left:{{menuRight}}px;bottom:{{menuBotton}}px;"
-        bind:tap="switchTab"
+        bind:tap="navigateToHome"
     />
     <cover-image
         wx-if="{{showBack}}"

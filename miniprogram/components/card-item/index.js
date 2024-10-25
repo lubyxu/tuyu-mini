@@ -16,6 +16,9 @@ Component({
     isVisited: {
       type: Boolean,
     },
+    owner: {
+      type: Boolean,
+    },
   },
 
   data: {
@@ -42,32 +45,43 @@ Component({
         }
       })
     this.setData({
-      _products
+      _products,
+      showProducts: _products.length > 1,
     })
-    const { background, preview, title, subtitle, id, style } = _products[0]
-    this.setData({
-      background,
-      preview,
-      title,
-      subtitle,
-      selectId: id,
-      light: style === 'light',
-      showProducts: _products.length > 1 
-    })
-    console.log(background, preview, title, subtitle)
+    this.setCommonSatae(_products[0])
   },
 
   methods: {
-    ocrClick(e) {
-      const item = e.currentTarget.dataset.item
-      this.triggerEvent('ocrClick', item)
+    onProductClick(e) {
+      const id = this.data.selectId
+      const owner = this.properties.owner
+      if (!owner) {
+        wx.navigateTo({
+          url: `/pages/osd-ar/index?id=${this.data.id}&videoUrl=${encodeURIComponent(this.data.resource)}&osd=${encodeURIComponent(this.data.osd)}`
+        });
+      } else {
+        wx.navigateTo({
+          url: `/pages/detail/index?id=${id}`
+        });
+      }
     },
     onFind() {
       this.triggerEvent('onFind')
     },
-    onSelect(e) {
-      const selectId = e.currentTarget.dataset.id
-      const { background, preview, title, subtitle, id, style } = this.data._products.find(({ id }) => (selectId === id))
+
+    setCommonSatae(data) {
+      const {
+        background,
+        preview,
+        title,
+        subtitle,
+        id,
+        style,
+        ar_config: {
+          resource,
+          osd
+        },
+      } = data
       this.setData({
         background,
         preview,
@@ -75,7 +89,14 @@ Component({
         subtitle,
         selectId: id,
         light: style === 'light',
+        resource,
+        osd,
       })
+    },
+    onSelect(e) {
+      const selectId = e.currentTarget.dataset.id
+      const current = this.data._products.find(({ id }) => (selectId === id))
+      this.setCommonSatae(current)
     }
   },
 })

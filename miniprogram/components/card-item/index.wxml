@@ -1,10 +1,10 @@
 <cover-view
     style="background-image: url({{background}});"
     class="card-item"
-    bind:tap="ocrClick"
+    bind:tap="onScenicClcik"
 >
     <cover-view class="preview-box">
-        <cover-image src="{{preview}}" class="preview" />
+        <cover-image src="{{preview}}" class="preview" bind:tap="onProductClick" />
     </cover-view>
     <cover-view wx-if="{{showProducts}}" class="product-list">
         <cover-view 

@@ -25,8 +25,8 @@ Component({
       videoUrl: ''
     },
     theme: 'light',
-    url: '',
-    pid: '',
+    osd: '',
+    id: '',
     frameShow: false,
     frameX: 0,
     frameY: 0,
@@ -40,11 +40,12 @@ Component({
     ready: function () {
       const pages = getCurrentPages()
       const page = pages[pages.length - 1]
-      console.log(';options', decodeURIComponent(page?.options?.url), page.options.pid)
+      console.log(';options', page?.options)
       this.setData({
-        url: decodeURIComponent(page?.options?.url),
-        pid: page?.options?.pid,
-        replace: page?.options?.replace === 'true'
+        osd: decodeURIComponent(page?.options?.osd),
+        osd: "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/gulou.jpg?sign=03bca79246ea0b8b2b1f22b7185f3994&t=1719304890",
+        id: page?.options?.id,
+        // replace: page?.options?.replace === 'true'
       })
       if (page?.options?.videoUrl && page?.options?.videoUrl !== 'undefined') {
         this.setData({
@@ -65,13 +66,13 @@ Component({
       console.log('onStart')
     },
     onRouter() {
-      if (this.data.replace) {
-        wx.navigateBack()
-        return
-      }
-      wx.navigateTo({
-        url: `/pages/detail/index?pid=${this.data.pid}`,
-      });
+      // if (this.data.replace) {
+      //   wx.navigateBack()
+      //   return
+      // }
+      // wx.navigateTo({
+      //   osd: `/pages/detail/index?id=${this.data.id}`,
+      // });
     },
     onEnd() {
       this.onRouter()
@@ -135,11 +136,11 @@ Component({
     },
     addOSDMarker() {
       const fs = wx.getFileSystemManager()
-      const filePath = `${wx.env.USER_DATA_PATH}/${this.data.pid}.png`
+      const filePath = `${wx.env.USER_DATA_PATH}/${this.data.id}.png`
 
       const download = callback => wx.downloadFile({
           // 此处设置为osd识别对象的地址
-          url: this.data.url,
+          url: this.data.osd,
           success(res) {
               fs.saveFile({
                   filePath,
@@ -160,7 +161,7 @@ Component({
         }
         app.globalData.ocr = {
           ...app.globalData.ocr,
-          [this.data.pid]: markerId
+          [this.data.id]: markerId
         }
         console.log('[addMarker] --> ', filePath, markerId)   
         console.log('all=1=' , this.session.getAllOSDMarker())
