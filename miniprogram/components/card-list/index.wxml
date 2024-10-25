@@ -7,7 +7,7 @@
         <image class="find-icon" src="../../images/find-icon.svg"  bind:tap="onFind"/>
     </view>
     <view
-        wx:for="{{cardData}}"
+        wx:for="{{list}}"
         wx:key="index"
         bind:tap="ocrClick"
         data-item="{{item}}"

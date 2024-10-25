@@ -8,7 +8,7 @@
     </view>
     <view wx-if="{{showProducts}}" class="product-list">
         <view 
-            wx:for="{{products}}"
+            wx:for="{{_products}}"
             class="product-box {{item.id === selectId && 'product-box-selected'}}"
             data-id="{{item.id}}"
             bind:tap="onSelect"

@@ -34,13 +34,16 @@
           </cover-view>
         </block>
       </cover-view>
-      <cover-view class="scenic-card">
-        <cover-view class="scenic-card-title">
+      <cover-view wx-if="{{showScenicBox}}" class="scenic-card" >
+        <cover-view class="scenic-card-title" bind:tap="onChange">
           <cover-image
             class="scenic-card-title-icon"
             src="../../images/fold.svg"
           />
         </cover-view>
+        <view class="card-container" wx-if="{{showScenicCard}}" >
+          <card-item products="{{products}}" isVisited="{{isVisited}}" />
+        </view>
       </cover-view>
     </map>
   </view>
