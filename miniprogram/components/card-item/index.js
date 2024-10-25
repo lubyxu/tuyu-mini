@@ -12,7 +12,10 @@ Component({
     products: {
       type: [Object],
       value: [],
-    }
+    },
+    isVisited: {
+      type: Boolean,
+    },
   },
 
   data: {
@@ -22,6 +25,21 @@ Component({
     subtitle: '',
     selectId: -1,
     showProducts: false,
+    light: true
+  },
+
+  ready: function () {
+    const { background, preview, title, subtitle, id, style } = this.properties.products[0]
+    this.setData({
+      background,
+      preview,
+      title,
+      subtitle,
+      selectId: id,
+      light: style === 'light',
+      showProducts: this.properties.products.length > 1 
+    })
+    console.log(background, preview, title, subtitle)
   },
 
   methods: {
@@ -31,33 +49,18 @@ Component({
     },
     onFind() {
       this.triggerEvent('onFind')
-    }
-  },
-
-  ready: function () {
-    const { background, preview, title, subtitle, id } = this.properties.products[0]
-    this.setData({
-      background,
-      preview,
-      title,
-      subtitle,
-      selectId: id,
-      showProducts: this.properties.products.length > 1 
-    })
-    console.log(background, preview, title, subtitle)
-  },
-
-  methods: {
+    },
     onSelect(e) {
       const selectId = e.currentTarget.dataset.id
-      const { background, preview, title, subtitle, id } = this.properties.products.find(id == selectId)
+      const { background, preview, title, subtitle, id, style } = this.properties.products.find(({ id }) => (selectId === id))
       this.setData({
         background,
         preview,
         title,
         subtitle,
         selectId: id,
+        light: style === 'light',
       })
     }
-  }
+  },
 })

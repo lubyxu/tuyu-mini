@@ -25,7 +25,7 @@
   </view>
 
     <view class="scroll-view-container" wx:if="{{selected === 0}}">
-      <cardList cardData="{{card}}" bind:scrollBottom="scrollBottom" bind:ocrClick="ocrClick" bind:onFind="onFind"></cardList>
+      <cardList list="{{list}}" bind:scrollBottom="scrollBottom" bind:ocrClick="ocrClick" bind:onFind="onFind"></cardList>
     </view>
     <view class="scroll-view-container" wx:else>
       <path-notes />

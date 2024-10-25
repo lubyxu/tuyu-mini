@@ -87,3 +87,11 @@
     width: 100%;
     height: 100%;
 }
+
+.visited-icon {
+    position: absolute;
+    width: 64rpx;
+    height: 64rpx;
+    left: 26rpx;
+    top: 0;
+}

@@ -20,8 +20,9 @@
             />
         </view>
     </view>
-    <view class="desc-box" style="color:{{fontColor}};left:{{left}};top:{{top}}">
+    <view class="desc-box" style="color:{{light ? '#ffbd8f': '#77270d'}};left:{{left}};top:{{top}}">
         <text class="desc-title">{{title}}</text>
         <text class="desc-subtitle">{{subtitle}}</text>
     </view>
+    <image wx-if="{{!isVisited}}" src="../../images/visited.svg" class="visited-icon" />
 </view>

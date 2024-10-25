@@ -12,6 +12,6 @@
         bind:tap="ocrClick"
         data-item="{{item}}"
     >
-        <card-item products="{{products}}" />
+        <card-item products="{{item.products}}" isVisited="{{item.is_visited}}" />
     </view>
 </view>

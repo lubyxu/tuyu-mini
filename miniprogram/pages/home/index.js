@@ -1,5 +1,6 @@
 const app = getApp()
 import { authCamera } from '../../utils/auth'
+import { request } from '../../utils/req';
 
 Page({
   onShareAppMessage() {
@@ -20,11 +21,7 @@ Page({
   },
 
   async onReady() {
-    
-    await this.getInitData()
-    // this.getTabBar().setData({
-    //   isShow: true
-    // })
+    this.getInitData()
   },
 
   data: {
@@ -65,7 +62,8 @@ Page({
         selectedIconPath: "../../images/icons/icon-2-active.svg",
         index: 1,
       }
-    ]
+    ],
+    list: []
   },
 
   jumpMapPage(e) {
@@ -89,14 +87,26 @@ Page({
   },
 
   async getInitData() {
-    try {
-      await Promise.all([this.getSwiperData(), this.getBind()])
-      await this.getPoducts()
-      this.setData({ showLoading: false })
-    } catch (err) {
-      console.log('err', err)
-    }
+    const { data } = await request({
+      method: 'POST',
+      url: '/fuyu/spot/list',
+      data: {
+        province: "beijing"
+      }
+    });
+    const { list = []} = data
+    this.setData({ list: [...list, ...list, ...list, ...list, ...list, ...list, ...list, ...list, ...list], showLoading: false })
   },
+
+  // async getInitData() {
+  //   try {
+  //     await Promise.all([this.getSwiperData(), this.getBind()])
+  //     await this.getPoducts()
+  //     this.setData({ showLoading: false })
+  //   } catch (err) {
+  //     console.log('err', err)
+  //   }
+  // },
 
   async getUserInfo() {
     console.log('app.globalData.openid', app.globalData.openid)
