@@ -65,3 +65,13 @@ page {
 .r-0 {
   right: 0;
 }
+.text-strong {
+  font-weight: 500;
+}
+.text-error-color {
+  color: #F14B3F;
+}
+
+.text-gray-color {
+  color: rgba(0, 0, 0, 0.65);
+}

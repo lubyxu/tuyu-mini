@@ -1,0 +1,32 @@
+<!--components/path-note-list/card/index.wxml-->
+<view class="card relative">
+  <view class="title">{{title}}</view>
+	<view class="container">
+	  <view class="flex w-full">
+		  <view><text class="text-error-color">{{joinedCount}}</text> 人已参与</view>
+			<view class="divider"></view>
+			<view><text class="text-strong text-gray-color">{{pointCount}}</text> 个游玩景点</view>
+			<view class="divider"></view>
+			<view><text class="text-strong text-gray-color">{{recommendCount}}</text> 个好物推荐</view>
+		</view>
+
+		<view class="w-full info">
+		  <view>
+			  <text class="number">{{checkPointCount}}</text> 个打卡点
+			</view>
+			<view>
+			  <text class="number">{{rightCount}}</text> 项客户权益
+			</view>
+		</view>
+	</view>
+
+	<view class="w-full progress">
+		<progress-bar done="{{4}}" total="{{5}}" />
+	</view>
+
+	<view class="right-bottom-image">
+	  <image src="{{pointImage}}" mode=""/>
+		<image src="{{pointImage}}" mode=""/>
+		<image src="{{pointImage}}" mode=""/>
+	</view>
+</view>

@@ -1,0 +1,16 @@
+<!--components/path-note-list/progress-bar/index.wxml-->
+<view class="container {{isDone ? 'done' : 'pending'}}">
+  <view style="width: {{progress * 86}}px;" class="progress">
+	  <image
+		  wx:if="{{!isDone}}"
+		  class="pin"
+		  src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2F2Lwvd5pe_ihUJxN2WdrNk%2FGroup%201312316268.svg"
+		/>
+		<view class="striped w-full"></view>
+	</view>
+	<view wx:if="{{isDone === 'pending'}}" class="text-undone text">进度{{done}}/{{total}}</
+	view>
+	<view wx:else class="text-done text">
+	  已打卡
+	</view>
+</view>
