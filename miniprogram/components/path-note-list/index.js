@@ -1,4 +1,5 @@
 // components/path-note-list/index.js
+import { getUserPathList } from './service/group';
 
 Component({
   options: {
@@ -15,9 +16,17 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    list: [],
   },
 
+  lifetimes: {
+    async attached() {
+      const data = await getUserPathList();
+      this.setData({
+        list: data,
+      });
+    }
+  },
   /**
    * 组件的方法列表
    */
@@ -37,6 +46,6 @@ Component({
       console.log(e.detail.code)  // 动态令牌
     console.log(e.detail.errMsg) // 回调信息（成功失败都会返回）
     console.log(e.detail.errno)  // 错误码（失败时返回）
-    }
+    },
   }
 })

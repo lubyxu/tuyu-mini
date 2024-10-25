@@ -71,6 +71,9 @@ page {
 .text-error-color {
   color: #F14B3F;
 }
+.text-success-color {
+  color: rgba(76, 173, 95, 1);
+}
 
 .text-gray-color {
   color: rgba(0, 0, 0, 0.65);

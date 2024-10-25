@@ -1,0 +1,16 @@
+/* components/path-note-list/check-switch/index.wxss */
+.check-switch-root {
+  height: 22px;
+  width: 64px;
+  border-radius: 40px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
+.check-switch-root-fail {
+  background: rgba(164, 171, 195, 1);
+  color: #fff;
+}

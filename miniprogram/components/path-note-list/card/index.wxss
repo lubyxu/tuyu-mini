@@ -33,10 +33,22 @@
 .info {
 	margin-top: 8px;
 	border-left: 2px solid rgba(0, 0, 0, 0.12);
+	border-radius: 1px;
 	padding-left: 8px;
 
 	font-size: 12px;
 	line-height: 26px;
+}
+
+.info-item {
+	display: flex;
+	align-items: center;
+}
+
+.info-item image {
+	width: 14px;
+	height: 14px;
+	margin-right: 4px;
 }
 
 .right-bottom-image {
@@ -56,12 +68,12 @@
 }
 
 .right-bottom-image image:nth-child(1) {
-	transform: translateX(-10px) translateY(10px);
+	transform: translateX(-10px) translateY(16px);
 	opacity: 0.35;
 }
 
 .right-bottom-image image:nth-child(2) {
-	transform: translateX(-20px) translateY(20px);
+	transform: translateX(-20px) translateY(32px);
 	opacity: 0.05;
 }
 

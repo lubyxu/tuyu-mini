@@ -4,6 +4,7 @@
     "tabs": "./tab/index",
     "auth-guard": "../../components/auth-guard/index",
     "chinese-button": "../../components/button/chinese-btn/index",
-    "card": "./card/index"
+    "card": "./card/index",
+    "check-switcher": "./check-switch/index"
   }
 }

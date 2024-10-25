@@ -10,5 +10,8 @@
     <button bindtap="getUserProfile"> 获取头像昵称 </button>
     <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">手机</button>
     <chinese-button bind:click="onClick"> 快速登录 </chinese-button>
-    <card />
+    <view>
+      <card wx:for="{{list}}" item="{{item}}" />
+    </view>
+    <check-switcher checked="{{false}}" />
 </view>

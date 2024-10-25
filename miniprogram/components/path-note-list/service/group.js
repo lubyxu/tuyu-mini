@@ -11,3 +11,13 @@ export async function getTabs() {
 
 	return data;
 }
+
+export async function getUserPathList() {
+	const { data } = await request({
+		url: '/fuyu/path/userpathlist',
+		data: {
+			province: "beijing"
+		}
+	});
+	return data;
+}

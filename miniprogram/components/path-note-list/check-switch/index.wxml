@@ -1,0 +1,9 @@
+<!--components/path-note-list/check-switch/index.wxml-->
+<view wx:if="{{checked}}" class="check-switch-root check-switch-root-success text-success-color">
+  <iconfont name="Frame" color="rgba(76, 173, 95, 1)" />
+  已打卡
+</view>
+<view wx:else class="check-switch-root check-switch-root-fail" bind:tap="onClick">
+  <iconfont name="Frame" color="#fff" style="margin-left: 2px" />
+  打卡
+</view>

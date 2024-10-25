@@ -8,7 +8,7 @@
 		/>
 		<view class="striped w-full"></view>
 	</view>
-	<view wx:if="{{isDone === 'pending'}}" class="text-undone text">进度{{done}}/{{total}}</
+	<view wx:if="{{!isDone}}" class="text-undone text">进度{{done}}/{{total}}</
 	view>
 	<view wx:else class="text-done text">
 	  已打卡
