@@ -1,6 +1,6 @@
 Component({
   properties: {
-    // Frame
+    // fire | Frame
     name: {
       type: String,
     },

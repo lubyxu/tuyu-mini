@@ -1,0 +1,19 @@
+/* pages/path-note-detail/header/index.wxss */
+.header {
+	box-sizing: border-box;
+	height: 120px;
+	padding: 16px 12px;
+	background: rgba(251, 237, 219, 1);
+}
+
+.title {
+	font-size: 32px;
+	font-weight: 500;
+}
+
+.image {
+	height: 40px;
+	width: 40px;
+	border-radius: 8px;
+	border: 2px solid #fff;
+}

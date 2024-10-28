@@ -1,0 +1,35 @@
+<!--components/path-note-list/spot/index.wxml-->
+<view class="flex">
+  <view class="left">
+	
+	</view>
+
+	<view class="right">
+	  <view class="flex title">
+		  <view class="name">{{name}}</view>
+			<switcher checked="{{checked}}" />
+		</view>
+
+		<view class="flex items-center mt-4" style="gap: 6px">
+		  <view class="tag tag-hot-filled tag-spotted">
+			  <iconfont name="fire" color="#fff" />
+				{{c_visited}} 人已打卡
+			</view>
+
+			<view class="tag" wx:for="{{content_info.privilege}}">
+			  {{item.tags}}
+			</view>
+		</view>
+
+		<view class="text-gray-color text-13 mt-4" style="line-height: 18px;">
+			{{plain_text}}
+		</view>
+
+		<view class="mt-4">
+		  <view>
+			  <image wx:for="{{content_info.image_points}}" src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2F20T-TKEibiQ94621sV_pH%2F%E7%BC%96%E7%BB%84.svg" style="width: 23px" />
+			</view>
+		</view>
+	</view>
+
+</view>

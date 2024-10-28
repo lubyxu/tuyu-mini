@@ -1,0 +1,21 @@
+<!--pages/path-note-detail/index.wxml-->
+<view>
+  <header
+	  name="🍁 秋日北京 | City Walk"
+		images="{{images}}"
+		fin_place_count="{{4}}"
+		place_count="{{5}}"
+	/>
+
+	<view style="padding: 0 16px;">
+	  <view style="margin-bottom: 16px;">🎯 行程打卡点</view>
+	  <spot
+		  wx:for="{{place_details}}"
+		  name="{{item.name}}"
+			checked="{{!!place_visited[item.place_id]}}"
+			c_visited="{{item.c_visited}}"
+			content_info="{{item.content_info}}"
+			plain_text="{{item.plain_text}}"
+		/>
+	</view>
+</view>

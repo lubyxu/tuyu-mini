@@ -1,0 +1,11 @@
+<!--pages/path-note-detail/header/index.wxml-->
+<view class="header">
+  <view class="title">{{name}}</view>
+	<view class="sub-title flex items-center gap-8">
+	  <view wx:for="{{images}}" class="flex items-center gap-8">
+		  <image mode="aspectFill" src="{{item}}" class="image" />
+		</view>
+
+		<progress-bar done="{{fin_place_count}}" total="{{place_count}}" />
+	</view>
+</view>
