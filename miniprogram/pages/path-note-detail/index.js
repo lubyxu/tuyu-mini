@@ -1,25 +1,22 @@
 // pages/path-note-detail/index.js
 import { getPathDetail } from '../../service/path-note/path-detail';
 
-const IMAGES = [
-  'https://wos.stage.meetwhale.com/uAWgX5Fh6zw7AGlazP4Kb',
-  'https://wos.stage.meetwhale.com/4MJnGe6lI9kUVSC8b6GOw',
-  'https://wos.stage.meetwhale.com/kETxWXeWW0e3DEv7E0He7',
-  'https://wos.stage.meetwhale.com/Q0dWcOZbTG8Qq34Mgkx74',
-  'https://wos.stage.meetwhale.com/vaBP6XGwfEHtbsAPkXIqE'
-];
+
 Page({
+  options: {
+    addGlobalClass: true
+  },
 
   /**
    * 页面的初始数据
    */
   data: {
     id: 0,
-    images: IMAGES,
     path_info: {},
     place_details: [],
     product_map: [],
     place_visited: {},
+    modal: null,
   },
 
   /**
@@ -84,5 +81,37 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  onPrivilege(e) {
+    const info = e.detail;
+    this.setData({
+      modal: {
+        type: 'privilege',
+        props: {
+          desc: info.details
+        }
+      }
+    });
+  },
+  onModalClose(e) {
+    this.setData({
+      modal: null
+    });
+  },
+  onImageClick(e) {
+    const detail = e.detail;
+    this.setData({
+      modal: {
+        type: 'place-images',
+        props: {
+          images: detail.images,
+          index: detail.index
+        }
+      }
+    });
+  },
+  openMap() {
+    console.log('clicked')
+    let _this = this;
   }
 })

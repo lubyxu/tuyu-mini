@@ -1,7 +1,7 @@
 <!--components/path-note-list/spot/index.wxml-->
 <view class="flex">
   <view class="left">
-	
+	  <image mode="aspectFill" class="place-image" src="{{image}}" />
 	</view>
 
 	<view class="right">
@@ -10,13 +10,13 @@
 			<switcher checked="{{checked}}" />
 		</view>
 
-		<view class="flex items-center mt-4" style="gap: 6px">
+		<view class="flex flex-wrap items-center mt-4" style="gap: 6px">
 		  <view class="tag tag-hot-filled tag-spotted">
-			  <iconfont name="fire" color="#fff" />
-				{{c_visited}} 人已打卡
+			  <view><iconfont name="fire" color="#fff" /></view>
+				<view>{{c_visited}} 人已打卡</view>
 			</view>
 
-			<view class="tag" wx:for="{{content_info.privilege}}">
+			<view class="tag" wx:for="{{content_info.privilege}}" data-info="{{item}}" bind:tap="onPrivilege">
 			  {{item.tags}}
 			</view>
 		</view>
@@ -26,8 +26,13 @@
 		</view>
 
 		<view class="mt-4">
-		  <view>
-			  <image wx:for="{{content_info.image_points}}" src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2F20T-TKEibiQ94621sV_pH%2F%E7%BC%96%E7%BB%84.svg" style="width: 23px" />
+		  <view class="image-point">
+			  <view class="image-point-wrapper image-point-product-wrapper" wx:for="{{product_ids}}">
+				  <image mode="aspectFill" class="image-point-product-wrapper-item" src="{{product_map[item].show_image}}" />
+				</view>
+
+				<image-spot images="{{content_info.image_points}}" bind:onImageClick="onImageClick" />
+			  
 			</view>
 		</view>
 	</view>

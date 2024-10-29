@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "disableScroll": false,
+  "usingComponents": {
+    "half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog"
+  }
+}

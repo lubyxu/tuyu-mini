@@ -2,20 +2,53 @@
 <view>
   <header
 	  name="🍁 秋日北京 | City Walk"
-		images="{{images}}"
+		images="{{path_info.images}}"
 		fin_place_count="{{4}}"
 		place_count="{{5}}"
 	/>
 
-	<view style="padding: 0 16px;">
-	  <view style="margin-bottom: 16px;">🎯 行程打卡点</view>
-	  <spot
-		  wx:for="{{place_details}}"
-		  name="{{item.name}}"
-			checked="{{!!place_visited[item.place_id]}}"
-			c_visited="{{item.c_visited}}"
-			content_info="{{item.content_info}}"
-			plain_text="{{item.plain_text}}"
-		/>
+	<view style="padding: 0 16px; margin-top: 20px;">
+	  <view style="margin-bottom: 16px;">🗺️ 行程概览</view>
+		<view class="map-container" bind:tap="openMap">
+		  placeholder
+			<map id="myMap"></map>
+		</view>
 	</view>
+
+	<view style="padding: 0 16px; margin-top: 20px;">
+	  <view style="margin-bottom: 16px;">🎯 行程打卡点</view>
+	  <view style="margin-bottom: 16px; padding: 12px 0;" wx:for="{{place_details}}">
+		  <spot
+				image="{{item.image}}"
+				name="{{item.name}}"
+				product_ids="{{item.product_id ? [item.product_id] : []}}"
+				product_map="{{product_map}}"
+				checked="{{!!place_visited[item.place_id]}}"
+				c_visited="{{item.c_visited}}"
+				content_info="{{item.content_info}}"
+				plain_text="{{item.plain_text}}"
+				bind:onPrivilege="onPrivilege"
+				bind:onImageClick="onImageClick"
+			/>
+		</view>
+	</view>
+
+	<view class="flex items-center justify-center footer" style="padding-bottom: 30px;">
+	  <chinese-button width="300">
+			<view class="btn-add-to-plan">添加为我的计划</view>
+		</chinese-button>
+	</view>
+
+	<privilege-modal
+	  wx:if="{{modal && modal.type === 'privilege'}}"
+		desc="{{modal.props.desc}}"
+		bind:close="onModalClose"
+	/>
+
+	<place-modal
+		wx:if="{{modal && modal.type === 'place-images'}}"
+	  images="{{modal.props.images}}"
+		curIndex="{{modal.props.index}}"
+		bind:close="onModalClose"
+	/>
 </view>

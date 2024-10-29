@@ -1,6 +1,9 @@
 {
   "usingComponents": {
     "header": "./header/index",
-    "spot": "../../components/path-note-list/spot/index"
+    "spot": "../../components/path-note-list/spot/index",
+    "privilege-modal": "./privilege-modal/index",
+    "place-modal": "./place-modal/index",
+    "chinese-button": "/components/button/chinese-btn"
   }
 }

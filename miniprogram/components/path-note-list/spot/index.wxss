@@ -29,4 +29,49 @@
 
 .right {
 	flex: 1;
+	padding-left: 12px;
+}
+
+.place-image {
+	height: 52px;
+	width: 52px;
+	border-radius: 8px;
+	border: 2px solid #fff;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.08);
+}
+
+
+
+.image-point {
+	height: 48px;
+	gap: 4px;
+	display: flex;
+	align-items: center;
+}
+
+.image-point-wrapper {
+	width: 40px;
+	height: 40px;
+	overflow: hidden;
+	border-radius: 2px;
+}
+
+.image-point-wrapper-item {
+	width: 40px;
+	height: 40px;
+}
+
+
+.image-point-product-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: radial-gradient(71.87% 71.87% at 26.42% 28.13%, #FCF5E8 0%, #FEE7D0 100%);
+	height: 100%;
+	border-radius: 8px;
+
+}
+.image-point-product-wrapper-item {
+	width: 24px;
+	height: 32px;
 }

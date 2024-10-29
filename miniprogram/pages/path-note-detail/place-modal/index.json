@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog",
+    "spot-images": "/components/path-note-list/spot/image-spot/index",
+    "iconfont": "/iconfont/iconfont",
+    "mp-msg": "weui-miniprogram/msg/msg"
+  }
+}
