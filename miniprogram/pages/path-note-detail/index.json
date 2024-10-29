@@ -1,4 +1,5 @@
 {
+  "disableScroll": false,
   "usingComponents": {
     "header": "./header/index",
     "spot": "../../components/path-note-list/spot/index",
