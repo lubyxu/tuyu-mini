@@ -1,6 +1,5 @@
 /* pages/path-note-detail/index.wxss */
 page {
-	overflow-y: auto;
 }
 
 .map-container {
@@ -19,12 +18,25 @@ page {
 }
 
 .footer {
-	position: fixed;
-	bottom: 0;
-	background-color: #ffffff;
-	left: 0;
-	right: 0;
 	padding-top: 14px;
 	box-shadow: 1px 0px 4px 0px rgba(0, 0, 0, 0.12);
+}
 
+.footer {
+	transition: all 0.5s;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #ffffff;
+}
+
+.footer.moving {
+	opacity: 0;
+	bottom: -50px;
+	
+}
+.footer.done {
+	position: relative;
+	background-color: transparent;
 }

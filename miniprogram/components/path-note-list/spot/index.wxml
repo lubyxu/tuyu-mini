@@ -7,7 +7,7 @@
 	<view class="right">
 	  <view class="flex title">
 		  <view class="name">{{name}}</view>
-			<switcher checked="{{checked}}" />
+			<switcher checked="{{checked || isChecked}}" bind:click="onChecked" />
 		</view>
 
 		<view class="flex flex-wrap items-center mt-4" style="gap: 6px">

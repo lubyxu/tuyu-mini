@@ -14,8 +14,8 @@
 .chinese-style-btn::before {
 	z-index: -1;
 	position: absolute;
-	left: 23px;
-	right: 23px;
+	left: 22px;
+	right: 22px;
 	top: 0;
 	bottom: 0;
 	content: " ";

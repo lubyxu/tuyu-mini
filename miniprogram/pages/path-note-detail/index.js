@@ -11,12 +11,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id: 0,
+    id: 1,
     path_info: {},
     place_details: [],
     product_map: [],
     place_visited: {},
     modal: null,
+    btnClass: 'fixed',
   },
 
   /**
@@ -26,7 +27,7 @@ Page({
     const data = await getPathDetail({ user_path_id: 1 });
     const { path_detail_info, place_visited } = data;
     this.setData({
-      id: options.id,
+      id: 1,
       path_info: path_detail_info.path_info,
       place_details: path_detail_info.place_details,
       product_map: path_detail_info.product_map,
@@ -82,6 +83,21 @@ Page({
   onShareAppMessage() {
 
   },
+  onPageScroll(e) {
+    console.log('scrollTop', e.scrollTop)
+    const scrollTop = e.scrollTop;
+    if (scrollTop > 10 && this.data.btnClass === 'fixed') {
+      this.setData({
+        btnClass: 'moving'
+      });
+
+      setTimeout(() => {
+        this.setData({
+          btnClass: 'done'
+        });
+      }, 1 * 1000);
+    }
+  },
   onPrivilege(e) {
     const info = e.detail;
     this.setData({
@@ -109,9 +125,5 @@ Page({
         }
       }
     });
-  },
-  openMap() {
-    console.log('clicked')
-    let _this = this;
   }
 })

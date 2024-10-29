@@ -1,4 +1,6 @@
 // components/path-note-list/spot/index.js
+import { checkPath } from '../../../service/path-note/path-detail';
+
 Component({
   options: {
     addGlobalClass: true
@@ -8,6 +10,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    place_id: String,
+    user_path_id: String,
     image: String,
     name: String,
     checked: Boolean,
@@ -22,7 +26,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    isChecked: false,
   },
 
   /**
@@ -36,6 +40,19 @@ Component({
     onImageClick(e) {
       const index = e.detail.index;
       this.triggerEvent('onImageClick', { index, images: this.data.content_info.image_points });
+    },
+    async onChecked(e) {
+      if (this.pending) return;
+      this.pending = true;
+      try {
+        await checkPath({ place_id: this.data.place_id, user_path_id: this.data.user_path_id });
+        this.setData({
+          isChecked: true
+        });
+      }
+      catch (e) {
+        this.pending = false;
+      }
     }
   }
 })

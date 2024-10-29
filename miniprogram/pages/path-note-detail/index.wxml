@@ -1,5 +1,4 @@
 <!--pages/path-note-detail/index.wxml-->
-<scroll-view>
 <view>
   <header
 	  name="🍁 秋日北京 | City Walk"
@@ -22,6 +21,8 @@
 		  <spot
 				image="{{item.image}}"
 				name="{{item.name}}"
+				place_id="{{item.place_id}}"
+				user_path_id="{{id}}"
 				product_ids="{{item.product_id ? [item.product_id] : []}}"
 				product_map="{{product_map}}"
 				checked="{{!!place_visited[item.place_id]}}"
@@ -34,7 +35,7 @@
 		</view>
 	</view>
 
-	<view class="flex items-center justify-center footer" style="padding-bottom: 30px;">
+	<view class="flex items-center justify-center footer {{btnClass}}" style="padding-bottom: 30px;">
 	  <chinese-button width="300">
 			<view class="btn-add-to-plan">添加为我的计划</view>
 		</chinese-button>
@@ -53,4 +54,3 @@
 		bind:close="onModalClose"
 	/>
 </view>
-</scroll-view>
