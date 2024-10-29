@@ -35,6 +35,12 @@
 			  
 			</view>
 		</view>
+
+		<view class="mt-8 flex items-center text-gray-color">
+		  <iconfont name="position" size="13" color="rgba(0, 0, 0, 0.35)" />
+			<view class="ml-4 text-gray-color-2 text-12">{{location || '北京'}}</view>
+			<iconfont name="right-arrow" color="rgba(0, 0, 0, 0.35)" size="13" class="ml-4" />
+		</view>
 	</view>
 
 </view>

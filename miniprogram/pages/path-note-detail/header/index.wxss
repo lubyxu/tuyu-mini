@@ -1,9 +1,10 @@
 /* pages/path-note-detail/header/index.wxss */
 .header {
 	box-sizing: border-box;
-	height: 120px;
+	height: 220px;
 	padding: 16px 12px;
 	background: rgba(251, 237, 219, 1);
+	padding-top: 100px;
 }
 
 .title {

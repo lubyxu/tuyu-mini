@@ -19,7 +19,8 @@ Component({
     content_info: Object,
     plain_text: String,
     product_ids: Array,
-    product_map: Object
+    product_map: Object,
+    location: String
   },
 
   /**
