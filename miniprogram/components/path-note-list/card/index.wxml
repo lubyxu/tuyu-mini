@@ -1,5 +1,5 @@
 <!--components/path-note-list/card/index.wxml-->
-<view class="card relative">
+<view class="card relative" bind:tap="onClick">
   <view class="title">{{item.name}}</view>
 	<view class="container">
 	  <view class="flex w-full">
@@ -23,7 +23,7 @@
 	</view>
 
 	<view class="w-full progress">
-		<progress-bar done="{{4}}" total="{{5}}" />
+		<progress-bar done="{{item.fin_place_count}}" total="{{item.place_count}}" />
 	</view>
 
 	<view class="right-bottom-image">

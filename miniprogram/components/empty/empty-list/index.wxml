@@ -1,0 +1,5 @@
+<!--components/empty/empty-list/index.wxml-->
+<view class="inline-block">
+  <image src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FFzgMudxp90Hf74zL0Czhh%2Fempty.svg" style="width: {{width}}px; height: {{height}}px" />
+	<view class="mt-8 text-14 text-gray-color-1 text-center">{{text}}</view>
+</view>

@@ -20,7 +20,8 @@ Component({
     plain_text: String,
     product_ids: Array,
     product_map: Object,
-    location: String
+    location: String,
+    isUserPath: Boolean,
   },
 
   /**

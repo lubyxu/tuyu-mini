@@ -1,5 +1,5 @@
 // pages/path-note-detail/index.js
-import { getPathDetail } from '../../service/path-note/path-detail';
+import { getPathDetail, deleteUserPath } from '../../service/path-note/path-detail';
 
 
 Page({
@@ -11,27 +11,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id: 1,
+    user_path_id: 0,
+    path_id: 0,
     path_info: {},
     place_details: [],
     product_map: [],
     place_visited: {},
     modal: null,
     btnClass: 'fixed',
+    isUserPath: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
-    const data = await getPathDetail({ user_path_id: 1 });
+    const data = await getPathDetail({ user_path_id: options.user_path_id, path_id: options.path_id });
     const { path_detail_info, place_visited } = data;
     this.setData({
-      id: 1,
+      user_path_id: options.user_path_id,
+      path_id: options.path_id,
       path_info: path_detail_info.path_info,
       place_details: path_detail_info.place_details,
       product_map: path_detail_info.product_map,
       place_visited,
+      isUserPath: !!options.user_path_id
     });
   },
 
@@ -125,5 +129,14 @@ Page({
         }
       }
     });
+  },
+  onClick() {
+    wx.showModal({
+      title: '删除本次计划',
+      content: '确认要删除吗？',
+      success() {
+        return deleteUserPath();
+      }
+    })
   }
 })

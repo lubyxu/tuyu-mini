@@ -6,6 +6,7 @@
     "chinese-button": "../../components/button/chinese-btn/index",
     "card": "./card/index",
     "check-switcher": "./check-switch/index",
-    "spot": "./spot"
+    "spot": "./spot",
+    "empty-list": "/components/empty/empty-list/index"
   }
 }

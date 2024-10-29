@@ -1,17 +1,15 @@
-// pages/path-note-detail/header/index.js
+// components/empty/empty-list/index.js
 Component({
   options: {
-    addGlobalClass: true
+    addGlobalClass: true,
   },
   /**
    * 组件的属性列表
    */
   properties: {
-    name: String,
-    images: Array,
-    fin_place_count: Number,
-    place_count: Number,
-    isUserPath: Boolean,
+    height: Number,
+    width: Number,
+    text: String
   },
 
   /**

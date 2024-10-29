@@ -1,6 +1,6 @@
 <!--components/path-note-list/progress-bar/index.wxml-->
-<view class="container {{isDone ? 'done' : 'pending'}}">
-  <view style="width: {{progress * 86}}px;" class="progress">
+<view class="container {{isDone ? 'done' : 'pending'}} {{progress === 0 ? 'starting' : ''}}">
+  <view style="width: {{progress === 0 ? 12 : progress * 86}}px;" class="progress">
 	  <image
 		  wx:if="{{!isDone}}"
 		  class="pin"
@@ -8,8 +8,10 @@
 		/>
 		<view class="striped w-full"></view>
 	</view>
-	<view wx:if="{{!isDone}}" class="text-undone text">进度{{done}}/{{total}}</
-	view>
+	<view wx:if="{{!isDone}}" class="text-undone text">
+	  <text wx:if="{{progress === 0}}">立即开启</text>
+		<text wx:else>{{done}}/{{total}}</text>
+	</view>
 	<view wx:else class="text-done text">
 	  已打卡
 	</view>

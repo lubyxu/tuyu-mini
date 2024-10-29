@@ -3,8 +3,9 @@
   <header
 	  name="🍁 秋日北京 | City Walk"
 		images="{{path_info.images}}"
-		fin_place_count="{{4}}"
-		place_count="{{5}}"
+		fin_place_count="{{Object.keys(place_visited).length}}"
+		place_count="{{place_details.length}}"
+		isUserPath="{{isUserPath}}"
 	/>
 
 	<view style="padding: 0 16px; margin-top: 20px;">
@@ -29,7 +30,7 @@
 				image="{{item.image}}"
 				name="{{item.name}}"
 				place_id="{{item.place_id}}"
-				user_path_id="{{id}}"
+				user_path_id="{{user_path_id}}"
 				product_ids="{{item.product_id ? [item.product_id] : []}}"
 				product_map="{{product_map}}"
 				checked="{{!!place_visited[item.place_id]}}"
@@ -38,14 +39,22 @@
 				plain_text="{{item.plain_text}}"
 				bind:onPrivilege="onPrivilege"
 				bind:onImageClick="onImageClick"
+				isUserPath="{{isUserPath}}"
 			/>
 		</view>
 	</view>
 
-	<view class="flex items-center justify-center footer {{btnClass}}" style="padding-bottom: 30px;">
+	<view
+	  wx:if="{{!isUserPath}}"
+	  class="flex items-center justify-center footer {{btnClass}}"
+	  style="padding-bottom: 30px;"
+	>
 	  <chinese-button width="300">
 			<view class="btn-add-to-plan">添加为我的计划</view>
 		</chinese-button>
+	</view>
+	<view wx:else style="padding-bottom: 40px;">
+	  <view class="text-gray-color-1 text-16 text-center text-strong" bind:tap="onClick">删除本次计划</view>
 	</view>
 
 	<privilege-modal

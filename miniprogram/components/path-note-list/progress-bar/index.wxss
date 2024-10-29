@@ -16,6 +16,16 @@
 	transition: 0.5s;
 }
 
+.container.pending.starting {
+	background: rgba(0, 0, 0, 0.04);
+
+}
+.container.pending.starting .text {
+	color: rgba(241, 75, 63, 1);
+	left: 50%;
+	margin-left: -20px;
+}
+
 .pin {
 	width: 12px;
 	height: 12px;
@@ -39,6 +49,7 @@
 	background:
 		linear-gradient(90deg, #31AF95 0%, #31AF95 61%, #31AF95 100%) !important;
 }
+
 
 .striped {
 	background-image: linear-gradient(-45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);

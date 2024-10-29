@@ -6,6 +6,6 @@
 		  <image mode="aspectFill" src="{{item}}" class="image" />
 		</view>
 
-		<progress-bar done="{{fin_place_count}}" total="{{place_count}}" />
+		<progress-bar wx:if="{{isUserPath}}" done="{{fin_place_count}}" total="{{place_count}}" />
 	</view>
 </view>

@@ -15,7 +15,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    curKey: '',
+    curKey: 'mine',
     tabs: []
   },
 
@@ -23,8 +23,11 @@ Component({
     attached: async function () {
       const tabs = await getTabs();
       this.setData({
-        tabs: tabs.map(item => ({ key: item.id, name: item.name })),
-        curKey: tabs[0].id,
+        tabs: [
+          { key: 'mine', name: '🌟 我的计划' },
+          ...tabs.map(item => ({ key: item.id, name: item.name })),
+        ],
+        curKey: 'mine',
       });
     }
   },
@@ -38,7 +41,7 @@ Component({
       this.setData({
         curKey: this.data.tabs[index].key
       });
-      this.triggerEvent('change', this.data.tabs[index].key);
+      this.triggerEvent('change', this.data.tabs[index]);
     }
   }
 })
