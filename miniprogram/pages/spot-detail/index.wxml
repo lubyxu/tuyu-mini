@@ -1,0 +1,36 @@
+<!--pages/spot-detail/index.wxml-->
+<swiper
+	vertical="{{true}}"
+	style="height: 100vh;"
+>
+<swiper-item>
+  <view class="page-item">
+	  <image style="width: 100vw;" mode="widthFix"  src="{{images[0]}}" />
+	</view>
+</swiper-item>
+<swiper-item>
+  <view class="page-item">
+	  <image style="width: 100vw;" mode="widthFix" src="{{images[1]}}" />
+	</view>
+</swiper-item>
+<swiper-item>
+  <view>
+	  <view class="title">
+			<image class="icon-navigator" src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FfSxmv1eCuBl9RTdrbEK3K%2Ftitle-navigator.svg" />
+			<view class="title-name">专属回忆</view>
+		</view>
+		<view></view>
+	</view>
+	<view style="margin-top: 24px;">
+	  <view class="title">
+			<image class="icon-navigator" src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FfSxmv1eCuBl9RTdrbEK3K%2Ftitle-navigator.svg" />
+			<view class="title-name">路线推荐·鼓楼</view>
+		</view>
+		<view>
+		  <path-note-card
+			
+			/>
+		</view>
+	</view>
+</swiper-item>
+</swiper>

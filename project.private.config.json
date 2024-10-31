@@ -8,6 +8,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "景点详情",
+          "pathName": "pages/spot-detail/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/path-note-detail/index",
           "pathName": "pages/path-note-detail/index",
           "query": "user_path_id=7&path_id=2",

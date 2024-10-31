@@ -1,0 +1,22 @@
+/* pages/spot-detail/index.wxss */
+
+.page-item {
+	/* height: 100vh; */
+
+}
+
+.page-item-bg-image {
+	width: 100vw;
+	height: 100%;
+}
+
+.icon-navigator {
+	width: 32px;
+	height: 32px;
+}
+
+.title-name {
+	font-size: 24px;
+	font-weight: 500;
+	color: rgba(0, 0, 0, 0.95);
+}
