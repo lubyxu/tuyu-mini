@@ -88,7 +88,6 @@ Page({
 
   },
   onPageScroll(e) {
-    console.log('scrollTop', e.scrollTop)
     const scrollTop = e.scrollTop;
     if (scrollTop > 10 && this.data.btnClass === 'fixed') {
       this.setData({

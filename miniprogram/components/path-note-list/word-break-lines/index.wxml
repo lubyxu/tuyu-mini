@@ -1,0 +1,5 @@
+<!--components/path-note-list/word-break-lines/index.wxml-->
+<view class="plain-text {{extClass}} {{seeMore ? 'plain-text-ellipsis' : ''}} ">
+  {{text}}
+  <view class="see-more" bind:tap="onSeeMore" wx:if="{{seeMore}}">...展开</view>
+</view>

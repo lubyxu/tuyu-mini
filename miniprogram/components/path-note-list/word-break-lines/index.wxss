@@ -1,0 +1,26 @@
+/* components/path-note-list/word-break-lines/index.wxss */
+.plain-text-ellipsis {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  position: relative;
+}
+
+.plain-text {
+  line-height: 26px;
+  text-align: justify;
+}
+
+.see-more {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 50px;
+  background-color: #F6F6F6;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.5);
+}

@@ -21,9 +21,8 @@
 			</view>
 		</view>
 
-		<view class="text-gray-color text-13 mt-4" style="line-height: 18px;">
-			{{plain_text}}
-		</view>
+    <work-break extClass="text-gray-color text-13 mt-4 plain-text" lineHeight="18" text="{{plain_text}}">
+    </work-break>
 
 		<view class="mt-4">
 		  <view class="image-point">

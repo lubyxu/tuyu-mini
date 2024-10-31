@@ -3,6 +3,7 @@
   "usingComponents": {
     "switcher": "../check-switch/index",
     "iconfont": "/iconfont/iconfont",
-    "image-spot": "./image-spot/index"
+    "image-spot": "./image-spot/index",
+    "work-break": "../word-break-lines"
   }
 }
