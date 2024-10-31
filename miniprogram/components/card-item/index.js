@@ -13,6 +13,10 @@ Component({
       type: [Object],
       value: [],
     },
+    spot: {
+      type: Object,
+      value: [],
+    },
     isVisited: {
       type: Boolean,
     },
@@ -37,18 +41,18 @@ Component({
       .sort((a, b) => a.sort / 1 - b.sort / 1)
       .map(item => {
         return {
-        ...item,
-          title: item.title || '北京鼓楼',
-          subtitle: item.subtitle || '我在鼓楼',
-          background: item.background || 'https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/gulou/gulou-home-card.png?sign=29fa3605110eb72800133f785268a8bf&t=1718692990',
-          preview: item.preview || 'https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/gulou/gulou-detail-top.png?sign=92cf4765a73ab156ee4f0c1bd37f9ad7&t=1718693020',
+         ...item,
+         background: item.bg_card_image,
+         preview: item.show_image,
+         subtitle: item.description || "暂无描述",
         }
       })
     this.setData({
       _products,
       showProducts: _products.length > 1,
+      title: this.properties.spot.name,
     })
-    this.setCommonSatae(_products[0])
+    this.setCommonState(_products[0])
   },
 
   methods: {
@@ -57,11 +61,11 @@ Component({
       const owner = this.properties.owner
       if (!owner) {
         wx.navigateTo({
-          url: `/pages/osd-ar/index?id=${this.data.id}&videoUrl=${encodeURIComponent(this.data.resource)}&osd=${encodeURIComponent(this.data.osd)}`
+          url: `/pages/detail/index?id=${id}`
         });
       } else {
         wx.navigateTo({
-          url: `/pages/detail/index?id=${id}`
+          url: `/pages/osd-ar/index?id=${this.data.id}&videoUrl=${encodeURIComponent(this.data.resource)}&osd=${encodeURIComponent(this.data.osd)}`
         });
       }
     },
@@ -69,11 +73,10 @@ Component({
       this.triggerEvent('onFind')
     },
 
-    setCommonSatae(data) {
+    setCommonState(data) {
       const {
         background,
         preview,
-        title,
         subtitle,
         id,
         style,
@@ -85,7 +88,6 @@ Component({
       this.setData({
         background,
         preview,
-        title,
         subtitle,
         selectId: id,
         light: style === 'light',
@@ -96,7 +98,7 @@ Component({
     onSelect(e) {
       const selectId = e.currentTarget.dataset.id
       const current = this.data._products.find(({ id }) => (selectId === id))
-      this.setCommonSatae(current)
+      this.setCommonState(current)
     }
   },
 })

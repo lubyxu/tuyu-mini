@@ -5,6 +5,7 @@ Page({
     markers: [],
     list: [],
     products: [],
+    spot: {},
     isVisited: false,
     showScenicBox: false,
     showScenicCard: true,
@@ -57,10 +58,11 @@ Page({
     const { markerId } = e
     const current = this.data.markers.find(item => item.id === markerId)
     const currentScenic = this.data.list.find(item => item.spot.id === markerId)
-    const { products, is_visited } = currentScenic
+    const { products, is_visited, spot } = currentScenic
     const { latitude, longitude } = current
     this.setData({
       products,
+      spot,
       is_visited,
       latitude,
       longitude,

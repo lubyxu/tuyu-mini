@@ -37,7 +37,7 @@
           />
         </cover-view>
         <cover-view class="card-container" wx-if="{{showScenicCard}}" >
-          <card-item products="{{products}}" isVisited="{{isVisited}}" />
+          <card-item products="{{products}}" isVisited="{{isVisited}}" spot="{{spot}}"/>
         </cover-view>
       </cover-view>
     </map>
