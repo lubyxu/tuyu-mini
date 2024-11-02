@@ -3,6 +3,10 @@
   "usingComponents": {
     "tabs": "./tab/index",
     "auth-guard": "../../components/auth-guard/index",
-    "chinese-button": "../../components/button/chinese-btn/index"
+    "chinese-button": "../../components/button/chinese-btn/index",
+    "card": "./card/index",
+    "check-switcher": "./check-switch/index",
+    "spot": "./spot",
+    "empty-list": "/components/empty/empty-list/index"
   }
 }

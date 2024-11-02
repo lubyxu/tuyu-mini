@@ -1,0 +1,24 @@
+<!--pages/path-note-detail/place-modal/index.wxml-->
+<half-screen-dialog
+	show="{{true}}"
+	title="打卡点位"
+	ext-class="fuyu-half-screen-dialog"
+	bindclose="onClose"
+>
+	<view class="content" slot="desc">
+
+	  <view class="content-image flex items-center justify-center overflow-hidden">
+		  <image mode="aspectFill" class="image rounded-8" src="{{images[curIndex].image}}" />
+		</view>
+		<view class="flex items-center text-gray-color mt-8 mb-16">
+		  <iconfont class="mr-4" name="position" color="rgba(0, 0, 0, 0.65)" size="12"></iconfont>
+			<view class="text-12" bind:tap="onPosClick">{{images[curIndex].location || '北京'}} </view>
+			<iconfont name="right-arrow" color="rgba(0, 0, 0, 0.65)" size="12" class="ml-4" />
+		</view>
+
+		<spot-images
+		  images="{{images}}"
+			bind:onImageClick="{{onImageClick}}"
+		/>
+	</view>
+</half-screen-dialog>

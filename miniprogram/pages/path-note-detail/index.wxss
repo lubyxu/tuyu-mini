@@ -1,0 +1,42 @@
+/* pages/path-note-detail/index.wxss */
+page {
+}
+
+.map-container {
+	height: 160px;
+	padding: 0 20px;
+	border: 0.5px solid rgba(0, 0, 0, 0.12);
+	border-radius: 14px;
+	overflow: hidden;
+}
+
+
+.btn-add-to-plan {
+	font-size: 24px;
+	font-weight: 500;
+	color: rgba(255, 189, 143, 1);
+}
+
+.footer {
+	padding-top: 14px;
+	box-shadow: 1px 0px 4px 0px rgba(0, 0, 0, 0.12);
+}
+
+.footer {
+	transition: all 0.5s;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #ffffff;
+}
+
+.footer.moving {
+	opacity: 0;
+	bottom: -50px;
+	
+}
+.footer.done {
+	position: relative;
+	background-color: transparent;
+}

@@ -1,4 +1,5 @@
 // components/path-note-list/index.js
+import { getPathList } from './service/group';
 
 Component({
   options: {
@@ -15,28 +16,41 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    list: [],
   },
 
+  lifetimes: {
+    attached() {
+      this.getPathList('mine');
+    }
+  },
   /**
    * 组件的方法列表
    */
   methods: {
-    onClick(e) {
-      console.log('000 i am clicked');
+    async getPathList(group_id) {
+      const data = await getPathList({ group_id });
+      this.setData({
+        list: data,
+      });
     },
-    getUserProfile(e) {
-      wx.getUserProfile({
-        desc: '测试一下',
-        success: res => {
-          console.log(res);
+    onItemClick(e) {
+      const detail = e.detail;
+      const queryArr = [
+        detail.user_path_id && `user_path_id=${detail.user_path_id}`,
+        `path_id=${detail.path_id}`
+      ].filter(Boolean);
+
+      wx.navigateTo({
+        url: `/pages/path-note-detail/index?${queryArr.join('&')}`,
+        fail: function (e) {
+          console.log(e)
         }
-      })
+      });
     },
-    getPhoneNumber(e) {
-      console.log(e.detail.code)  // 动态令牌
-    console.log(e.detail.errMsg) // 回调信息（成功失败都会返回）
-    console.log(e.detail.errno)  // 错误码（失败时返回）
+    onTabChange(e) {
+      const key = e.detail.key;
+      this.getPathList(key);
     }
   }
 })

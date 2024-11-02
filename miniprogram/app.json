@@ -5,7 +5,9 @@
     "pages/osd-ar/index",
     "pages/map/index/index",
     "pages/detail/index",
-    "pages/photo/index"
+    "pages/photo/index",
+    "pages/path-note-detail/index",
+    "pages/spot-detail/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -17,5 +19,8 @@
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2",
-  "lazyCodeLoading": "requiredComponents"
+  "lazyCodeLoading": "requiredComponents",
+  "useExtendedLib": {
+    "weui": true
+  }
 }

@@ -1,0 +1,34 @@
+<!--components/path-note-list/card/index.wxml-->
+<view class="card relative" bind:tap="onClick">
+  <view class="title">{{item.name}}</view>
+	<view class="container">
+	  <view class="flex w-full">
+		  <view><text class="text-error-color">{{item.n_involved}}</text> 人已参与</view>
+			<view class="divider"></view>
+			<view><text class="text-strong text-gray-color">{{item.spot_count}}</text> 个游玩景点</view>
+			<view class="divider"></view>
+			<view><text class="text-strong text-gray-color">{{item.product_ids.length}}</text> 个好物推荐</view>
+		</view>
+
+		<view class="w-full info">
+		  <view class="info-item">
+			  <image src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FRfSt033OjHhOj4HCLsvSc%2Fdiamond.svg" />
+			  <text class="number">{{item.place_count}}</text>个打卡点
+			</view>
+			<view class="info-item">
+			  <image src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FVBkM2xudHaNa_VSirgs1y%2Fcamera.svg" />
+			  <text class="number">{{item.privilege_count}}</text>项客户权益
+			</view>
+		</view>
+	</view>
+
+	<view class="w-full progress">
+		<progress-bar done="{{item.fin_place_count}}" total="{{item.place_count}}" />
+	</view>
+
+	<view class="right-bottom-image">
+	  <image src="{{item.images[0]}}" mode=""/>
+		<image src="{{item.images[1] || item.images[0]}}" mode=""/>
+		<image src="{{item.images[2] || item.images[0]}}" mode=""/>
+	</view>
+</view>

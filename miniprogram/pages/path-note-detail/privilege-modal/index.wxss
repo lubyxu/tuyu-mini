@@ -1,0 +1,14 @@
+/* pages/path-note-detail/privilege-modal/index.wxss */
+/* @import '../../../miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss'; */
+
+
+.title {
+	text-align: center;
+}
+.content {
+	font-size: 12px;
+	line-height: 2;
+	color: rgba(0, 0, 0, 0.65);
+	text-align: left;
+	margin-top: 16px;
+}

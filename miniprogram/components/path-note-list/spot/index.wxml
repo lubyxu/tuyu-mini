@@ -1,0 +1,46 @@
+<!--components/path-note-list/spot/index.wxml-->
+<view class="flex">
+  <view class="left">
+	  <image mode="aspectFill" class="place-image" src="{{image}}" />
+	</view>
+
+	<view class="right">
+	  <view class="flex title">
+		  <view class="name">{{name}}</view>
+			<switcher wx:if="{{isUserPath}}" checked="{{checked || isChecked}}" bind:click="onChecked" />
+		</view>
+
+		<view class="flex flex-wrap items-center mt-4" style="gap: 6px">
+		  <view class="tag tag-hot-filled tag-spotted">
+			  <view><iconfont name="fire" color="#fff" /></view>
+				<view>{{c_visited}} 人已打卡</view>
+			</view>
+
+			<view class="tag" wx:for="{{content_info.privilege}}" data-info="{{item}}" bind:tap="onPrivilege">
+			  {{item.tags}}
+			</view>
+		</view>
+
+		<view class="text-gray-color text-13 mt-4" style="line-height: 18px;">
+			{{plain_text}}
+		</view>
+
+		<view class="mt-4">
+		  <view class="image-point">
+			  <view class="image-point-wrapper image-point-product-wrapper" wx:for="{{product_ids}}">
+				  <image mode="aspectFill" class="image-point-product-wrapper-item" src="{{product_map[item].show_image}}" />
+				</view>
+
+				<image-spot images="{{content_info.image_points}}" bind:onImageClick="onImageClick" />
+			  
+			</view>
+		</view>
+
+		<view class="mt-8 flex items-center text-gray-color">
+		  <iconfont name="position" size="13" color="rgba(0, 0, 0, 0.35)" />
+			<view class="ml-4 text-gray-color-2 text-12">{{location || '北京'}}</view>
+			<iconfont name="right-arrow" color="rgba(0, 0, 0, 0.35)" size="13" class="ml-4" />
+		</view>
+	</view>
+
+</view>

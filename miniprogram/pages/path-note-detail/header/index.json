@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "progress-bar": "/components/path-note-list/progress-bar/index"
+  }
+}

@@ -8,5 +8,6 @@
     "loading": "/components/loading/index",
     "path-notes": "/components/path-note-list"
   },
-  "navigationStyle": "custom"
+  "navigationStyle": "custom",
+  "disableScroll": false
 }

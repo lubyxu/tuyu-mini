@@ -1,0 +1,6 @@
+<!--components/half-dialog/index.wxml-->
+<half-screen-dialog
+	show="{{true}}"
+	title="权益中心"
+	ext-class="fuyu-half-screen-dialog"
+/>

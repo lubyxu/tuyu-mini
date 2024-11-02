@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "switcher": "../check-switch/index",
+    "iconfont": "/iconfont/iconfont",
+    "image-spot": "./image-spot/index"
+  }
+}

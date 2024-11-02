@@ -1,4 +1,6 @@
 /**app.wxss**/
+@import './component.wxss';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -26,12 +28,25 @@ page {
   justify-content: flex-start;
 }
 
+.block {
+  display: block;
+}
+.inline-block {
+  display: inline-block;
+}
 .flex {
   display: flex;
+}
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .items-center {
   align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .gap-8 {
@@ -64,4 +79,72 @@ page {
 }
 .r-0 {
   right: 0;
+}
+.text-strong {
+  font-weight: 500;
+}
+.text-error-color {
+  color: #F14B3F;
+}
+.text-success-color {
+  color: rgba(76, 173, 95, 1);
+}
+
+.text-gray-color {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+
+.text-gray-color-1 {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.text-gray-color-2 {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.text-strong {
+  font-weight: 500;
+}
+
+.text-14 {
+  font-size: 14px;
+}
+.text-13 {
+  font-size: 13px;
+}
+.text-12 {
+  font-size: 12px;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.mt-4 {
+  margin-top: 4px;
+}
+.ml-4 {
+  margin-left: 4px;
+}
+.mr-4 {
+  margin-right: 4px;
+}
+.mt-8 {
+  margin-top: 8px;
+}
+.mt-16 {
+  margin-top: 16px;
+}
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.rounded-8 {
+  border-radius: 8px;
 }
