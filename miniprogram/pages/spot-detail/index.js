@@ -1,10 +1,12 @@
 // pages/spot-detail/index.js
+import { getPathBySpot } from '../../service/path-note/path-detail';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    paths: [],
     images: [
       "https://fuyuoss.oss-cn-shanghai.aliyuncs.com/product/1/a8522ada-bfbd-461e-85e8-05e251887d96.png",
       "https://fuyuoss.oss-cn-shanghai.aliyuncs.com/product/1/cb56d8b7-1c8c-4f59-91b0BG2.png"
@@ -14,8 +16,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-
+  async onLoad(options) {
+    const paths = await getPathBySpot({ spot_id: options.spot_id, province: options.province });
+    this.setData({
+      paths
+    });
   },
 
   /**

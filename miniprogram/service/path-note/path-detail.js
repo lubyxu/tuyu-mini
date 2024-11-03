@@ -45,3 +45,14 @@ export function deleteUserPath() {
 	// todo
 	return Promise.resolve();
 }
+
+export async function getPathBySpot({ spot_id, province }) {
+  const {data} = await request({
+    url: '/fuyu/path/pathlist',
+    data: {
+      spot_id,
+      province
+    }
+  });
+  return data;
+}
