@@ -33,10 +33,13 @@ Component({
         }
     },
     methods: {
-        switchTab() {
-            wx.switchTab({
+        navigateToHome() {
+            wx.navigateTo({
                 url: '/pages/home/index',
             })
         },
+        navigateBack() {
+            wx.navigateBack()
+        }
     }
 })

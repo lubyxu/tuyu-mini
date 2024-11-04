@@ -17,18 +17,8 @@
           <rich-text nodes="{{nodes}}"></rich-text>
         </view>
         <view class="detail-bottom-content">
-          <view
-            bindtap="gotoAR"
-            class="detail-content-ar"
-          >
-            AR冰箱贴
-          </view>
-          <view
-            bindtap="chooseOrPreviewImageTap"
-            class="detail-content-add"
-          >
-            {{ bind ? '查看回忆' : '生成回忆' }}
-          </view>
+          <chinese-button bind:click="onBuy" width="156"> 立即购买 </chinese-button>
+          <chinese-button bind:click="onClick" bindtap="gotoAR" width="156"> 扫一扫 </chinese-button>
         </view>
       </view>
     </view>

@@ -24,15 +24,15 @@ App({
       });
 
       console.log('wx.cloud.DYNAMIC_CURRENT_ENV', wx.cloud.DYNAMIC_CURRENT_ENV)
-      wx.cloud.init({
-        // env 参数说明：
-        //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
-        //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
-        //   如不填则使用默认环境（第一个创建的环境）
-        env: 'production-6gycngib97dae447', // 线上
-        // env: 'cloud1-0gq8f3qi3903d318', // 开发
-        traceUser: true,
-      });
+      // wx.cloud.init({
+      //   // env 参数说明：
+      //   //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
+      //   //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
+      //   //   如不填则使用默认环境（第一个创建的环境）
+      //   env: 'production-6gycngib97dae447', // 线上
+      //   // env: 'cloud1-0gq8f3qi3903d318', // 开发
+      //   traceUser: true,
+      // });
     }
     // https://developers.weixin.qq.com/community/develop/article/doc/000a8c989307888cbe1abbf675f413
     const that = this;
@@ -51,14 +51,5 @@ App({
     that.globalData.menuRight = systemInfo.screenWidth - menuButtonInfo.right;
     that.globalData.menuBotton = menuButtonInfo.top - systemInfo.statusBarHeight;
     that.globalData.menuHeight = menuButtonInfo.height;
-
-    const data = await wx.cloud.callFunction({
-      name: 'getOpenId',
-    })
-
-    // const {data} = await getUser();
-
-    const { openid } = data?.result
-    that.globalData.openid = openid
   },
 });

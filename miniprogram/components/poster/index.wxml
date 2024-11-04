@@ -1,4 +1,4 @@
-<view class="poster-container">
+<view class="poster-container" style="background-image: url('{{background}}');">
     <painter
         customStyle='margin-top: 149px;width: 310px;height: 440px'
         palette="{{posterData}}"
