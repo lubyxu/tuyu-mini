@@ -47,7 +47,7 @@ export function getUser() {
         catch (e) {
           const {errno} = e;
           if (errno === 2000) {
-            const data = await registerAccount(code);
+            const data = await registerAccount(e.data.openid, code);
             resolve(data);
           }
         }
@@ -62,7 +62,22 @@ export function getUser() {
  * @param {string} code 
  * @returns { open_id: string }
  */
-async function registerAccount(code) {
-  const ret = await request({ url: '/fuyu/user/create/code', data: { code }});
-  return ret.data
+async function registerAccount(openid, code) {
+   return new Promise(async (resolve, reject) => {
+     wx.login({
+       success: async (res) => {
+         const code = res.code;
+         const ret = await request({
+          url: '/fuyu/user/create/code',
+          data: {
+            open_id: openid,
+            code,
+            nickname: ''
+          }
+        });
+        console.log('rest', ret.data)
+        return ret.data
+       },
+     })
+   })
 }

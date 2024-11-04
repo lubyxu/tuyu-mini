@@ -1,6 +1,5 @@
 // pages/path-note-detail/index.js
-import { getPathDetail, deleteUserPath } from '../../service/path-note/path-detail';
-
+import { getPathDetail, deleteUserPath, addUserPath } from '../../service/path-note/path-detail';
 
 Page({
   options: {
@@ -20,23 +19,15 @@ Page({
     modal: null,
     btnClass: 'fixed',
     isUserPath: false,
+    hasUserPath: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
-    const data = await getPathDetail({ user_path_id: options.user_path_id, path_id: options.path_id });
-    const { path_detail_info, place_visited } = data;
-    this.setData({
-      user_path_id: options.user_path_id,
-      path_id: options.path_id,
-      path_info: path_detail_info.path_info,
-      place_details: path_detail_info.place_details,
-      product_map: path_detail_info.product_map,
-      place_visited,
-      isUserPath: !!options.user_path_id
-    });
+    this.options = options;
+    this.getDetail({ user_path_id: options.user_path_id, path_id: options.path_id});
   },
 
   /**
@@ -50,7 +41,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    const options = this.options;
+    this.getDetail({ user_path_id: options.user_path_id, path_id: options.path_id});
   },
 
   /**
@@ -101,6 +93,24 @@ Page({
       }, 1 * 1000);
     }
   },
+  async getDetail({ user_path_id, path_id }) {
+    const data = await getPathDetail({ user_path_id, path_id });
+    const { path_detail_info, place_visited } = data;
+    console.log('path_detail_info.user_path_id', path_detail_info.user_path_id);
+    this.setData({
+      user_path_id: user_path_id || path_detail_info.user_path_id,
+      path_id: path_id,
+      path_info: path_detail_info.path_info,
+      place_details: path_detail_info.place_details,
+      product_map: path_detail_info.product_map,
+      products: path_detail_info.path_info.product_ids.map(id => {
+        return path_detail_info.product_map[id]
+      }),
+      place_visited,
+      isUserPath: !!user_path_id,
+      hasUserPath: !user_path_id && path_detail_info.user_path_id,
+    });
+  },
   onPrivilege(e) {
     const info = e.detail;
     this.setData({
@@ -129,12 +139,23 @@ Page({
       }
     });
   },
+  async onAddToPlan() {
+    const user_path_id = await addUserPath(this.data.path_id);
+    await this.getDetail({ user_path_id, path_id: this.data.path_id });
+  },
+  goToMyPlan() {
+    const data = this.data;
+    wx.navigateTo({
+      url: `/pages/path-note-detail/index?user_path_id=${data.user_path_id}&path_id=${data.path_id}`,
+    });
+  },
   onClick() {
     wx.showModal({
       title: '删除本次计划',
       content: '确认要删除吗？',
-      success() {
-        return deleteUserPath();
+      success: async () => {
+        await deleteUserPath(this.data.user_path_id);
+        await this.getDetail({ path_id: this.data.path_id });
       }
     })
   }

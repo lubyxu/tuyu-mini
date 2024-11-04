@@ -40,10 +40,23 @@ export async function checkPath({ user_path_id, place_id }) {
 	});
 }
 
-
-export function deleteUserPath() {
-	// todo
-	return Promise.resolve();
+export async function addUserPath(path_id, province = 'beijing') {
+  const { data } = await request({
+    url: '/fuyu/path/useraddpath',
+    data: {
+      province,
+      path_id: +path_id
+    }
+  });
+  return data.user_path_id;
+}
+export function deleteUserPath(user_path_id) {
+	return request({
+    url: '/fuyu/path/userdelpath',
+    data: {
+      user_path_id: +user_path_id
+    }
+  });
 }
 
 export async function getPathBySpot({ spot_id, province }) {
@@ -52,6 +65,16 @@ export async function getPathBySpot({ spot_id, province }) {
     data: {
       spot_id,
       province
+    }
+  });
+  return data;
+}
+
+export async function getSpotDetail(spot_id) {
+  const { data } = await request({
+    url: '/fuyu/spot/detail',
+    data: {
+      spot_id: +spot_id
     }
   });
   return data;

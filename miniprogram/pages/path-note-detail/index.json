@@ -7,6 +7,7 @@
     "spot": "../../components/path-note-list/spot/index",
     "privilege-modal": "./privilege-modal/index",
     "place-modal": "./place-modal/index",
-    "chinese-button": "/components/button/chinese-btn"
+    "chinese-button": "/components/button/chinese-btn",
+    "card-item": "/components/card-item/index"
   }
 }

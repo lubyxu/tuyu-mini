@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "path-note-card": "/components/path-note-list/card/index"
+    "path-note-card": "/components/path-note-list/card/index",
+    "card-item": "/components/card-item/index"
   }
 }

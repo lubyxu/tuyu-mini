@@ -51,5 +51,7 @@ App({
     that.globalData.menuRight = systemInfo.screenWidth - menuButtonInfo.right;
     that.globalData.menuBotton = menuButtonInfo.top - systemInfo.statusBarHeight;
     that.globalData.menuHeight = menuButtonInfo.height;
+
+    getUser();
   },
 });

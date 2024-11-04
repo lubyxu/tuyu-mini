@@ -28,7 +28,7 @@ Component({
         let lineHeight = _that.data.lineHeight || 26;
         const item = res[0] ? res[0][0] : null;
         if (!item) return;
-        console.log(item)
+        
         if (item.height / lineHeight > 3) {
           _that.setData({
             seeMore: true
