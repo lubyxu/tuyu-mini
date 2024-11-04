@@ -17,10 +17,6 @@ export const getAuthorization = (id = 4) => {
     return request({ url: `/fuyu/usertoken?id=${id}`, method: 'GET' })
   }
   
-  function computeSignature(accessKeySecret, canonicalString) {
-    return crypto.enc.Base64.stringify(crypto.HmacSHA1(canonicalString, accessKeySecret));
-  }
-  
   export const getUploadParams = async (id = 4) => {
     try {
       const res = await getAuthorization(id)
@@ -29,16 +25,16 @@ export const getAuthorization = (id = 4) => {
       }
       const { data: Authorization } = res;
       const { data: { sts_cred, bucket } } = await request({ url: `/fuyu/oss/ststoken`, method: 'GET', Authorization })
-      console.log('sts_cred', { ...sts_cred, bucket })
-      return sts_cred
+      return { ...sts_cred, bucket }
     } catch (err) {
       throw err
     }
   }
   
-  export const uploadPhotos = async (filePath) => {
+  export const uploadPhotos = async ({ filePath, userId = 4, productId = 4, id }) => {
     const host = 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com'
-    const key = 'user-photos';
+    const reducePath = `${userId}/${userId}/${productId}/${id}`
+    const key = `user-photos/${reducePath}`;
     const { bucket, AccessKeyId: ossAccessKeyId, AccessKeySecret: accessKeySecret, Expiration: expiration, SecurityToken: securityToken } = await getUploadParams();
   
     const PAS = getPolicyAndSignature(
@@ -57,8 +53,6 @@ export const getAuthorization = (id = 4) => {
         signature: PAS.signature,
         policy: PAS.policyBase64,
     }
-
-    console.log('formData', formData)
   
     return new Promise((resolve, reject) => {
       wx.uploadFile({
@@ -67,10 +61,19 @@ export const getAuthorization = (id = 4) => {
         name: 'file', // 必须填file。
         formData,
         success: (res) => {
-          console.log('上传文件res', res)
-          resolve(res)
+          if (res.statusCode !== 200) {
+            reject(res)
+          }
+          resolve({ ...res, filePath: `https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/${reducePath}`, createTime: Math.floor(new Date().getTime() / 1000) })
         },
         fail: reject
       });
     })
   }
+
+export const formatTime = (time) => {
+  const date = new Date(time * 1000);
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  return `${month}.${day}`
+} 

@@ -304,7 +304,6 @@
 }
 
 .ptoto-bottom-img {
-  flex: 1;
   width: 150rpx;
   height: 168rpx;
 }
@@ -323,11 +322,12 @@
   line-height: 18px;
   text-align: center;
   letter-spacing: 2.07399px;
-
   color: #000000;
+  text-align: left;
 }
 
 .ptoto-bottom {
+  margin-top: 32rpx;
   display: flex;
   align-items: center;
   justify-content: center;

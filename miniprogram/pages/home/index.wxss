@@ -104,6 +104,7 @@ page {
 }
 
 .nav-container {
+  margin-top: 10rpx;
   display: flex;
   align-items: center;
   justify-self: center;

@@ -1,8 +1,13 @@
 <!--index.wxml-->
 <view>
   <navigation-bar />
-  <view wx:if="{{!showPoster}}">
-    <poster />
+  <view wx:if="{{showPoster}}">
+    <poster
+      background="{{product_share_bg_img}}"
+      time="{{time}}"
+      photos="{{photos}}"
+      description="{{description}}"
+    />
   </view>
   <view wx-if="{{!showPoster}}">
     <loading wx-if="{{showLoading}}" />
@@ -11,7 +16,7 @@
         <view class="photo-upload-content">
           <view class="photo-upload-box">
             <view class="upload-title">
-              <text class="upload-title-text">10.01</text>
+              <text class="upload-title-text" wx-if="{{time}}">{{time}}</text>
               <image
                 src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/logo-text.png"
                 class="photo-upload-logo"
@@ -35,30 +40,23 @@
                 <swiper-item>
                   <view class="photo-container">
                     <cover-image
-                     
                       src="../../images/upload.svg"
                       class="update-logo"
                       bindtap="updateImage"
                     />
-                    <image class="banner-item" src="{{item}}" />
+                    <image class="banner-item" src="{{item.url}}" />
                   </view>
                 </swiper-item>
               </block>
             </view>
 
-            <!-- <view class="ptoto-name-box">
-              <view class="ptoto-name-left">鼓楼格格</view>
-              <view class="ptoto-name-right">drum-tower</view>
-            </view> -->
-
             <view class="ptoto-bottom">
               <image
-                src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/logo-text.png"
+                src="{{product_img}}"
                 class="ptoto-bottom-img"
               />
               <view class="ptoto-bottom-text-box">
-                <view class="ptoto-bottom-box-text">钟鼓楼|老街旧巷,</view>
-                <view class="ptoto-bottom-box-text">写满了岁月悠长</view>
+                <view class="ptoto-bottom-box-text" wx:for="{{description}}">{{item}}</view>
               </view>
             </view>
           </view>
@@ -85,7 +83,6 @@
                 />
               </view>
               <text class="photo-top-section-name">{{name}}</text>
-              <!-- <text class="photo-top-section-date" wx-if="{{date}}">{{date}}</text> -->
             </view>
           </view>
 
@@ -93,35 +90,6 @@
             <text class="share-text">分享回忆</text>
           </chinese-button>
         </view>
-        <!-- <view class="photo-content">
-          <swiper
-            indicator-dots="true"
-            autoplay="true"
-            vertical="true"
-            interval="5000"
-            duration="500"
-            style="height: 1080rpx"
-          >
-            <block wx:for="{{photos}}" wx:key="*this">
-              <swiper-item>
-                <view>
-                  <image
-                    src="../../images/update.svg"
-                    class="update-logo"
-                    bindtap="updateImage"
-                  />
-                  <image class="banner-item" src="{{item}}" />
-  
-                </view>
-              </swiper-item>
-            </block>
-          </swiper>
-          <view
-            class="photo-bottom-bg"
-            style="background-image: url('{{bottomImage}}');"
-          >
-          </view>
-        </view> -->
       </view>
     </view>
   </view>

@@ -48,20 +48,20 @@ Page({
     duration: 500,
     showLoading: true,
     titleBarVisible: false,
-    selected: 1,
+    selected: 0,
     selectList: [
-      {
-        text: "首页",
-        iconPath: "../../images/icons/icon-1.svg",
-        selectedIconPath: "../../images/icons/icon-1-active.svg",
-        index: 0,
-      },
       {
         text: "路书",
         iconPath: "../../images/icons/icon-2.svg",
         selectedIconPath: "../../images/icons/icon-2-active.svg",
+        index: 0,
+      },
+      {
+        text: "景点",
+        iconPath: "../../images/icons/icon-1.svg",
+        selectedIconPath: "../../images/icons/icon-1-active.svg",
         index: 1,
-      }
+      },
     ],
     list: []
   },

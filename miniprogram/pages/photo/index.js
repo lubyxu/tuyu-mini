@@ -1,23 +1,24 @@
-import { uploadPhotos } from '../../utils/upload.js'
-
-const app = getApp()
-const { parseServerDate } = require('../../utils/cloud.js')
+import { request, SUCCESS_CODE } from '../../utils/req.js';
+import { uploadPhotos, formatTime } from '../../utils/upload.js'
 
 Page({
   data: {
     pid: "",
-    topBackgroundImage: 'https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E9%BC%93%E6%A5%BC/gulou-detail-top.png?sign=a5d4493e5196878c5694bb0c7092ee6d&t=1723002252',
+    topBackgroundImage: '',
     topBackgroundImage2: 'https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/photo-tiny-bg.png?sign=a01574f986bf50a15dbe5cd9ec97b899&t=1718937514',
+    product_share_bg_img: '',
     bottomImage: '',
     name: '北京鼓楼',
     photos: [],
+    description: [],
     date: '',
+    time: '',
     showLoading: true,
     showPoster: false,
+    product_img: '',
   },
 
   onLoad: function (options) {
-    console.log('options.pid', options.pid)
     this.setData({
       pid: options.pid,
     })
@@ -27,78 +28,31 @@ Page({
     this.getInitData()
   },
 
-    async getInitData() {
+  async getInitData() {
     try {
-      // await this.getUserInfo()
-      // await Promise.all([this.getBind(), this.getPoduct()])
-      this.setData({ showLoading: false })
+      const res = await request({ url: `/fuyu/product/memory/info`, data: { product_id: 2 } })
+      const { data, errno } = res
+      if (errno!== SUCCESS_CODE) {
+        throw res
+      }
+      let { memory: { data: memoryData }, bg_img, product_show_img, spot_name, product_name, shar_config } = data
+      const { product_mem_bg_img: topBackgroundImage, product_share_bg_img } = shar_config
+      memoryData = memoryData.map(({ create_time, text, file }) => {
+        const [url] = file.split(',')
+        return { url, createTime: formatTime(create_time), text }
+      })
+      this.setData({
+        photos: memoryData,
+        time: memoryData[0].createTime,
+        description: (memoryData[0].text).split('\n'),
+        product_img: product_show_img,
+        showLoading: false,
+        topBackgroundImage,
+        product_share_bg_img
+      })
     } catch (err) {
       console.log('err', err)
     }
-  },
-
-
-  // async getInitData() {
-  //   try {
-  //     await this.getUserInfo()
-  //     await Promise.all([this.getBind(), this.getPoduct()])
-  //     this.setData({ showLoading: false })
-  //   } catch (err) {
-  //     console.log('err', err)
-  //   }
-  // },
-
-  async getUserInfo() {
-    if (app.globalData.openid) {
-      return
-    }
-    const data = await wx.cloud.callFunction({
-      name: 'getOpenId',
-    })
-    const { openid } = data?.result
-    app.globalData.openid = openid
-  },
-
-  async getBind() {
-    const data = await wx.cloud.callFunction({
-      name: 'getBind',
-      data: {
-        pid: `${this.data.pid}`,
-        openid: `${app.globalData.openid}`
-      },
-    })
-    console.log('data=>', data)
-    const { imageList: photos = [],  date: serverDate } = data?.result?.data
-    console.log('products', data)
-    console.log('photos', photos)
-    const formatData = serverDate ? parseServerDate(serverDate) : ''
-    this.setData({
-      photos,
-      date: formatData
-    })
-  },
-
-  async getPoduct() {
-    const data = await wx.cloud.callFunction({
-      name: 'getProduct',
-      data: {
-        pid: this.data.pid
-      },
-    })
-    const { photoPage } = data.result
-    const {
-      topBackgroundImage = '',
-      topBackgroundImage2 = 'https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/photo-tiny-bg.png?sign=a01574f986bf50a15dbe5cd9ec97b899&t=1718937514',
-      bottomImage = [],
-      name = ''
-    } = photoPage
-    this.setData({
-      topBackgroundImage,
-      topBackgroundImage2,
-      bottomImage,
-      name,
-    })
-    console.log('products', data)
   },
 
   jumpMap() {
@@ -107,32 +61,6 @@ Page({
     })
   },
 
-  async bind(uploadResult) {
-    const imageList = uploadResult.map(({ fileID }) => {
-      return fileID
-    })
-    return await wx.cloud.callFunction({
-      name: 'bind',
-      data: {
-        openid: app.globalData.openid,
-        pid: this.data.pid,
-        imageList,
-      },
-    })
-  },
-
-  // uploadImageToCloud(filePath, index) {
-  //   return new Promise((resolve, reject) => {
-  //     const fileType = filePath.split('.')[1]
-  //     const cloudPath = `user-image/${app.globalData.openid}_${this.data.pid}_${index}_${`${Math.random()}`.slice(2,6)}.${fileType}`
-  //     wx.cloud.uploadFile({
-  //       cloudPath,
-  //       filePath,
-  //       success: resolve,
-  //       fail: reject
-  //     })
-  //   })
-  // },
 
   updateImage() {
     wx.chooseImage({
@@ -143,11 +71,22 @@ Page({
     })
   },
 
+  uploadPhotosServer(uploadResult) {
+    const body = {
+      product_id: 2,
+      mem_data: uploadResult.map(({ filePath, createTime }) => ({
+        file: filePath,
+        create_time: createTime,
+      }))
+    }
+    return request({ url: '/fuyu/product/memory/update', data: body })
+  },
+
   async chooseImageSuccess(res) {
     const tempFilePaths = res.tempFilePaths
     const uploadPromises = []
     for (let i = 0; i < tempFilePaths.length; i++) {
-      uploadPromises.push(uploadPhotos(tempFilePaths[i]))
+      uploadPromises.push(uploadPhotos({ filePath: tempFilePaths[i], id: i }))
     }
     try {
       wx.showToast({
@@ -156,14 +95,21 @@ Page({
       })
       const uploadResult = await Promise.all(uploadPromises)
       console.log('uploadResult', uploadResult)
-      // await this.bind(uploadResult)
+      const data = await this.uploadPhotosServer(uploadResult)
+      console.log('data', data)
       wx.showToast({
         icon: 'success',
         title: '上传图片成功～',
         duration: 2000
       })
+      const formaPhotos = tempFilePaths.map((url) => {
+        return {
+          url,
+        }
+      })
       this.setData({
-        photos: tempFilePaths,
+        photos: formaPhotos,
+        tiem: formatTime(Math.floor(new Date().getTime() / 1000))
       })
     } catch (err) {
       console.log(err)
