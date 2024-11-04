@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view>
   <navigation-bar />
-  <view wx:if="{{showPoster}}">
+  <view wx:if="{{!showPoster}}">
     <poster />
   </view>
   <view wx-if="{{!showPoster}}">
@@ -17,17 +17,33 @@
                 class="photo-upload-logo"
               />
             </view>
-            <view class="ptoto-empty-box">
+            <view class="ptoto-empty-box" wx-if="{{photos.length == 0}}">
               <image
                 src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/empty.png"
                 class="photo-empty-logo"
               />
               <text class="photo-empty-tips">暂无回忆记录～</text>
               <view class="photo-empty-button-box">
-                <chinese-button width="156">
+                <chinese-button width="156" bind:click="updateImage">
                   <text class="photo-empty-button-text">上传回忆</text>
                 </chinese-button>
               </view>
+            </view>
+
+            <view class="photo-box" wx-if="{{photos.length > 0}}">
+              <block wx:for="{{photos}}" wx:key="*this">
+                <swiper-item>
+                  <view class="photo-container">
+                    <cover-image
+                     
+                      src="../../images/upload.svg"
+                      class="update-logo"
+                      bindtap="updateImage"
+                    />
+                    <image class="banner-item" src="{{item}}" />
+                  </view>
+                </swiper-item>
+              </block>
             </view>
 
             <!-- <view class="ptoto-name-box">
@@ -69,9 +85,13 @@
                 />
               </view>
               <text class="photo-top-section-name">{{name}}</text>
-              <text class="photo-top-section-date" wx-if="{{date}}">{{date}}</text>
+              <!-- <text class="photo-top-section-date" wx-if="{{date}}">{{date}}</text> -->
             </view>
           </view>
+
+          <chinese-button width="230" bind:click="showPoster" className="share-box">
+            <text class="share-text">分享回忆</text>
+          </chinese-button>
         </view>
         <!-- <view class="photo-content">
           <swiper

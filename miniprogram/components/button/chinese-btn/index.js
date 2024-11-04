@@ -8,7 +8,10 @@ Component({
     width: {
       type: Number,
       value: 200
-    }
+    },
+    className: {
+      type: String,
+    },
   },
 
   /**
