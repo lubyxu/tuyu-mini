@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view>
+  <navigation-bar />
   <view wx:if="{{showPoster}}">
     <poster />
   </view>
@@ -7,7 +8,55 @@
     <loading wx-if="{{showLoading}}" />
     <view wx-if="{{!showLoading}}">
       <view class="photo-page">
-        <navigation-bar default-data="{{defaultData}}"></navigation-bar>
+        <view class="photo-upload-content">
+          <view class="photo-upload-box">
+            <view class="upload-title">
+              <text class="upload-title-text">10.01</text>
+              <image
+                src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/logo-text.png"
+                class="photo-upload-logo"
+              />
+            </view>
+            <view class="ptoto-empty-box">
+              <image
+                src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/empty.png"
+                class="photo-empty-logo"
+              />
+              <text class="photo-empty-tips">暂无回忆记录～</text>
+              <view class="photo-empty-button-box">
+                <chinese-button width="156">
+                  <text class="photo-empty-button-text">上传回忆</text>
+                </chinese-button>
+              </view>
+            </view>
+
+            <!-- <view class="ptoto-name-box">
+              <view class="ptoto-name-left">鼓楼格格</view>
+              <view class="ptoto-name-right">drum-tower</view>
+            </view> -->
+
+            <view class="ptoto-bottom">
+              <image
+                src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/logo-text.png"
+                class="ptoto-bottom-img"
+              />
+              <view class="ptoto-bottom-text-box">
+                <view class="ptoto-bottom-box-text">钟鼓楼|老街旧巷,</view>
+                <view class="ptoto-bottom-box-text">写满了岁月悠长</view>
+              </view>
+            </view>
+          </view>
+
+          <view class="load-more-box">
+            <image
+              src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/load-more.png"
+              class="load-more-icon"
+            />
+            <text class="load-more-tips">点击或上滑查看攻略</text>
+          </view>
+          
+        </view>
+
         <view class="photo-top-section" style="background-image: url('{{topBackgroundImage2}}');">
           <image src="{{topBackgroundImage}}" class="photo-top-section-image"/>
           <view class="flex-box">
@@ -22,21 +71,9 @@
               <text class="photo-top-section-name">{{name}}</text>
               <text class="photo-top-section-date" wx-if="{{date}}">{{date}}</text>
             </view>
-              <image
-                src="https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/common/share-icon.png?sign=9af0408603a75bedd258cc3cf994229f&t=1727404907"
-                class="share-icon"
-                bindtap="showPoster"
-              />
-          </view>
-          <view class="photo-bottom-btn">
-            <text class="photo-bottom-btn-text">下滑查看更多回忆</text>
-            <image
-              src="https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/common/down.png?sign=1b40a48f9fa92cc794c28083a1e55b22&t=1727405884"
-              class="down-icon"
-            />
           </view>
         </view>
-        <view class="photo-content">
+        <!-- <view class="photo-content">
           <swiper
             indicator-dots="true"
             autoplay="true"
@@ -63,16 +100,8 @@
             class="photo-bottom-bg"
             style="background-image: url('{{bottomImage}}');"
           >
-            <!-- <view class="detail-bottom-content">
-              <image
-                bindtap="jumpMap"
-                class="detail-content-add"
-                src="https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/jump-map-btn.png?sign=a4351231623ddd3df3cb69c74cb2f544&t=1718954142"
-              />
-              <text class="detail-content-add-text">点击查看详情</text>
-            </view> -->
           </view>
-        </view>
+        </view> -->
       </view>
     </view>
   </view>

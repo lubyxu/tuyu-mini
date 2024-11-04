@@ -4,8 +4,8 @@ const { parseServerDate } = require('../../utils/cloud.js')
 Page({
   data: {
     pid: "",
-    topBackgroundImage: '',
-    topBackgroundImage2: '',
+    topBackgroundImage: 'https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/%E9%BC%93%E6%A5%BC/gulou-detail-top.png?sign=a5d4493e5196878c5694bb0c7092ee6d&t=1723002252',
+    topBackgroundImage2: 'https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/photo-tiny-bg.png?sign=a01574f986bf50a15dbe5cd9ec97b899&t=1718937514',
     bottomImage: '',
     name: '',
     photos: [],
@@ -25,15 +25,26 @@ Page({
     this.getInitData()
   },
 
-  async getInitData() {
+    async getInitData() {
     try {
-      await this.getUserInfo()
-      await Promise.all([this.getBind(), this.getPoduct()])
+      // await this.getUserInfo()
+      // await Promise.all([this.getBind(), this.getPoduct()])
       this.setData({ showLoading: false })
     } catch (err) {
       console.log('err', err)
     }
   },
+
+
+  // async getInitData() {
+  //   try {
+  //     await this.getUserInfo()
+  //     await Promise.all([this.getBind(), this.getPoduct()])
+  //     this.setData({ showLoading: false })
+  //   } catch (err) {
+  //     console.log('err', err)
+  //   }
+  // },
 
   async getUserInfo() {
     if (app.globalData.openid) {

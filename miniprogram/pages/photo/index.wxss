@@ -195,3 +195,186 @@
   height: 32px;
   z-index: 22;
 }
+
+.photo-upload-content {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/photo-bg.png");
+  background-size: 100vw 100vh;
+}
+
+.photo-upload-box {
+  box-sizing: border-box;
+  position: absolute;
+  width: 80vw;
+  right: 10vw;
+  top: 130.04px;
+  background: #FEFEFE;
+  border-radius: 18.4273px;
+  padding: 20rpx;
+  transform: rotate(-5.68deg);
+}
+
+.upload-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120rpx;
+  /* transform: rotate(-5.68deg); */
+}
+
+.upload-title-text {
+  flex: 1;
+  text-align: left;
+  font-family: 'DIN Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 47.7746px;
+  line-height: 57px;
+  letter-spacing: -0.260145px;
+  color: #020202;
+}
+
+.photo-upload-logo {
+  width: 265rpx;
+  height: 120rpx;
+}
+
+.ptoto-empty-box {
+  width: 100%;
+  height: 580rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f7f7f7;
+  border-radius: 10rpx;
+}
+
+.photo-empty-logo {
+  width: 270rpx;
+  height: 270rpx;
+  margin-top: 48rpx;
+}
+
+.photo-empty-tips {
+  margin-top: 7rpx;
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.photo-empty-button-box {
+  margin-top: 40rpx;
+}
+
+.photo-empty-button-text {
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+  letter-spacing: -0.427208px;
+  color: #FFBD8F;
+
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 1;
+}
+
+.ptoto-name-box {
+  display: flex;
+}
+
+.ptoto-name-left {
+  font-family: 'ZCOOL QingKe HuangYou';
+  font-style: normal;
+  font-weight: 400;
+  height: 100%;
+  font-size: 80rpx;
+  text-align: center;
+  color: #000000;
+  left: 1;
+}
+
+.ptoto-name-right {
+  font-family: 'DIN Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 60rpx;
+  text-align: center;
+  letter-spacing: 2.04748px;
+  text-transform: uppercase;
+  color: #020202;
+  opacity: 0.12;
+  width: 240rpx;
+}
+
+.ptoto-bottom {
+  display: flex;
+}
+
+.ptoto-bottom-img {
+  flex: 1;
+  width: 150rpx;
+  height: 168rpx;
+}
+
+.ptoto-bottom-text-box {
+  flex: 1;
+}
+
+.ptoto-bottom-box-text {
+  margin-top: 10rpx;
+  flex: 1;
+  font-family: 'ZCOOL QingKe HuangYou';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18.2872px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 2.07399px;
+
+  color: #000000;
+}
+
+.ptoto-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.load-more-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  margin-top: 30rpx;
+  position: absolute;
+  bottom: 100rpx;
+}
+
+.load-more-icon {
+  width: 96rpx;
+  height: 96rpx;
+}
+
+.load-more-tips {
+  margin-top: 15rpx;
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  /* identical to box height */
+  text-align: center;
+
+  color: #902619;
+}
