@@ -51,7 +51,12 @@
 	  class="flex items-center justify-center footer {{btnClass}}"
 	  style="padding-bottom: 30px;"
 	>
-	  <chinese-button width="300" bind:tap="onAddToPlan" wx:if="{{!hasUserPath}}">
+		<chinese-button width="300" wx:if="{{!isUserAccount}}">
+			<button style="background: transparent; width: 100%" open-type="getPhoneNumber" bindgetphonenumber="onRegisterAndAddToPlan">
+				<view class="btn-add-to-plan">添加为我的计划</view>
+			</button>
+		</chinese-button>
+		<chinese-button wx:elif="{{isUserAccount && !isUserPath}}" width="300" bind:tap="onAddToPlan">
 			<view class="btn-add-to-plan">添加为我的计划</view>
 		</chinese-button>
     <chinese-button width="300" bind:tap="goToMyPlan" wx:else>

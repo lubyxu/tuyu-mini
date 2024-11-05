@@ -1,11 +1,12 @@
 // pages/path-note-detail/index.js
 import { getPathDetail, deleteUserPath, addUserPath } from '../../service/path-note/path-detail';
+import loginBehavior from '../../behaviors/login/index';
 
 Page({
   options: {
     addGlobalClass: true
   },
-
+  behaviors: [loginBehavior],
   /**
    * 页面的初始数据
    */
@@ -96,7 +97,6 @@ Page({
   async getDetail({ user_path_id, path_id }) {
     const data = await getPathDetail({ user_path_id, path_id });
     const { path_detail_info, place_visited } = data;
-    console.log('path_detail_info.user_path_id', path_detail_info.user_path_id);
     this.setData({
       user_path_id: user_path_id || path_detail_info.user_path_id,
       path_id: path_id,
@@ -138,6 +138,10 @@ Page({
         }
       }
     });
+  },
+  async onRegisterAndAddToPlan(e) {
+    await this.onRegister(e);
+    this.onAddToPlan();
   },
   async onAddToPlan() {
     const user_path_id = await addUserPath(this.data.path_id);

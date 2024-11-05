@@ -8,6 +8,7 @@
     "privilege-modal": "./privilege-modal/index",
     "place-modal": "./place-modal/index",
     "chinese-button": "/components/button/chinese-btn",
-    "card-item": "/components/card-item/index"
+    "card-item": "/components/card-item/index",
+    "auth-guard": "/components/auth-guard/index"
   }
 }

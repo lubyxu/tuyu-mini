@@ -6,5 +6,6 @@
 			open-type="getPhoneNumber"
 			bindgetphonenumber="getPhoneNumber"
 		>
+		<slot></slot>
 	</button>
 </view>
