@@ -2,6 +2,14 @@
 <view style="padding: 12px">
     <tabs bind:change="onTabChange" />
 
+    <view wx:if="{{!authed}}">
+      <chinese-button >
+        <button style="background-color: transparent; color: #FFBD8F" open-type="getPhoneNumber" bindgetphonenumber="onLogin">
+          立即登录
+        </button>
+      </chinese-button>
+    </view>
+
     <view class="mt-16">
       <card wx:for="{{list}}" item="{{item}}" bind:click="onItemClick" />
 

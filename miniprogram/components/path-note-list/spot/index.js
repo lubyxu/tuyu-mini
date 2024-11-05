@@ -1,6 +1,13 @@
 // components/path-note-list/spot/index.js
 import { checkPath } from '../../../service/path-note/path-detail';
 
+function validatePos(source, target) {
+  const x = Math.abs(source.longitude, target.longitude);
+  const y = Math.abs(source.latitude, target.latitude);
+
+  return Math.pow(x, 2) + Math.pow(y, 2) < 2;
+}
+
 Component({
   options: {
     addGlobalClass: true
@@ -22,6 +29,8 @@ Component({
     product_map: Object,
     location: String,
     isUserPath: Boolean,
+    loc_lat: Number,
+    loc_long: Number,
   },
 
   /**
@@ -44,6 +53,18 @@ Component({
       this.triggerEvent('onImageClick', { index, images: this.data.content_info.image_points });
     },
     async onChecked(e) {
+      const location = await wx.getLocation();
+ 
+      const { longitude, latitude } = location;
+      const target = { longitude: this.data.loc_long, latitude: this.data.loc_lat };
+      if (!validatePos({ longitude, latitude }, target)) {
+        wx.showToast({
+          icon: 'none',
+          title: '打卡失败，检测到不在附近'
+        });
+        return;
+      }
+
       if (this.pending) return;
       this.pending = true;
       try {

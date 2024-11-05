@@ -22,5 +22,13 @@
   "lazyCodeLoading": "requiredComponents",
   "useExtendedLib": {
     "weui": true
+  },
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的信息将用于小程序位置效果展示"
+    }
   }
 }

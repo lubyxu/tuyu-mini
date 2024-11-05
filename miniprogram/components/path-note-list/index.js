@@ -1,5 +1,6 @@
 // components/path-note-list/index.js
 import { getPathList } from './service/group';
+import { registerAccount } from '../../utils/auth';
 
 Component({
   options: {
@@ -16,22 +17,47 @@ Component({
    * 组件的初始数据
    */
   data: {
+    group_id: 'mine',
     list: [],
+    authed: false,
+    logined: false,
   },
 
   lifetimes: {
     attached() {
-      this.getPathList('mine');
+      getApp().globalData.event.on('login', (params) => {
+        console.log('---params', params)
+        this.setData({
+          authed: params.type === 'loginFailed' ? false : true,
+          logined: true
+        });
+        if (params.type !== 'loginFailed') {
+          this.getPathList('mine');
+        }
+      })
     }
   },
   /**
    * 组件的方法列表
    */
   methods: {
+    isAuthed: function () {
+      const app = getApp();
+      const user = app.globalData.user || {};
+      const token = user.token;
+      this.setData({
+        authed: !!token
+      });
+    },
+    onLogin(e) {
+      const code = e.detail.code;
+      registerAccount(code);
+    },
     async getPathList(group_id) {
       const data = await getPathList({ group_id });
       this.setData({
         list: data,
+        group_id,
       });
     },
     onItemClick(e) {
