@@ -26,7 +26,6 @@ Component({
   lifetimes: {
     attached() {
       getApp().globalData.event.on('login', (params) => {
-        console.log('---params', params)
         this.setData({
           authed: params.type === 'loginFailed' ? false : true,
           logined: true
