@@ -9,13 +9,6 @@
 	/>
 
 	<view style="padding: 0 16px; margin-top: 20px;">
-		<view style="margin-bottom: 16px;">专属回忆</view>
-		<view>
-		
-		</view>
-	</view>
-
-	<view style="padding: 0 16px; margin-top: 20px;">
 	  <view style="margin-bottom: 16px;">🗺️ 行程概览</view>
 		<view class="map-container" bind:tap="openMap">
 		  placeholder
@@ -44,13 +37,30 @@
 		</view>
 	</view>
 
+  <view style="padding: 0 16px; margin-top: 20px; margin-bottom: 32px;" wx:if="{{isUserPath}}">
+		<view style="margin-bottom: 16px;">专属回忆</view>
+		<view>
+      <card-item
+        products="{{products}}"
+      />
+		</view>
+	</view>
+
 	<view
 	  wx:if="{{!isUserPath}}"
 	  class="flex items-center justify-center footer {{btnClass}}"
 	  style="padding-bottom: 30px;"
 	>
-	  <chinese-button width="300">
+		<chinese-button width="300" wx:if="{{!isUserAccount}}">
+			<button style="background: transparent; width: 100%" open-type="getPhoneNumber" bindgetphonenumber="onRegisterAndAddToPlan">
+				<view class="btn-add-to-plan">添加为我的计划</view>
+			</button>
+		</chinese-button>
+		<chinese-button wx:elif="{{isUserAccount && !isUserPath}}" width="300" bind:tap="onAddToPlan">
 			<view class="btn-add-to-plan">添加为我的计划</view>
+		</chinese-button>
+    <chinese-button width="300" bind:tap="goToMyPlan" wx:else>
+			<view class="btn-add-to-plan">查看我的计划</view>
 		</chinese-button>
 	</view>
 	<view wx:else style="padding-bottom: 40px;">

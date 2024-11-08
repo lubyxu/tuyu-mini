@@ -39,17 +39,26 @@ export function authCamera() {
 
 export function getUser() {
   return new Promise((resolve, reject) => {
+    
     wx.login({
       success: async function ({ code }) {
         try {
+          const app = getApp();
           const ret = await request({ url: '/fuyu/user/code', data: { code } });
+          app.globalData.user = ret.data;
+          app.globalData.event.emit('login', ret.data);
+          resolve(ret)
         }
         catch (e) {
+          const app = getApp();
           const {errno} = e;
           if (errno === 2000) {
-            const data = await registerAccount(code);
-            resolve(data);
+            console.log(e.data)
+            app.globalData.user = e.data;
+            resolve(e.data);
           }
+          reject(e);
+          app.globalData.event.emit('login', { type: 'loginFailed' });
         }
       },
       fail: reject
@@ -62,7 +71,18 @@ export function getUser() {
  * @param {string} code 
  * @returns { open_id: string }
  */
-async function registerAccount(code) {
-  const ret = await request({ url: '/fuyu/user/create/code', data: { code }});
+export async function registerAccount(code) {
+  const openid = getApp().globalData.user.openid;
+  const ret = await request({
+    url: '/fuyu/user/create/code',
+    data: {
+      open_id: openid,
+      code,
+      nickname: ''
+    }
+  });
+  const app = getApp();
+  app.globalData.user = ret.data;
+  app.globalData.event.emit('login', ret.data);
   return ret.data
 }

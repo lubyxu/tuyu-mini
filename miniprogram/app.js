@@ -1,4 +1,5 @@
 import { getUser } from "./utils/auth";
+import * as event from './utils/event';
 
 // app.js
 App({
@@ -51,5 +52,8 @@ App({
     that.globalData.menuRight = systemInfo.screenWidth - menuButtonInfo.right;
     that.globalData.menuBotton = menuButtonInfo.top - systemInfo.statusBarHeight;
     that.globalData.menuHeight = menuButtonInfo.height;
+
+    that.globalData.event = event;
+    getUser();
   },
 });

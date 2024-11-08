@@ -1,11 +1,12 @@
 export function request({ url, data, method, Authorization }) {
+	const authorization = getApp().globalData?.user?.token;
 	return new Promise(function (resolve, reject) {
 		wx.request({
 			method: method || 'POST',
 			url: `https://storyhub.cc${url}`,
 			data: JSON.stringify(data),
 			header: {
-				Authorization: Authorization || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0IiwiZXhwIjoxNzYwNTM2MTEyfQ.suNNrB4LxFeC2knu1zSItXDYcPCJeUyZtrqDG6AScS4',
+				Authorization: authorization,
 			},
 			success: function (res) {
 				const ret = res.data;

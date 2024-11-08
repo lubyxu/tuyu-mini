@@ -8,9 +8,16 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/path-note-detail/index",
+          "pathName": "pages/path-note-detail/index",
+          "query": "path_id=2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "景点详情",
           "pathName": "pages/spot-detail/index",
-          "query": "",
+          "query": "spot_id=1&province=beijing",
           "launchMode": "default",
           "scene": null
         },

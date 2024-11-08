@@ -2,7 +2,19 @@
 <view style="padding: 12px">
     <tabs bind:change="onTabChange" />
 
-    <view class="mt-16">
+    <view wx:if="{{!authed && group_id === 'mine'}}" class="flex items-center flex-col" style="margin-top: 40px">
+      <image src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FErsz8T_OBiWYE9D46yabv%2Flogout.svg" style="height: 135px; width: 135px" />
+      <view style="font-size: 14px; line-height: 16px; color: rgba(0, 0, 0, 0.5); margin-top: 8px">客官，登录后可查看详情~</view>
+      <view class="mt-40">
+        <chinese-button>
+          <button style="background-color: transparent; color: #FFBD8F" open-type="getPhoneNumber" bindgetphonenumber="onLogin">
+            立即登录
+          </button>
+        </chinese-button>
+      </view>
+    </view>
+
+    <view class="mt-16" wx:if="{{!(group_id === 'mine' && !logined)}}">
       <card wx:for="{{list}}" item="{{item}}" bind:click="onItemClick" />
 
       <view class="flex items-center justify-center" style="margin-top: 32px;" wx:if="{{!list.length}}">

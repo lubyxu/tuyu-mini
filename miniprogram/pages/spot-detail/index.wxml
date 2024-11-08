@@ -3,34 +3,41 @@
 	vertical="{{true}}"
 	style="height: 100vh;"
 >
-<swiper-item>
+  <swiper-item>
   <view class="page-item">
-	  <image style="width: 100vw;" mode="widthFix"  src="{{images[0]}}" />
+	  <image style="width: 100vw;" mode="widthFix"  src="{{info.spot.content.content_images[0]}}" />
 	</view>
-</swiper-item>
-<swiper-item>
+  </swiper-item>
+  <swiper-item>
   <view class="page-item">
-	  <image style="width: 100vw;" mode="widthFix" src="{{images[1]}}" />
+	  <image style="width: 100vw;" mode="widthFix" src="{{info.spot.content.content_images[1]}}" />
 	</view>
-</swiper-item>
-<swiper-item>
-  <view>
-	  <view class="title">
-			<image class="icon-navigator" src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FfSxmv1eCuBl9RTdrbEK3K%2Ftitle-navigator.svg" />
-			<view class="title-name">专属回忆</view>
-		</view>
-		<view></view>
-	</view>
-	<view style="margin-top: 24px;">
-	  <view class="title">
-			<image class="icon-navigator" src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FfSxmv1eCuBl9RTdrbEK3K%2Ftitle-navigator.svg" />
-			<view class="title-name">路线推荐·鼓楼</view>
-		</view>
-		<view>
-		  <path-note-card
-			
-			/>
-		</view>
-	</view>
-</swiper-item>
+  </swiper-item>
+  <swiper-item>
+		<scroll-view scroll-y style="height: 100vh;">
+      <view style="padding: 16px; background: url({{image}}) repeat;">
+        <view style="margin-bottom: 24px">
+          <view class="title">
+            <image class="icon-navigator" src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FfSxmv1eCuBl9RTdrbEK3K%2Ftitle-navigator.svg" />
+            <view class="title-name">专属回忆</view>
+          </view>
+          <view style="position: relative; z-index: 111;">
+            <card-item
+              products="{{info.products}}"
+              spot="{{info.spot}}"
+            />
+          </view>
+        </view>
+        <view class="mb-16">
+          <image class="icon-navigator" src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FfSxmv1eCuBl9RTdrbEK3K%2Ftitle-navigator.svg" />
+          <view class="title-name">路线推荐·鼓楼</view>
+        </view>
+          
+        <path-note-card
+          wx:for="{{paths}}"
+          item="{{item}}"
+        />
+      </view>
+		</scroll-view>
+  </swiper-item>
 </swiper>

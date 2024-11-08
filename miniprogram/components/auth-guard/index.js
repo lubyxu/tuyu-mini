@@ -22,12 +22,20 @@ Component({
   lifetimes: {
     attached: function () {
       const globalData = getApp().globalData;
-      const isLogin = globalData.open_id;
+      const isLogin = globalData.user?.token;
       this.setData(
         {
           isLogin: !!isLogin
         }
       );
+
+      getApp().globalData.event.on('login', (params) => {
+        if (params.type !== 'loginFailed') {
+          this.setData({
+            isLogin: true
+          });
+        }
+      })
     }
   },
 
