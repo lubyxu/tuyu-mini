@@ -51,6 +51,8 @@ Page({
     titleBarVisible: false,
     selected: 0,
     banners: [],
+    latitude: 23.096994,
+    longitude: 113.324520,
     selectList: [
       {
         text: "路书",
@@ -76,8 +78,8 @@ Page({
         province: "beijing"
       }
     });
-    const { list = []} = data
-    this.setData({ list })
+    const { list = [], center_geo: { loc_long, loc_lat } } = data
+    this.setData({ list, latitude: loc_lat, longitude: loc_long })
   },
 
   async getBanners() {
@@ -123,7 +125,7 @@ Page({
 
   onFind() {
     wx.navigateTo({
-      url: '/pages/scenic-map/index',
+      url: `/pages/scenic-map/index?longitude=${this.data.longitude}&latitude=${this.data.latitude}`,
     });
   },
 });

@@ -1,4 +1,5 @@
 import { registerAccount } from '../../utils/auth';
+const app = getApp();
 
 // components/notification/index.js
 Component({
@@ -22,9 +23,6 @@ Component({
     isVisited: {
       type: Boolean,
     },
-    owner: {
-      type: Boolean,
-    },
   },
 
   data: {
@@ -36,6 +34,9 @@ Component({
     showProducts: false,
     light: true,
     _products: [],
+    isLogined: false,
+    owned: false,
+    tags: [],
   },
 
   observers: {
@@ -45,6 +46,9 @@ Component({
   },
 
   ready: function () {
+    const isLogined = app?.globalData?.user?.token
+    console.log('isLogined', isLogined)
+    this.setData({ isLogined: !!isLogined })
     this.onInit()
   },
 
@@ -76,7 +80,7 @@ Component({
       this.setCommonState(_products[0])
     },
 
-    async onProductClick(e) {
+    async onRegisterAccount(e) {
       const code = e.detail.code;
       if (!code) {
         wx.showToast({
@@ -86,10 +90,12 @@ Component({
         return
       } 
       await registerAccount(code);
-      this.triggerEvent('onProductClick', { code })
+      this.onProductClick()
+    },
+
+    async onProductClick(e) {
       const id = this.data.selectId
-      const owner = this.properties.owner
-      if (!owner) {
+      if (!this.data.owned) {
         wx.navigateTo({
           url: `/pages/detail/index?id=${id}`
         });
@@ -114,7 +120,10 @@ Component({
           resource,
           osd
         },
+        owned,
+        tags
       } = data
+      console.log('resource', data.tags)
       this.setData({
         background,
         preview,
@@ -123,6 +132,8 @@ Component({
         light: style === 'light',
         resource,
         osd,
+        owned,
+        tags
       })
     },
     onSelect(e) {

@@ -15,6 +15,13 @@ Page({
     registerIcon: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/product/1/register.png',
   },
 
+  onLoad: function (options) {
+    this.setData({
+      longitude: options.longitude / 1,
+      latitude: options.latitude / 1,
+    })
+  },
+
   onReady: function (e) {
     this.mapCtx = wx.createMapContext('myMap')
     this.getInitData()

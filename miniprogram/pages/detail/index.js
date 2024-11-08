@@ -18,10 +18,8 @@ Page({
 
   onLoad: function (options) {
     this.setData({
-      id: options.id,
-      // bind: options.bind === 'false' ? false : true,
-      // videoUrl: options.videoUrl,
-      // url: options.url,
+      // id: options.id,
+      id: 2,
     })
   },
 
@@ -31,7 +29,6 @@ Page({
 
   async getInitData() {
     try {
-      // await this.getUserInfo()
       await this.getPoduct()
       this.setData({ showLoading: false })
     } catch (err) {
@@ -44,7 +41,7 @@ Page({
       method: 'POST',
       url: '/fuyu/product/detail',
       data: {
-        product_id: 2
+        product_id: this.data.id
       }
     });
     const { product_info = {}} = data
@@ -93,79 +90,6 @@ Page({
     }]
     return nodes
   },
-
-  // chooseOrPreviewImageTap() {
-  //   if (this.data.bind) {
-  //     wx.navigateTo({
-  //       url: `/pages/photo/index?pid=${this.data.pid}`,
-  //     });
-  //     return
-  //   }
-  //   wx.chooseImage({
-  //     count: 2,
-  //     sizeType: ['original', 'compressed'],
-  //     sourceType: ['album', 'camera'],
-  //     success: this.chooseImageSuccess
-  //   })
-  // },
-
-  // async chooseImageSuccess(res) {
-  //   const tempFilePaths = res.tempFilePaths
-  //   const uploadPromises = []
-  //   for (let i = 0; i < tempFilePaths.length; i++) {
-  //     uploadPromises.push(this.uploadImageToCloud(tempFilePaths[i], i))
-  //   }
-  //   try {
-  //     wx.showLoading()
-  //     const uploadResult = await Promise.all(uploadPromises)
-  //     console.log('uploadResult', uploadResult)
-  //     await this.bind(uploadResult)
-  //     wx.showToast({
-  //       icon: 'success',
-  //       title: '上传图片成功～'
-  //     })
-  //     setTimeout(() => {
-  //       wx.navigateTo({
-  //         url: `/pages/photo/index?pid=${this.data.pid}`,
-  //       });
-  //     }, 1000);
-  //   } catch (err) {
-  //     console.log(err)
-  //     wx.showToast({
-  //       icon: 'error',
-  //       title: '上传图片失败～'
-  //     })
-  //   } finally {
-  //     wx.hideLoading()
-  //   }
-  // },
-
-  // async bind(uploadResult) {
-  //   const imageList = uploadResult.map(({ fileID }) => {
-  //     return fileID
-  //   })
-  //   await wx.cloud.callFunction({
-  //     name: 'bind',
-  //     data: {
-  //       openid: app.globalData.openid,
-  //       pid: this.data.pid,
-  //       imageList,
-  //     },
-  //   })
-  // },
-
-  // uploadImageToCloud(filePath, index) {
-  //   return new Promise((resolve, reject) => {
-  //     const fileType = filePath.split('.')[1]
-  //     console.log('cloudpath', `user-image/${app.globalData.openid}_${this.data.pid}_${index}.${fileType}`)
-  //     wx.cloud.uploadFile({
-  //       cloudPath: `user-image/${app.globalData.openid}_${this.data.pid}_${index}.${fileType}`,
-  //       filePath,
-  //       success: resolve,
-  //       fail: reject
-  //     })
-  //   })
-  // },
 
   async gotoAR() {
     try {

@@ -1,5 +1,6 @@
 import { registerAccount } from '../../utils/auth';
 
+const app = getApp();
 // components/notification/index.js
 Component({
 
@@ -17,7 +18,13 @@ Component({
    * 组件的初始数据
    */
   data: {
+    isLogined: false
+  },
 
+  ready: function () {
+    const isLogined = app?.globalData?.user?.token
+    console.log('isLogined', isLogined)
+    this.setData({ isLogined: !!isLogined })
   },
 
   methods: {
@@ -25,7 +32,8 @@ Component({
       const item = e.currentTarget.dataset.item
       // this.triggerEvent('ocrClick', item)
     },
-    async onFind(e) {
+
+    async onRegisterAccount() {
       const code = e.detail.code;
       if (!code) {
         wx.showToast({
@@ -35,6 +43,9 @@ Component({
         return
       } 
       await registerAccount(code);
+      this.onFind()
+    },
+    async onFind(e) {
       this.triggerEvent('onFind')
     }
   },

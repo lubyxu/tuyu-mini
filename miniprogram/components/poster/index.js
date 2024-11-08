@@ -78,6 +78,10 @@ Component({
       })
     },
 
+    onClose() {
+      this.triggerEvent('closePoister')
+    },
+
     async download() {
       try {
         await this.authSetting()

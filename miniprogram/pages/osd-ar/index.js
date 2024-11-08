@@ -1,5 +1,6 @@
 import getBehavior from './behavior'
 import yuvBehavior from './yuvBehavior'
+import { request } from '../../utils/req';
 
 const NEAR = 0.001
 const FAR = 1000
@@ -64,7 +65,9 @@ Component({
     onStart() {
       console.log('onStart')
     },
-    onRouter() {
+    async onRouter() {
+      const res = await this.onBind()
+      console.log('绑定成功', res)
       wx.navigateTo({
         url: `/pages/photo/index`
       });
@@ -74,6 +77,15 @@ Component({
     },
     async init() {
       this.initGL()
+    },
+
+    onBind() {
+      return request({
+        url: '/fuyu/product/userbind',
+        data: {
+          product_id: this.data.id / 1
+        }
+      });
     },
 
     onSuccess(anchors) {
@@ -86,7 +98,6 @@ Component({
         if (!videoUrl) {
           this.onRouter()
         } else {
-          console.log('有videourl 展示动画')
           this.setData({
             frameShow: true,
           })

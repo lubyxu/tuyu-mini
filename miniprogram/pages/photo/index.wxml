@@ -7,9 +7,10 @@
       time="{{time}}"
       photos="{{photos}}"
       description="{{description}}"
+      bind:closePoister="onClose"
     />
   </view>
-  <view wx-if="{{!showPoster}}">
+  <view wx-if="{{!showPoster}}" id="scrollView">
     <loading wx-if="{{showLoading}}" />
     <view wx-if="{{!showLoading}}">
       <view class="photo-page">
@@ -65,6 +66,7 @@
             <image
               src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/load-more.png"
               class="load-more-icon"
+              bindtap="scrollToBottom"
             />
             <text class="load-more-tips">点击或上滑查看攻略</text>
           </view>

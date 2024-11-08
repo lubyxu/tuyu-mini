@@ -199,14 +199,16 @@
 }
 
 .upload-title {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   height: 120rpx;
-  /* transform: rotate(-5.68deg); */
 }
 
 .upload-title-text {
+  position: absolute;
+  left: 0;
   flex: 1;
   text-align: left;
   font-family: 'DIN Condensed';
@@ -219,6 +221,7 @@
 }
 
 .photo-upload-logo {
+  transform: rotate(4.5deg);
   width: 265rpx;
   height: 120rpx;
 }

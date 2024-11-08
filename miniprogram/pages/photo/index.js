@@ -36,15 +36,15 @@ Page({
         throw res
       }
       let { memory: { data: memoryData }, bg_img, product_show_img, spot_name, product_name, shar_config } = data
-      const { product_mem_bg_img: topBackgroundImage, product_share_bg_img } = shar_config
+      const { product_mem_bg_img: topBackgroundImage, product_share_bg_img, user_mem_desc = '' } = shar_config
       memoryData = memoryData.map(({ create_time, text, file }) => {
         const [url] = file.split(',')
         return { url, createTime: formatTime(create_time), text }
       })
       this.setData({
         photos: memoryData,
-        time: memoryData[0].createTime,
-        description: (memoryData[0].text).split('\n'),
+        time: memoryData?.[0]?.createTime || 12.11,
+        description: user_mem_desc.split('\n'),
         product_img: product_show_img,
         showLoading: false,
         topBackgroundImage,
@@ -127,5 +127,22 @@ Page({
     this.setData({
       showPoster: true
     })
+  },
+
+  onClose() {
+    this.setData({
+      showPoster: false
+    })
+  },
+
+  scrollToBottom: function () {
+    const query = wx.createSelectorQuery().in(this);
+    query.select('#scrollView').boundingClientRect(function (rect) {
+      const scrollTop = rect.height; // 获取滚动视图的总高度
+      wx.pageScrollTo({
+        scrollTop: scrollTop, // 滚动到底部
+        duration: 300 // 滚动动画的持续时间
+      });
+    }).exec();
   }
 });
