@@ -71,21 +71,28 @@ page {
 }
 
 /* V2 */
-.banner {
+.swiper-box {
+  position: relative;
+}
+
+swiper {
   width: 100%;
   height: 380rpx;
-  background-image: url('https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home_bg.png');
-  background-size:cover;
+}
+
+.banner-img {
+  width: 100%;
 }
 
 .position-box {
-    /* position: absolute; */
-    padding-top:  110rpx;
-    margin-left: 28rpx;
-    width: fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  padding-top:  110rpx;
+  margin-left: 28rpx;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 }
 
 .positon-icon {
@@ -125,13 +132,12 @@ page {
 
 .tab-bar-text, .tab-bar-text-active {
   width: 40px;
-  height: 16px;
 
   font-family: 'Neue Frutiger World';
   font-style: normal;
   font-weight: 400;
   font-size: 32rpx;
-  line-height: 16px;
+  line-height: 28px;
   text-align: center;
   letter-spacing: -0.21px;
   color: #333333;

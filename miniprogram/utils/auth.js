@@ -72,6 +72,8 @@ export function getUser() {
  * @returns { open_id: string }
  */
 export async function registerAccount(code) {
+  const app = getApp();
+  if (app.globalData.user) return app.globalData.user
   const openid = getApp().globalData.user.openid;
   const ret = await request({
     url: '/fuyu/user/create/code',
@@ -81,7 +83,6 @@ export async function registerAccount(code) {
       nickname: ''
     }
   });
-  const app = getApp();
   app.globalData.user = ret.data;
   app.globalData.event.emit('login', ret.data);
   return ret.data

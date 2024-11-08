@@ -1,3 +1,5 @@
+import { registerAccount } from '../../utils/auth';
+
 // components/notification/index.js
 Component({
 
@@ -33,30 +35,58 @@ Component({
     selectId: -1,
     showProducts: false,
     light: true,
-    _products: []
+    _products: [],
+  },
+
+  observers: {
+    'products': function(products) {
+      this.onInit()
+    }
   },
 
   ready: function () {
-    const _products = this.properties.products
-      .sort((a, b) => a.sort / 1 - b.sort / 1)
-      .map(item => {
-        return {
-         ...item,
-         background: item.bg_card_image,
-         preview: item.show_image,
-         subtitle: item.description || "暂无描述",
-        }
-      })
-    this.setData({
-      _products,
-      showProducts: _products.length > 1,
-      title: this.properties.spot.name,
-    })
-    this.setCommonState(_products[0])
+    this.onInit()
   },
 
   methods: {
-    onProductClick(e) {
+    onScenicClcik(e) {
+      console.log(e)
+    },
+
+    onInit() {
+      if (this.properties.products.length === 0) {
+        this.setData({ background: this.properties.spot.bg_image })
+        return
+      }
+      const _products = this.properties.products
+        .sort((a, b) => a.sort / 1 - b.sort / 1)
+        .map(item => {
+          return {
+           ...item,
+           background: item.bg_card_image,
+           preview: item.show_image,
+           subtitle: item.name,
+          }
+        })
+      this.setData({
+        showProducts: this.properties.products.length > 1,
+        title: this.properties.spot.name,
+        _products,
+      })
+      this.setCommonState(_products[0])
+    },
+
+    async onProductClick(e) {
+      const code = e.detail.code;
+      if (!code) {
+        wx.showToast({
+          icon: 'error',
+          title: '登陆失败，请重试'
+        })
+        return
+      } 
+      await registerAccount(code);
+      this.triggerEvent('onProductClick', { code })
       const id = this.data.selectId
       const owner = this.properties.owner
       if (!owner) {

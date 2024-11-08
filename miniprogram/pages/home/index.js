@@ -21,7 +21,8 @@ Page({
   },
 
   async onReady() {
-    this.getInitData()
+    await Promise.all([this.getInitData(), this.getBanners()])
+    this.setData({ showLoading: false })
   },
 
   data: {
@@ -49,6 +50,7 @@ Page({
     showLoading: true,
     titleBarVisible: false,
     selected: 0,
+    banners: [],
     selectList: [
       {
         text: "路书",
@@ -66,26 +68,6 @@ Page({
     list: []
   },
 
-  jumpMapPage(e) {
-    wx.navigateTo({
-      url: `/map/pages/index/index`,
-    });
-  },
-
-  jumpOSDPage(e) {
-    wx.navigateTo({
-      url: `/pages/osd-ar/index`,
-    });
-  },
-
-  setTabBar() {
-    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 0
-      })
-    }
-  },
-
   async getInitData() {
     const { data } = await request({
       method: 'POST',
@@ -95,116 +77,28 @@ Page({
       }
     });
     const { list = []} = data
-    this.setData({ list: [...list, ...list, ...list, ...list, ...list, ...list, ...list, ...list, ...list], showLoading: false })
+    this.setData({ list })
   },
 
-  // async getInitData() {
-  //   try {
-  //     await Promise.all([this.getSwiperData(), this.getBind()])
-  //     await this.getPoducts()
-  //     this.setData({ showLoading: false })
-  //   } catch (err) {
-  //     console.log('err', err)
-  //   }
-  // },
-
-  async getUserInfo() {
-    console.log('app.globalData.openid', app.globalData.openid)
-    if (app.globalData.openid) {
-      return app.globalData.openid
-    }
-    const data = await wx.cloud.callFunction({
-      name: 'getOpenId',
-    })
-    console.log('data?.result', data?.result)
-    const { openid } = data?.result
-    app.globalData.openid = openid
-    return openid
-  },
-
-  async getBind() {
-    const openid = await this.getUserInfo()
-    console.log('openid', openid)
-    const data = await wx.cloud.callFunction({
-      name: 'getBind',
+  async getBanners() {
+    const { data } = await request({
+      method: 'POST',
+      url: '/fuyu/banner',
       data: {
-        openid
-      },
+        province: "beijing"
+      }
+    });
+    let { list = []} = data
+    list = list.map(({ banner_img }) => {
+      return { url: banner_img }
     })
-    console.log('bind data =>', data)
-    const { data: list = [] } = data?.result
-    this.bindProductsIds = list.map(({ pid }) => pid) || []
-  },
-
-  async getSwiperData() {
-    let swiperData = await wx.cloud.callFunction({
-      name: 'getSwiper',
-      data: {},
-    })
-    console.log('swiperData', swiperData)
-    swiperData = swiperData?.result?.data
-    this.setData({
-      swiper: swiperData,
-    })
-  },
-
-  async getPoducts() {
-    const hasMore = this.data.fetchProductsInit || this.data.total <= this.data.card.length
-    if (!hasMore) {
-      return
-    }
-    const data = await wx.cloud.callFunction({
-      name: 'getProducts',
-      data: {
-        pageNo: this.data.pageNo,
-        pageSize: this.data.pageSize
-      },
-    })
-    console.log('products', data)
-    const { total, data: productsData } = data?.result
-    let cardData = productsData.map((item) => {
-      return { ...item.card, id: item?.pid, ocr: item?.osd?.picture, videoUrl: item?.osd?.videoUrl, bind: this?.bindProductsIds?.includes(item?.pid) }
-    })
-    cardData.sort((a, b) => a.id / 1 - b.id / 1)
-    console.log('sort products', cardData)
-    this.setData({
-      pageNo: this.data.pageNo + 1,
-      card: [...this.data.card, ...cardData],
-      total,
-      fetchProductsInit: false
-    })
-    return data
+    this.setData({ banners: list })
   },
 
   scrollBottom() {
-    this.getPoducts()
+    // this.getPoducts()
   },
 
-
-  async ocrClick(e) {
-    const { id, ocr, videoUrl } = e.detail
-    console.log('ocr click', e.detail)
-    const { bind } = e.detail
-
-    const url = bind
-      ? `/pages/detail/index?pid=${id}&bind=${bind}&videoUrl=${encodeURIComponent(videoUrl)}&url=${encodeURIComponent(ocr)}`
-      : `/pages/osd-ar/index?pid=${id}&videoUrl=${encodeURIComponent(videoUrl)}&url=${encodeURIComponent(ocr)}`
-    if (!bind) {
-      try {
-        await authCamera()
-      } catch (err) {
-        wx.showToast({
-          icon: 'error',
-          title: '授权失败'
-        })
-        return
-      }
-    }
-
-    wx.navigateTo({
-      url
-    });
-  },
 
   bindscrolltoupper() {
     this.setData({ titleBarVisible: false })

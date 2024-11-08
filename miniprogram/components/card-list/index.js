@@ -1,3 +1,5 @@
+import { registerAccount } from '../../utils/auth';
+
 // components/notification/index.js
 Component({
 
@@ -23,7 +25,16 @@ Component({
       const item = e.currentTarget.dataset.item
       // this.triggerEvent('ocrClick', item)
     },
-    onFind() {
+    async onFind(e) {
+      const code = e.detail.code;
+      if (!code) {
+        wx.showToast({
+          icon: 'error',
+          title: '登陆失败，请重试'
+        })
+        return
+      } 
+      await registerAccount(code);
       this.triggerEvent('onFind')
     }
   },

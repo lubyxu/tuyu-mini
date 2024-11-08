@@ -12,7 +12,7 @@ Page({
     scale: 16,
     latitude: 23.096994,
     longitude: 113.324520,
-    registerIcon: 'https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/v2/common/register-icon.png?sign=f219eefd568b63e4843f16ae204b6ada&t=1729477487',
+    registerIcon: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/product/1/register.png',
   },
 
   onReady: function (e) {
@@ -30,8 +30,11 @@ Page({
       }
     });
     const { list = []} = data
-    const markers = list.map(({ spot, is_visited }) => {
+    const markers = list
+      .filter(item => item?.products?.length > 0)
+      .map(({ spot, is_visited }) => {
       const { loc_lat, loc_long, icon_image, id, name } = spot
+      
       return {
         id,
         register: is_visited,
@@ -41,13 +44,14 @@ Page({
           display: 'ALWAYS',
         },
         icon: icon_image || 'https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/v2/common/area.png?sign=47a843587fc2732f56d8cedb9805fa9b&t=1729474429',
-        title: name || '故宫博物院'
+        title: name || '故宫博物院',
       }
     })
-    console.log('markers', markers)
     this.setData({
-      markers,
-      list
+      markers: markers,
+      list,
+      latitude: markers[0].latitude,
+      longitude: markers[0].longitude,
     })
   },
 
@@ -69,7 +73,7 @@ Page({
       scale: 32,
       showScenicBox: true
     })
-    console.log('@@@ callouttap', e)
+    console.log('@@@ callouttap', products)
   },
   labeltap(e) {
     console.log('@@@ labeltap', e)

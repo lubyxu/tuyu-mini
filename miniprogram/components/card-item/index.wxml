@@ -1,10 +1,12 @@
 <cover-view
-    style="background-image: url({{background}});"
     class="card-item"
     bind:tap="onScenicClcik"
 >
+    <cover-image class="background-image" src="{{background}}" mode="widthFix"></cover-image>
     <cover-view class="preview-box">
-        <cover-image src="{{preview}}" class="preview" bind:tap="onProductClick" />
+        <button open-type="getPhoneNumber" bindgetphonenumber="onProductClick" hover-class="none">
+            <cover-image src="{{preview}}" class="preview" />
+        </button>
     </cover-view>
     <cover-view wx-if="{{showProducts}}" class="product-list">
         <cover-view 
@@ -21,8 +23,8 @@
         </cover-view>
     </cover-view>
     <cover-view class="desc-box" style="color:{{light ? '#ffbd8f': '#77270d'}};left:{{left}};top:{{top}}">
-        <text class="desc-title">{{title}}</text>
-        <text class="desc-subtitle">{{subtitle}}</text>
+        <cover-view class="desc-title">{{title}}</cover-view>
+        <cover-view class="desc-subtitle">{{subtitle}}</cover-view>
     </cover-view>
     <cover-image wx-if="{{!isVisited}}" src="../../images/visited.svg" class="visited-icon" />
 </cover-view>

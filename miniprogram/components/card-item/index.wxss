@@ -7,7 +7,6 @@
     background-repeat:no-repeat;
     position: relative;
     display: flex;
-    padding-top: 32rpx;
     box-sizing: border-box;
 }
 
@@ -46,16 +45,14 @@
 }
 
 .preview-box {
-    width: 313rpx;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .preview {
-    width: 200rpx;
-    height: 200rpx;
+    width: 260rpx;
+    height: 260rpx;
     margin: 0 auto;
 }
 
@@ -64,6 +61,7 @@
 }
 
 .product-box {
+    margin-top: 32rpx;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -94,4 +92,13 @@
     height: 64rpx;
     left: 26rpx;
     top: 0;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }

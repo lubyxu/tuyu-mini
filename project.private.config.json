@@ -8,6 +8,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "地图页面",
+          "pathName": "pages/scenic-map/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/path-note-detail/index",
           "pathName": "pages/path-note-detail/index",
           "query": "path_id=2",
@@ -31,13 +38,6 @@
         {
           "name": "首页",
           "pathName": "pages/home/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "地图页面",
-          "pathName": "pages/map/index/index",
           "query": "",
           "launchMode": "default",
           "scene": null

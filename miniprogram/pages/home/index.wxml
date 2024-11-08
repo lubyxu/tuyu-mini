@@ -7,14 +7,25 @@
       title="{{titleBarVisible ? '福鱼文化创意馆' : ''}}"
     ></navigation-bar>
 
-  <view class="banner" >
-    <view wx-if="{{!titleBarVisible}}" class="position-box">
-      <image
-          src="../../images/position.svg"
+  <view class="swiper-box">
+    <cover-view class="position-box">
+      <cover-image
+          src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/position.png"
           class="positon-icon"
       />
-      <text class="position-text">{{position}}</text>
-    </view>
+      <cover-view class="position-text">{{position}}</cover-view>
+    </cover-view>
+    <swiper indicator-dots="{{indicatorDots}}"
+      autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{banners}}" wx:key="*this">
+        <swiper-item>
+          <image
+            src="{{item.url}}"
+            class="banner-img"
+          />
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
 
   <view class="nav-container">

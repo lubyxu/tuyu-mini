@@ -51,7 +51,7 @@
   /* 馆藏珍品 */
 
   width: 40px;
-  height: 16px;
+  height: 18px;
 
   font-family: 'Neue Frutiger World';
   font-style: normal;
