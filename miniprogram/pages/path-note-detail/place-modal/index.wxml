@@ -1,24 +1,44 @@
 <!--pages/path-note-detail/place-modal/index.wxml-->
 <half-screen-dialog
 	show="{{true}}"
-	title="打卡点位"
+	title=""
 	ext-class="fuyu-half-screen-dialog"
 	bindclose="onClose"
 >
+  <view class="title-container" slot="title">
+    <view class="title">打卡点位</view>
+    <view
+      class="close"
+      bind:tap="onClose"
+    >
+      <mp-icon
+        icon="close"
+        color="rgba(0, 0, 34, 0.5)"
+        size="{{16}}"
+        class="icon-close"
+      />
+    </view>
+  </view>
 	<view class="content" slot="desc">
-
-	  <view class="content-image flex items-center justify-center overflow-hidden">
-		  <image mode="aspectFill" class="image rounded-8" src="{{images[curIndex].image}}" />
-		</view>
-		<view class="flex items-center text-gray-color mt-8 mb-16">
-		  <iconfont class="mr-4" name="position" color="rgba(0, 0, 0, 0.65)" size="12"></iconfont>
-			<view class="text-12" bind:tap="onPosClick">{{images[curIndex].location || '北京'}} </view>
-			<iconfont name="right-arrow" color="rgba(0, 0, 0, 0.65)" size="12" class="ml-4" />
-		</view>
-
+  <swiper style="height: 480px;">
+    <swiper-item wx:for="{{images}}" wx:key="index">
+      <view>
+        <view class="content-image flex items-center justify-center overflow-hidden"
+        >
+          <image mode="aspectFill" class="image rounded-8" src="{{item.image}}" />
+        </view>
+        <view class="flex items-center text-gray-color mt-8 mb-16">
+          <iconfont class="mr-4" name="position" color="rgba(0, 0, 0, 0.65)" size="12"></iconfont>
+          <view class="text-12" bind:tap="onPosClick">{{item.location || '北京'}} </view>
+          <iconfont name="right-arrow" color="rgba(0, 0, 0, 0.65)" size="12" class="ml-4" />
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
 		<spot-images
+      wx:key="spot-modal"
 		  images="{{images}}"
-			bind:onImageClick="{{onImageClick}}"
+			bind:imageClick="{{onImageClick}}"
 		/>
 	</view>
 </half-screen-dialog>

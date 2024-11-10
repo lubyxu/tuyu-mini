@@ -1,10 +1,10 @@
 <!--components/path-note-list/spot/image-spot/index.wxml-->
 <view class="flex flex-wrap point-check-container">
-	<view class="image-point-checker">
+	<view class="image-point-checker" bind:tap="onImageClick">
 		<iconfont size="40" name="pointer-checked" />
 	</view>
 
-	<view class="image-point-wrapper" wx:for="{{images}}" bind:tap="onImageClick" data-index="{{index}}">
+	<view class="image-point-wrapper" wx:for="{{images}}" bind:tap="onImageClick" data-index="{{index}}" wx:key="index">
 		<image mode="aspectFill" class="image-point-wrapper-item" src="{{item.image}}" />
 	</view>
 </view>

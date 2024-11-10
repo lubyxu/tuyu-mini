@@ -57,7 +57,12 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
+    const pages = getCurrentPages();
+    const length = pages.length;
+    if (length === 2 && this.needRefreshList) {
+      const eventChannel = this.getOpenerEventChannel();
+      eventChannel.emit('refresh');
+    }
   },
 
   /**
@@ -108,7 +113,7 @@ Page({
       }),
       place_visited,
       isUserPath: !!user_path_id,
-      hasUserPath: !user_path_id && path_detail_info.user_path_id,
+      hasUserPath: !!path_detail_info.user_path_id,
     });
   },
   onPrivilege(e) {
@@ -145,7 +150,14 @@ Page({
   },
   async onAddToPlan() {
     const user_path_id = await addUserPath(this.data.path_id);
-    await this.getDetail({ user_path_id, path_id: this.data.path_id });
+    this.setData({
+      user_path_id,
+      isUserPath: false,
+      hasUserPath: true
+    });
+    wx.navigateTo({
+      url: `/pages/path-note-detail/index?user_path_id=${user_path_id}&path_id=${this.data.path_id}`,
+    });
   },
   goToMyPlan() {
     const data = this.data;
@@ -159,8 +171,9 @@ Page({
       content: '确认要删除吗？',
       success: async () => {
         await deleteUserPath(this.data.user_path_id);
-        await this.getDetail({ path_id: this.data.path_id });
-      }
+        this.needRefreshList = true
+        wx.navigateBack();
+      },
     })
   }
 })

@@ -23,6 +23,7 @@ Component({
    */
   methods: {
     onImageClick(e) {
+      console.log('--haha', e)
       this.setData({
         curIndex: e.detail.index
       });
