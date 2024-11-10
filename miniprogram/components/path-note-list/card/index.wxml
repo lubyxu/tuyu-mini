@@ -22,7 +22,7 @@
 		</view>
 	</view>
 
-	<view class="w-full progress">
+	<view class="w-full progress" wx:if="{{showProgress}}">
 		<progress-bar done="{{item.fin_place_count}}" total="{{item.place_count}}" />
 	</view>
 

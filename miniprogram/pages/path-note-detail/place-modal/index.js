@@ -15,7 +15,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    curIndex: 0
   },
 
   /**
@@ -23,9 +23,8 @@ Component({
    */
   methods: {
     onImageClick(e) {
-      console.log('--haha', e)
       this.setData({
-        curIndex: e.detail.index
+        curIndex: e.currentTarget.dataset.index
       });
     },
     onPosClick() {
@@ -52,6 +51,11 @@ Component({
     },
     onClose() {
       this.triggerEvent('close');
+    },
+    onSwiperChange(e) {
+      this.setData({
+        curIndex: e.detail.current
+      });
     }
   }
 })

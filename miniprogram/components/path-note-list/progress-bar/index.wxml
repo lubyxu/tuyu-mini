@@ -1,6 +1,6 @@
 <!--components/path-note-list/progress-bar/index.wxml-->
 <view class="container {{isDone ? 'done' : 'pending'}} {{progress === 0 ? 'starting' : ''}}">
-  <view style="width: {{progress === 0 ? 12 : progress * 120}}px;" class="progress">
+  <view style="width: {{progress === 0 ? 14 : progress * 120}}px;" class="progress">
 	  <image
 		  wx:if="{{!isDone}}"
 		  class="pin"
