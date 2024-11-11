@@ -1,6 +1,6 @@
 export const getData = ({
   time,
-  photos,
+  photo,
   description,
 }) => {
   return {
@@ -57,7 +57,7 @@ export const getData = ({
       },
       {
         "type": "image",
-        "url": photos[0]?.url,
+        "url": photo,
         "css": {
           "width": "198px",
           "height": "260px",

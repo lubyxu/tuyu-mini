@@ -167,7 +167,7 @@
   background: #FEFEFE;
   border-radius: 18.4273px;
   padding: 20rpx;
-  transform: rotate(-5.68deg);
+  /* transform: rotate(-5.68deg); */
 }
 
 .upload-title {
@@ -176,6 +176,7 @@
   align-items: center;
   justify-content: flex-end;
   height: 120rpx;
+  /* transform: rotate(-5.68deg); */
 }
 
 .upload-title-text {
@@ -341,19 +342,16 @@
   width: 100%;
   height: 580rpx;
   border-radius: 20rpx;
+  position: relative;
 }
 
 .banner-item {
-  width: 547rpx;
+  width: 100%;
   height: 580rpx;
   z-index: 1;
   border-radius: 20rpx;
 }
 
-.photo-container {
-  position: relative;
-  width: max-content;
-}
 
 .update-logo {
   position: absolute;
@@ -361,7 +359,7 @@
   right: 0;
   width: 40px;
   height: 32px;
-  transform: rotate(4.5deg);
+  transform: rotate(6.5deg);
 }
 
 .share-text {
@@ -381,8 +379,14 @@
 
 
 swiper {
-  box-sizing: border-box;
-  width: 100%;
   height: 580rpx;
-  border-radius: 20rpx;
+  width: 100%;
+  overflow: hidden;
 }
+
+video {
+  height: 580rpx;
+  width: 100%;
+  border-radius: 18.4273px;
+}
+

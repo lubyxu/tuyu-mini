@@ -3,6 +3,12 @@ import { uploadPhotos, formatTime } from '../../utils/upload.js'
 
 Page({
   data: {
+    indicatorDots: true,
+    vertical: false,
+    autoplay: true,
+    circular: true,
+    interval: 5000,
+    duration: 500,
     pid: "",
     topBackgroundImage: '',
     topBackgroundImage2: 'https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/photo-tiny-bg.png?sign=a01574f986bf50a15dbe5cd9ec97b899&t=1718937514',
@@ -16,6 +22,7 @@ Page({
     showLoading: true,
     showPoster: false,
     product_img: '',
+    isVideo: true
   },
 
   onLoad: function (options) {
@@ -35,7 +42,7 @@ Page({
       if (errno!== SUCCESS_CODE) {
         throw res
       }
-      let { memory: { data: memoryData }, bg_img, product_show_img, spot_name, product_name, shar_config } = data
+      let { memory: { data: memoryData, type }, bg_img, product_show_img, spot_name, product_name, shar_config } = data
       const { product_mem_bg_img: topBackgroundImage, product_share_bg_img, user_mem_desc = '' } = shar_config
       memoryData = memoryData.map(({ create_time, text, file }) => {
         const [url] = file.split(',')
@@ -48,7 +55,8 @@ Page({
         product_img: product_show_img,
         showLoading: false,
         topBackgroundImage,
-        product_share_bg_img
+        product_share_bg_img,
+        isVideo: type === 'video'
       })
     } catch (err) {
       console.log('err', err)
@@ -63,27 +71,39 @@ Page({
 
 
   updateImage() {
-    wx.chooseImage({
-      count: 1,
+    wx.chooseMedia({
+      count: 3,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: this.chooseImageSuccess
     })
   },
 
-  uploadPhotosServer(uploadResult) {
+  uploadPhotosServer(uploadResult, type) {
     const body = {
       product_id: 2,
       mem_data: uploadResult.map(({ filePath, createTime }) => ({
         file: filePath,
         create_time: createTime,
-      }))
+      })),
+      type
     }
     return request({ url: '/fuyu/product/memory/update', data: body })
   },
 
   async chooseImageSuccess(res) {
-    const tempFilePaths = res.tempFilePaths
+    console.log('res', res)
+    const type = res.type
+    if (type === 'video' && res.tempFiles.length > 1) {
+      wx.showToast({
+        title: '暂不支持上传多个视频',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
+
+    const tempFilePaths = res.tempFiles.map((item) => item.tempFilePath)
     const uploadPromises = []
     for (let i = 0; i < tempFilePaths.length; i++) {
       uploadPromises.push(uploadPhotos({ filePath: tempFilePaths[i], id: i }))
@@ -95,7 +115,7 @@ Page({
       })
       const uploadResult = await Promise.all(uploadPromises)
       console.log('uploadResult', uploadResult)
-      const data = await this.uploadPhotosServer(uploadResult)
+      const data = await this.uploadPhotosServer(uploadResult, type)
       console.log('data', data)
       wx.showToast({
         icon: 'success',
@@ -109,7 +129,8 @@ Page({
       })
       this.setData({
         photos: formaPhotos,
-        tiem: formatTime(Math.floor(new Date().getTime() / 1000))
+        tiem: formatTime(Math.floor(new Date().getTime() / 1000)),
+        isVideo: type === 'video'
       })
     } catch (err) {
       console.log(err)
