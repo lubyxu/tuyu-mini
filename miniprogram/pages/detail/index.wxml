@@ -19,7 +19,10 @@
         <view class="detail-bottom-content">
           <store-product appid="wxa8be24a874298873" product-id="10000161750826"></store-product>
           <view class="scan-btn-box">
-            <chinese-button bind:click="onClick" bindtap="gotoAR" width="312"> 扫一扫 </chinese-button>
+            <button wx:if="{{!isLogined}}" open-type="getPhoneNumber" bindgetphonenumber="onRegisterAccount" hover-class="none">
+              <chinese-button bindtap="gotoAR" width="312"> 扫一扫 </chinese-button>
+            </button>
+            <chinese-button wx:else bindtap="gotoAR" width="312"> 扫一扫 </chinese-button>
           </view>
         </view>
       </view>

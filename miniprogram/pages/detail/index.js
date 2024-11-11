@@ -1,5 +1,6 @@
 import { authCamera } from '../../utils/auth'
 import { request } from '../../utils/req';
+import { registerAccount } from '../../utils/auth';
 
 const app = getApp()
 
@@ -13,13 +14,16 @@ Page({
     bind: false,
     osd: '',
     resource: '',
-    showLoading: true
+    showLoading: true,
+    isLogined: false,
   },
 
   onLoad: function (options) {
+    const isLogined = app?.globalData?.user?.token
     this.setData({
       // id: options.id,
       id: 2,
+      isLogined
     })
   },
 
@@ -89,6 +93,19 @@ Page({
       children: children
     }]
     return nodes
+  },
+
+  async onRegisterAccount(e) {
+    const code = e.detail.code;
+    if (!code) {
+      wx.showToast({
+        icon: 'error',
+        title: '登陆失败，请重试'
+      })
+      return
+    } 
+    await registerAccount(code);
+    this.gotoAR()
   },
 
   async gotoAR() {
