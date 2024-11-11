@@ -17,7 +17,7 @@ Page({
       success: (res) => {
         console.log('res', res)
       },
-    })
+    });
   },
 
   async onReady() {

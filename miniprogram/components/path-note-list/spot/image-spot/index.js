@@ -22,8 +22,10 @@ Component({
    */
   methods: {
     onImageClick(e) {
-      const index = e.currentTarget.dataset.index;
+      const index = e.currentTarget.dataset.index || 0;
       this.triggerEvent('onImageClick', { index });
+      console.log('000 i am going to trigger event')
+      this.triggerEvent('imageClick', { index });
     }
   }
 })

@@ -1,6 +1,5 @@
 {
   "navigationBarTitleText": "业务示例",
-  "disableScroll": false,
   "usingComponents": {
     "navigation-bar": "/components/navigation-bar/index",
     "notification": "/components/notification/index",

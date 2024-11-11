@@ -25,6 +25,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onImageClick(e) {
+      const index = e.currentTarget.dataset.index;
+      wx.previewImage({
+        urls: this.data.images,
+        current: this.data.images[index]
+      });
+    }
   }
 })

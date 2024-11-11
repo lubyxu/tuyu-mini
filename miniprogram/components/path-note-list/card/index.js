@@ -10,7 +10,11 @@ Component({
     item: {
       type: Object,
       value: {}
-    }
+    },
+    showProgress: {
+      type: Boolean,
+      value: false
+    },
   },
 
   /**

@@ -38,6 +38,7 @@ Component({
    */
   data: {
     isChecked: false,
+    productModal: false,
   },
 
   /**
@@ -76,6 +77,50 @@ Component({
       catch (e) {
         this.pending = false;
       }
+    },
+    onClickProduct(e) {
+      const id = e.currentTarget.dataset.info;
+      const item = this.data.product_map[id];
+      console.log(item);
+      // todo @ zhangyiyuan
+      const type = item.type;
+      if (type === 1) {
+        wx.navigateTo({
+          url: '/pages/detail/index?id=' + id,
+        });
+      }
+      else {
+        this.setData({
+          productModal: {
+            item
+          }
+        });
+      }
+    },
+    onClose() {
+      this.setData({
+        productModal: false,
+      })
+    },
+    onSpotGoTo() {
+      const mp = wx.createMapContext('myMap');
+      mp.openMapApp({
+        longitude: this.data.loc_long,
+        latitude: this.data.loc_lat,
+        destination: this.data.location,
+        success: function (res) {
+        },
+        fail: function () {
+          console.log('error');
+          wx.showToast({
+            icon: 'none',
+            title: '调起地图应用失败'
+          });
+        },
+        complete(res) {
+          console.log(res)
+        }
+      })
     }
   }
 })

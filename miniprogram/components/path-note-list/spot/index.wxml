@@ -26,20 +26,59 @@
 
 		<view class="mt-4">
 		  <view class="image-point">
-			  <view class="image-point-wrapper image-point-product-wrapper" wx:for="{{product_ids}}">
-				  <image mode="aspectFill" class="image-point-product-wrapper-item" src="{{product_map[item].show_image}}" />
+			  <view
+          class="image-point-wrapper image-point-product-wrapper" 
+          wx:for="{{product_ids}}"
+          data-info="{{item}}"
+          bind:tap="onClickProduct"
+        >
+				  <image
+            mode="aspectFill"
+            class="image-point-product-wrapper-item"
+            src="{{product_map[item].show_image}}"
+          />
 				</view>
 
 				<image-spot images="{{content_info.image_points}}" bind:onImageClick="onImageClick" />
-			  
 			</view>
 		</view>
 
-		<view class="mt-8 flex items-center text-gray-color">
+		<view class="mt-8 flex items-center text-gray-color" bind:tap="onSpotGoTo">
 		  <iconfont name="position" size="13" color="rgba(0, 0, 0, 0.35)" />
 			<view class="ml-4 text-gray-color-2 text-12">{{location || '北京'}}</view>
 			<iconfont name="right-arrow" color="rgba(0, 0, 0, 0.35)" size="13" class="ml-4" />
 		</view>
 	</view>
+
+  <half-screen-dialog
+    show="{{!!productModal}}"
+    title=""
+    ext-class="fuyu-half-screen-dialog"
+    bindclose="onClose"
+  >
+    <view class="title-container" slot="title">
+      <view class="title">{{productModal.item.name}}</view>
+      <view
+        class="close"
+        bind:tap="onClose"
+      >
+        <mp-icon
+          icon="close"
+          color="rgba(0, 0, 34, 0.5)"
+          size="{{16}}"
+          class="icon-close"
+        />
+      </view>
+    </view>
+    <view class="content" slot="desc">
+      <view class="content-image flex items-center justify-center overflow-hidden">
+        <image
+          mode="aspectFit"
+          class="image rounded-8"
+          src="{{productModal.item.show_image}}"
+        />
+      </view>
+    </view>
+  </half-screen-dialog>
 
 </view>
