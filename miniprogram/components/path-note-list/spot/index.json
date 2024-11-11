@@ -4,6 +4,8 @@
     "switcher": "../check-switch/index",
     "iconfont": "/iconfont/iconfont",
     "image-spot": "./image-spot/index",
-    "work-break": "../word-break-lines"
+    "work-break": "../word-break-lines",
+    "half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog",
+    "mp-icon": "weui-miniprogram/icon/icon"
   }
 }

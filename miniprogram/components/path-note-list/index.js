@@ -34,7 +34,7 @@ Component({
           this.getPathList('mine');
         }
       })
-    }
+    },
   },
   /**
    * 组件的方法列表
@@ -70,12 +70,20 @@ Component({
         url: `/pages/path-note-detail/index?${queryArr.join('&')}`,
         fail: function (e) {
           console.log(e)
+        },
+        events: {
+          refresh: () => {
+            this.refresh();
+          }
         }
       });
     },
     onTabChange(e) {
       const key = e.detail.key;
       this.getPathList(key);
+    },
+    refresh() {
+      this.getPathList(this.data.group_id);
     }
   }
 })

@@ -1,10 +1,10 @@
 /* components/path-note-list/progress-bar/index.wxss */
 .container {
-	width: 86px;
-	height: 12px;
-	border-radius: 5px;
+	width: 120px;
+  height: 14px;
+  border-radius: 8px;
 	overflow: hidden;
-	position: relative;
+  position: relative;
 }
 
 .container .progress {
@@ -27,9 +27,10 @@
 }
 
 .pin {
-	width: 12px;
-	height: 12px;
-	position: absolute;
+	width: 14px;
+	height: 14px;
+  position: absolute;
+  /* display: none; */
 	right: 0;
 	top: 0;
 	bottom: 0;
@@ -60,7 +61,7 @@
 
 .text {
 	font-size: 10px;
-	line-height: 12px;
+  line-height: 14px;
 	color: #fff;
 }
 

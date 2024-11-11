@@ -1,5 +1,6 @@
 .fuyu-half-screen-dialog {
-	max-height: 92vh;
+  max-height: 92vh;
+  z-index: 99999;
 }
 
 .fuyu-half-screen-dialog .weui-half-screen-dialog__bd {
@@ -13,7 +14,7 @@
 }
 
 .fuyu-half-screen-dialog .weui-half-screen-dialog__hd .weui-half-screen-dialog__hd__side {
-	position: initial;
+  display: none;
 }
 
 .fuyu-half-screen-dialog .weui-half-screen-dialog__hd .weui-half-screen-dialog__hd__side .weui-icon-btn {
@@ -38,4 +39,39 @@
 
 .fuyu-half-screen-dialog .weui-half-screen-dialog__ft  {
 	padding: 0;
+}
+
+.fuyu-half-screen-dialog .title-container {
+  position: relative;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 500;
+  color: rgba(0, 0, 34, 0.91);
+  text-align: center;
+  width: 100%;
+}
+
+.fuyu-half-screen-dialog .title-container .title {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fuyu-half-screen-dialog .title-container .close {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0, 0, 34, 0.06);
+  position: absolute;
+  right: -40px;
+  top: -2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fuyu-half-screen-dialog .title-container .close .icon-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
