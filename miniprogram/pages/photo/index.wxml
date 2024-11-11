@@ -37,18 +37,20 @@
             </view>
 
             <view class="photo-box" wx-if="{{photos.length > 0}}">
-              <block wx:for="{{photos}}" wx:key="*this">
-                <swiper-item>
-                  <view class="photo-container">
-                    <cover-image
-                      src="../../images/upload.svg"
-                      class="update-logo"
-                      bindtap="updateImage"
-                    />
-                    <image class="banner-item" src="{{item.url}}" />
-                  </view>
-                </swiper-item>
-              </block>
+              <!-- <swiper> -->
+                <block wx:for="{{photos}}" wx:key="*this">
+                  <swiper-item>
+                    <view class="photo-container">
+                      <cover-image
+                        src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/update.png"
+                        class="update-logo"
+                        bindtap="updateImage"
+                      />
+                      <image class="banner-item" src="{{item.url}}" />
+                    </view>
+                  </swiper-item>
+                </block>
+              <!-- </swiper> -->
             </view>
 
             <view class="ptoto-bottom">

@@ -7,7 +7,7 @@ export const getData = ({
     "width": "310px",
     "height": "440px",
     "background": "#f8f8f8",
-    "borderRadius": "8px",
+    "borderRadius": "12px",
     "views": [
       {
         "type": "image",
@@ -30,23 +30,13 @@ export const getData = ({
         "text": time,
         "css": {
           "color": "#000000",
-          "width": "80px",
-          "height": "48.62px",
-          "top": "33px",
+          "width": "300px",
+          "height": "65px",
+          "top": "20px",
           "left": "36px",
           "rotate": "-5.7",
-          "borderRadius": "",
-          "borderWidth": "",
-          "borderColor": "#000000",
-          "shadow": "",
-          "padding": "0px",
-          "fontSize": "34px",
-          "fontWeight": "normal",
-          "maxLines": "2",
-          "lineHeight": "49px",
-          "textStyle": "fill",
-          "textDecoration": "none",
-          "textAlign": "left"
+          "fontSize": "30px",
+          "fontFamily": "FZKai-Z03S"
         }
       },
       {

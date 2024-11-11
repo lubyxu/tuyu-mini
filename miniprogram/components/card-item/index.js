@@ -53,8 +53,10 @@ Component({
   },
 
   methods: {
-    onScenicClcik(e) {
-      console.log(e)
+    onScenicClcik() {
+      wx.navigateTo({
+        url: `/pages/spot-detail/index?spot_id=${this.properties.spot.id}&province=beijing}`
+      });
     },
 
     onInit() {

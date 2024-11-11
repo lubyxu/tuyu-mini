@@ -106,4 +106,10 @@ Page({
       url: `/pages/osd-ar/index?id=${this.data.id}&videoUrl=${encodeURIComponent(this.data.resource)}&osd=${encodeURIComponent(this.data.osd)}`
     });
   },
+
+  onBuy() {
+    wx.navigateToMiniProgram({
+      shortLink: '#小程序://墨迹天气/DaSEdhwIiBIZzOh'
+    })
+  }
 });
