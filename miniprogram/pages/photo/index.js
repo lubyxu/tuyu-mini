@@ -22,7 +22,8 @@ Page({
     showLoading: true,
     showPoster: false,
     product_img: '',
-    isVideo: true
+    isVideo: true,
+    shareLink: ''
   },
 
   onLoad: function (options) {
@@ -48,6 +49,7 @@ Page({
         const [url] = file.split(',')
         return { url, createTime: formatTime(create_time), text }
       })
+      const isVideo = type === 'video'
       this.setData({
         photos: memoryData,
         time: memoryData?.[0]?.createTime || 12.11,
@@ -56,7 +58,8 @@ Page({
         showLoading: false,
         topBackgroundImage,
         product_share_bg_img,
-        isVideo: type === 'video'
+        isVideo,
+        shareLink: this.formatUrl(isVideo, memoryData[0]?.url)
       })
     } catch (err) {
       console.log('err', err)
@@ -91,10 +94,17 @@ Page({
     return request({ url: '/fuyu/product/memory/update', data: body })
   },
 
+  formatUrl (isVideo, url) {
+    return isVideo
+      ? `${url}?x-oss-process=video/snapshot,t_1000,f_jpg,w_198,h_260,rm_fast`
+      : url
+  },
+
   async chooseImageSuccess(res) {
     console.log('res', res)
     const type = res.type
-    if (type === 'video' && res.tempFiles.length > 1) {
+    const isVideo = type === 'video'
+    if (isVideo && res.tempFiles.length > 1) {
       wx.showToast({
         title: '暂不支持上传多个视频',
         icon: 'none',
@@ -127,10 +137,12 @@ Page({
           url,
         }
       })
+      console.log('url', this.formatUrl(isVideo, formaPhotos[0]?.url))
       this.setData({
+        shareLink: this.formatUrl(isVideo, uploadResult[0]?.filePath),
         photos: formaPhotos,
         tiem: formatTime(Math.floor(new Date().getTime() / 1000)),
-        isVideo: type === 'video'
+        isVideo
       })
     } catch (err) {
       console.log(err)

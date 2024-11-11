@@ -6,16 +6,11 @@ Component({
       type: String,
       value: '#000000',
     },
+    shareLink: {
+      type: String,
+    },
     time: {
       type: String,
-      value: [],
-    },
-    isVideo: {
-      type: Boolean,
-      value: false,
-    },
-    photos: {
-      type: [Object],
       value: [],
     },
     description: {
@@ -26,14 +21,10 @@ Component({
 
   lifetimes: {
     attached: function () {
-      const photos = this.properties.photos
-      const photo = this.properties.isVideo
-        ? `${photos[0].url}?x-oss-process=video/snapshot,t_1000,f_jpg,w_198,h_260,rm_fast`
-        : photos[0].url
       this.setData({
         posterData: getData({
           time: this.properties.time,
-          photo,
+          photo: this.properties.shareLink,
           description: this.properties.description,
         })
       })

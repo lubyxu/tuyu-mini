@@ -33,7 +33,7 @@ export const getAuthorization = (id = 4) => {
   
   export const uploadPhotos = async ({ filePath, userId = 4, productId = 4, id }) => {
     const host = 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com'
-    const reducePath = `${userId}/${userId}/${productId}/${id}`
+    const reducePath = `${userId}/${userId}/${productId}/${id}/${new Date().getTime()}.jpg`
     const key = `user-photos/${reducePath}`;
     const { bucket, AccessKeyId: ossAccessKeyId, AccessKeySecret: accessKeySecret, Expiration: expiration, SecurityToken: securityToken } = await getUploadParams();
   

@@ -4,10 +4,9 @@
     <poster
       background="{{product_share_bg_img}}"
       time="{{time}}"
-      photos="{{photos}}"
+      shareLink="{{shareLink}}"
       description="{{description}}"
       bind:closePoister="onClose"
-      isVideo="{{isVideo}}"
     />
   </view>
   <view wx-if="{{!showPoster}}" id="scrollView">
@@ -47,6 +46,7 @@
                 src="{{photos[0].url}}"
               />
               <swiper
+                wx:else
                 indicator-dots="{{indicatorDots}}"
                 autoplay="{{autoplay}}"
                 interval="{{interval}}"
