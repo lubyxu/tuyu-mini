@@ -38,18 +38,16 @@
 
             <view class="photo-box" wx-if="{{photos.length > 0}}">
               <!-- <swiper> -->
-                <block wx:for="{{photos}}" wx:key="*this">
-                  <swiper-item>
-                    <view class="photo-container">
-                      <cover-image
-                        src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/update.png"
-                        class="update-logo"
-                        bindtap="updateImage"
-                      />
-                      <image class="banner-item" src="{{item.url}}" />
-                    </view>
-                  </swiper-item>
-                </block>
+                <swiper-item wx:for="{{photos}}" wx:key="*this">
+                  <cover-view class="photo-container">
+                    <cover-image
+                      src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/update.png"
+                      class="update-logo"
+                      bindtap="updateImage"
+                    />
+                    <cover-image class="banner-item" src="{{item.url}}" />
+                  </cover-view>
+                </swiper-item>
               <!-- </swiper> -->
             </view>
 
@@ -82,7 +80,7 @@
               <view class="location-box">
                 <text>我的轨迹在</text>
                 <image
-                  src="https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/common/location.png?sign=cd57dbb55b80c300decad9881819feb8&t=1727404408"
+                  src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/location-icon.png"
                   class="location-icon"
                 />
               </view>

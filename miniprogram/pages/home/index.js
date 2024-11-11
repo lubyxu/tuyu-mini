@@ -7,7 +7,7 @@ Page({
     return {
       title: '福鱼文创',
       path: 'pages/home/index',
-      imageUrl: 'https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/common/share.png?sign=48f82e518b68aeeb1dd71ebf6a7d3ee6&t=1726127274'
+      imageUrl: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/share-mini.png'
     }
   },
 

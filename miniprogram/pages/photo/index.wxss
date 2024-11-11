@@ -23,7 +23,6 @@
 
 .photo-top-section-content {
   flex: 1;
-  /* margin-top: 130rpx;s */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,7 +43,6 @@
   font-weight: 600;
   font-size: 40px;
   line-height: 56px;
-  /* identical to box height */
   text-align: center;
   letter-spacing: -0.229592px;
   color: #902619;
@@ -84,31 +82,6 @@
   height: 24px;
 }
 
-/* .photo-content .wx-swiper-dots {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.photo-content .wx-swiper-dot {
-  width: 12rpx;
-  height: 12rpx;
-  background: #D18068;
-  border-radius: 12rpx;
-}
-
-.photo-content .wx-swiper-dot.wx-swiper-dot-active {
-  width: 24rpx;
-  height: 24rpx;
-  position: relative;
-  background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/Vector.png?sign=4a7cec29b953e252e0254d41f534682f&t=1718604911');
-  background-color: transparent; 
-  background-size:cover;
-  background-repeat:no-repeat;
-  background-position: center;
-} */
-
 .photo-content-image {
   position: relative;
   top: -242rpx;
@@ -123,7 +96,6 @@
 
 .photo-bottom-bg {
   position: relative;
-  /* top: -242rpx; */
   margin-bottom: -242rpx;
   background-size: 100% 2704rpx;
   background-repeat:no-repeat;
@@ -218,6 +190,7 @@
   line-height: 57px;
   letter-spacing: -0.260145px;
   color: #020202;
+  margin-top: 20rpx;
 }
 
 .photo-upload-logo {
@@ -267,11 +240,10 @@
   color: #FFBD8F;
 
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
-  /* Inside auto layout */
   flex: none;
   order: 1;
   flex-grow: 0;
-  z-index: 1;
+  z-index: 10;
 }
 
 .ptoto-name-box {
@@ -359,7 +331,6 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  /* identical to box height */
   text-align: center;
 
   color: #902619;
@@ -386,7 +357,7 @@
 
 .update-logo {
   position: absolute;
-  bottom: 12rpx;
+  bottom: 0rpx;
   right: 0;
   width: 40px;
   height: 32px;
@@ -405,6 +376,7 @@
   color: #FFBD8F;
 
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+  z-index: 10;
 }
 
 

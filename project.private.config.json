@@ -9,7 +9,7 @@
       "list": [
         {
           "name": "地图页面",
-          "pathName": "pages/scenic-map/index",
+          "pathName": "pages/detail/index",
           "query": "",
           "launchMode": "default",
           "scene": null

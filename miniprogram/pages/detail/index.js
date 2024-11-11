@@ -108,8 +108,6 @@ Page({
   },
 
   onBuy() {
-    wx.navigateToMiniProgram({
-      shortLink: '#小程序://墨迹天气/DaSEdhwIiBIZzOh'
-    })
+    wx.navigateTo({ url: '/pages/shope/index' })
   }
 });

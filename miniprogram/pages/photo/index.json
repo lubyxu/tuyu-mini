@@ -7,6 +7,6 @@
     "cardList": "/components/card-list/index",
     "loading": "/components/loading/index",
     "poster": "/components/poster/index",
-    "chinese-button": "../../components/button/chinese-btn/index"
+    "chinese-button": "/components/button/chinese-btn/index"
   }
 }

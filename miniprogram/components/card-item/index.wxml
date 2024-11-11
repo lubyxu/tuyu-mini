@@ -7,7 +7,7 @@
         <button wx:if="{{!isLogined}}" open-type="getPhoneNumber" bindgetphonenumber="onRegisterAccount" hover-class="none">
             <cover-image src="{{preview}}" class="preview" />
         </button>
-        <cover-image wx:else src="{{preview}}" class="preview" bind:tap="onProductClick" />
+        <cover-image wx:else src="{{preview}}" class="preview" catch:tap="onProductClick" />
     </cover-view>
     <cover-view >
         <cover-view wx-if="{{showProducts}}" class="product-list">
@@ -15,7 +15,7 @@
                 wx:for="{{_products}}"
                 class="product-box {{item.id === selectId && 'product-box-selected'}}"
                 data-id="{{item.id}}"
-                bind:tap="onSelect"
+                catch:tap="onSelect"
             >
                 <cover-image
                     wx:key="{{item.id}}"
@@ -26,9 +26,11 @@
         </cover-view>
         <cover-view class="desc-box" style="color:{{light ? '#ffbd8f': '#77270d'}}">
             <cover-view class="desc-title">{{title}}</cover-view>
-            <cover-view class="desc-subtitle">
-                {{subtitle}}
-                <cover-view wx-if="{{tags.length > 0}}">
+            <view class="desc-subtitle-box">
+                <cover-view class="desc-subtitle">
+                    {{subtitle}}
+                </cover-view>
+                <cover-view>
                     <cover-view 
                         wx:for="{{tags}}"
                         class="product-tag"
@@ -36,7 +38,7 @@
                         {{item}}
                     </cover-view>
                 </cover-view>
-            </cover-view>
+            </view>
         </cover-view>
     </cover-view>
     <cover-image wx-if="{{isVisited}}" src="../../images/visited.svg" class="visited-icon" />

@@ -103,7 +103,7 @@ Component({
         });
       } else {
         wx.navigateTo({
-          url: `/pages/osd-ar/index?id=${this.data.id}&videoUrl=${encodeURIComponent(this.data.resource)}&osd=${encodeURIComponent(this.data.osd)}`
+          url: `/pages/osd-ar/index?id=${id}&videoUrl=${encodeURIComponent(this.data.resource)}&osd=${encodeURIComponent(this.data.osd)}`
         });
       }
     },

@@ -7,7 +7,8 @@
     "pages/detail/index",
     "pages/photo/index",
     "pages/path-note-detail/index",
-    "pages/spot-detail/index"
+    "pages/spot-detail/index",
+    "pages/shope/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

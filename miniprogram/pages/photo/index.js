@@ -64,7 +64,7 @@ Page({
 
   updateImage() {
     wx.chooseImage({
-      count: 2,
+      count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: this.chooseImageSuccess

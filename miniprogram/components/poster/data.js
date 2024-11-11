@@ -41,7 +41,7 @@ export const getData = ({
       },
       {
         "type": "image",
-        "url": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/common/poster-logo.png?sign=4d870644a8ed2de57fb176687d4ac125&t=1727421568",
+        "url": "https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/text-logo.png",
         "css": {
           "width": "100px",
           "height": "50px",
@@ -73,7 +73,7 @@ export const getData = ({
       },
       {
         "type": "image",
-        "url": "https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/common/qrcodee.png?sign=66a087fc0ee7df982c51ea62bdc34889&t=1727665669",
+        "url": "https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/xiaohongshu-qr-code.png",
         "css": {
           "width": "60px",
           "height": "60px",

@@ -50,8 +50,8 @@ Page({
         customCallout: {
           display: 'ALWAYS',
         },
-        icon: icon_image || 'https://7072-production-6gycngib97dae447-1327253936.tcb.qcloud.la/assets/v2/common/area.png?sign=47a843587fc2732f56d8cedb9805fa9b&t=1729474429',
-        title: name || '故宫博物院',
+        icon: icon_image,
+        title: name,
       }
     })
     this.setData({
