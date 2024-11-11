@@ -1,21 +1,22 @@
 <!--pages/spot-detail/index.wxml-->
+<navigation-bar showBack="{{true}}" />
 <swiper
 	vertical="{{true}}"
 	style="height: 100vh;"
 >
   <swiper-item>
-  <view class="page-item">
-	  <image style="width: 100vw;" mode="widthFix"  src="{{info.spot.content.content_images[0]}}" />
-	</view>
+    <view class="page-item">
+      <image mode="widthFix"  src="{{info.spot.content.content_images[0]}}" />
+    </view>
   </swiper-item>
   <swiper-item>
-  <view class="page-item">
-	  <image style="width: 100vw;" mode="widthFix" src="{{info.spot.content.content_images[1]}}" />
-	</view>
+    <view class="page-item">
+      <image mode="widthFix" src="{{info.spot.content.content_images[1]}}" />
+    </view>
   </swiper-item>
   <swiper-item>
 		<scroll-view scroll-y style="height: 100vh;">
-      <view style="padding: 16px; background: url({{image}}) repeat;">
+      <view style="padding: 16px; padding-top: 108px;">
         <view style="margin-bottom: 24px">
           <view class="title">
             <image class="icon-navigator" src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FfSxmv1eCuBl9RTdrbEK3K%2Ftitle-navigator.svg" />
@@ -28,9 +29,9 @@
             />
           </view>
         </view>
-        <view class="mb-16">
+        <view class="mb-16" wx:if="{{paths.length}}">
           <image class="icon-navigator" src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FfSxmv1eCuBl9RTdrbEK3K%2Ftitle-navigator.svg" />
-          <view class="title-name">路线推荐·鼓楼</view>
+          <view class="title-name">路线推荐·{{info.spot.content.title}}</view>
         </view>
           
         <path-note-card

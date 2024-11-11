@@ -11,8 +11,10 @@
 	<view style="padding: 0 16px; margin-top: 20px;">
 	  <view style="margin-bottom: 16px;">🗺️ 行程概览</view>
 		<view class="map-container" bind:tap="openMap">
-		  placeholder
-			<map id="myMap"></map>
+      <scen-map />
+      <view><map id="myPageMap" /></view>
+		  <!-- placeholder
+			<map id="myMap"></map> -->
 		</view>
 	</view>
 

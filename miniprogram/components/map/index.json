@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "loading": "/components/loading/index",
+    "navigation-bar": "/components/navigation-bar/index",
+    "card-item": "/components/card-item/index"
+  }
+}

@@ -1,11 +1,13 @@
 // components/path-note-list/index.js
 import { getPathList } from './service/group';
 import { registerAccount } from '../../utils/auth';
+import loginBehavior from '../../behaviors/login/index';
 
 Component({
   options: {
     addGlobalClass: true
   },
+  behaviors: [loginBehavior],
   /**
    * 组件的属性列表
    */
@@ -19,17 +21,15 @@ Component({
   data: {
     group_id: 'mine',
     list: [],
-    authed: false,
-    logined: false,
   },
 
   lifetimes: {
     attached() {
+      if (this.data.isUserAccount) {
+        this.getPathList('mine');
+        return;
+      }
       getApp().globalData.event.on('login', (params) => {
-        this.setData({
-          authed: params.type === 'loginFailed' ? false : true,
-          logined: true
-        });
         if (params.type !== 'loginFailed') {
           this.getPathList('mine');
         }
@@ -40,14 +40,6 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    isAuthed: function () {
-      const app = getApp();
-      const user = app.globalData.user || {};
-      const token = user.token;
-      this.setData({
-        authed: !!token
-      });
-    },
     onLogin(e) {
       const code = e.detail.code;
       registerAccount(code);

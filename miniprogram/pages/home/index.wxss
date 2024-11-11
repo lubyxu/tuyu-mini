@@ -80,8 +80,17 @@ swiper {
   height: 380rpx;
 }
 
+.banner-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .banner-img {
   width: 100%;
+  height: 190px;
+  position: absolute;
+  bottom: 0;
 }
 
 .position-box {

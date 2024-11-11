@@ -103,12 +103,13 @@ Component({
       })
     },
     onSpotGoTo() {
-      const mp = wx.createMapContext('myMap');
+      const mp = wx.createMapContext('myPageMap');
       mp.openMapApp({
         longitude: this.data.loc_long,
         latitude: this.data.loc_lat,
         destination: this.data.location,
         success: function (res) {
+          console.log('-- success',)
         },
         fail: function () {
           console.log('error');

@@ -1,9 +1,9 @@
 <!--components/path-note-list/progress-bar/index.wxml-->
 <view class="container {{isDone ? 'done' : 'pending'}} {{progress === 0 ? 'starting' : ''}}">
-  <view style="width: {{progress === 0 ? 14 : progress * 120}}px;" class="progress">
+  <view style="width: {{progress === 0 ? 0 : progress * 120}}px;" class="progress">
 	  <image
 		  wx:if="{{!isDone}}"
-		  class="pin"
+		  class="pin {{ progress === 0 ? 'pin-start' : '' }}"
 		  src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2F2Lwvd5pe_ihUJxN2WdrNk%2FGroup%201312316268.svg"
 		/>
 		<view class="striped w-full"></view>

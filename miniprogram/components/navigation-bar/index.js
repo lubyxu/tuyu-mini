@@ -39,7 +39,7 @@ Component({
             })
         },
         navigateBack() {
-            wx.navigateBack()
+            wx.navigateBack({})
         }
     }
 })

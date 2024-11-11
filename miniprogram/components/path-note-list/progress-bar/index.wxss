@@ -31,12 +31,15 @@
 	height: 14px;
   position: absolute;
   /* display: none; */
-	right: 0;
+	right: -5px;
 	top: 0;
 	bottom: 0;
 	z-index: 1;
 }
 
+.pin.pin-start {
+  right: -14px;
+}
 .pending {
 	background: rgba(254, 238, 241, 1);
 }
