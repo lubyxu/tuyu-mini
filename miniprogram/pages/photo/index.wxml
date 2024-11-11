@@ -30,7 +30,7 @@
               />
               <text class="photo-empty-tips">暂无回忆记录～</text>
               <view class="photo-empty-button-box">
-                <chinese-button width="156" bind:click="updateImage">
+                <chinese-button width="156" bind:click="updateImage" zIndex="9">
                   <text class="photo-empty-button-text">上传回忆</text>
                 </chinese-button>
               </view>
@@ -88,7 +88,7 @@
             </view>
           </view>
 
-          <chinese-button width="230" bind:click="showPoster" className="share-box">
+          <chinese-button width="230" bind:click="showPoster" className="share-box" zIndex="9">
             <text class="share-text">分享回忆</text>
           </chinese-button>
         </view>

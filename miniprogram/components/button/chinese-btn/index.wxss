@@ -20,7 +20,6 @@
 	bottom: 0;
 	content: " ";
 	background: url(https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FyfsjPYHMoG7HYsiHZKMtg%2Fbtn-1px.svg) repeat-x;
-	z-index: 9;
 }
 
 .share-box {

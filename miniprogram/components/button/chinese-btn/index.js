@@ -9,6 +9,9 @@ Component({
       type: Number,
       value: 200
     },
+    zIndex: {
+      value: 0
+    },
     className: {
       type: String,
     },
