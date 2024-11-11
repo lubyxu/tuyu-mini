@@ -56,7 +56,9 @@ Component({
         })
       }
     },
-    moved() {
+  },
+  pageLifetimes: {
+    hide() {
       console.log('moved')
       this.removeOSDMarker()
     },
@@ -141,6 +143,7 @@ Component({
       this.renderer.state.setCullFace(this.THREE.CullFaceNone)
     },
     addOSDMarker() {
+      if (this.markerId) return
       const fs = wx.getFileSystemManager()
       const filePath = `${wx.env.USER_DATA_PATH}/${this.data.id}.png`
 

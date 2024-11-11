@@ -73,7 +73,7 @@ export function getUser() {
  */
 export async function registerAccount(code) {
   const app = getApp();
-  if (app.globalData.user) return app.globalData.user
+  if (app.globalData.user.token) return app.globalData.user
   const openid = getApp().globalData.user.openid;
   const ret = await request({
     url: '/fuyu/user/create/code',

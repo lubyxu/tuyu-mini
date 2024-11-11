@@ -36,6 +36,13 @@ Page({
     this.getInitData()
   },
 
+  onUnload() {
+    console.log('onUnload')
+    wx.navigateBack({
+      delta: 1
+    });
+  },
+
   async getInitData() {
     try {
       const res = await request({ url: `/fuyu/product/memory/info`, data: { product_id: 2 } })

@@ -78,7 +78,8 @@ Page({
         province: "beijing"
       }
     });
-    const { list = [], center_geo: { loc_long, loc_lat } } = data
+    let { list = [], center_geo: { loc_long, loc_lat } } = data
+    list = list.sort((a, b) => (a.sort - b.sort))
     this.setData({ list, latitude: loc_lat, longitude: loc_long })
   },
 
