@@ -21,6 +21,7 @@ Page({
     btnClass: 'fixed',
     isUserPath: false,
     hasUserPath: false,
+    fin_place_count: 0,
   },
 
   /**
@@ -114,6 +115,7 @@ Page({
       place_visited,
       isUserPath: !!user_path_id,
       hasUserPath: !!path_detail_info.user_path_id,
+      fin_place_count: !!user_path_id ? Object.values(place_visited || {}).filter(Boolean).length : 0
     });
   },
   onPrivilege(e) {
@@ -171,9 +173,15 @@ Page({
       content: '确认要删除吗？',
       success: async () => {
         await deleteUserPath(this.data.user_path_id);
-        this.needRefreshList = true
+        this.needRefreshList = true;
         wx.navigateBack();
       },
     })
+  },
+  onSpotChecked(e) {
+    this.setData({
+      fin_place_count: this.data.fin_place_count + 1
+    });
+    this.needRefreshList = true;
   }
 })

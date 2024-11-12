@@ -1,17 +1,11 @@
 /* pages/spot-detail/index.wxss */
 page {
   background: url(https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FUQzX7HeDjHSdZmUR-zeuE%2F46048aeab0fbe67c1d5e1e96df6f06d6.png) repeat;
+  overflow-y: auto;
 }
-.page-item {
-  height: 100vh;
+
+.bg-image {
   width: 100vw;
-  position: relative;
-}
-.page-item image {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
 }
 
 .page-item-bg-image {

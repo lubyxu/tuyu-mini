@@ -3,7 +3,7 @@
   <header
 	  name="🍁 秋日北京 | City Walk"
 		images="{{path_info.images}}"
-		fin_place_count="{{Object.keys(place_visited).length}}"
+		fin_place_count="{{fin_place_count}}"
 		place_count="{{place_details.length}}"
 		isUserPath="{{isUserPath}}"
 	/>
@@ -34,6 +34,7 @@
 				plain_text="{{item.plain_text}}"
 				bind:onPrivilege="onPrivilege"
 				bind:onImageClick="onImageClick"
+        bind:spotChecked="onSpotChecked"
 				isUserPath="{{isUserPath}}"
 			/>
 		</view>

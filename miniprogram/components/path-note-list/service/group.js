@@ -14,6 +14,10 @@ export async function getTabs() {
 
 export async function getPathList({ group_id }) {
 	if (group_id === 'mine') {
+    const app = getApp();
+    if (!app.globalData.user.token) {
+      return Promise.resolve([]);
+    }
 		const { data } = await request({
 			url: '/fuyu/path/userpathlist',
 			data: {

@@ -4,5 +4,6 @@
     "path-note-card": "/components/path-note-list/card/index",
     "card-item": "/components/card-item/index",
     "navigation-bar": "/components/navigation-bar/index"
-  }
+  },
+  "disableScroll": false
 }

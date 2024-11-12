@@ -13,11 +13,10 @@
         </chinese-button>
       </view>
     </view>
-
-    <view class="mt-16" wx:if="{{!(group_id === 'mine' && !isLogined)}}">
+    <view class="mt-16" wx:if="{{!(!isUserAccount && group_id === 'mine')}}">
       <card wx:for="{{list}}" item="{{item}}" showProgress="{{group_id === 'mine'}}" bind:click="onItemClick" />
 
-      <view class="flex items-center justify-center" style="margin-top: 32px;" wx:if="{{!list.length}}">
+      <view class="flex items-center justify-center" wx:if="{{}}" style="margin-top: 32px;" wx:if="{{!list.length}}">
         <empty-list width="135" height="{{135}}" text="暂无计划" />
       </view>
     </view>
