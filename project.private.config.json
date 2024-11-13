@@ -10,7 +10,7 @@
         {
           "name": "pages/path-note-detail/index",
           "pathName": "pages/path-note-detail/index",
-          "query": "user_path_id=33&path_id=2",
+          "query": "user_path_id=42&path_id=4",
           "launchMode": "default",
           "scene": null
         },

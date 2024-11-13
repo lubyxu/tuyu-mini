@@ -22,6 +22,7 @@ Page({
     isUserPath: false,
     hasUserPath: false,
     fin_place_count: 0,
+    markers: [],
   },
 
   /**
@@ -117,6 +118,8 @@ Page({
       hasUserPath: !!path_detail_info.user_path_id,
       fin_place_count: !!user_path_id ? Object.values(place_visited || {}).filter(Boolean).length : 0
     });
+
+    this.setMarkers();
   },
   onPrivilege(e) {
     const info = e.detail;
@@ -183,5 +186,31 @@ Page({
       fin_place_count: this.data.fin_place_count + 1
     });
     this.needRefreshList = true;
+  },
+  onGotoMap() {
+    const { user_path_id, path_id } = this.data;
+    const query = [
+      `path_id=${path_id}`,
+      user_path_id ? `user_path_id=${user_path_id}` : ''
+    ].filter(Boolean);
+    wx.navigateTo({
+      url: `/pages/scenic-map/index?${query.join('&')}`
+    });
+  },
+
+  setMarkers() {
+    const { place_visited, place_details } = this.data;
+    const ret = place_details.map(place => ({
+      id: place.place_id,
+      customCallout: { display: 'ALWAYS' },
+      icon: place.image,
+      longitude: place.loc_long,
+      latitude: place.loc_lat,
+      register: place_visited[place.place_id],
+      title: place.name
+    }));
+    this.setData({
+      markers: ret
+    });
   }
 })

@@ -7,13 +7,17 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    markers: {
+      type: Array,
+      value: []
+    },
     latitude: {
       type: Number,
-      value: 23.096994
+      value: 0,
     },
     longitude: {
       type: Number,
-      value: 113.324520,
+      value: 0,
     }
   },
 
@@ -21,8 +25,6 @@ Component({
    * 组件的初始数据
    */
   data: {
-    markers: [],
-    list: [],
     products: [],
     spot: {},
     isVisited: false,
@@ -43,44 +45,20 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    async getInitData() {
-      const { data } = await request({
-        method: 'POST',
-        url: '/fuyu/spot/list',
-        data: {
-          province: "beijing"
-        }
-      });
-      const { list = []} = data
-      const markers = list
-        .filter(item => item?.products?.length > 0)
-        .map(({ spot, is_visited }) => {
-        const { loc_lat, loc_long, icon_image, id, name } = spot
-        
-        return {
-          id,
-          register: is_visited,
-          latitude: loc_lat || 23.095994,
-          longitude: loc_long || 113.325520,
-          customCallout: {
-            display: 'ALWAYS',
-          },
-          icon: icon_image,
-          title: name,
-        }
-      })
-      this.setData({
-        markers: markers,
-        list,
-        latitude: markers[0].latitude,
-        longitude: markers[0].longitude,
-      })
+    getInitData() {
+      // const markers = this.data.markers;
+      // this.setData({
+      //   // markers: markers,
+      //   latitude: markers[0].latitude,
+      //   longitude: markers[0].longitude,
+      // })
     },
   
     markertap(e) {
       console.log('@@@ markertap', e)
     },
     callouttap(e) {
+      return;
       const { markerId } = e
       const current = this.data.markers.find(item => item.id === markerId)
       const currentScenic = this.data.list.find(item => item.spot.id === markerId)
@@ -102,9 +80,6 @@ Component({
     },
   
     onChange() {
-      this.setData({
-        showScenicCard: !this.data.showScenicCard
-      })
     }
   },
 })

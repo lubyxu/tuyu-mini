@@ -4,6 +4,7 @@
 	title=""
 	ext-class="fuyu-half-screen-dialog"
 	bindclose="onClose"
+  closabled="{{false}}"
 >
   <view class="title-container" slot="title">
     <view class="title">打卡点位</view>

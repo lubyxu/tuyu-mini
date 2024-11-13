@@ -1,4 +1,5 @@
 /* components/path-note-list/spot/index.wxss */
+@import "../../../component.wxss";
 .title {
 	display: flex;
 	justify-content: space-between;

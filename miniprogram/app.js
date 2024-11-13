@@ -1,6 +1,5 @@
 import { getUser } from "./utils/auth";
 import * as event from './utils/event';
-
 // app.js
 App({
   onLaunch: async function () {

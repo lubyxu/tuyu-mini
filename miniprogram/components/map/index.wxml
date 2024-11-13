@@ -1,6 +1,5 @@
 <view>
-  <loading wx-if="{{showLoading}}" />
-  <view wx-if="{{!showLoading}}" class="page-section swiper">
+  <view class="page-section swiper">
      <map
       id="myMap"
       style="width: 100%; height: 162px;"
@@ -26,17 +25,6 @@
             <cover-image wx-if="{{item.register}}" class="custom-callout-register-icon" src="{{registerIcon}}"></cover-image>
           </cover-view>
         </block>
-      </cover-view>
-      <cover-view wx-if="{{showScenicBox}}" class="scenic-card" >
-        <cover-view class="scenic-card-title" bind:tap="onChange">
-          <cover-image
-            class="scenic-card-title-icon"
-            src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/fold.png"
-          />
-        </cover-view>
-        <cover-view class="card-container" wx-if="{{showScenicCard}}" >
-          <card-item products="{{products}}" isVisited="{{isVisited}}" spot="{{spot}}"/>
-        </cover-view>
       </cover-view>
     </map>
   </view>

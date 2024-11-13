@@ -63,11 +63,21 @@
   border-radius: 50%;
   background: rgba(0, 0, 34, 0.06);
   position: absolute;
-  right: -40px;
+  right: 0;
   top: -2px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.fuyu-half-screen-dialog .title-container .close::after {
+  content: " ";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 1px solid #fff;
 }
 
 .fuyu-half-screen-dialog .title-container .close .icon-close {

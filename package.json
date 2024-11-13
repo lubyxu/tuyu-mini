@@ -21,6 +21,7 @@
   "dependencies": {
     "crypto-js": "^4.2.0",
     "js-base64": "^3.7.7",
+    "miniprogram-computed": "^5.1.0",
     "threejs-miniprogram": "0.0.8",
     "yyeva-wechat": "^1.0.0-beta.17"
   },
