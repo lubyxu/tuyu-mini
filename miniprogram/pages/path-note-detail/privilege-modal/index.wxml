@@ -1,9 +1,10 @@
 <!--pages/path-note-detail/privilege-modal/index.wxml-->
 <half-screen-dialog
-	show="{{true}}"
+	show="{{show}}"
 	title=""
 	ext-class="fuyu-half-screen-dialog"
 	bindclose="onClose"
+  closabled="{{false}}"
 >
   <view class="title-container" slot="title">
     <view class="title">权益中心</view>
@@ -19,7 +20,7 @@
       />
     </view>
   </view>
-	<view class="title" slot="desc">
+	<view style="text-align: center;" slot="desc">
 	  <image style="width: 200px; height: 20px;" src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FfUlYgtPIS2mGKgEQKXS-F%2Fprivileag.svg" />
 
 		<view class="content">

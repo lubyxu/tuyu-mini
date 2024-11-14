@@ -199,7 +199,7 @@ Page({
   },
 
   setMarkers() {
-    const { place_visited, place_details } = this.data;
+    const { place_visited = {}, place_details } = this.data;
     const ret = place_details.map(place => ({
       id: place.place_id,
       customCallout: { display: 'ALWAYS' },

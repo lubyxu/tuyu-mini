@@ -10,6 +10,7 @@
     "card-item": "/components/card-item/index",
     "auth-guard": "/components/auth-guard/index",
     "mp-icon": "weui-miniprogram/icon/icon",
-    "scen-map": "/components/map/index"
+    "scen-map": "/components/map/index",
+    "iconfont": "/iconfont/iconfont"
   }
 }

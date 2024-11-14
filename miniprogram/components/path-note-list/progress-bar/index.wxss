@@ -23,7 +23,7 @@
 .container.pending.starting .text {
 	color: rgba(241, 75, 63, 1);
 	left: 50%;
-	margin-left: -20px;
+	margin-left: -10px;
 }
 
 .pin {
@@ -70,7 +70,7 @@
 
 .text-undone {
 	position: absolute;
-	left: 6px;
+	left: 12px;
 	top: 0;
 	bottom: 0;
 }

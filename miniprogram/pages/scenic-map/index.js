@@ -71,7 +71,7 @@ Page({
 
   async getPathData({ user_path_id, path_id }) {
     const data = await getPathDetail({ user_path_id, path_id });
-    const { path_detail_info, place_visited } = data;
+    const { path_detail_info, place_visited = {} } = data;
     const place_details = path_detail_info.place_details;
     const product_map = path_detail_info.product_map;
     const markers = place_details.map(place => ({
@@ -96,7 +96,7 @@ Page({
       products: place.product_id ? [product_map[place.product_id]] : [],
       is_visited: place_visited[place.place_id]
     }));
-    
+
     this.setData({
       markers: markers,
       list,

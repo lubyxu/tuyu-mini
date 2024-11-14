@@ -12,7 +12,10 @@
 	  <view style="margin-bottom: 16px;">🗺️ 行程概览</view>
 		<view class="map-container" bind:tap="openMap">
       <scen-map markers="{{markers}}" latitude="{{markers[0].latitude}}" longitude="{{markers[0].longitude}}" />
-      <cover-view wx:if="{{!modal.type}}" bind:tap="onGotoMap" class="btn-see-map">查看地图</cover-view>
+      <view wx:if="{{!modal.type}}" bind:tap="onGotoMap" class="btn-see-map">
+        <iconfont style="margin-right: 4px;" name="map" color="rgba(0, 0, 0, 0.65)" />
+        查看地图
+      </view>
       <view><map id="myPageMap" /></view>
 		  <!-- placeholder
 			<map id="myMap"></map> -->
@@ -72,13 +75,13 @@
 	</view>
 
 	<privilege-modal
-	  wx:if="{{modal && modal.type === 'privilege'}}"
+    show="{{modal && modal.type === 'privilege'}}"
 		desc="{{modal.props.desc}}"
 		bind:close="onModalClose"
 	/>
 
 	<place-modal
-		wx:if="{{modal && modal.type === 'place-images'}}"
+		show="{{modal && modal.type === 'place-images'}}"
 	  images="{{modal.props.images}}"
 		curIndex="{{modal.props.index}}"
 		bind:close="onModalClose"

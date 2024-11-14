@@ -8,7 +8,8 @@ Component({
    */
   properties: {
     images: Array,
-    curIndex: Number
+    curIndex: Number,
+    show: Boolean,
   },
 
   /**
