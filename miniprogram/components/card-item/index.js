@@ -95,6 +95,7 @@ Component({
         })
         return
       } 
+      this.setData({ isLogined: true })
       await registerAccount(code);
       this.onProductClick()
     },

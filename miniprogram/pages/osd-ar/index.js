@@ -70,9 +70,11 @@ Component({
     async onRouter() {
       const res = await this.onBind()
       console.log('绑定成功', res)
+      if (this.finishRouter) return
       wx.navigateTo({
         url: `/pages/photo/index?pid=${this.data.id}`
       });
+      this.finishRouter = true
     },
     onEnd() {
       this.onRouter()

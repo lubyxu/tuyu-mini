@@ -97,7 +97,7 @@ Page({
 
   uploadPhotosServer(uploadResult, type) {
     const body = {
-      product_id: 2,
+      product_id: this.data.pid,
       mem_data: uploadResult.map(({ filePath, createTime }) => ({
         file: filePath,
         create_time: createTime,

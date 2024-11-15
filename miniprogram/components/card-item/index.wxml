@@ -48,5 +48,5 @@
             </view>
         </cover-view>
     </cover-view>
-    <cover-image wx-if="{{isVisited}}" src="../../images/visited.svg" class="visited-icon" />
+    <cover-image wx-if="{{isVisited}}" src="../../images/visited.png" class="visited-icon" />
 </cover-view>
