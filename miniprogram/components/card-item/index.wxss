@@ -65,8 +65,11 @@
 }
 
 .product-list-box {
-    height: 128rpx;
     margin-bottom: 16rpx;
+}
+
+.desc-top-box {
+    margin-top: 128rpx;
 }
 
 .product-list-small {
@@ -88,7 +91,7 @@
     background: rgba(0, 0, 0, 0.1);
     border: 0.6px solid rgba(0, 0, 0, 0.12);
     border-radius: 9.6px;
-    padding: 16rpx;
+    padding: 6rpx 4rpx;
     width: 96rpx;
     height: 96rpx;
     margin-right: 16rpx;
@@ -153,4 +156,8 @@
     height: 40rpx;
     width: 32rpx;
     opacity: 0;
+}
+
+.desc-box-max {
+    
 }

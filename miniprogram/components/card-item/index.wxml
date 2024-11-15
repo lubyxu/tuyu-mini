@@ -1,15 +1,16 @@
 <cover-view
     class="card-item"
+    catch:tap="onScenicClcik"
 >
-    <cover-image class="background-image" src="{{background}}" mode="widthFix"  catch:tap="onScenicClcik"></cover-image>
+    <cover-image class="background-image" src="{{background}}" mode="widthFix"></cover-image>
     <cover-view class="preview-box">
-        <button catchtouchmove="preventD" wx:if="{{!isLogined}}" open-type="getPhoneNumber" bindgetphonenumber="onRegisterAccount" hover-class="none">
-            <cover-image src="{{preview}}" class="preview" />
+        <button data-item="product" catchtouchmove="preventD" wx:if="{{!isLogined}}" open-type="getPhoneNumber" bindgetphonenumber="onRegisterAccount" hover-class="none">
+            <cover-image data-item="product" src="{{preview}}" class="preview" />
         </button>
         <cover-image wx:else src="{{preview}}" class="preview" catch:tap="onProductClick" />
     </cover-view>
     <cover-view class="card-right-box">
-        <cover-view class="{{showProducts ? 'product-list-box' : 'product-list-small'}}">
+        <cover-view class="product-list-box">
             <cover-view  wx-if="{{showProducts}}" class="product-list">
                 <cover-view 
                     wx:for="{{_products}}"
@@ -25,7 +26,7 @@
                 </cover-view>
             </cover-view>
         </cover-view>
-        <cover-view class="desc-box" style="color:{{light ? '#ffbd8f': '#77270d'}}">
+        <cover-view class="{{showProducts ? 'desc-box' : 'desc-top-box'}}" style="color:{{light ? '#ffbd8f': '#77270d'}}">
             <cover-view class="desc-title">
                 {{title}}
                 <cover-view class="kong" />

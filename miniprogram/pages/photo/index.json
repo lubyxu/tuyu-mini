@@ -1,6 +1,6 @@
 {
   "navigationStyle": "custom",
-  "disableScroll": false,
+  "disableScroll": true,
   "usingComponents": {
     "navigation-bar": "/components/navigation-bar/index",
     "notification": "/components/notification/index",

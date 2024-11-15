@@ -17,14 +17,13 @@ Page({
     showLoading: true,
     isLogined: false,
     appid: '',
-    productId: ''
+    productId: '',
   },
 
   onLoad: function (options) {
     const isLogined = app?.globalData?.user?.token
     this.setData({
-      // id: options.id,
-      id: 2,
+      id: options.id / 1,
       isLogined
     })
   },
@@ -53,13 +52,12 @@ Page({
     const { product_info = {}} = data
     const {
       bg_img = '',
-      content = [],
+      content,
       ar_config: {
         resource,
         osd
       },
       title = '',
-      top_img = 'https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/gulou/gulou-detail-top.png?sign=92cf4765a73ab156ee4f0c1bd37f9ad7&t=1718693020',
       shop_config: {
         app_id: appid,
         item_code: productId
@@ -70,7 +68,7 @@ Page({
       background: bg_img,
       nodes,
       title,
-      topImage: top_img,
+      topImage: content.top_img,
       resource,
       osd,
       appid,

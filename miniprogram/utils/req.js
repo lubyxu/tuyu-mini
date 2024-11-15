@@ -1,5 +1,6 @@
 export function request({ url, data, method, Authorization }) {
 	const authorization = getApp().globalData?.user?.token;
+	console.log('authorization', authorization)
 	return new Promise(function (resolve, reject) {
 		wx.request({
 			method: method || 'POST',

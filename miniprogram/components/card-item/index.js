@@ -53,7 +53,10 @@ Component({
   },
 
   methods: {
-    onScenicClcik() {
+    onScenicClcik(e) {
+      if (e?.target?.dataset?.item === 'product') {
+        return
+      }
       wx.navigateTo({
         url: `/pages/spot-detail/index?spot_id=${this.properties.spot.id}&province=beijing}`
       });

@@ -1,6 +1,7 @@
 const app = getApp()
-import { authCamera } from '../../utils/auth'
+import { getUser } from '../../utils/auth'
 import { request } from '../../utils/req';
+
 
 Page({
   onShareAppMessage() {
@@ -71,6 +72,9 @@ Page({
   },
 
   async getInitData() {
+    if (!app.globalData?.user?.token) {
+      await getUser()
+    }
     const { data } = await request({
       method: 'POST',
       url: '/fuyu/spot/list',

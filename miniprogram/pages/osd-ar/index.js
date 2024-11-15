@@ -71,7 +71,7 @@ Component({
       const res = await this.onBind()
       console.log('绑定成功', res)
       wx.navigateTo({
-        url: `/pages/photo/index`
+        url: `/pages/photo/index?pid=${this.data.id}`
       });
     },
     onEnd() {

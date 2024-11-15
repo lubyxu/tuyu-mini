@@ -74,36 +74,13 @@
             </view>
           </view>
 
-          <view class="load-more-box">
-            <image
-              src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/load-more.png"
-              class="load-more-icon"
-              bindtap="scrollToBottom"
-            />
-            <text class="load-more-tips">点击或上滑查看攻略</text>
+          <view class="share-box">
+            <chinese-button wx-if="{{photos.length > 0}}" width="230" bind:click="showPoster" zIndex="9">
+              <text class="share-text">分享回忆</text>
+            </chinese-button>
           </view>
-          
         </view>
 
-        <view class="photo-top-section" style="background-image: url('{{topBackgroundImage2}}');">
-          <image src="{{topBackgroundImage}}" class="photo-top-section-image"/>
-          <view class="flex-box">
-            <view class="photo-top-section-content">
-              <view class="location-box">
-                <text>我的轨迹在</text>
-                <image
-                  src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/location-icon.png"
-                  class="location-icon"
-                />
-              </view>
-              <text class="photo-top-section-name">{{name}}</text>
-            </view>
-          </view>
-
-          <chinese-button wx-if="{{photos.length > 0}}" width="230" bind:click="showPoster" className="share-box" zIndex="9">
-            <text class="share-text">分享回忆</text>
-          </chinese-button>
-        </view>
       </view>
     </view>
   </view>

@@ -8,6 +8,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/photo/index",
+          "pathName": "pages/photo/index",
+          "query": "pid=2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/path-note-detail/index",
           "pathName": "pages/path-note-detail/index",
           "query": "user_path_id=42&path_id=4",
@@ -32,13 +39,6 @@
           "name": "首页",
           "pathName": "pages/home/index",
           "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/photo/index",
-          "pathName": "pages/photo/index",
-          "query": "pid=000001",
           "launchMode": "default",
           "scene": null
         },

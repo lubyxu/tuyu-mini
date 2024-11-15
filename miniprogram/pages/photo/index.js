@@ -1,6 +1,9 @@
 import { request, SUCCESS_CODE } from '../../utils/req.js';
+import { getUser } from '../../utils/auth.js';
 import { uploadPhotos, formatTime } from '../../utils/upload.js'
 
+
+const app = getApp()
 Page({
   data: {
     indicatorDots: true,
@@ -28,7 +31,7 @@ Page({
 
   onLoad: function (options) {
     this.setData({
-      pid: options.pid,
+      pid: options.pid / 1,
     })
   },
 
@@ -45,7 +48,10 @@ Page({
 
   async getInitData() {
     try {
-      const res = await request({ url: `/fuyu/product/memory/info`, data: { product_id: 2 } })
+      if (!app.globalData?.user?.token) {
+        await getUser()
+      }
+      const res = await request({ url: `/fuyu/product/memory/info`, data: { product_id: this.data.pid } })
       const { data, errno } = res
       if (errno!== SUCCESS_CODE) {
         throw res

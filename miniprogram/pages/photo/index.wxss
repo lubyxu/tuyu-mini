@@ -1,6 +1,9 @@
 .photo-page {
   width: 100%;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .photo-top-section {
@@ -156,17 +159,18 @@
   height: 100vh;
   background-image: url("https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/photo-bg.png");
   background-size: 100vw 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .photo-upload-box {
   box-sizing: border-box;
-  position: absolute;
-  width: 80vw;
-  right: 10vw;
-  top: 130.04px;
+  margin-top: 130.04px;
   background: #FEFEFE;
   border-radius: 18.4273px;
   padding: 20rpx;
+  width: 322px;
   /* transform: rotate(-5.68deg); */
 }
 
@@ -390,3 +394,6 @@ video {
   border-radius: 18.4273px;
 }
 
+.share-box {
+  margin-top: 110rpx;
+}
