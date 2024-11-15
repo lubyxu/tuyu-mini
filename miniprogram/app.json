@@ -3,7 +3,6 @@
     "pages/home/index",
     "pages/scenic-map/index",
     "pages/osd-ar/index",
-    "pages/map/index/index",
     "pages/detail/index",
     "pages/photo/index",
     "pages/path-note-detail/index",
