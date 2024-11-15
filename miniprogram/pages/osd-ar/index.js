@@ -44,7 +44,7 @@ Component({
       console.log(';options', page?.options)
       this.setData({
         osd: decodeURIComponent(page?.options?.osd),
-        osd: "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/gulou.jpg?sign=03bca79246ea0b8b2b1f22b7185f3994&t=1719304890",
+        // osd: "https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/gulou.jpg?sign=03bca79246ea0b8b2b1f22b7185f3994&t=1719304890",
         id: page?.options?.id,
       })
       if (page?.options?.videoUrl && page?.options?.videoUrl !== 'undefined') {

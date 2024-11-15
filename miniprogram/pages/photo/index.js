@@ -63,6 +63,16 @@ Page({
         return { url, createTime: formatTime(create_time), text }
       })
       const isVideo = type === 'video'
+      debugger
+      if ( memoryData[0]) {
+        wx.getImageInfo({
+          src: memoryData[0].url,
+          success (res) {
+            console.log(res.width)
+            console.log(res.height)
+          }
+        })
+      }
       this.setData({
         photos: memoryData,
         time: memoryData?.[0]?.createTime || 12.11,

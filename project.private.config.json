@@ -10,7 +10,14 @@
         {
           "name": "pages/photo/index",
           "pathName": "pages/photo/index",
-          "query": "pid=2",
+          "query": "pid=4",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "景点详情",
+          "pathName": "pages/detail/index",
+          "query": "id=2",
           "launchMode": "default",
           "scene": null
         },
@@ -25,13 +32,6 @@
           "name": "地图页面",
           "pathName": "pages/detail/index",
           "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "景点详情",
-          "pathName": "pages/spot-detail/index",
-          "query": "spot_id=1&province=beijing",
           "launchMode": "default",
           "scene": null
         },
