@@ -29,10 +29,12 @@
   </view>
 
   <view class="nav-container">
-    <cover-view wx:for="{{selectList}}" wx:key="{{item.index}}" data-id="{{item.index}}" bindtap="switchTab" class="nav-box">
-      <cover-image class="nav-icon" src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></cover-image>
-      <cover-view class="{{selected === index ? 'tab-bar-text-active' : 'tab-bar-text'}}">{{item.text}}</cover-view>
-    </cover-view>
+    <view class="nav-container-box">
+      <view wx:for="{{selectList}}" wx:key="{{item.index}}" data-id="{{item.index}}" bindtap="switchTab" class="{{selected === index ? 'nav-box-active' : 'nav-box'}}">
+        <image class="nav-icon" src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></image>
+        <view class="{{selected === index ? 'tab-bar-text-active' : 'tab-bar-text'}}">{{item.text}}</view>
+      </view>
+    </view>
   </view>
 
     <view class="scroll-view-container" wx:if="{{selected === 1}}">

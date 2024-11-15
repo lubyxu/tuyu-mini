@@ -20,7 +20,10 @@
             <cover-view  class="custom-callout-container {{!item.register && 'custom-callout-container-unregister'}}">
               <cover-image  class="custom-callout-icon" src="{{item.icon}}"></cover-image>
               <cover-view class="custom-callout-content" >
-                <cover-view class="custom-callout-title" >{{item.title}}</cover-view>
+                <cover-view class="custom-callout-title" >
+                  {{item.title}}
+                   <cover-view class="kong" />
+                </cover-view>
                 <cover-view class="custom-callout-subtitle" >{{item.register ? '已打卡' : '未打卡'}}</cover-view>
               </cover-view>
         

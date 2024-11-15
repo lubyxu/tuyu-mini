@@ -100,7 +100,7 @@
             </view>
           </view>
 
-          <chinese-button width="230" bind:click="showPoster" className="share-box" zIndex="9">
+          <chinese-button wx-if="{{photos.length > 0}}" width="230" bind:click="showPoster" className="share-box" zIndex="9">
             <text class="share-text">分享回忆</text>
           </chinese-button>
         </view>

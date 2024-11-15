@@ -111,19 +111,24 @@ swiper {
 }
 
 .nav-container {
-  margin-top: 10rpx;
   display: flex;
   align-items: center;
   justify-self: center;
-  /* justify-content: space-between; */
+  height: 70rpx;
+  justify-content: center;
 }
 
-.nav-box {
+.nav-container-box {
+  width: 304rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-box, .nav-box-active {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 96rpx;
-  margin: 0 auto;
+  position: relative;
 }
 
 .nav-box:last-child {
@@ -131,8 +136,9 @@ swiper {
 }
 
 .tab-bar-text, .tab-bar-text-active {
+  z-index: 1;
   width: 40px;
-
+  margin-left: 8rpx;
   font-family: 'Neue Frutiger World';
   font-style: normal;
   font-weight: 400;
@@ -144,11 +150,25 @@ swiper {
 }
 
 .tab-bar-text-active {
+  position: relative;
   color: #ce3219;
   font-weight: 600;
+}
+
+.nav-box-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 106rpx;
+  border-radius: 20rpx;
+  height: 10px; /* 横条的高度 */
+  background: linear-gradient(90deg, #F4F0E7 0%, #F9E7DB 100%);
+  z-index: 0;
 }
 
 .nav-icon {
   width: 32rpx;
   height: 32rpx;
+  z-index: 1;
 }

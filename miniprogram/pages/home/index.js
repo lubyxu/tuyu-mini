@@ -56,14 +56,14 @@ Page({
     selectList: [
       {
         text: "路书",
-        iconPath: "../../images/icons/icon-2.svg",
-        selectedIconPath: "../../images/icons/icon-2-active.svg",
+        iconPath: "../../images/icons/icon-1.png",
+        selectedIconPath: "../../images/icons/icon-1-active.png",
         index: 0,
       },
       {
         text: "景点",
-        iconPath: "../../images/icons/icon-1.svg",
-        selectedIconPath: "../../images/icons/icon-1-active.svg",
+        iconPath: "../../images/icons/icon-2.png",
+        selectedIconPath: "../../images/icons/icon-2-active.png",
         index: 1,
       },
     ],

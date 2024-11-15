@@ -16,9 +16,6 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: self-start;
-    position: absolute;
-    top: 134rpx;
-    left: 280rpx;
     font-family: 'PingFang SC';
     font-style: normal;
     font-weight: 500;
@@ -30,11 +27,14 @@
 }
 
 .desc-title {
+    font-family: -apple-system;
     font-size: 18px;
     line-height: 25px;
+    width: max-content;
 }
 
 .desc-subtitle {
+    font-family: -apple-system;
     display: flex;
     align-items: center;
     font-size: 22px;
@@ -61,12 +61,20 @@
 .preview {
     width: 260rpx;
     height: 260rpx;
-    margin: 0 auto;
+    margin-left: 44rpx;
+}
+
+.product-list-box {
+    height: 128rpx;
+    margin-bottom: 16rpx;
+}
+
+.product-list-small {
+    height: 128rpx;
 }
 
 .product-list {
     display: flex;
-    margin-left: 22rpx;
 }
 
 .product-box {
@@ -113,7 +121,6 @@
 }
 
 .product-tag {
-    margin-left: 16rpx;
     box-sizing: border-box;
 
     display: flex;
@@ -135,4 +142,15 @@
 .desc-subtitle-box {
     display: flex;
     align-items: center;
+}
+
+.card-right-box {
+    margin-left: 22rpx;
+}
+
+.kong {
+    display: inline-block;
+    height: 40rpx;
+    width: 32rpx;
+    opacity: 0;
 }

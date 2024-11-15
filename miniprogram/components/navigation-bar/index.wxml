@@ -8,14 +8,14 @@
         wx-if="{{showHome}}"
         class="home-icon"
         src="../../images/icons/home.png"
-        style="line-height:{{menuHeight}}px;left:{{menuRight}}px;bottom:{{menuBotton}}px;"
+        style="line-height:{{menuHeight}}px;left:16px;bottom:{{menuBotton}}px;"
         bind:tap="navigateToHome"
     />
     <cover-image
         wx-if="{{showBack}}"
         class="return-big-icon"
         src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/return-icon.png"
-        style="line-height:{{menuHeight}}px;left:{{menuRight}}px;bottom:{{menuBotton}}px;"
+        style="line-height:{{menuHeight}}px;left:16px;bottom:{{menuBotton}}px;"
         bind:tap="navigateBack"
     />
 </cover-view>

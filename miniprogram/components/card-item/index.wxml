@@ -1,34 +1,40 @@
 <cover-view
     class="card-item"
-    bind:tap="onScenicClcik"
 >
-    <cover-image class="background-image" src="{{background}}" mode="widthFix"></cover-image>
+    <cover-image class="background-image" src="{{background}}" mode="widthFix"  catch:tap="onScenicClcik"></cover-image>
     <cover-view class="preview-box">
-        <button wx:if="{{!isLogined}}" open-type="getPhoneNumber" bindgetphonenumber="onRegisterAccount" hover-class="none">
+        <button catchtouchmove="preventD" wx:if="{{!isLogined}}" open-type="getPhoneNumber" bindgetphonenumber="onRegisterAccount" hover-class="none">
             <cover-image src="{{preview}}" class="preview" />
         </button>
         <cover-image wx:else src="{{preview}}" class="preview" catch:tap="onProductClick" />
     </cover-view>
-    <cover-view >
-        <cover-view wx-if="{{showProducts}}" class="product-list">
-            <cover-view 
-                wx:for="{{_products}}"
-                class="product-box {{item.id === selectId && 'product-box-selected'}}"
-                data-id="{{item.id}}"
-                catch:tap="onSelect"
-            >
-                <cover-image
-                    wx:key="{{item.id}}"
-                    class="product-item"
-                    src="{{item.preview}}"
-                />
+    <cover-view class="card-right-box">
+        <cover-view class="{{showProducts ? 'product-list-box' : 'product-list-small'}}">
+            <cover-view  wx-if="{{showProducts}}" class="product-list">
+                <cover-view 
+                    wx:for="{{_products}}"
+                    class="product-box {{item.id === selectId && 'product-box-selected'}}"
+                    data-id="{{item.id}}"
+                    catch:tap="onSelect"
+                >
+                    <cover-image
+                        wx:key="{{item.id}}"
+                        class="product-item"
+                        src="{{item.preview}}"
+                    />
+                </cover-view>
             </cover-view>
         </cover-view>
         <cover-view class="desc-box" style="color:{{light ? '#ffbd8f': '#77270d'}}">
-            <cover-view class="desc-title">{{title}}</cover-view>
+            <cover-view class="desc-title">
+                {{title}}
+                <cover-view class="kong" />
+            </cover-view>
+
             <view class="desc-subtitle-box">
                 <cover-view class="desc-subtitle">
                     {{subtitle}}
+                    <cover-view class="kong" />
                 </cover-view>
                 <cover-view>
                     <cover-view 

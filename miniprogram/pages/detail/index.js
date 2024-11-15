@@ -16,6 +16,8 @@ Page({
     resource: '',
     showLoading: true,
     isLogined: false,
+    appid: '',
+    productId: ''
   },
 
   onLoad: function (options) {
@@ -57,7 +59,11 @@ Page({
         osd
       },
       title = '',
-      top_img = 'https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/gulou/gulou-detail-top.png?sign=92cf4765a73ab156ee4f0c1bd37f9ad7&t=1718693020'
+      top_img = 'https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/gulou/gulou-detail-top.png?sign=92cf4765a73ab156ee4f0c1bd37f9ad7&t=1718693020',
+      shop_config: {
+        app_id: appid,
+        item_code: productId
+      }
     } = product_info
     const nodes = this.getNodes(content.content)
     this.setData({
@@ -66,7 +72,9 @@ Page({
       title,
       topImage: top_img,
       resource,
-      osd
+      osd,
+      appid,
+      productId
     })
   },
 
