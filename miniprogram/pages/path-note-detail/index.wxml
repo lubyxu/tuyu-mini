@@ -3,7 +3,7 @@
   <header
 	  name="🍁 秋日北京 | City Walk"
 		images="{{path_info.images}}"
-		fin_place_count="{{Object.keys(place_visited).length}}"
+		fin_place_count="{{fin_place_count}}"
 		place_count="{{place_details.length}}"
 		isUserPath="{{isUserPath}}"
 	/>
@@ -11,8 +11,14 @@
 	<view style="padding: 0 16px; margin-top: 20px;">
 	  <view style="margin-bottom: 16px;">🗺️ 行程概览</view>
 		<view class="map-container" bind:tap="openMap">
-		  placeholder
-			<map id="myMap"></map>
+      <scen-map markers="{{markers}}" latitude="{{markers[0].latitude}}" longitude="{{markers[0].longitude}}" />
+      <view wx:if="{{!modal.type}}" bind:tap="onGotoMap" class="btn-see-map">
+        <iconfont style="margin-right: 4px;" name="map" color="rgba(0, 0, 0, 0.65)" />
+        查看地图
+      </view>
+      <view><map id="myPageMap" /></view>
+		  <!-- placeholder
+			<map id="myMap"></map> -->
 		</view>
 	</view>
 
@@ -32,6 +38,7 @@
 				plain_text="{{item.plain_text}}"
 				bind:onPrivilege="onPrivilege"
 				bind:onImageClick="onImageClick"
+        bind:spotChecked="onSpotChecked"
 				isUserPath="{{isUserPath}}"
 			/>
 		</view>
@@ -68,13 +75,13 @@
 	</view>
 
 	<privilege-modal
-	  wx:if="{{modal && modal.type === 'privilege'}}"
+    show="{{modal && modal.type === 'privilege'}}"
 		desc="{{modal.props.desc}}"
 		bind:close="onModalClose"
 	/>
 
 	<place-modal
-		wx:if="{{modal && modal.type === 'place-images'}}"
+		show="{{modal && modal.type === 'place-images'}}"
 	  images="{{modal.props.images}}"
 		curIndex="{{modal.props.index}}"
 		bind:close="onModalClose"

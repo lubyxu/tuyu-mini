@@ -15,14 +15,22 @@
       />
       <cover-view class="position-text">{{position}}</cover-view>
     </cover-view>
-    <swiper indicator-dots="{{indicatorDots}}"
-      autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <swiper
+      indicator-dots="{{indicatorDots}}"
+      autoplay="{{autoplay}}"
+      interval="{{interval}}"
+      duration="{{duration}}"
+      style="height: 190px;"
+    >
       <block wx:for="{{banners}}" wx:key="*this">
         <swiper-item>
-          <image
-            src="{{item.url}}"
-            class="banner-img"
-          />
+          <view class="banner-img-wrap">
+            <image
+              src="{{item.url}}"
+              class="banner-img"
+              mode="widthFix"
+            />
+          </view>
         </swiper-item>
       </block>
     </swiper>

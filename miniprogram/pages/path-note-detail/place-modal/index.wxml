@@ -1,9 +1,10 @@
 <!--pages/path-note-detail/place-modal/index.wxml-->
 <half-screen-dialog
-	show="{{true}}"
+	show="{{show}}"
 	title=""
 	ext-class="fuyu-half-screen-dialog"
 	bindclose="onClose"
+  closabled="{{false}}"
 >
   <view class="title-container" slot="title">
     <view class="title">打卡点位</view>
@@ -25,7 +26,7 @@
         <view>
           <view class="content-image flex items-center justify-center overflow-hidden"
           >
-            <image mode="aspectFill" class="image rounded-8" src="{{item.image}}" />
+            <image mode="widthFix" class="image rounded-8" src="{{item.image}}" />
           </view>
           <view class="flex items-center text-gray-color mt-8 mb-16">
             <iconfont class="mr-4" name="position" color="rgba(0, 0, 0, 0.65)" size="12"></iconfont>

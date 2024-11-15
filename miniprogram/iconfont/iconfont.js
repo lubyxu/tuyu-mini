@@ -1,6 +1,6 @@
 Component({
   properties: {
-    // right-arrow | pointer-checked | position | flash-camera | fire | Frame
+    // map | close | right-arrow | pointer-checked | position | flash-camera | fire | Frame
     name: {
       type: String,
     },

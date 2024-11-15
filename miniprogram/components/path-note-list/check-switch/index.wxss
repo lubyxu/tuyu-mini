@@ -9,6 +9,9 @@
   gap: 4px;
 }
 
+.check-switch-root.check-switch-root-success {
+  width: auto;
+}
 
 .check-switch-root-fail {
   background: rgba(164, 171, 195, 1);

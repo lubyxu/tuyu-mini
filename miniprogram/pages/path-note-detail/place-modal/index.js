@@ -8,7 +8,8 @@ Component({
    */
   properties: {
     images: Array,
-    curIndex: Number
+    curIndex: Number,
+    show: Boolean,
   },
 
   /**
@@ -29,7 +30,7 @@ Component({
     },
     onPosClick() {
       const item = this.data.images[this.data.curIndex];
-      const mp = wx.createMapContext('myMap');
+      const mp = wx.createMapContext('myPageMap');
       mp.openMapApp({
         longitude: item.loc_long,
         latitude: item.loc_lat,

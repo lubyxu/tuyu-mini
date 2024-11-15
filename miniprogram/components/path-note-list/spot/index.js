@@ -4,7 +4,7 @@ import { checkPath } from '../../../service/path-note/path-detail';
 function validatePos(source, target) {
   const x = Math.abs(source.longitude, target.longitude);
   const y = Math.abs(source.latitude, target.latitude);
-
+  return true;
   return Math.pow(x, 2) + Math.pow(y, 2) < 2;
 }
 
@@ -70,6 +70,7 @@ Component({
       this.pending = true;
       try {
         await checkPath({ place_id: this.data.place_id, user_path_id: this.data.user_path_id });
+        this.triggerEvent('spotChecked');
         this.setData({
           isChecked: true
         });
@@ -81,8 +82,6 @@ Component({
     onClickProduct(e) {
       const id = e.currentTarget.dataset.info;
       const item = this.data.product_map[id];
-      console.log(item);
-      // todo @ zhangyiyuan
       const type = item.type;
       if (type === 1) {
         wx.navigateTo({
@@ -103,12 +102,13 @@ Component({
       })
     },
     onSpotGoTo() {
-      const mp = wx.createMapContext('myMap');
+      const mp = wx.createMapContext('myPageMap');
       mp.openMapApp({
         longitude: this.data.loc_long,
         latitude: this.data.loc_lat,
         destination: this.data.location,
         success: function (res) {
+          console.log('-- success',)
         },
         fail: function () {
           console.log('error');

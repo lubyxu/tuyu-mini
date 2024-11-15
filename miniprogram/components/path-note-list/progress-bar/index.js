@@ -7,9 +7,15 @@ Component({
   properties: {
     done: {
       type: Number,
+      observer() {
+        this.update();
+      }
     },
     total: {
       type: Number,
+      observer() {
+        this.update();
+      }
     }
   },
 
@@ -22,10 +28,7 @@ Component({
   },
   lifetimes: {
     attached() {
-      this.setData({
-        isDone: this.data.done === this.data.total,
-        progress: ((this.data.done / this.data.total) * 100 | 0) / 100
-      });
+      this.update();
     }
   },
 
@@ -33,6 +36,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    update() {
+      this.setData({
+        isDone: this.data.done === this.data.total,
+        progress: ((this.data.done / this.data.total) * 100 | 0) / 100
+      });
+    }
   }
 })

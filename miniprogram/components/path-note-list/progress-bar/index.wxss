@@ -23,7 +23,7 @@
 .container.pending.starting .text {
 	color: rgba(241, 75, 63, 1);
 	left: 50%;
-	margin-left: -20px;
+	margin-left: -10px;
 }
 
 .pin {
@@ -31,12 +31,15 @@
 	height: 14px;
   position: absolute;
   /* display: none; */
-	right: 0;
+	right: -5px;
 	top: 0;
 	bottom: 0;
 	z-index: 1;
 }
 
+.pin.pin-start {
+  right: -14px;
+}
 .pending {
 	background: rgba(254, 238, 241, 1);
 }
@@ -67,7 +70,7 @@
 
 .text-undone {
 	position: absolute;
-	left: 6px;
+	left: 12px;
 	top: 0;
 	bottom: 0;
 }

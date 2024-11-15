@@ -1,5 +1,5 @@
 import { request } from '../../utils/req';
-
+import { getPathDetail } from '../../service/path-note/path-detail';
 Page({
   data: {
     markers: [],
@@ -19,11 +19,17 @@ Page({
     this.setData({
       longitude: options.longitude / 1,
       latitude: options.latitude / 1,
+      user_path_id: options.user_path_id,
+      path_id: options.path_id
     })
   },
 
   onReady: function (e) {
     this.mapCtx = wx.createMapContext('myMap')
+    if (this.data.path_id) {
+      this.getPathData({ user_path_id: this.data.user_path_id, path_id: this.data.path_id });
+      return;
+    }
     this.getInitData()
   },
 
@@ -54,6 +60,43 @@ Page({
         title: name,
       }
     })
+
+    this.setData({
+      markers: markers,
+      list,
+      latitude: markers[0].latitude,
+      longitude: markers[0].longitude,
+    })
+  },
+
+  async getPathData({ user_path_id, path_id }) {
+    const data = await getPathDetail({ user_path_id, path_id });
+    const { path_detail_info, place_visited = {} } = data;
+    const place_details = path_detail_info.place_details;
+    const product_map = path_detail_info.product_map;
+    const markers = place_details.map(place => ({
+      id: place.place_id,
+      customCallout: { display: 'ALWAYS' },
+      icon: place.image,
+      longitude: place.loc_long,
+      latitude: place.loc_lat,
+      register: place_visited[place.place_id],
+      title: place.name
+    }));
+
+    const list = place_details.map(place => ({
+      spot: {
+        icon_image: place.image,
+        id: place.place_id,
+        loc_long: place.loc_long,
+        loc_lat: place.loc_lat,
+        province: place.province || 'beijing',
+        name: place.name,
+      },
+      products: place.product_id ? [product_map[place.product_id]] : [],
+      is_visited: place_visited[place.place_id]
+    }));
+
     this.setData({
       markers: markers,
       list,

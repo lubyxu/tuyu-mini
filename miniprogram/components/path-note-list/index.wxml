@@ -2,7 +2,7 @@
 <view style="padding: 12px">
     <tabs bind:change="onTabChange" />
 
-    <view wx:if="{{!authed && group_id === 'mine'}}" class="flex items-center flex-col" style="margin-top: 40px">
+    <view wx:if="{{!isUserAccount && group_id === 'mine'}}" class="flex items-center flex-col" style="margin-top: 40px">
       <image src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FErsz8T_OBiWYE9D46yabv%2Flogout.svg" style="height: 135px; width: 135px" />
       <view style="font-size: 14px; line-height: 16px; color: rgba(0, 0, 0, 0.5); margin-top: 8px">客官，登录后可查看详情~</view>
       <view class="mt-40">
@@ -13,11 +13,10 @@
         </chinese-button>
       </view>
     </view>
-
-    <view class="mt-16" wx:if="{{!(group_id === 'mine' && !logined)}}">
+    <view class="mt-16" wx:if="{{!(!isUserAccount && group_id === 'mine')}}">
       <card wx:for="{{list}}" item="{{item}}" showProgress="{{group_id === 'mine'}}" bind:click="onItemClick" />
 
-      <view class="flex items-center justify-center" style="margin-top: 32px;" wx:if="{{!list.length}}">
+      <view class="flex items-center justify-center" wx:if="{{}}" style="margin-top: 32px;" wx:if="{{!list.length}}">
         <empty-list width="135" height="{{135}}" text="暂无计划" />
       </view>
     </view>

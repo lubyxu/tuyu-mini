@@ -60,6 +60,7 @@ Component({
     },
 
     onInit() {
+      if (!this.properties.products) return;
       if (this.properties.products.length === 0) {
         this.setData({ background: this.properties.spot.bg_image })
         return

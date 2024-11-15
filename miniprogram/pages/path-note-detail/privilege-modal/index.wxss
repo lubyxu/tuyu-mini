@@ -1,6 +1,5 @@
 /* pages/path-note-detail/privilege-modal/index.wxss */
-/* @import '../../../miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss'; */
-
+@import "../../../component.wxss";
 
 .title {
 	text-align: center;
