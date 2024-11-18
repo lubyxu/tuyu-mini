@@ -2,7 +2,16 @@ import { getUser } from "./utils/auth";
 import * as event from './utils/event';
 // app.js
 App({
-  onLaunch: async function () {
+  onLaunch: async function (data) {
+    const scene = data.scene;
+    if (scene === 1154 && data.path === 'pages/path-note-detail/index') {
+      const query = data.query;
+      if (query.user_path_id) {
+        wx.redirectTo({
+          url: '/pages/path-note-detail/index?path_id=' + query.path_id,
+        })
+      }
+    }
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力');
     } else {

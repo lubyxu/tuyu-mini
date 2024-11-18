@@ -8,6 +8,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/path-note-detail/index",
+          "pathName": "pages/path-note-detail/index",
+          "query": "user_path_id=54&path_id=2",
+          "launchMode": "default",
+          "scene": 1000
+        },
+        {
           "name": "pages/photo/index",
           "pathName": "pages/photo/index",
           "query": "pid=4",
@@ -18,13 +25,6 @@
           "name": "景点详情",
           "pathName": "pages/detail/index",
           "query": "id=2",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/path-note-detail/index",
-          "pathName": "pages/path-note-detail/index",
-          "query": "user_path_id=42&path_id=4",
           "launchMode": "default",
           "scene": null
         },

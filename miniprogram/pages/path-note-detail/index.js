@@ -30,6 +30,12 @@ Page({
    */
   async onLoad(options) {
     this.options = options;
+    if (!this.data.isLogined) return;
+    this.getDetail({ user_path_id: options.user_path_id, path_id: options.path_id});
+  },
+
+  onLogined() {
+    const options = this.options;
     this.getDetail({ user_path_id: options.user_path_id, path_id: options.path_id});
   },
 
@@ -44,6 +50,7 @@ Page({
    */
   onShow() {
     const options = this.options;
+    if (!this.data.isLogined) return;
     this.getDetail({ user_path_id: options.user_path_id, path_id: options.path_id});
   },
 
@@ -84,6 +91,18 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {
+    return {
+      title: this.data.path_info.name,
+      path: `/pages/path-note-detail/index?path_id=${this.data.path_info.path_id}`,
+      imageUrl: this.data.path_info.images[0],
+    };
+  },
+  onShareTimeline(res) {
+    return {
+      title: this.data.path_info.name,
+      query: `path_id=${this.data.path_info.path_id}`,
+      imageUrl: this.data.path_info.images[0],
+    }
   },
   onPageScroll(e) {
     const scrollTop = e.scrollTop;
@@ -210,5 +229,17 @@ Page({
     this.setData({
       markers: ret
     });
-  }
+  },
+  // onShare() {
+  //   wx.showShareMenu({
+  //     withShareTicket: true,
+  //     menus: ['shareAppMessage', 'shareTimeline'],
+  //     success(res) {
+  //       console.log('---rest', res);
+  //     },
+  //     fail(e) {
+  //       console.log('--e', e);
+  //     }
+  //   });
+  // }
 })

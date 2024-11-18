@@ -55,3 +55,25 @@ page {
 	position: relative;
 	background-color: transparent;
 }
+
+.user-path-header {
+  position: relative;
+}
+.btn-share {
+  background: linear-gradient(270deg, #FF309F 0%, #FF6669 91.84%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  right: 0;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  width: auto !important;
+  gap: 2px;
+}
