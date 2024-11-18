@@ -364,6 +364,7 @@
   width: 40px;
   height: 32px;
   transform: rotate(6.5deg);
+  z-index: 1;
 }
 
 .share-text {

@@ -60,19 +60,9 @@ Page({
       const { product_mem_bg_img: topBackgroundImage, product_share_bg_img, user_mem_desc = '' } = shar_config
       memoryData = memoryData.map(({ create_time, text, file }) => {
         const [url] = file.split(',')
-        return { url, createTime: formatTime(create_time), text }
+        return { url: `${url}?x-oss-process=image/crop,x_0,y_0,h_1160`, createTime: formatTime(create_time), text }
       })
       const isVideo = type === 'video'
-      debugger
-      if ( memoryData[0]) {
-        wx.getImageInfo({
-          src: memoryData[0].url,
-          success (res) {
-            console.log(res.width)
-            console.log(res.height)
-          }
-        })
-      }
       this.setData({
         photos: memoryData,
         time: memoryData?.[0]?.createTime || 12.11,
@@ -155,9 +145,9 @@ Page({
         title: '上传图片成功～',
         duration: 2000
       })
-      const formaPhotos = tempFilePaths.map((url) => {
+      const formaPhotos = uploadResult.map(({ filePath }) => {
         return {
-          url,
+          url: `${filePath}?x-oss-process=image/crop,x_0,y_0,h_1160`,
         }
       })
       console.log('url', this.formatUrl(isVideo, formaPhotos[0]?.url))
