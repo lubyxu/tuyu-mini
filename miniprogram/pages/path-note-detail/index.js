@@ -37,7 +37,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
   },
 
   /**
@@ -85,7 +84,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {
-
   },
   onPageScroll(e) {
     const scrollTop = e.scrollTop;

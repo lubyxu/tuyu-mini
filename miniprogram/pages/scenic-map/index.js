@@ -112,8 +112,11 @@ Page({
     const { markerId } = e
     const current = this.data.markers.find(item => item.id === markerId)
     const currentScenic = this.data.list.find(item => item.spot.id === markerId)
-    const { products, is_visited, spot } = currentScenic
+    const { products = [], is_visited, spot } = currentScenic
     const { latitude, longitude } = current
+    if (!products.length) {
+      return;
+    }
     this.setData({
       products,
       spot,

@@ -39,7 +39,8 @@
         "miniprogramNpmDistDir": "./miniprogram/"
       }
     ],
-    "minifyWXSS": true
+    "minifyWXSS": true,
+    "condition": true
   },
   "appid": "wx1da91c813a00f62e",
   "projectname": "quickstart-wx-cloud",
