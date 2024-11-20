@@ -91,15 +91,17 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {
+    const path_info = this.data.path_info;
     return {
-      title: this.data.path_info.name,
+      title: path_info.group_name + '|' + path_info.name,
       path: `/pages/path-note-detail/index?path_id=${this.data.path_info.path_id}`,
       imageUrl: this.data.path_info.images[0],
     };
   },
   onShareTimeline(res) {
+    const path_info = this.data.path_info;
     return {
-      title: this.data.path_info.name,
+      title: path_info.group_name + '|' + path_info.name,
       query: `path_id=${this.data.path_info.path_id}`,
       imageUrl: this.data.path_info.images[0],
     }
