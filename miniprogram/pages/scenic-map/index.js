@@ -12,7 +12,7 @@ Page({
     scale: 16,
     latitude: 23.096994,
     longitude: 113.324520,
-    registerIcon: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/product/1/register.png',
+    registerIcon: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/register.png',
   },
 
   onLoad: function (options) {
