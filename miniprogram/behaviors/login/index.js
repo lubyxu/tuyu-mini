@@ -21,6 +21,7 @@ export default Behavior({
         isLogined: true,
         isUserAccount: params.type !== 'loginFailed',
       });
+      this.onLogined && this.onLogined();
     });
   },
   methods: {

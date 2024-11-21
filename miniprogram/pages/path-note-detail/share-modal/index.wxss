@@ -1,0 +1,24 @@
+@import "../../../component.wxss";
+
+.content {
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+  overflow: hidden;
+}
+.wx-icon {
+  height: 36px;
+  width: 36px;
+}
+.share-text {
+  color: rgba(0, 0, 0, 0.65);
+  margin-top: 8px;
+}
+.content-item {
+  flex: 1;
+}
+.btn-modal-share {
+  font-size: 14px;
+  font-weight: normal;
+  background-color: transparent;
+}

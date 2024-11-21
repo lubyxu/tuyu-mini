@@ -9,7 +9,13 @@
 	/>
 
 	<view style="padding: 0 16px; margin-top: 20px;">
-	  <view style="margin-bottom: 16px;">🗺️ 行程概览</view>
+	  <view style="margin-bottom: 16px;" class="user-path-header">
+      🗺️ 行程概览
+      <button open-type="share"  class="btn-share" bind:tap="onShare">
+        <image src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FHu4rdvgxp1vLBVX4-K9s1%2F%E5%88%86%E4%BA%AB.svg" style="width: 20px; height: 20px;" />
+        <view>分享</view>
+      </button>
+    </view>
 		<view class="map-container" bind:tap="openMap">
       <scen-map markers="{{markers}}" latitude="{{markers[0].latitude}}" longitude="{{markers[0].longitude}}" />
       <view wx:if="{{!modal.type}}" bind:tap="onGotoMap" class="btn-see-map">
