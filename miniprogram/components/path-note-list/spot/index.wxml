@@ -21,7 +21,7 @@
 			</view>
 		</view>
 
-    <work-break extClass="text-gray-color text-13 mt-4 plain-text" lineHeight="18" text="{{plain_text}}">
+    <work-break extClass="text-gray-color text-13 mt-4 plain-text" lineHeight="26" text="{{plain_text}}">
     </work-break>
 
 		<view class="mt-4">
