@@ -1,7 +1,7 @@
 <!--pages/path-note-detail/index.wxml-->
-<view>
+<view style="padding-bottom: {{btnClass === 'fixed' ? '100px' : ''}}">
   <header
-	  name="🍁 秋日北京 | City Walk"
+	  name="{{path_info.group_name + '|' + path_info.name}}"
 		images="{{path_info.images}}"
 		fin_place_count="{{fin_place_count}}"
 		place_count="{{place_details.length}}"
@@ -35,6 +35,9 @@
 				image="{{item.image}}"
 				name="{{item.name}}"
 				place_id="{{item.place_id}}"
+        location="{{item.location}}"
+        loc_long="{{item.loc_long}}"
+        loc_lat="{{item.loc_lat}}"
 				user_path_id="{{user_path_id}}"
 				product_ids="{{item.product_id ? [item.product_id] : []}}"
 				product_map="{{product_map}}"

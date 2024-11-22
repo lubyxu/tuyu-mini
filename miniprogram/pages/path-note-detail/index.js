@@ -158,6 +158,9 @@ Page({
   },
   onImageClick(e) {
     const detail = e.detail;
+    if (!detail.images || !detail.images.length) {
+      return;
+    }
     this.setData({
       modal: {
         type: 'place-images',
