@@ -68,8 +68,10 @@ App({
       }
       return;
     }
-    if (scene !== 1154) {
+    
+    try {
       getUser();
     }
+    catch (e) {}
   },
 });
