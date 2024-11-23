@@ -39,7 +39,6 @@ export function authCamera() {
 
 export function getUser() {
   return new Promise((resolve, reject) => {
-    
     wx.login({
       success: async function ({ code }) {
         try {
