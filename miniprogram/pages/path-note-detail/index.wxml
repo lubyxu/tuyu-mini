@@ -1,7 +1,7 @@
 <!--pages/path-note-detail/index.wxml-->
 <view style="padding-bottom: {{btnClass === 'fixed' ? '100px' : ''}}">
   <header
-	  name="{{path_info.group_name + '|' + path_info.name}}"
+	  name="{{path_info.group_name ? (path_info.group_name + '|' + path_info.name) : ''}}"
 		images="{{path_info.images}}"
 		fin_place_count="{{fin_place_count}}"
 		place_count="{{place_details.length}}"

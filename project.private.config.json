@@ -10,21 +10,14 @@
         {
           "name": "pages/path-note-detail/index",
           "pathName": "pages/path-note-detail/index",
-          "query": "user_path_id=54&path_id=2",
+          "query": "path_id=5",
           "launchMode": "default",
-          "scene": 1000
+          "scene": null
         },
         {
           "name": "pages/photo/index",
           "pathName": "pages/photo/index",
           "query": "pid=4",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "景点详情",
-          "pathName": "pages/detail/index",
-          "query": "id=2",
           "launchMode": "default",
           "scene": null
         },

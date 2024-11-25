@@ -31,6 +31,7 @@ Component({
     title: '',
     subtitle: '',
     selectId: -1,
+    selectedProductType: 0,
     showProducts: false,
     light: true,
     _products: [],
@@ -102,6 +103,7 @@ Component({
 
     async onProductClick(e) {
       const id = this.data.selectId
+      if (this.data.selectedProductType !== 1) return;
       if (!this.data.owned) {
         wx.navigateTo({
           url: `/pages/detail/index?id=${id}`
@@ -128,7 +130,8 @@ Component({
           osd
         },
         owned,
-        tags
+        tags,
+        type
       } = data
       console.log('resource', data.tags)
       this.setData({
@@ -136,11 +139,12 @@ Component({
         preview,
         subtitle,
         selectId: id,
+        selectedProductType: type,
         light: style === 'light',
         resource,
         osd,
         owned,
-        tags
+        tags,
       })
     },
     onSelect(e) {
