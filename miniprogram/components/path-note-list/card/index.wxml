@@ -4,10 +4,10 @@
 	<view class="container">
 	  <view class="flex w-full">
 		  <view><text class="text-error-color">{{item.n_involved}}</text> 人已参与</view>
-			<view class="divider"></view>
-			<view><text class="text-strong text-gray-color">{{item.spot_count}}</text> 个游玩景点</view>
-			<view class="divider"></view>
-			<view><text class="text-strong text-gray-color">{{item.product_ids.length}}</text> 个好物推荐</view>
+			<view wx:if="{{item.spot_count}}" class="divider"></view>
+			<view wx:if="{{item.spot_count}}"><text class="text-strong text-gray-color">{{item.spot_count}}</text> 个游玩景点</view>
+			<view wx:if="{{item.product_ids.length}}" class="divider"></view>
+			<view wx:if="{{item.product_ids.length}}"><text class="text-strong text-gray-color">{{item.product_ids.length}}</text> 个好物推荐</view>
 		</view>
 
 		<view class="w-full info">
