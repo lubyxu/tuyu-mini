@@ -62,7 +62,7 @@ Page({
         index: 0,
       },
       {
-        text: "景点",
+        text: "文创",
         iconPath: "../../images/icons/icon-2.png",
         selectedIconPath: "../../images/icons/icon-2-active.png",
         index: 1,
