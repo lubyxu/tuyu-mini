@@ -40,6 +40,9 @@ page {
 .flex-wrap {
   flex-wrap: wrap;
 }
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
 .flex-col {
   flex-direction: column;
 }
@@ -156,4 +159,7 @@ page {
 
 .rounded-8 {
   border-radius: 8px;
+}
+.rounded-4 {
+  border-radius: 4px;
 }

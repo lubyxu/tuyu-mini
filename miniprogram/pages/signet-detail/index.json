@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "signet-card": "/components/signet/signet-card/index"
+  },
+  "disableScroll": false,
+  "navigationBarBackgroundColor": "#F0EBDD"
+}

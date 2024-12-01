@@ -1,0 +1,15 @@
+.signet-card {
+  width: 74px;
+  height: 106px;
+  overflow: hidden;
+  border: 0.5px solid #0000001F
+}
+.signet-card image {
+  width: 64px;
+  background-color: #fff;
+}
+
+.signet-card.signet-book {
+  background-color: #FBE9BF;
+  border-radius: 4px;
+}

@@ -1,0 +1,3 @@
+<view class="signet-card flex items-center justify-center {{isBook ? 'signet-book' : ''}} {{isFilled ? 'signet-filled' : ''}}">
+  <image src="{{icon}}" mode="widthFix" />
+</view>

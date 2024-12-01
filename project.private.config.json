@@ -8,9 +8,9 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/path-note-detail/index",
-          "pathName": "pages/path-note-detail/index",
-          "query": "path_id=5",
+          "name": "印章详情",
+          "pathName": "pages/signet-detail/index",
+          "query": "",
           "launchMode": "default",
           "scene": null
         },

@@ -1,0 +1,14 @@
+<scroll-view scroll-x style="width: 100vw;">
+  <view style="padding-left: 16px;">
+    <view class="flex" style="gap: 2px; box-sizing: border-box;">
+      <view>
+        <signet-card isBook icon="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/return-icon.png" />
+      </view>
+      <view wx:for="{{signets}}">
+        <signet-card
+          isFilled="{{item.isFilled}}"
+        ></signet-card>
+      </view>
+    </view>
+  </view>
+</scroll-view>
