@@ -1,0 +1,5 @@
+<view class="section-title" style="font-size: {{fontSize}}px; font-weight: {{fontWeight}}">
+  <view class="section-title-before"></view>
+  <view>{{title}}</view>
+  <view class="section-title-after"></view>
+</view>

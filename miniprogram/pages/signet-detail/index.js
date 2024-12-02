@@ -1,14 +1,16 @@
-// pages/signet-detail/index.js
+import loginBehavior from '../../behaviors/login/index';
+import { getBookInfo } from '../../service/signet/index';
 Page({
 
+  behaviors: [loginBehavior],
   /**
    * 页面的初始数据
    */
   data: {
     book: {},
     signets: [{ isFilled: true },{ isFilled: true },{ isFilled: true },{ isFilled: true },{ isFilled: true }],
-  },
-  
+    bgImage: 'https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FRuerzq27ilivYaCJKlOYh%2F%E7%AB%A0.svg'
+  },  
 
   /**
    * 生命周期函数--监听页面加载
@@ -64,5 +66,8 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  onLogined() {
+    getBookInfo(27);
   }
 })

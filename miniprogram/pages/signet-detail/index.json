@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-    "signet-card": "/components/signet/signet-card/index"
+    "signet-card": "/components/signet/signet-card/index",
+    "section-title": "/components/section-title/index",
+    "signet-container": "/components/signet/signet-container/index"
   },
   "disableScroll": false,
   "navigationBarBackgroundColor": "#F0EBDD"

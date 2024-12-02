@@ -5,7 +5,8 @@ export function request({ url, data, method, Authorization }) {
 	return new Promise(function (resolve, reject) {
 		wx.request({
 			method: method || 'POST',
-			url: `https://storyhub.cc${url}`,
+			url: `http://stage.storyhub.cc${url}`,
+			// url: `https://storyhub.cc${url}`,
 			data: JSON.stringify(data),
 			header: {
 				Authorization: authorization,

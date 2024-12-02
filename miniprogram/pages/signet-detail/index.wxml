@@ -12,3 +12,10 @@
     </view>
   </view>
 </scroll-view>
+<section-title title="印章" />
+
+<view>
+  <signet-container
+    bgImage="{{bgImage}}"
+  />
+</view>

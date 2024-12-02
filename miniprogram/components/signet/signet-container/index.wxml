@@ -1,0 +1,45 @@
+<view class="signet-container">
+  <image src="{{bgImage}}" mode="widthFix" />
+
+  <view class="signet-container-content">
+    <view class="signet-container-empty" wx:if="{{!signetSrc}}">
+      <view>
+        <empty
+          empty="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2F7Kayw0D5pI5rCt4QaR2aP%2Fimage.svg"
+          height="135"
+          width="135"
+          text="暂无印章"
+        />
+      </view>
+
+      <view class="empty-btn-groups">
+        <view class="btn" bind:tap="onUpload">本地上传</view>
+        <view class="btn" bind:tap="onScan">扫一扫</view>
+      </view>
+    </view>
+
+    <view wx:else>
+      <image src="{{signetSrc}}" style="width: 200px;" mode="widthFix" />
+    </view>
+  </view>
+</view>
+
+<view>
+  <view>
+    {{title}}
+  </view>
+  <view>
+    <view>时间</
+    view>
+    <view class="flex items-center gap-8">
+      <iconfont name="position" color="rgba(0, 0, 0, 0.65)" size="14"/>
+
+      <view wx:if="{{!location}}" class="text-error-color" bind:tap="onMapOpen">
+        点击获取
+      </view>
+      <view wx:else>
+        {{location.name}}
+      </view>
+    </view>
+  </view>
+</view>
