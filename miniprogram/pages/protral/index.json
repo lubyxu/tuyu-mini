@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "业务示例",
+  "usingComponents": {
+    "navigation-bar": "/components/navigation-bar/index",
+    "loading": "/components/loading/index",
+    "protral-main": "/components/protral-main/index",
+    "empty-list": "/components/empty/empty-list/index"
+  },
+  "navigationStyle": "custom",
+  "disableScroll": false
+}

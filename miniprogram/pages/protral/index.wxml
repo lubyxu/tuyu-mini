@@ -1,0 +1,63 @@
+<!--index.wxml-->
+<view>
+  <loading wx-if="{{showLoading}}" />
+  <view wx-if="{{!showLoading}}" class="page-section swiper">
+    <navigation-bar showBack="{{true}}"></navigation-bar>
+    <view class="user-info-box" style="padding-top: {{navBarHeight}}px;">
+      <protral-main></protral-main>
+      <view class="count-box">
+        <view wx:for="{{countList}}" wx:key="{{item.index}}" class="count-item">
+            <view class="count-item-value">{{item.value}}</view>
+            <view class="count-item-title">{{item.title}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="content-top-section">
+      <view class="nav-container">
+        <view wx:for="{{selectList}}" wx:key="{{item.index}}" data-id="{{item.index}}" bindtap="switchTab" class="{{selected === index ? 'nav-box-active' : 'nav-box'}}">
+          <view class="{{selected === index ? 'tab-bar-text-active' : 'tab-bar-text'}}">{{item.text}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="content-section">
+      <view wx-if="{{selected === 0}}" class="content-book-section">
+        <view
+          wx:for="{{books}}"
+          wx:key="{{item.index}}"
+          data-id="{{item.id}}"
+          data-type="{{item.type}}"
+          bindtap="onBookClick"
+          class="book-item"
+        >
+          <view class="book-free" wx-if="{{item.free}}">赠送</view>
+          <image class="book-item-img" src="{{item.img}}" />
+          <view class="book-data">
+            <text class="book-used-count">{{item.used}}</text>
+            /{{item.total}}
+          </view>
+        </view>
+      </view>
+
+      <view wx:else >
+        <view wx-if="{{products.length != 0}}" class="empty-box">
+          <empty-list  width="135" height="{{135}}" text="暂无文创" />
+        </view>
+        <view wx:else  class="content-product-section">
+          <view
+            wx:for="{{products}}"
+            wx:key="{{item.index}}"
+            data-id="{{item.id}}"
+            bindtap="onProductClick"
+            class="product-item"
+          >
+            <image class="product-img" src="{{item.img}}" />
+            <text class="product-name">{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>

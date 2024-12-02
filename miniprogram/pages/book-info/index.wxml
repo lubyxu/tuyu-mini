@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view>
+  <loading wx-if="{{showLoading}}" />
+  <navigation-bar showBack="{{true}}"></navigation-bar>
+  <view wx-if="{{!showLoading}}" class="page" style="padding-top: {{navBarHeight}}px;">
+    <image
+      class="book-new-tips"
+      src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/book-new-tips.png"
+    />
+
+    <image
+      class="book-preview"
+      src="{{preview}}"
+    />
+
+    <view class="book-name">{{name}}</view>
+
+    <view class="btn-box">
+      <chinese-button bindtap="gotoProtral" width="320"> 确定 </chinese-button>
+    </view>
+  </view>
+</view>

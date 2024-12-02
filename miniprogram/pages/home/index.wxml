@@ -10,6 +10,10 @@
   <view class="swiper-box">
     <cover-view class="position-box">
       <cover-image
+        src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png"
+        class="home-icon"
+      />
+      <cover-image
           src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/position.png"
           class="positon-icon"
       />

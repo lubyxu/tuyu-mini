@@ -1,0 +1,32 @@
+<view class="user-main-box">
+    <button
+        open-type="chooseAvatar" 
+        bindchooseavatar="onChooseAvatar"
+        hover-class="none"
+        class="home-icon-button"
+    >
+        <cover-image
+            src="{{avatar}}"
+            class="home-icon"
+            bindtap="getUserProfile"
+        />
+    </button>
+    <view class="user-content">
+        <view class="user-content-title">
+            🌷
+            <input
+                class="user-content-name"
+                type="nickname"
+                placeholder="{{nickName}}"
+                maxlength="14"
+                placeholder-style="color: #171534;"
+                bindchange="onNicknameChange"
+            />
+        </view>
+        <view class="user-content-subtitle">
+            累计收集
+            <view class="count">{{count}}</view>
+            枚印章
+        </view>
+    </view>
+</view>

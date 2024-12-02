@@ -1,0 +1,46 @@
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0ebdd;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.book-new-tips {
+  margin-top: 48rpx;
+  height: 128rpx;
+}
+
+.book-preview {
+  margin-top: 32rpx;
+  width: 586rpx;
+  height: 800rpx;
+}
+
+.book-name {
+  margin-top: 48rpx;
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 34px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: rgba(0, 0, 34, 0.85);
+}
+
+.btn-box {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  bottom: 64rpx;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+} 

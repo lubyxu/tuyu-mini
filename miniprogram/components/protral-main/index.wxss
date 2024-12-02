@@ -1,0 +1,64 @@
+.user-main-box {
+  display: flex;
+  height: 160rpx;
+  width: 100%;
+  padding: 0 32rpx;
+}
+
+.home-icon-button {
+  width: 160rpx !important;
+  height: 160rpx !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.home-icon {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+}
+
+.user-content {
+  flex: 1;
+  margin-left: 24rpx;
+  padding: 30rpx 0;
+}
+
+.user-content-name {
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(0, 0, 34, 0.91);
+  margin-top: 8rpx;
+}
+
+.user-content-subtitle {
+  display: flex;
+  align-items: center;
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  /* identical to box height */
+
+  color: rgba(0, 0, 34, 0.91);
+}
+
+.count {
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+
+  color: rgba(0, 0, 34, 0.91);
+  margin: 0 4rpx;
+}
+
+.user-content-title {
+  display: flex;
+  align-items: center;
+}

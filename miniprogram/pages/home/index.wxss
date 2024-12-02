@@ -104,9 +104,15 @@ swiper {
   z-index: 10;
 }
 
+.home-icon {
+  width: 64rpx;
+  height: 64rpx;
+}
+
 .positon-icon {
     width: 48rpx;
     height: 48rpx;
+    margin-left: 16rpx;
 }
 
 .position-text {

@@ -1,0 +1,227 @@
+.user-info-box {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 676rpx;
+  background: url('https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/protral-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0 32rpx;
+}
+
+.count-box {
+  margin-top: 32rpx;
+  box-sizing: border-box;
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 16px;
+  width: 100%;
+  height: 88px;
+  background: linear-gradient(93.71deg, rgba(255, 255, 255, 0.2) 8.19%, rgba(255, 255, 255, 0.35) 92.36%);
+  border-radius: 16px;
+}
+
+.count-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 33%;
+}
+
+.count-item-value {
+  font-family: 'DIN';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+
+  color: rgba(0, 0, 34, 0.85);
+}
+
+.count-item-title {
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(28, 21, 5, 0.6);
+}
+
+.nav-container {
+  display: flex;
+  height: 80rpx;
+  padding-top: 64rpx;
+}
+
+.nav-box, .nav-box-active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.nav-box:last-child {
+  margin-left: 0;
+}
+
+.tab-bar-text, .tab-bar-text-active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  color: rgba(0, 0, 34, 0.5);
+  padding: 16rpx 32rpx;
+}
+
+.tab-bar-text-active {
+  color: rgba(0, 0, 34, 0.91);
+}
+
+.nav-box-active::after {
+  content: '';
+  position: absolute;
+  width: 40rpx;
+  height: 2px;
+  background: #ce3219;
+  border-radius: 2px 2px 0px 0px;
+  left: 40%;
+  bottom: 0;
+}
+
+.content-top-section {
+  background: url('https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/protral-top-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 144rpx;
+  margin-top: -64rpx;
+  border-bottom: 1px solid #ebebed;
+}
+
+.content-section {
+  padding: 32rpx;
+}
+
+.content-book-section, .content-product-section {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.book-item, .product-item {
+  position: relative;
+  width: calc(33.333% - 16rpx);
+  flex-grow: 1;
+  flex-grow: 0;
+  min-width: 0;
+  margin-bottom: 24rpx;
+}
+
+.product-item {
+  height: 240rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-item:nth-child(3n+2){
+  margin: 0rpx 24rpx 24rpx 24rpx;
+}
+
+.product-item:nth-child(3n+2){
+  margin: 0rpx 24rpx 24rpx 24rpx;
+}
+
+.book-item-img {
+  width: 100%;
+  height: 300rpx;
+  border-radius: 2px;
+}
+
+.product-img {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.product-name {
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #38220D;
+}
+
+.book-free {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 8px;
+  background: linear-gradient(283.79deg, #757575 17.29%, #959595 95.52%);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px 0px 6px;
+
+  /* 赠送 */
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.book-data {
+  position: absolute;
+  box-sizing: border-box;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 2px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  border-radius: 0px 0px 4px 4px;
+
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  /* identical to box height, or 133% */
+  display: flex;
+  align-items: center;
+  text-align: right;
+  
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.book-used-count {
+  color: #FFFFFF;
+}
+
+.empty-box {
+  margin-top: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 446rpx;
+}

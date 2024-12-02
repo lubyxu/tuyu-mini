@@ -8,6 +8,20 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/book-info/index",
+          "pathName": "pages/book-info/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "protral",
+          "pathName": "pages/protral/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/path-note-detail/index",
           "pathName": "pages/path-note-detail/index",
           "query": "path_id=5",
