@@ -1,6 +1,6 @@
 Component({
   properties: {
-    // map | close | right-arrow | pointer-checked | position | flash-camera | fire | Frame
+    // gouwulan | riqi | edit | map | close | right-arrow | pointer-checked | position | flash-camera | fire | Frame
     name: {
       type: String,
     },

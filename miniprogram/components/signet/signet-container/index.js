@@ -1,4 +1,6 @@
-// components/signet/signet-container/index.js
+import { addToPage } from '../../../service/signet/index';
+import { chooseImage, uploadPhotos } from '../../../utils/upload';
+
 Component({
   options: {
     addGlobalClass: true
@@ -7,11 +9,22 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    signetSrc: String,
+    book: Object,
+    pageNum: Number,
+    signetSrc: {
+      type: String,
+      value: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/4/1733237670470/1733237670470.jpg'
+    },
     bgImage: String,
     time: String,
     location: Object,
     title: String,
+  },
+
+  lifetimes: {
+    attached: function () {
+      console.log('--', this.data)
+    }
   },
 
   /**
@@ -24,14 +37,28 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onUpload() {
-
-      const image = 'https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2F9JzXqqDeclgPPDlRZVeN8%2F%E6%88%91%E5%9C%A8%E9%BC%93%E6%A5%BC.svg';
+    async onUpload() {
+      const files = await chooseImage();
+      const data = await uploadPhotos({
+        filePath: files[0].tempFilePath,
+        id: +Date.now(),
+        productId: this.data.book.book_id,
+      });
+      const signetSrc = data.filePath;
       this.setData({
-        signetSrc: image
+        signetSrc
       });
     },
-    onScan() {},
-    onMapOpen() {}
+    addToPage() {
+      // await addToPage({
+      //   page_num: this.data.pageNum,
+      //   book_id: this.data.book.book_id,
+      //   image_url: signetSrc,
+      // });
+    },
+    onScan() { },
+    async onMapOpen() {
+      
+    }
   }
-})
+});

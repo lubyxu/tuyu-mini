@@ -44,7 +44,6 @@ export function getUser() {
         try {
           const app = getApp();
           const ret = await request({ url: '/fuyu/user/code', data: { code } });
-          console.log(ret);
           app.globalData.user = ret.data;
           app.globalData.event.emit('login', ret.data);
           resolve(ret)

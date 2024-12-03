@@ -16,6 +16,9 @@
 
 <view>
   <signet-container
+    id="{{book.id}}"
+    book="{{book}}"
     bgImage="{{bgImage}}"
+    pageNum="1"
   />
 </view>
