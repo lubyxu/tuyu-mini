@@ -80,7 +80,7 @@ Page({
     this.setData({
       bookConfig,
       book: { ...bookInfo, book_id: data.book_id },
-      bgImage: bookConfig.page_bg_img || 'https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FRuerzq27ilivYaCJKlOYh%2F%E7%AB%A0.svg'
+      bgImage: bookConfig.page_bg_img
     });
   }
 })

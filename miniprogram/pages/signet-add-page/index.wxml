@@ -4,10 +4,12 @@
 	book="{{book}}"
 />
 <view>
-  <view wx:if="{{signetSrc}}" class="signet-title flex items-center">
-    <view class="flex items-center">
-      {{title}}
-      <iconfont name="edit" color="rgba(0, 0, 34, 0.5)" size="24" />
+  <view class="signet-title flex items-center">
+    <view class="inline-flex items-center">
+      <view>{{name}}</view>
+      <view bind:tap="onEdit">
+        <iconfont name="edit" color="rgba(0, 0, 34, 0.5)" size="24" />
+      </view>
     </view>
   </view>
   <view>
@@ -26,3 +28,12 @@
     </view>
   </view>
 </view>
+
+<mp-dialog
+  show="{{isEdit}}"
+  title="印章名称"
+  buttons="{{[{ text: '取消' }, { text: '确定' }]}}"
+  bindbuttontap="onNameModalClick"
+>
+  <input value="{{modalValue}}" bindinput="onNameChange" />
+</mp-dialog>

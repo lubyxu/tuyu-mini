@@ -1,15 +1,17 @@
 // pages/signet-add-page/index.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    bgImage: '',
+    bgImage: 'https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FRuerzq27ilivYaCJKlOYh%2F%E7%AB%A0.svg',
     src: '',
     name: '',
     time: '',
-    location: ''
+    location: '',
+
+    isEdit: false,
+    modalValue: ''
   },
 
   /**
@@ -66,5 +68,30 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  onEdit() {
+    this.setData({
+      isEdit: true,
+      modalValue: this.data.name
+    });
+  },
+  onNameModalClick(e) {
+    const detail = e.detail;
+    if (e.detail.index == 0) {
+      this.setData({
+        isEdit: false,
+      });
+    }
+    else {
+      this.setData({
+        isEdit: false,
+        name: this.data.modalValue,
+      });
+    }
+  },
+  onNameChange(e) {
+    this.setData({
+      modalValue: e.detail.value
+    });
   }
 })

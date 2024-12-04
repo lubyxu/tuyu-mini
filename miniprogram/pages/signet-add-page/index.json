@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "signet-container": "/components/signet/signet-container/index"
+    "signet-container": "/components/signet/signet-container/index",
+    "iconfont": "/iconfont/iconfont",
+    "mp-dialog": "weui-miniprogram/dialog/dialog"
   }
 }
