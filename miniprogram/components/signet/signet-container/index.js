@@ -21,16 +21,11 @@ Component({
     title: String,
   },
 
-  lifetimes: {
-    attached: function () {
-      console.log('--', this.data)
-    }
-  },
-
   /**
    * 组件的初始数据
    */
   data: {
+    
   },
 
   /**

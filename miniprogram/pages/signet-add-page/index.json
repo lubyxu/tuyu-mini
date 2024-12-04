@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "signet-container": "/components/signet/signet-container/index"
+  }
+}

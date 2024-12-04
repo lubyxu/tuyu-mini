@@ -76,7 +76,6 @@ Page({
     wx.setNavigationBarTitle({
       title: bookConfig.title,
     });
-    console.log('bookInfo', bookInfo.id)
 
     this.setData({
       bookConfig,
