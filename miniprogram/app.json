@@ -32,5 +32,11 @@
     "scope.userLocation": {
       "desc": "你的信息将用于小程序位置效果展示"
     }
+  },
+  "plugins": {
+    "chooseLocation": {
+      "version": "1.1.1",
+      "provider": "wx76a9a06e5b4e693e"
+    }
   }
 }
