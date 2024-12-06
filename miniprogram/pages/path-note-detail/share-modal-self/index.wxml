@@ -1,0 +1,62 @@
+<view class="protral">
+  <protral-main readOnly="{{readOnly}}">
+    <view class="user-content-subtitle">
+      <image
+        class="money-icon"
+        src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/money.png"
+      />
+      累计
+      <view class="current-box">
+        <text class="current-count">2</text>
+        <text>/4</text>
+      </view>
+      打卡点
+    </view>
+  </protral-main>
+  <view class="path-title-box">
+    <image
+      class="path-title-img"
+      src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/path-title-text.png"
+    />
+  </view>
+  <view class="details-list">
+    <view class="details-box" wx:for="{{placeDetails}}">
+      <image wx-if="{{item.visited}}" src="../../../images/visited.png" class="visited-icon" />
+      <image src="{{item.product_icon}}" class="product-icon" />
+      <image
+        wx-if="{{item.visited}}"
+        src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/complete.png"
+        class="complete-icon"
+      />
+      <view class="product-desc-box">
+        <view class="produc-desc-title">
+          <text class="product-name">{{item.name}}</text>
+          <view class="produc-desc-status-box">
+            <mp-icon
+              type="field"
+              icon="location"
+              color="{{item.visited ? '#34c759' : 'black'}}"
+              size="{{20}}"
+              style="margin-top: -6rpx;"
+            />
+            <view
+              class="{{item.visited ? 'status-text' : 'status-text-not-complete'}}"
+            >
+            {{item.visited ? '已打卡' : '未打卡'}}
+          </view>
+          </view>
+        </view>
+
+        <icons
+          c_visited="{{item.c_visited}}"
+          content_info="{{item.content_info}}"
+          bind:onPrivilege="onPrivilege"
+        />
+      </view>
+    </view>
+  </view>
+
+  <view class="btn-box">
+    <chinese-button bindtap="gotoPathDetail" width="320"> 立即参与 </chinese-button>
+  </view>
+</view>

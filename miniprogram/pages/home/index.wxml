@@ -13,6 +13,10 @@
         src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png"
         class="home-icon"
       />
+      <!-- <cover-image
+        src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/not-login.png"
+        class="home-icon"
+      /> -->
       <cover-image
           src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/position.png"
           class="positon-icon"

@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "disableScroll": false,
+  "usingComponents": {
+    "half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog",
+    "mp-icon": "weui-miniprogram/icon/icon",
+    "protral-main": "/components/protral-main/index",
+    "icons": "../../../components/path-note-list/icons/index",
+    "chinese-button": "../../../components/button/chinese-btn/index"
+  }
+}

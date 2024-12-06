@@ -1,5 +1,12 @@
 <view class="user-main-box">
+    <cover-image
+        wx-if="{{readOnly}}"
+        src="{{avatar}}"
+        class="home-icon"
+        bindtap="getUserProfile"
+    />
     <button
+        wx:else
         open-type="chooseAvatar" 
         bindchooseavatar="onChooseAvatar"
         hover-class="none"
@@ -12,21 +19,23 @@
         />
     </button>
     <view class="user-content">
-        <view class="user-content-title">
+        <view
+            class="user-content-name"
+            wx-if="{{readOnly}}"
+        >
+            {{nickname}}
+        </view>
+        <view wx:else class="user-content-title">
             🌷
             <input
                 class="user-content-name"
                 type="nickname"
-                placeholder="{{nickName}}"
+                placeholder="{{nickname}}"
                 maxlength="14"
                 placeholder-style="color: #171534;"
                 bindchange="onNicknameChange"
             />
         </view>
-        <view class="user-content-subtitle">
-            累计收集
-            <view class="count">{{count}}</view>
-            枚印章
-        </view>
+        <slot></slot>
     </view>
 </view>

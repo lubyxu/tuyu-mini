@@ -11,6 +11,7 @@
     "auth-guard": "/components/auth-guard/index",
     "mp-icon": "weui-miniprogram/icon/icon",
     "scen-map": "/components/map/index",
-    "iconfont": "/iconfont/iconfont"
+    "iconfont": "/iconfont/iconfont",
+    "share-modal-self": "./share-modal-self/index"
   }
 }

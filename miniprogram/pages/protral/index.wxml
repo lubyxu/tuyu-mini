@@ -4,7 +4,13 @@
   <view wx-if="{{!showLoading}}" class="page-section swiper">
     <navigation-bar showBack="{{true}}"></navigation-bar>
     <view class="user-info-box" style="padding-top: {{navBarHeight}}px;">
-      <protral-main></protral-main>
+      <protral-main avatar="{{avatar}}" nickname="{{nickname}}">
+        <view class="user-content-subtitle">
+            累计收集
+            <view class="count">{{stamp_count}}</view>
+            枚印章
+        </view>
+      </protral-main>
       <view class="count-box">
         <view wx:for="{{countList}}" wx:key="{{item.index}}" class="count-item">
             <view class="count-item-value">{{item.value}}</view>

@@ -10,16 +10,11 @@
 			<switcher wx:if="{{isUserPath}}" checked="{{checked || isChecked}}" bind:click="onChecked" />
 		</view>
 
-		<view class="flex flex-wrap items-center mt-4" style="gap: 6px">
-		  <view class="tag tag-hot-filled tag-spotted">
-			  <view><iconfont name="fire" color="#fff" /></view>
-				<view>{{c_visited}} 人已打卡</view>
-			</view>
-
-			<view class="tag" wx:for="{{content_info.privilege}}" data-info="{{item}}" bind:tap="onPrivilege">
-			  {{item.tags}}
-			</view>
-		</view>
+    <icons
+      c_visited="{{c_visited}}"
+      content_info="{{content_info}}"
+      bind:onPrivilege="onPrivilege"
+    />
 
     <work-break extClass="text-gray-color text-13 mt-4 plain-text" lineHeight="26" text="{{plain_text}}">
     </work-break>

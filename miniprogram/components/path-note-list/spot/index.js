@@ -68,9 +68,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onPrivilege(e) {
-      const info = e.target.dataset.info;
-      this.triggerEvent('onPrivilege', info);
+    onPrivilege(info) {
+      this.triggerEvent('onPrivilege', info.detail);
     },
     onImageClick(e) {
       const index = e.detail.index;

@@ -55,7 +55,8 @@ Component({
       const detail = e.detail;
       const queryArr = [
         detail.user_path_id && `user_path_id=${detail.user_path_id}`,
-        `path_id=${detail.path_id}`
+        `path_id=${detail.path_id}`,
+        `group_id=${this.data.group_id}`
       ].filter(Boolean);
 
       wx.navigateTo({

@@ -1,6 +1,8 @@
 // pages/path-note-detail/index.js
 import { getPathDetail, deleteUserPath, addUserPath } from '../../service/path-note/path-detail';
 import loginBehavior from '../../behaviors/login/index';
+import { getUser } from "../../utils/auth";
+const app = getApp();
 
 Page({
   options: {
@@ -23,6 +25,8 @@ Page({
     hasUserPath: false,
     fin_place_count: 0,
     markers: [],
+    expire: false,
+    showSelfShare: false
   },
 
   /**
@@ -30,6 +34,17 @@ Page({
    */
   async onLoad(options) {
     this.options = options;
+    console.log('this.options', this.options)
+    if (this.options.from === 'mine') {
+      this.setData({
+        showSelfShare: true
+      });
+      if (!app.globalData?.user?.token) {
+        await getUser()
+      }
+      this.getDetail({ user_path_id: options.userPathId});
+      return
+    }
     if (!this.data.isLogined) return;
     this.getDetail({ user_path_id: options.user_path_id, path_id: options.path_id});
   },
@@ -94,7 +109,7 @@ Page({
     const path_info = this.data.path_info;
     return {
       title: path_info.group_name + '|' + path_info.name,
-      path: `/pages/path-note-detail/index?path_id=${this.data.path_info.path_id}`,
+      path: `/pages/path-note-detail/index?path_id=${this.data.path_info.path_id}&from=${this.options.group_id}&userPathId=${this.data.user_path_id}`,
       imageUrl: this.data.path_info.images[0],
     };
   },
@@ -102,7 +117,7 @@ Page({
     const path_info = this.data.path_info;
     return {
       title: path_info.group_name + '|' + path_info.name,
-      query: `path_id=${this.data.path_info.path_id}`,
+      query: `path_id=${this.data.path_info.path_id}&from=${this.options.group_id}&userPathId=${this.data.user_path_id}`,
       imageUrl: this.data.path_info.images[0],
     }
   },
@@ -127,7 +142,10 @@ Page({
       user_path_id: user_path_id || path_detail_info.user_path_id,
       path_id: path_id,
       path_info: path_detail_info.path_info,
-      place_details: path_detail_info.place_details,
+      place_details: path_detail_info.place_details.map((item) => ({
+        ...item,
+        visited: place_visited?.[item.product_id]
+      })),
       product_map: path_detail_info.product_map,
       products: path_detail_info.path_info.product_ids.map(id => {
         return path_detail_info.product_map[id]
@@ -135,7 +153,8 @@ Page({
       place_visited,
       isUserPath: !!user_path_id,
       hasUserPath: !!path_detail_info.user_path_id,
-      fin_place_count: !!user_path_id ? Object.values(place_visited || {}).filter(Boolean).length : 0
+      fin_place_count: !!user_path_id ? Object.values(place_visited || {}).filter(Boolean).length : 0,
+      expire: path_detail_info.path_info.status === 2,
     });
 
     this.setMarkers();

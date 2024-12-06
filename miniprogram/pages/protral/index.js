@@ -17,6 +17,7 @@ Page({
     navBarHeight: app.globalData.navBarHeight,
     selected: 0,
     countList: [],
+    stamp_count: 0,
     selectList: [
       {
         text: "我的印章本",
@@ -29,6 +30,8 @@ Page({
     ],
     books: [],
     products: [],
+    nickname: '小福鱼',
+    avatar: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png',
   },
 
   async getInitData() {
@@ -36,21 +39,26 @@ Page({
       await getUser()
     }
     const { data } = await request({
-      method: 'POST',
-      url: '/fuyu/spot/list',
-      data: {
-        province: "beijing"
-      }
+      method: 'GET',
+      url: '/fuyu/getuserinfo',
     });
-    const c = [{
+
+    const { user, user_stats } = data;
+    const {
+      avatar,
+      nickname,
+    } = user
+    const { product_count, stamp_count, visit_count } = user_stats
+
+    const statusList = [{
       title: '印章',
-      value: 5
+      value: stamp_count
     }, {
       title: '文创',
-      value: 5
+      value: product_count
     }, {
       title: '足迹',
-      value: 5
+      value: visit_count
     }]
 
     const books = [{
@@ -95,7 +103,16 @@ Page({
       id: 1,
     }]
 
-    this.setData({ showLoading: false, countList: c, books, products })
+    console.log('avatar', user, avatar)
+    this.setData({
+      showLoading: false,
+      avatar: avatar || 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png',
+      nickname: nickname || '小福鱼',
+      countList: statusList,
+      books,
+      products,
+      stamp_count
+    })
   },
 
   switchTab(event) {
