@@ -9,7 +9,7 @@
       "list": [
         {
           "name": "印章详情",
-          "pathName": "pages/signet-add-page/index",
+          "pathName": "pages/signet-detail/index",
           "query": "",
           "launchMode": "default",
           "scene": null

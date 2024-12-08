@@ -28,3 +28,12 @@ page {
   right: 0;
   font-size: 20px;
 }
+
+.banner-right .nick-name {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.banner-right .desc {
+  font-size: 12px;
+}

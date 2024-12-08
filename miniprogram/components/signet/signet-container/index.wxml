@@ -17,9 +17,12 @@
         <view class="btn" bind:tap="onScan">扫一扫</view>
       </view>
     </view>
-
     <view wx:else>
       <image src="{{signetSrc}}" style="width: 200px;" mode="widthFix" />
+    </view>
+
+    <view wx:if="{{showFinishIcon}}" class="finish-icon-container">
+      <image src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FEbsluxgeD4RYjnx7ncHgy%2Fimage%20167.png" style="width: 120px; height: 120px;" />
     </view>
   </view>
 </view>

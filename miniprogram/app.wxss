@@ -159,6 +159,10 @@ page {
 .mb-16 {
   margin-bottom: 16px;
 }
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .rounded-8 {
   border-radius: 8px;

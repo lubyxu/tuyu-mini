@@ -1,7 +1,14 @@
+<view style="margin-top: 24px; margin-bottom: 12px;">
+  <section-title title="{{state === 'done' ? '印章已获取' : '获取新印章'}}" fontSize="32" />
+  <view class="flex items-center justify-center">
+    <image src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FXxi9TnKZsfDWxkBha9AXw%2FObtain%20a%20new%20seal.svg" style="width: 102px; height: 14px;" />
+  </view>
+</view>
 <signet-container
 	bgImage="{{bgImage}}"
 	id="{{book.id}}"
 	book="{{book}}"
+  showFinishIcon="{{true}}"
 />
 <view>
   <view class="signet-title flex items-center">
@@ -13,20 +20,32 @@
     </view>
   </view>
   <view>
-    <view class="flex items-center gap-8">
-      <iconfont name="riqi" color="rgba(0, 0, 0, 0.65)" size="14" />
+    <view class="flex items-center gap-8 mx-auto" style="width: 263px; margin-top: 12px;">
+      <view>
+        <iconfont name="riqi" color="rgba(0, 0, 0, 0.65)" size="16" />
+      </view>
       <view>{{timeStr}}</view>
     </view>
-    <view class="flex items-center gap-8">
-      <iconfont name="position" color="rgba(0, 0, 0, 0.65)" size="14"/>
+    <view class="flex items-center gap-8 mx-auto" style="width: 263px; margin-top: 12px;">
+      <iconfont name="position" color="rgba(0, 0, 0, 0.65)" size="16"/>
 
-      <view wx:if="{{!location}}" class="text-error-color" bind:tap="onMapOpen">
+      <view wx:if="{{!location}}" style="color: #CE3219" bind:tap="onMapOpen">
         点击获取
       </view>
       <view wx:else>
         {{location.name}}
       </view>
     </view>
+  </view>
+</view>
+
+<view class="signet-add-footer" wx:if="{{state !== 'done'}}">
+  <chinese-btn width="165">取消</chinese-btn>
+  <chinese-btn width="165">确定</chinese-btn>
+</view>
+<view class="signet-add-footer" wx:if="{{state == 'done'}}">
+  <view class="flex items-center justify-center w-full">
+    <chinese-btn width="320">分享</chinese-btn>
   </view>
 </view>
 

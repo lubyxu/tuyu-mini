@@ -8,7 +8,10 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	color: #fff;
+  color: #fff;
+  
+  color: #FFBD8F;
+  font-weight: 500;
 }
 
 .chinese-style-btn::before {

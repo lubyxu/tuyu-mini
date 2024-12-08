@@ -19,6 +19,7 @@ Component({
     time: String,
     location: Object,
     title: String,
+    showFinishIcon: Boolean
   },
 
   /**

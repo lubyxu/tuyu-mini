@@ -47,3 +47,9 @@
   font-size: 16px;
   color: #000022D9;
 }
+
+.finish-icon-container {
+  position: absolute;
+  right: 50px;
+  top: 30px;
+}

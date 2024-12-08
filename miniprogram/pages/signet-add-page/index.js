@@ -22,6 +22,7 @@ Page({
   onLoad(options) {
     const date = dayjs();
     this.setData({
+      state: options.state,
       time: date.unix(),
       timeStr: date.format('YYYY年YY月DD日 HH:mm:ss')
     })
