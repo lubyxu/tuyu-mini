@@ -1,0 +1,7 @@
+<scroll-view scroll-x="{{true}}">
+  <view class="flex items-center gap-8">
+	  <view wx:for="{{books}}">
+		  <image src="{{item.show_image}}" />
+		</view>
+	</view>
+</scroll-view>

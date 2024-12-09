@@ -1,4 +1,6 @@
 import { request } from '../../utils/req';
+import { getProductList } from '../product/index';
+
 export async function getBookInfo(bookId) {
   const { data } = await request({
     url: '/fuyu/stamp/bookinfo',
@@ -11,7 +13,6 @@ export async function getBookInfo(bookId) {
 }
 
 export async function addToPage(params) {
-  console.log('---params', params)
   const { data } = await request({
     url: '/fuyu/stamp/addpage',
     data: {
@@ -21,4 +22,8 @@ export async function addToPage(params) {
   });
 
   return data;
+}
+
+export function getSignetBooks() {
+  return getProductList({ type: 3 });
 }

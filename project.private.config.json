@@ -9,8 +9,8 @@
       "list": [
         {
           "name": "印章详情",
-          "pathName": "pages/signet-detail/index",
-          "query": "",
+          "pathName": "pages/signet-move/index",
+          "query": "book_id=11",
           "launchMode": "default",
           "scene": null
         },
