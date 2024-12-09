@@ -1,15 +1,18 @@
 const app = getApp()
 import { getUser } from '../../utils/auth'
-import { request } from '../../utils/req';
-
+import { request, SUCCESS_CODE } from '../../utils/req';
 
 Page({
-  async onReady() {
+  onLoad(options) {
+    this.options = options
+  },
+
+  onReady() {
     this.getInitData()
   },
 
   data: {
-    preview: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/book-preview.png',
+    preview: '',
     name: '',
     navBarHeight: app.globalData.navBarHeight,
   },
@@ -18,20 +21,57 @@ Page({
     if (!app.globalData?.user?.token) {
       await getUser()
     }
-    await request({
-      method: 'POST',
-      url: '/fuyu/spot/list',
-      data: {
-        province: "beijing"
+    try {
+      const { errno, data } = await request({
+        method: 'POST',
+        url: '/fuyu/product/code',
+        data: {
+          code: this.options.code / 1
+        }
+      }); 
+      const { show_image, name  } = data?.product
+      if (SUCCESS_CODE != errno) {
+        wx.showToast({
+          icon: 'error',
+          title: '获取失败，请重试',
+        })
+        return
       }
-    }); 
-
-    this.setData({ showLoading: false, name: '蛇年限定款' })
+      this.setData({ showLoading: false, preview: show_image, name })
+    } catch (error) {
+      wx.showToast({
+        icon: 'error',
+        title: '获取失败，请重试',
+      })
+      console.log(error)
+    }
   },
 
-  gotoProtral() {
-    wx.navigateTo({
-      url: '/pages/protral/index',
-    })
+  async bindBook() {
+    try {
+      const { errno, data } = await request({
+        method: 'POST',
+        url: '/fuyu/product/userbind/code',
+        data: {
+          code: this.options.code / 1
+        }
+      }); 
+      if (SUCCESS_CODE != errno) {
+        wx.showToast({
+          icon: 'error',
+          title: '绑定失败，请重试',
+        })
+        return
+      }
+      wx.navigateTo({
+        url: '/pages/protral/index',
+      })
+    } catch (error) {
+      wx.showToast({
+        icon: 'error',
+        title: '绑定失败，请重试',
+      })
+      console.log(error)
+    }
   }
 });

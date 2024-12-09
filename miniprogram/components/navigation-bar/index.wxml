@@ -3,16 +3,28 @@
     <cover-view
         wx-if="{{title}}"
         class="title-bar-title"
-        style="line-height:{{menuHeight}}px;bottom:{{menuBotton}}px;">{{title}}</cover-view>
+        style="line-height:{{menuHeight}}px;bottom:{{menuBotton}}px;">
+            {{title}}
+    </cover-view>
+
+    <cover-view
+        wx:elif="{{sampleReturn}}"
+        class="return-title"
+        style="line-height:{{menuHeight}}px;left:16px;bottom:{{menuBotton}}px;"
+        bind:tap="navigateBack"
+    >
+        <mp-icon icon="back" color="black" size="{{12}}"></mp-icon>
+        <view wx-if="{{returnTitle}}" class="return-title-text">{{returnTitle}}</view>
+    </cover-view>
     <cover-image
-        wx-if="{{showHome}}"
+        wx:elif="{{showHome}}"
         class="home-icon"
         src="../../images/icons/home.png"
         style="line-height:{{menuHeight}}px;left:16px;bottom:{{menuBotton}}px;"
         bind:tap="navigateToHome"
     />
     <cover-image
-        wx-if="{{showBack}}"
+        wx:elif="{{showBack}}"
         class="return-big-icon"
         src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/return-icon.png"
         style="line-height:{{menuHeight}}px;left:16px;bottom:{{menuBotton}}px;"

@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view>
   <loading wx-if="{{showLoading}}" />
-  <navigation-bar showBack="{{true}}"></navigation-bar>
+  <navigation-bar></navigation-bar>
   <view wx-if="{{!showLoading}}" class="page" style="padding-top: {{navBarHeight}}px;">
     <image
       class="book-new-tips"
@@ -16,7 +16,7 @@
     <view class="book-name">{{name}}</view>
 
     <view class="btn-box">
-      <chinese-button bindtap="gotoProtral" width="320"> 确定 </chinese-button>
+      <chinese-button bindtap="bindBook" width="320"> 确定 </chinese-button>
     </view>
   </view>
 </view>

@@ -15,6 +15,20 @@
           "scene": null
         },
         {
+          "name": "pages/book-list/index",
+          "pathName": "pages/book-list/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/book-info/index",
+          "pathName": "pages/book-info/index",
+          "query": "code=6",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "protral",
           "pathName": "pages/protral/index",
           "query": "",

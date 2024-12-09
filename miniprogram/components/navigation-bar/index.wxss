@@ -61,3 +61,21 @@
  transition: all 1.5s;  
  opacity: 0;
 }
+
+.return-title {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    font-family: 'PingFang SC';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;    
+    /* txt/标题 */
+    color: rgba(0, 0, 34, 0.91);    
+}
+
+.return-title-text {
+    margin-left: 6rpx;
+    margin-top: 2rpx;
+}

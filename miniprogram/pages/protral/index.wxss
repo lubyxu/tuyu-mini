@@ -124,6 +124,7 @@
   flex-grow: 0;
   min-width: 0;
   margin-bottom: 24rpx;
+  height: 300rpx;
 }
 
 .product-item {

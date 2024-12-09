@@ -2,7 +2,7 @@
 <view>
   <loading wx-if="{{showLoading}}" />
   <view wx-if="{{!showLoading}}" class="page-section swiper">
-    <navigation-bar showBack="{{true}}"></navigation-bar>
+    <navigation-bar sampleReturn="{{true}}"></navigation-bar>
     <view class="user-info-box" style="padding-top: {{navBarHeight}}px;">
       <protral-main avatar="{{avatar}}" nickname="{{nickname}}">
         <view class="user-content-subtitle">
@@ -39,7 +39,7 @@
         >
           <view class="book-free" wx-if="{{item.free}}">赠送</view>
           <image class="book-item-img" src="{{item.img}}" />
-          <view class="book-data">
+          <view class="book-data" wx-if="{{item.type != 'add'}}">
             <text class="book-used-count">{{item.used}}</text>
             /{{item.total}}
           </view>
@@ -47,7 +47,7 @@
       </view>
 
       <view wx:else >
-        <view wx-if="{{products.length != 0}}" class="empty-box">
+        <view wx-if="{{showProductEmpty}}" class="empty-box">
           <empty-list  width="135" height="{{135}}" text="暂无文创" />
         </view>
         <view wx:else  class="content-product-section">

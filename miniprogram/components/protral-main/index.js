@@ -45,9 +45,11 @@ Component({
           },
         });
         console.log('data', data)
-        console.log('更新用户信息成功')
       } catch(err) {
-        console.log('更新用户信息失败')
+        wx.showToast({
+          title: '更新失败',
+          icon: 'error',
+        })
       }
     },
 

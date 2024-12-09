@@ -6,6 +6,13 @@ Component({
             type: String,
             observer: function(newVal, oldVal) {}
         },
+        sampleReturn: {
+            type: Boolean,
+            value: false,
+        },
+        returnTitle: {
+            type: String,
+        },
         className: {
             type: String,
             observer: function(newVal, oldVal) {}
@@ -25,7 +32,7 @@ Component({
     },
     attached: function() {},
     ready() {
-        console.log('navigation-bar ready', this.properties.showBack)
+        console.log('navigation-bar ready', this.properties.showBack, this.properties.returnTitle)    
         if (!this.properties.title && !this.properties.showBack) {
             this.setData({
                 showHome: true

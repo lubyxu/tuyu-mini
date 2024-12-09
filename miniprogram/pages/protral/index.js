@@ -1,6 +1,9 @@
 const app = getApp()
 import { getUser } from '../../utils/auth'
-import { request } from '../../utils/req';
+import { request, SUCCESS_CODE } from '../../utils/req';
+
+const BOOK_TYPE = 3 // 印章本
+const CARD_TYPE = 1 // 冰箱贴
 
 Page({
 
@@ -9,7 +12,21 @@ Page({
   },
 
   async onReady() {
-    this.getInitData()
+    try {
+      await Promise.all([
+        this.getUserData(),
+        this.getUserProductData(BOOK_TYPE)
+      ])
+      this.setData({ showLoading: false })
+    } catch (error) {
+      console.log('error', error)
+      this.setData({ showLoading: false })
+      wx.showToast({
+        icon: 'error',
+        title: '获取失败，请重试',
+      })
+      console.log(error)
+    }
   },
 
   data: {
@@ -30,11 +47,12 @@ Page({
     ],
     books: [],
     products: [],
+    showProductEmpty: false,
     nickname: '小福鱼',
     avatar: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png',
   },
 
-  async getInitData() {
+  async getUserData() {
     if (!app.globalData?.user?.token) {
       await getUser()
     }
@@ -61,30 +79,6 @@ Page({
       value: visit_count
     }]
 
-    const books = [{
-      img: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/default-book.png',
-      used: 5,
-      total: 5,
-      free: true,
-      id: 1,
-    }, {
-      img: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/default-book.png',
-      used: 5,
-      total: 5,
-      id: 2,
-    },{
-      img: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/default-book.png',
-      used: 5,
-      total: 5,
-      id: 2,
-    }, {
-      img: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/add-book.png',
-      used: 5,
-      total: 5,
-      type: 'add',
-      id: 2,
-    }]
-
     const products = [{
       img: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/p1.png',
       name: '我在鼓楼',
@@ -103,16 +97,64 @@ Page({
       id: 1,
     }]
 
-    console.log('avatar', user, avatar)
     this.setData({
-      showLoading: false,
       avatar: avatar || 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png',
       nickname: nickname || '小福鱼',
       countList: statusList,
-      books,
       products,
       stamp_count
     })
+  },
+
+  async getUserProductData(type) {
+    if (!app.globalData?.user?.token) {
+      await getUser()
+    }
+    const { data, errno } = await request({
+      method: 'POST',
+      url: '/fuyu/product/user/list',
+      data: {
+        type,
+        province: ''
+      }
+    });
+
+    if (SUCCESS_CODE != errno) {
+      wx.showToast({
+        icon: 'error',
+        title: '获取失败，请重试',
+      })
+      return
+    }
+    
+    if (type === BOOK_TYPE) {
+      const books = data.map((item) => {
+        const { page_num, stamp_num } = item?.all_content?.book_config || {}
+        return {
+          img: item.show_image,
+          used: page_num,
+          total: stamp_num,
+          id: item.id,
+        }
+      })
+      books.push({
+        img: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/add-book.png',
+        type: 'add',
+      })
+      this.setData({ books })
+    } else {
+      const products = data.map((item) => {
+        return {
+          img: item.show_image,
+          name: item.name,
+          id: item.id,
+        }
+      })
+      this.setData({
+        products,
+        showProductEmpty: products.length === 0
+      })
+    }
   },
 
   switchTab(event) {
@@ -120,16 +162,22 @@ Page({
     this.setData({
       selected: idx
     })
+    this.getUserProductData(idx === 0 ? BOOK_TYPE : CARD_TYPE)
   },
 
   onBookClick(event) {
     const id = event.currentTarget.dataset.id
     const type = event.currentTarget.dataset.type
-    consosle.log('id,type=', id, type)
+    console.log('id,type=', id, type)
+    if (type === 'add') {
+      wx.navigateTo({
+        url: `/pages/book-list/index`
+      });
+    }
   },
 
   onProductClick(event) {
     const id = event.currentTarget.dataset.id
-    consosle.log('id=', id)
+    console.log('id=', id)
   },
 });
