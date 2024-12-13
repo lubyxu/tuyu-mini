@@ -77,5 +77,10 @@
 
 .return-title-text {
     margin-left: 6rpx;
-    margin-top: 2rpx;
+    margin-top: -6rpx;
+}
+
+.return-small-icon {
+    width: 48rpx;
+    height: 48rpx;
 }

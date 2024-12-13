@@ -1,5 +1,5 @@
 <view class="protral">
-  <protral-main readOnly="{{readOnly}}">
+  <protral-main nickname="{{nickname}}" avatar="{{avatar}}" readOnly="{{readOnly}}">
     <view class="user-content-subtitle">
       <image
         class="money-icon"
@@ -7,8 +7,8 @@
       />
       累计
       <view class="current-box">
-        <text class="current-count">2</text>
-        <text>/4</text>
+        <text class="current-count">{{visitedNumber}}</text>
+        <text>/{{totlaNumber}}</text>
       </view>
       打卡点
     </view>
@@ -21,17 +21,17 @@
   </view>
   <view class="details-list">
     <view class="details-box" wx:for="{{placeDetails}}">
-      <image wx-if="{{item.visited}}" src="../../../images/visited.png" class="visited-icon" />
+      <image src="../../../images/visited.png" class="visited-icon" />
       <image src="{{item.product_icon}}" class="product-icon" />
       <image
-        wx-if="{{item.visited}}"
         src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/complete.png"
         class="complete-icon"
+        wx-if="{{item.visited}}"
       />
       <view class="product-desc-box">
         <view class="produc-desc-title">
           <text class="product-name">{{item.name}}</text>
-          <view class="produc-desc-status-box">
+          <view class="produc-desc-status-box" wx-if="{{item.visited}}">
             <mp-icon
               type="field"
               icon="location"
@@ -39,11 +39,11 @@
               size="{{20}}"
               style="margin-top: -6rpx;"
             />
-            <view
-              class="{{item.visited ? 'status-text' : 'status-text-not-complete'}}"
-            >
-            {{item.visited ? '已打卡' : '未打卡'}}
-          </view>
+              <view
+                class="{{item.visited ? 'status-text' : 'status-text-not-complete'}}"
+              >
+              {{item.visited ? '已打卡' : '未打卡'}}
+            </view>
           </view>
         </view>
 

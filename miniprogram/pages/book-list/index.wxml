@@ -3,12 +3,14 @@
   <view wx-if="{{!showLoading}}" class="page">
     <navigation-bar sampleReturn="{{true}}" returnTitle="文创研究院"></navigation-bar>
     <view class="store-list" style="padding-top: {{navBarHeight + 18}}px;">
-      <view wx:for="{{list}}" class="store-item">
-        <store-product
-          appid="{{item.appid}}"
-          product-id="{{item.productId}}"
-          custom-style="{{customStyle}}"
-        />
+      <view wx-if="{{list.length > 0}}" >
+        <view wx:for="{{list}}" class="store-item">
+          <store-product
+            appid="{{item.appid}}"
+            product-id="{{item.productId}}"
+            custom-style="{{customStyle}}"
+          />
+        </view>
       </view>
     </view>
   </view>

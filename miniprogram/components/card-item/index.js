@@ -48,7 +48,6 @@ Component({
 
   ready: function () {
     const isLogined = app?.globalData?.user?.token
-    console.log('isLogined', isLogined)
     this.setData({ isLogined: !!isLogined })
     this.onInit()
   },

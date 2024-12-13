@@ -1,5 +1,5 @@
 <view class="user-main-box">
-    <cover-image
+    <image
         wx-if="{{readOnly}}"
         src="{{avatar}}"
         class="home-icon"
@@ -12,7 +12,7 @@
         hover-class="none"
         class="home-icon-button"
     >
-        <cover-image
+        <image
             src="{{avatar}}"
             class="home-icon"
             bindtap="getUserProfile"

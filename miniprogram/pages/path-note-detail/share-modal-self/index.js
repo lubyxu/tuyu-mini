@@ -1,3 +1,5 @@
+import { request } from '../../../utils/req'
+
 // pages/path-note-detail/share-modal/index.js
 Component({
   options: {
@@ -22,18 +24,45 @@ Component({
    */
   data: {
     list: [],
-    readOnly: true
+    readOnly: true,
+    nickname: '小福鱼',
+    avatar: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png',
+    totlaNumber: 0,
+    visitedNumber: 0,
   },
 
-
   ready() {
-    console.log('navigation-bar ready', this.properties.placeDetails)
+    this.init()
+    const placeDetails = this.properties.placeDetails || []
+    const visitedNumber = placeDetails.filter(item => item.visited)?.length
+    this.setData({
+      totlaNumber: placeDetails.length,
+      visitedNumber
+    })
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    async init() {
+      const { data } = await request({
+        method: 'GET',
+        url: '/fuyu/getuserinfo',
+      });
+  
+      const { user } = data;
+      const {
+        avatar,
+        nickname,
+      } = user
+
+      this.setData({
+        avatar: avatar || 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png',
+        nickname: nickname || '小福鱼',
+      })
+    },
+
     onPrivilege(info) {
 
     },

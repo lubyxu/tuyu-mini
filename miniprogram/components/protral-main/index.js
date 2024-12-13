@@ -1,5 +1,6 @@
 import { registerAccount } from '../../utils/auth';
 import { request } from '../../utils/req';
+import { uploadPhotos } from '../../utils/upload.js'
 
 const app = getApp();
 
@@ -18,18 +19,6 @@ Component({
       type: String,
       value: '小福鱼',
     },
-  },
-
-  data: {
-    bind: false
-  },
-
-  ready() {
-    if (this.properties.hasbind) {
-        this.setData({
-          hasbind: true
-        })
-    }
   },
 
   methods: {
@@ -53,10 +42,11 @@ Component({
       }
     },
 
-    onChooseAvatar(data) {
+    async onChooseAvatar(data) {
       const { avatarUrl } = data.detail;
+      const res = await uploadPhotos({ filePath: avatarUrl, path: `avatar/${app?.globalData?.user?.token}.jpg` })
       this.setData({
-        avatar: avatarUrl,
+        avatar: res.filePath,
       })
       this.updateUserInfo()
     },

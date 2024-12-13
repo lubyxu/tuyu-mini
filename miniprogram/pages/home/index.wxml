@@ -2,21 +2,27 @@
 <view>
   <loading wx-if="{{showLoading}}" />
   <view wx-if="{{!showLoading}}" class="page-section swiper">
-    <navigation-bar
-      className="{{titleBarVisible ? 'fadein' : 'fadeout'}}"
-      title="{{titleBarVisible ? '福鱼文化创意馆' : ''}}"
-    ></navigation-bar>
-
   <view class="swiper-box">
     <cover-view class="position-box">
+      <button
+        catchtouchmove="preventD"
+        wx:if="{{!isLogined}}"
+        open-type="getPhoneNumber"
+        bindgetphonenumber="onRegisterAccount"
+        hover-class="none"
+        style="width: auto;"
+      >
+        <image
+          src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/not-login.png"
+          class="home-icon"
+        />
+      </button>
       <cover-image
         src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png"
         class="home-icon"
+        bindtap="gotoProtral"
+        wx:else
       />
-      <!-- <cover-image
-        src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/not-login.png"
-        class="home-icon"
-      /> -->
       <cover-image
           src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/position.png"
           class="positon-icon"

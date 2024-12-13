@@ -84,3 +84,7 @@
 	width: 24px;
 	height: 32px;
 }
+
+.mt-bottom {
+	margin-bottom: 1px;
+}

@@ -1,7 +1,6 @@
 const app = getApp()
-import { getUser } from '../../utils/auth'
+import { getUser, registerAccount } from '../../utils/auth'
 import { request } from '../../utils/req';
-
 
 Page({
   onShareAppMessage() {
@@ -12,17 +11,11 @@ Page({
     }
   },
 
-  onShow: function() {
-    // this.setTabBar()
-    wx.login({
-      success: (res) => {
-        console.log('res', res)
-      },
-    });
-  },
-
   async onReady() {
     await Promise.all([this.getInitData(), this.getBanners()])
+    const isLogined = app?.globalData?.user?.token
+    console.log('isLogined', isLogined)
+    this.setData({ isLogined: !!isLogined })
     this.setData({ showLoading: false })
   },
 
@@ -33,6 +26,7 @@ Page({
     menuHeight: app.globalData.menuHeight,
     menuTop: app.globalData.menuTop,
     position: "北京",
+    isLogined: false,
     swiper: [],
     card: [],
     pageSize: 10,
@@ -69,6 +63,20 @@ Page({
       },
     ],
     list: []
+  },
+
+  async onRegisterAccount(e) {
+    const code = e.detail.code;
+    if (!code) {
+      wx.showToast({
+        icon: 'error',
+        title: '登陆失败，请重试'
+      })
+      return
+    } 
+    this.setData({ isLogined: true })
+    await registerAccount(code);
+    this.gotoProtral()
   },
 
   async getInitData() {
@@ -133,4 +141,10 @@ Page({
       url: `/pages/scenic-map/index?longitude=${this.data.longitude}&latitude=${this.data.latitude}`,
     });
   },
+
+  gotoProtral() {
+    wx.navigateTo({
+      url: `/pages/protral/index`,
+    });
+  }
 });

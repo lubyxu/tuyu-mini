@@ -10,7 +10,7 @@
         {
           "name": "pages/book-info/index",
           "pathName": "pages/book-info/index",
-          "query": "",
+          "query": "code=8",
           "launchMode": "default",
           "scene": null
         },

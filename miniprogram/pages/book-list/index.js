@@ -4,7 +4,7 @@ import { request, SUCCESS_CODE } from '../../utils/req';
 
 Page({
   async onReady() {
-    // this.getInitData()
+    this.getInitData()
   },
 
   data: {
@@ -15,31 +15,7 @@ Page({
         'background-color': '#FAFAFA',
       }
     },
-    list: [{
-      appid: 'wxa8be24a874298873',
-      productId: '10000157997634'
-    }, {
-      appid: 'wxa8be24a874298873',
-      productId: '10000157997634'
-    }, {
-      appid: 'wxa8be24a874298873',
-      productId: '10000157997634'
-    }, {
-      appid: 'wxa8be24a874298873',
-      productId: '10000157997634'
-    }, {
-      appid: 'wxa8be24a874298873',
-      productId: '10000157997634'
-    }, {
-      appid: 'wxa8be24a874298873',
-      productId: '10000157997634'
-    }, {
-      appid: 'wxa8be24a874298873',
-      productId: '10000157997634'
-    }, {
-      appid: 'wxa8be24a874298873',
-      productId: '10000157997634'
-    }]
+    list: []
   },
 
   async getInitData() {
@@ -72,8 +48,7 @@ Page({
       })
       console.log('list', list)
 
-      // this.setData({ showLoading: false, list })
-      this.setData({ showLoading: false })
+      this.setData({ showLoading: false, list })
 
     } catch (error) {
       this.setData({ showLoading: false })
