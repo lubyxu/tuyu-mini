@@ -8,16 +8,16 @@
     "miniprogram": {
       "list": [
         {
-          "name": "印章详情",
-          "pathName": "pages/signet-move/index",
-          "query": "book_id=11",
+          "name": "获取印章详情",
+          "pathName": "pages/signet-add-page/index",
+          "query": "image=https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/27/1734190747949/1734190747949.jpg&pageNum=1&book_id=27",
           "launchMode": "default",
           "scene": null
         },
         {
-          "name": "pages/photo/index",
-          "pathName": "pages/photo/index",
-          "query": "pid=4",
+          "name": "印章详情",
+          "pathName": "pages/signet-detail/index",
+          "query": "",
           "launchMode": "default",
           "scene": null
         },

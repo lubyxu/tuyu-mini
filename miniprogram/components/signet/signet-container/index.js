@@ -10,11 +10,11 @@ Component({
    */
   properties: {
     book: Object,
-    pageNum: Number,
     signetSrc: {
       type: String,
       value: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/4/1733237670470/1733237670470.jpg'
     },
+    signet: Object,
     bgImage: String,
     time: String,
     location: Object,
@@ -44,6 +44,7 @@ Component({
       this.setData({
         signetSrc
       });
+      this.triggerEvent('onPageAdd', { imageUrl: signetSrc });
     },
     addToPage() {
       // await addToPage({

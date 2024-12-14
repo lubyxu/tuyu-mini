@@ -6,5 +6,6 @@
     "chinese-btn": "/components/button/chinese-btn",
     "section-title": "/components/section-title/index"
   },
+  "disableScroll": false,
   "navigationBarBackgroundColor": "#F0EBDD"
 }

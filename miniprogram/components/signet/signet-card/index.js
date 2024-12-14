@@ -7,9 +7,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    icon: String,
     isBook: Boolean,
     isFilled: Boolean,
+    img: String,
+    fallbackImg: String
   },
 
   /**

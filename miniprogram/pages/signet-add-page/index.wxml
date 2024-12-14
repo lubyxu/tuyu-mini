@@ -9,24 +9,25 @@
 	id="{{book.id}}"
 	book="{{book}}"
   showFinishIcon="{{true}}"
+  signet="{{signet}}"
 />
 <view>
   <view class="signet-title flex items-center">
     <view class="inline-flex items-center">
       <view>{{name}}</view>
-      <view bind:tap="onEdit">
+      <view style="margin-left: 8px;" bind:tap="onEdit">
         <iconfont name="edit" color="rgba(0, 0, 34, 0.5)" size="24" />
       </view>
     </view>
   </view>
-  <view>
-    <view class="flex items-center gap-8 mx-auto" style="width: 263px; margin-top: 12px;">
+  <view style="font-size: 14px;">
+    <view class="flex items-center gap-8" style="margin: 0 16px; padding-left: 40px; margin-top: 12px;">
       <view>
         <iconfont name="riqi" color="rgba(0, 0, 0, 0.65)" size="16" />
       </view>
       <view>{{timeStr}}</view>
     </view>
-    <view class="flex items-center gap-8 mx-auto" style="width: 263px; margin-top: 12px;">
+    <view class="flex items-center gap-8 mx-auto"  style="margin: 0 16px; padding-left: 40px; margin-top: 12px;">
       <iconfont name="position" color="rgba(0, 0, 0, 0.65)" size="16"/>
 
       <view wx:if="{{!location}}" style="color: #CE3219" bind:tap="onMapOpen">
@@ -40,8 +41,12 @@
 </view>
 
 <view class="signet-add-footer" wx:if="{{state !== 'done'}}">
-  <chinese-btn width="165">取消</chinese-btn>
-  <chinese-btn width="165">确定</chinese-btn>
+  <view style="width: 100%" bind:tap="onCancel">
+		<chinese-btn unit="%" width="100">取消</chinese-btn>
+	</view>
+	<view style="width: 100%" bind:tap="onConfirm">
+		<chinese-btn unit="%" width="100">确定</chinese-btn>
+	</view>
 </view>
 <view class="signet-add-footer" wx:if="{{state == 'done'}}">
   <view class="flex items-center justify-center w-full">

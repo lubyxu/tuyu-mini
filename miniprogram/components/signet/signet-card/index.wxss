@@ -2,7 +2,8 @@
   width: 74px;
   height: 106px;
   overflow: hidden;
-  border: 0.5px solid #0000001F
+  border: 0.5px solid #0000001F;
+  background-color: #fff;
 }
 .signet-card image {
   width: 64px;

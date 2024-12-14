@@ -5,7 +5,8 @@
   position: relative;
 }
 .signet-container image {
-  width: 343px;
+  width: 100%;
+  margin: 0 16px;
 }
 
 .signet-container-content {
@@ -27,6 +28,9 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  border: 1px dotted #00000033;
+  border-radius: 4px;
+  padding: 0 0 24px 0;
 }
 
 .empty-btn-groups {

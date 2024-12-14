@@ -2,7 +2,9 @@
   "usingComponents": {
     "signet-card": "/components/signet/signet-card/index",
     "section-title": "/components/section-title/index",
-    "signet-container": "/components/signet/signet-container/index"
+    "signet-container": "/components/signet/signet-container/index",
+    "iconfont": "/iconfont/iconfont",
+    "chinese-btn": "/components/button/chinese-btn"
   },
   "disableScroll": false,
   "navigationBarBackgroundColor": "#F0EBDD"
