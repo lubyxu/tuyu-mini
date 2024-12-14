@@ -1,4 +1,9 @@
 {
   "navigationBarTitleText": "移动印章",
-  "usingComponents": {}
+  "navigationBarBackgroundColor": "#F0EBDD",
+  "disableScroll": false,
+  "usingComponents": {
+    "section-title": "/components/section-title/index",
+    "chinese-btn": "/components/button/chinese-btn"
+  }
 }

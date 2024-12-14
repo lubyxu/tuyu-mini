@@ -1,1 +1,50 @@
-/* pages/signet-move/index.wxss */
+page {
+	background: #F0EBDD;
+}
+
+.signet-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 12px;
+	margin: 16px;
+
+	padding-bottom: 102px;
+}
+
+.signet-container-item {
+	width: 107px;
+	height: 150px;
+	background-color: #fff;
+	border-radius: 4px;
+
+	position: relative;
+	overflow: hidden;
+}
+
+.signet-container-item .footer {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 24px;
+
+	backdrop-filter: blur(4px);
+	background: #00000066;
+
+	font-size: 12px;
+	color: #fff;
+}
+
+
+.page-footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: #F0EBDD;
+
+	display: flex;
+	gap: 16px;
+
+	padding: 10px 16px 42px;
+}

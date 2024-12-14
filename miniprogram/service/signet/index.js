@@ -27,3 +27,12 @@ export async function addToPage(params) {
 export function getSignetBooks() {
   return getProductList({ type: 3 });
 }
+
+export function movePage(params) {
+  return request({
+    url: '/fuyu/stamp/movepage',
+    data: {
+      ...params,
+    }
+  });
+}

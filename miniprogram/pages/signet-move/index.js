@@ -1,4 +1,4 @@
-import { getSignetBooks } from '../../service/signet/index';
+import { getSignetBooks, getBookInfo, addToPage } from '../../service/signet/index';
 import loginBehavior from '../../behaviors/login/index';
 
 Page({
@@ -7,8 +7,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    cardInfo: {},
     books: [],
-    id: ''
+    curBook: {},
+    curBookConfig: {},
+    curCards: [],
+    curIndex: -1,
   },
 
   /**
@@ -18,14 +22,24 @@ Page({
     this.options = options;
   },
   async onLogined() {
-    // 印章本id
-    const id = this.options.query?.book_id;
-
     const data = await getSignetBooks();
-    console.log('--on load ', data);
+
     this.setData({
-      id,
       books: data
+    });
+
+    this.getCurrentBook(data[0].user_product_id);
+  },
+
+  async getCurrentBook(id) {
+    const data = await getBookInfo(id);
+    const config = data.BookInfo.content.book_config;
+    this.setData({
+      curBook: data,
+      curBookConfig: config,
+      curCards: new Array(config.page_num).fill(0).map(item => ({
+        img: data.BookInfo.bg_card_image
+      }))
     });
   },
 
@@ -76,5 +90,29 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  onCardSelect(e) {
+    const index = e.currentTarget.dataset.index;
+    this.setData({
+      curIndex: index
+    });
+  },
+
+  async onCofirm() {
+    await addToPage({
+      book_pid: this.data.curBook.book_id,
+      page_num: this.curIndex,
+      location: cardInfo.location,
+      loc_lat: cardInfo.loc_lat,
+      loc_long: cardInfo.loc_long,
+      name: cardInfo.name,
+      image_url: cardInfo.imageUrl,
+      stamp_pid: cardInfo.stamp_pid,
+    });
+    wx.navigateBack();
+  },
+  onCancel() {
+    wx.navigateBack();
   }
 })

@@ -9,6 +9,10 @@ Component({
       type: Number,
       value: 200
     },
+    unit: {
+      type: String,
+      value: 'px'
+    },
     zIndex: {
       value: 0
     },
