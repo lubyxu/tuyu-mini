@@ -3,6 +3,7 @@
   "navigationBarBackgroundColor": "#F0EBDD",
   "disableScroll": false,
   "usingComponents": {
+    "signet-card": "/components/signet/signet-card/index",
     "section-title": "/components/section-title/index",
     "chinese-btn": "/components/button/chinese-btn"
   }

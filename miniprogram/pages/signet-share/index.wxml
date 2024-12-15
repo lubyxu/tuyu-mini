@@ -5,11 +5,11 @@
   <view class="banner-right">
     <view class="nick-name">{{nickName}}</view>
     <view class="desc">
-      累计<text style="font-size: 18px; margin: 0 2px;">{{doneCount}}</text>/<text style="margin: 0 2px;">{{totalCount}}</text>枚印章
+      累计<text style="font-size: 18px; margin: 0 2px;">{{doneCount}}</text>/<text style="margin: 0 2px;">{{stamp_count}}</text>枚印章
     </view>
   </view>
 </view>
-<view style="margin-top: 24px; margin-bottom: 12px;">
+<view style="margin-top: 24px;">
   <section-title title="{{name}}" fontSize="32" />
   <view class="flex items-center justify-center" style="font-size: 14px; color:#7F5C11;">
     印章收集完成
@@ -20,26 +20,33 @@
 	id="{{book.id}}"
 	book="{{book}}"
   showFinishIcon="{{true}}"
+  signet="{{signet}}"
 />
-<view>
-  <view>
-    <view class="flex items-center gap-8 mx-auto" style="width: 263px; margin-top: 12px;">
-      <view>
-        <iconfont name="riqi" color="rgba(0, 0, 0, 0.65)" size="16" />
-      </view>
-      <view>{{timeStr}}</view>
+
+<view style="margin: 0 16px; padding-left: 40px; font-size: 14px;">
+  <view class="flex items-center gap-8">
+    <iconfont name="riqi" color="rgba(0, 0, 0, 0.65)" size="16" />
+    <view>
+      {{timeStr}}
     </view>
-    <view class="flex items-center gap-8 mx-auto" style="width: 263px; margin-top: 12px;">
-      <iconfont name="position" color="rgba(0, 0, 0, 0.65)" size="16"/>
-      <view>
-        {{location.name}}
+  </view>
+
+  <view class="mt-12">
+    <position-btn location="{{location}}" long="{{stamp_info.loc_long}}" lat="{{stamp_info.loc_lat}}">
+      <view class="flex items-center gap-8">
+        <iconfont name="position" color="rgba(0, 0, 0, 0.65)" size="16" />
+        <view>
+          {{location}}
+        </view>
       </view>
-    </view>
+    </position-btn>
   </view>
 </view>
 
-<view class="signet-add-footer">
+<view class="signet-add-footer" wx:if="{{!!rel_path_id}}" bind:tap="onGoto">
   <view class="flex items-center justify-center w-full">
     <chinese-btn bind:click="onAccept" width="320">立即获取</chinese-btn>
   </view>
 </view>
+
+<map id="js-hidden-map" style="display: none;"></map>

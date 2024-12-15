@@ -1,5 +1,5 @@
 import loginBehavior from '../../behaviors/login/index';
-import { getBookInfo } from '../../service/signet/index';
+import { getBookInfo, deletePage } from '../../service/signet/index';
 import dayjs from 'dayjs';
 Page({
 
@@ -19,7 +19,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.getBookInfo(27)
+    this.options = options;
+    if (!this.data.isLogined) return;
+    this.getBookInfo(this.options.book_id);
   },
 
   /**
@@ -68,10 +70,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {
-
+    const index = this.data.curIndex;
+    const page = this.data.signets[index];
+    return {
+      title: page.name,
+      path: `/pages/signet-share/index?user_stamp_id=${page.user_stamp_id}`,
+      imageUrl: page.image_url,
+    };
   },
   onLogined() {
-    this.getBookInfo(27)
+    this.getBookInfo(this.options.book_id);
   },
   async getBookInfo(id) {
     const data = await getBookInfo(id);
@@ -112,12 +120,45 @@ Page({
     const { curIndex, book } = this.data;
     const { imageUrl } = e.detail;
     wx.navigateTo({
-      url: `/pages/signet-add-page/index?image=${imageUrl}&pageNum=${curIndex}&book_id=${book.book_id}`,
+      url: `/pages/signet-add-page/index?image=${imageUrl}&pageNum=${curIndex + 1}&book_id=${book.book_id}`,
       events: {
         refresh: () => {
-          this.getBookInfo(27);
+          this.getBookInfo(+this.options.book_id);
         }
       }
     });
+  },
+  onPageDelete() {
+    wx.showModal({
+      title: '确认删除本页印章？',
+      content: '删除后可以重新添加',
+      success: async () => {
+        await deletePage({ book_id: +this.options.book_id, page_num: this.data.curIndex + 1});
+
+        const curIndex = this.data.curIndex;
+        const signets = [...this.data.signets];
+        signets[curIndex] = undefined;
+        this.setData({
+          signets
+        });
+      },
+    })
+  },
+
+  // 移动印章
+  onMovePage() {
+    const curIndex = this.data.curIndex;
+    const query = [
+      `from_book_id=${this.options.book_id}`,
+      `from_page_num=${this.data.curIndex + 1}`,
+    ];
+    wx.navigateTo({
+      url: '/pages/signet-move/index?' + query.join('&'),
+      events: {
+        refresh: () => {
+          this.getBookInfo(+this.options.book_id);
+        }
+      }
+    })
   }
 })

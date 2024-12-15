@@ -18,7 +18,7 @@ page {
 	border-radius: 4px;
 
 	position: relative;
-	overflow: hidden;
+  overflow: hidden;
 }
 
 .signet-container-item .footer {
@@ -40,11 +40,26 @@ page {
 	position: fixed;
 	left: 0;
 	bottom: 0;
-	right: 0;
+  right: 0;
+  z-index: 11;
 	background-color: #F0EBDD;
 
 	display: flex;
 	gap: 16px;
 
 	padding: 10px 16px 42px;
+}
+
+.signet-book {
+  height: 106px;
+  width: 74px;
+  position: relative;
+}
+
+.signet-book-radio {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  transform: scale(0.7);
+  z-index: 10;
 }

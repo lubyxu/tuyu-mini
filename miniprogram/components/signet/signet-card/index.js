@@ -10,7 +10,11 @@ Component({
     isBook: Boolean,
     isFilled: Boolean,
     img: String,
-    fallbackImg: String
+    fallbackImg: String,
+    bordered: {
+      type: Boolean,
+      value: true
+    }
   },
 
   /**

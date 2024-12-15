@@ -48,11 +48,13 @@
 </view>
 
 <view wx:if="{{!!signets[curIndex]}}" class="footer">
-  <view style="width: 44px; text-align: center;">删除</view>
-  <view style="width: 100%; flex: 1;" bind:tap="onCancel">
+  <view style="width: 44px; text-align: center;" bind:tap="onPageDelete">删除</view>
+  <view style="width: 100%; flex: 1;" bind:tap="onMovePage">
 		<chinese-btn unit="%" width="100">移动</chinese-btn>
 	</view>
-	<view style="width: 100%; flex: 1;" bind:tap="onConfirm">
-		<chinese-btn unit="%" width="100">分享</chinese-btn>
-	</view>
+  <button open-type="share" class="btn-share" bind:tap="onShare">
+    <view style="width: 100%;">
+      <chinese-btn unit="%" width="100">分享</chinese-btn>
+    </view>
+  </button>
 </view>

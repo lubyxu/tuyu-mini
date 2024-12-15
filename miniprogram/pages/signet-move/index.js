@@ -1,4 +1,4 @@
-import { getSignetBooks, getBookInfo, addToPage } from '../../service/signet/index';
+import { getSignetBooks, getBookInfo, addToPage, movePage } from '../../service/signet/index';
 import loginBehavior from '../../behaviors/login/index';
 
 Page({
@@ -13,6 +13,7 @@ Page({
     curBookConfig: {},
     curCards: [],
     curIndex: -1,
+    curBookIndex: 0,
   },
 
   /**
@@ -20,26 +21,40 @@ Page({
    */
   async onLoad(options) {
     this.options = options;
+    if (this.data.isLogined) {
+      this.initValue();
+    }
   },
-  async onLogined() {
-    const data = await getSignetBooks();
+  onLogined() {
+    this.initValue();
+  },
 
+  async initValue() {
+    const data = await getSignetBooks();
     this.setData({
       books: data
     });
-
     this.getCurrentBook(data[0].user_product_id);
   },
 
   async getCurrentBook(id) {
     const data = await getBookInfo(id);
     const config = data.BookInfo.content.book_config;
+    const pages = data.Pages || [];
+    const map = pages.reduce((prev, page) => {
+      return {
+        ...prev,
+        [page.page_num - 1]: page
+      };
+    }, {});
     this.setData({
       curBook: data,
       curBookConfig: config,
-      curCards: new Array(config.page_num).fill(0).map(item => ({
-        img: data.BookInfo.bg_card_image
-      }))
+      curCards: new Array(config.page_num).fill(0).map((item, idx) => {
+        return map[idx] ? {
+          ...map[idx]
+        } : undefined;
+      })
     });
   },
 
@@ -94,15 +109,39 @@ Page({
 
   onCardSelect(e) {
     const index = e.currentTarget.dataset.index;
+    // 已经站位的 不能选中
+    if (this.data.curCards[index]) {
+      return;
+    }
     this.setData({
       curIndex: index
     });
   },
+  onBookSelect(e) {
+    const index = e.currentTarget.dataset.index;
+    const book = this.data.books[index];
+    this.setData({
+      curIndex: -1,
+      curBookIndex: index,
+    });
+    this.getCurrentBook(book.user_product_id)
+  },
 
-  async onCofirm() {
+  async onConfirm() {
+    if (this.data.curIndex < 0) return;
+    await movePage({
+      from_book_id: +this.options.from_book_id,
+      from_page_num: +this.options.from_page_num,
+      to_book_id: this.data.curBook.book_id,
+      to_page_num: this.data.curIndex + 1
+    });
+    const ev = this.getOpenerEventChannel();
+    ev.emit('refresh');
+    wx.navigateBack();
+    return;
     await addToPage({
-      book_pid: this.data.curBook.book_id,
-      page_num: this.curIndex,
+      book_id: this.data.curBook.book_id,
+      page_num: this.curIndex + 1,
       location: cardInfo.location,
       loc_lat: cardInfo.loc_lat,
       loc_long: cardInfo.loc_long,

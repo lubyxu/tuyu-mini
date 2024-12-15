@@ -36,3 +36,24 @@ export function movePage(params) {
     }
   });
 }
+
+export function deletePage({ book_id, page_num }) {
+  return request({
+    url: '/fuyu/stamp/delpage',
+    data: {
+      book_id,
+      page_num
+    }
+  });
+}
+
+export async function getSharePageInfo(user_stamp_id) {
+  const { data } = await request({
+    url: '/fuyu/stamp/share/page',
+    data: {
+      user_stamp_id: +user_stamp_id
+    }
+  });
+  console.log('--data', data);
+  return data;
+}
