@@ -30,7 +30,7 @@
     <view class="flex items-center gap-8 mx-auto"  style="margin: 0 16px; padding-left: 40px; margin-top: 12px;">
       <iconfont name="position" color="rgba(0, 0, 0, 0.65)" size="16"/>
 
-      <view wx:if="{{!location}}" style="color: #CE3219" bind:tap="onMapOpen">
+      <view wx:if="{{!location.name}}" style="color: #CE3219" bind:tap="onMapOpen">
         点击获取
       </view>
       <view wx:else>
@@ -42,10 +42,13 @@
 
 <view class="signet-add-footer" wx:if="{{state !== 'done'}}">
   <view style="width: 100%" bind:tap="onCancel">
-		<chinese-btn unit="%" width="100">取消</chinese-btn>
+		<chinese-btn unit="%" width="100" type="default">取消</chinese-btn>
 	</view>
-	<view style="width: 100%" bind:tap="onConfirm">
+	<view style="width: 100%" wx:if="{{!stamp_pid}}" bind:tap="onConfirm">
 		<chinese-btn unit="%" width="100">确定</chinese-btn>
+	</view>
+  <view wx:else style="width: 100%" bind:tap="onConfirm">
+		<chinese-btn unit="%" width="100">移动到印章本</chinese-btn>
 	</view>
 </view>
 <view class="signet-add-footer" wx:if="{{state == 'done'}}">

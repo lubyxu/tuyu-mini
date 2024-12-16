@@ -14,3 +14,14 @@ export async function getProductList({ type }) {
 
 	return data;
 }
+
+export async function getProductDetail(product_id) {
+  const { data } = await request({
+    url: '/fuyu/product/detail',
+    data: {
+      product_id: +product_id
+    }
+  });
+
+  return data;
+}

@@ -13,7 +13,6 @@ Page({
     timeStr: '',
     location,
     nickName: '',
-    doneCount: 0,
     stamp_count: 0,
     rel_path_id: 0,
     signet: {},

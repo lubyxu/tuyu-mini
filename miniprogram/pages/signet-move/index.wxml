@@ -34,7 +34,7 @@
 
 <view class="page-footer">
   <view style="width: 100%" bind:tap="onCancel">
-		<chinese-btn unit="%" width="100">取消</chinese-btn>
+		<chinese-btn unit="%" width="100" type="default">取消</chinese-btn>
 	</view>
 	<view style="width: 100%" bind:tap="onConfirm">
 		<chinese-btn unit="%" width="100">确认</chinese-btn>

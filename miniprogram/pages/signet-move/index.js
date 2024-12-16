@@ -24,6 +24,14 @@ Page({
     if (this.data.isLogined) {
       this.initValue();
     }
+
+    const ec = this.getOpenerEventChannel();
+    ec.on('stampInfo', data => {
+      console.log('--data', data)
+      this.setData({
+        cardInfo: data
+      });
+    })
   },
   onLogined() {
     this.initValue();
@@ -129,27 +137,35 @@ Page({
 
   async onConfirm() {
     if (this.data.curIndex < 0) return;
-    await movePage({
-      from_book_id: +this.options.from_book_id,
-      from_page_num: +this.options.from_page_num,
-      to_book_id: this.data.curBook.book_id,
-      to_page_num: this.data.curIndex + 1
-    });
-    const ev = this.getOpenerEventChannel();
-    ev.emit('refresh');
-    wx.navigateBack();
-    return;
-    await addToPage({
-      book_id: this.data.curBook.book_id,
-      page_num: this.curIndex + 1,
-      location: cardInfo.location,
-      loc_lat: cardInfo.loc_lat,
-      loc_long: cardInfo.loc_long,
-      name: cardInfo.name,
-      image_url: cardInfo.imageUrl,
-      stamp_pid: cardInfo.stamp_pid,
-    });
-    wx.navigateBack();
+
+    // 添加到逻辑
+    if (!this.options.stamp_pid) {
+      await movePage({
+        from_book_id: +this.options.from_book_id,
+        from_page_num: +this.options.from_page_num,
+        to_book_id: this.data.curBook.book_id,
+        to_page_num: this.data.curIndex + 1
+      });
+      const ev = this.getOpenerEventChannel();
+      ev.emit('refresh');
+      wx.navigateBack();
+      return;
+    }
+    else {
+      const cardInfo = this.data.cardInfo;
+      await addToPage({
+        book_id: this.data.curBook.book_id,
+        page_num: this.data.curIndex + 1,
+        location: cardInfo.location.name,
+        loc_lat: cardInfo.location.loc_lat,
+        loc_long: cardInfo.location.loc_long,
+        name: cardInfo.name,
+        image_url: cardInfo.image_url,
+        stamp_pid: +cardInfo.stamp_pid,
+      });
+      // todo 需要回到列表页
+      wx.navigateBack();
+    }
   },
   onCancel() {
     wx.navigateBack();

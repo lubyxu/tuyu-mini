@@ -5,7 +5,7 @@
   <view class="banner-right">
     <view class="nick-name">{{nickName}}</view>
     <view class="desc">
-      累计<text style="font-size: 18px; margin: 0 2px;">{{doneCount}}</text>/<text style="margin: 0 2px;">{{stamp_count}}</text>枚印章
+      累计<text style="font-size: 18px; margin: 0 2px;">{{stamp_count}}</text>枚印章
     </view>
   </view>
 </view>

@@ -40,17 +40,20 @@
     <view class="flex items-center gap-8 mt-12">
       <iconfont name="position" color="rgba(0, 0, 0, 0.65)" size="16" />
       <view class="text-gray-color-2" wx:if="{{!signets[curIndex].location}}">暂无印章</view>
-      <view wx:else>
-        {{signets[curIndex].location}}
-      </view>
+        <position-btn wx:else location="{{signets[curIndex].location}}" lat="{{signets[curIndex].loc_lat}}" long="{{signets[curIndex].loc_long}}">
+          {{signets[curIndex].location}}
+        </position-btn>
     </view>
   </view>
 </view>
 
 <view wx:if="{{!!signets[curIndex]}}" class="footer">
-  <view style="width: 44px; text-align: center;" bind:tap="onPageDelete">删除</view>
+  <view style="width: 44px; text-align: center;" class="flex items-center flex-col" bind:tap="onPageDelete">
+    <iconfont name="shanchu" color="rgba(0, 0, 0, 0.65)" size="16" />
+    <view style="font-size: 12px; margin-top: 4px;">删除</view>
+  </view>
   <view style="width: 100%; flex: 1;" bind:tap="onMovePage">
-		<chinese-btn unit="%" width="100">移动</chinese-btn>
+		<chinese-btn unit="%" width="100" type="default">移动</chinese-btn>
 	</view>
   <button open-type="share" class="btn-share" bind:tap="onShare">
     <view style="width: 100%;">
@@ -58,3 +61,5 @@
     </view>
   </button>
 </view>
+
+<map id="js-hidden-map" style="display: none;" />

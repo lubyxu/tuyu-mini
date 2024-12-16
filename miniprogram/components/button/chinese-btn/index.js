@@ -19,6 +19,10 @@ Component({
     className: {
       type: String,
     },
+    type: {
+      type: String,
+      value: 'primary'
+    }
   },
 
   /**

@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import { addToPage, getBookInfo } from '../../service/signet/index';
 import loginBehavior from '../../behaviors/login/index';
+import { getProductDetail } from '../../service/product/index';
 const chooseLocation = requirePlugin('chooseLocation');
 Page({
   behaviors: [loginBehavior],
@@ -8,12 +9,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    stamp_pid: 0,
     bgImage: '',
     signet: {},
     name: '',
     time: '',
     timeStr: '',
-    location: '',
+    location: {},
 
     isEdit: false,
     modalValue: ''
@@ -32,17 +34,37 @@ Page({
   },
 
   async initValue() {
-    const data = await getBookInfo(this.options.book_id);
-    const bookInfo = data.BookInfo;
-    const bookConfig = bookInfo.content.book_config;
     const date = dayjs();
-    this.setData({
-      bgImage: bookConfig.page_bg_img,
-      timeStr: date.format('YYYY年YY月DD日 HH:mm:ss'),
-      signet: {
-        image_url: decodeURIComponent(this.options.image)
-      }
-    });
+    if (this.options.book_id) {
+      const data = await getBookInfo(this.options.book_id);
+      const bookInfo = data.BookInfo;
+      const bookConfig = bookInfo.content.book_config;
+      this.setData({
+        bgImage: bookConfig.page_bg_img,
+        timeStr: date.format('YYYY年YY月DD日 HH:mm:ss'),
+        signet: {
+          image_url: decodeURIComponent(this.options.image)
+        }
+      });
+    }
+
+    if (this.options.stamp_pid) {
+      const data = await getProductDetail(this.options.stamp_pid);
+      // todo 如果返回的商品type 不是2，就报个错，提示无效二维码  1-正经文创  2-印章 3印章本
+      const bookInfo = data.product_info;
+      const bookConfig = bookInfo.content.book_config;
+      this.setData({
+        stamp_pid: this.options.stamp_pid,
+        name: bookInfo.name,
+        bgImage: bookConfig.page_bg_img,
+        time: date.unix(),
+        timeStr: date.format('YYYY年YY月DD日 HH:mm:ss'),
+        signet: {
+          image_url: bookInfo.show_image
+        }
+      });
+
+    }
   },
 
   /**
@@ -153,6 +175,23 @@ Page({
         title: '请填写印章名称'
       });
       return;
+    }
+    if (stamp_pid) {
+      wx.navigateTo({
+        url: '/pages/signet-move/index?stamp_pid=' + stamp_pid,
+        success: (res) => {
+          res.eventChannel.emit(
+            'stampInfo',
+            {
+              location: this.data.location,
+              name: this.data.name,
+              time: this.data.time,
+              image_url: this.data.signet.image_url,
+              stamp_pid: this.options.stamp_pid,
+            }
+          );
+        }
+      });
     }
     // todo location
     await addToPage({

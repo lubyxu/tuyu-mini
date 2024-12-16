@@ -23,7 +23,6 @@ Component({
   methods: {
     onPositionGo() {
       const map = wx.createMapContext('js-hidden-map');
-      console.log('=----fasdfasf')
       map.openMapApp({
         latitude: this.data.lat,
         longitude: this.data.long,

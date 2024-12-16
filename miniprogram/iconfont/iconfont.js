@@ -1,6 +1,6 @@
 Component({
   properties: {
-    // a-Obtainanewseal | gouwulan | riqi | edit | map | close | right-arrow | pointer-checked | position | flash-camera | fire | Frame
+    // shanchu | a-Obtainanewseal | gouwulan | riqi | edit | map | close | right-arrow | pointer-checked | position | flash-camera | fire | Frame
     name: {
       type: String,
     },

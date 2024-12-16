@@ -132,7 +132,8 @@ Page({
     wx.showModal({
       title: '确认删除本页印章？',
       content: '删除后可以重新添加',
-      success: async () => {
+      success: async (res) => {
+        if (res.cancel) return;
         await deletePage({ book_id: +this.options.book_id, page_num: this.data.curIndex + 1});
 
         const curIndex = this.data.curIndex;
