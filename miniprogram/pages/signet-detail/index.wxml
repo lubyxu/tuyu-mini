@@ -27,6 +27,7 @@
     pageNum="{{curIndex}}"
     signet="{{signets[curIndex]}}"
     bind:onPageAdd="onPageAdd"
+    bind:onPageGo="onPageGo"
   />
   <view style="margin: 0 16px; padding-left: 40px; font-size: 14px;">
     <view class="flex items-center gap-8">

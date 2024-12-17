@@ -161,5 +161,17 @@ Page({
         }
       }
     })
+  },
+  onPageGo(e) {
+    const path = e.detail.path;
+    console.log('--path', path)
+    wx.navigateTo({
+      url: path,
+      events: {
+        refresh: () => {
+          this.getBookInfo(+this.options.book_id);
+        }
+      }
+    })
   }
 })

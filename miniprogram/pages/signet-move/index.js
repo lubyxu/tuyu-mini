@@ -27,7 +27,6 @@ Page({
 
     const ec = this.getOpenerEventChannel();
     ec.on('stampInfo', data => {
-      console.log('--data', data)
       this.setData({
         cardInfo: data
       });
@@ -163,11 +162,11 @@ Page({
         image_url: cardInfo.image_url,
         stamp_pid: +cardInfo.stamp_pid,
       });
-      // todo 需要回到列表页
+      // todo 跳转到列表也
       wx.navigateBack();
     }
   },
   onCancel() {
     wx.navigateBack();
-  }
+  },
 })

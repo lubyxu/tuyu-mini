@@ -15,11 +15,12 @@ export async function getProductList({ type }) {
 	return data;
 }
 
-export async function getProductDetail(product_id) {
+export async function getProductDetail(product_id, key) {
   const { data } = await request({
     url: '/fuyu/product/detail',
     data: {
-      product_id: +product_id
+      product_id: +product_id,
+      key
     }
   });
 

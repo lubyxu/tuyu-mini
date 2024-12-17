@@ -5,13 +5,15 @@
   </view>
 </view>
 <signet-container
+
+  wx:if="{{!pageError}}"
 	bgImage="{{bgImage}}"
 	id="{{book.id}}"
 	book="{{book}}"
   showFinishIcon="{{true}}"
   signet="{{signet}}"
 />
-<view>
+<view wx:if="{{!pageError}}">
   <view class="signet-title flex items-center">
     <view class="inline-flex items-center">
       <view>{{name}}</view>
@@ -40,16 +42,29 @@
   </view>
 </view>
 
-<view class="signet-add-footer" wx:if="{{state !== 'done'}}">
-  <view style="width: 100%" bind:tap="onCancel">
-		<chinese-btn unit="%" width="100" type="default">取消</chinese-btn>
-	</view>
-	<view style="width: 100%" wx:if="{{!stamp_pid}}" bind:tap="onConfirm">
-		<chinese-btn unit="%" width="100">确定</chinese-btn>
-	</view>
-  <view wx:else style="width: 100%" bind:tap="onConfirm">
-		<chinese-btn unit="%" width="100">移动到印章本</chinese-btn>
-	</view>
+<view wx:if="{{state !== 'done' && !pageError}}">
+  <view  class="signet-add-footer" wx:if="{{!owned}}">
+    <view style="width: 100%" bind:tap="onCancel">
+      <chinese-btn unit="%" width="100" type="default">取消</chinese-btn>
+    </view>
+    <view style="width: 100%" wx:if="{{!stamp_pid}}" bind:tap="onConfirm">
+      <chinese-btn unit="%" width="100">确定</chinese-btn>
+    </view>
+    <view wx:else style="width: 100%" bind:tap="onConfirm">
+      <chinese-btn unit="%" width="100">
+        <button wx:if="{{!isUserAccount}}" style="background: transparent; width: 100%; color: inherit" open-type="getPhoneNumber" bindgetphonenumber="onRegisterAndRefresh">
+          添加到印章本
+        </button>
+        <text wx:else>添加到印章本</text>
+      </chinese-btn>
+    </view>
+  </view>
+
+  <view class="signet-add-footer" wx:else>
+    <view class="text-gray-color-1 text-14 flex items-center justify-center text-strong w-full">
+      印章已获取
+    </view>
+  </view>
 </view>
 <view class="signet-add-footer" wx:if="{{state == 'done'}}">
   <view class="flex items-center justify-center w-full">

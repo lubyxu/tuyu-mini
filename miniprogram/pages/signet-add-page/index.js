@@ -10,15 +10,21 @@ Page({
    */
   data: {
     stamp_pid: 0,
+    owned: false,
     bgImage: '',
     signet: {},
     name: '',
     time: '',
     timeStr: '',
-    location: {},
+    location: {
+      name: '背景那嘎达',
+      loc_lat: 39.9042,
+      loc_long: 116.4074
+    },
 
     isEdit: false,
-    modalValue: ''
+    modalValue: '',
+    pageError: false
   },
 
   /**
@@ -49,11 +55,23 @@ Page({
     }
 
     if (this.options.stamp_pid) {
-      const data = await getProductDetail(this.options.stamp_pid);
-      // todo 如果返回的商品type 不是2，就报个错，提示无效二维码  1-正经文创  2-印章 3印章本
+      const data = await getProductDetail(this.options.stamp_pid, this.options.key);
+      // 如果返回的商品type 不是2，就报个错，提示无效二维码  1-正经文创  2-印章 3印章本
+      if (data.product_info.type !== 2) {
+        wx.showToast({
+          icon: 'error',
+          title: '提示无效二维码',
+        });
+
+        this.setData({
+          pageError: true
+        });
+        return;
+      }
       const bookInfo = data.product_info;
       const bookConfig = bookInfo.content.book_config;
       this.setData({
+        owned: data.owned,
         stamp_pid: this.options.stamp_pid,
         name: bookInfo.name,
         bgImage: bookConfig.page_bg_img,
@@ -168,6 +186,7 @@ Page({
     wx.navigateBack();
   },
   async onConfirm() {
+    if (!this.data.isUserAccount) return;
     const { pageNum, book_id, image, stamp_pid } = this.options
     if (!this.data.name) {
       wx.showToast({
@@ -192,6 +211,7 @@ Page({
           );
         }
       });
+      return;
     }
     // todo location
     await addToPage({
@@ -211,5 +231,9 @@ Page({
     ec.emit('refresh');
     wx.navigateBack();
 
+  },
+  async onRegisterAndRefresh(e) {
+    await this.onRegister(e);
+    this.initValue();
   }
 })

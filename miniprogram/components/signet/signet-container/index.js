@@ -19,7 +19,23 @@ Component({
     time: String,
     location: Object,
     title: String,
-    showFinishIcon: Boolean
+    showFinishIcon: Boolean,
+    isHorizontal: Boolean
+  },
+  observers: {
+    signet: function (signet) {
+      if (!signet) return;
+      const src = signet.image_url;
+      if (!src) return;
+      wx.getImageInfo({
+        src,
+        success: (res) => {
+          this.setData({
+            isHorizontal: res.width > res.height
+          })
+        }
+      })
+    }
   },
 
   /**
@@ -46,16 +62,28 @@ Component({
       });
       this.triggerEvent('onPageAdd', { imageUrl: signetSrc });
     },
-    addToPage() {
-      // await addToPage({
-      //   page_num: this.data.pageNum,
-      //   book_id: this.data.book.book_id,
-      //   image_url: signetSrc,
-      // });
+    onScan() {
+      wx.scanCode({
+        success: (res) => {
+          const path = res.path;
+          if (!path) {
+            wx.showToast({
+              icon: 'none',
+              title: '扫码失败',
+            });
+            return;
+          }
+          this.triggerEvent('onPageGo', { path: '/' + path });
+        },
+        error() {
+          wx.showToast({
+            icon: 'none',
+            title: '扫码失败',
+          });
+        }
+      })
     },
-    onScan() { },
-    async onMapOpen() {
-      
+    async onMapOpen() { 
     }
   }
 });

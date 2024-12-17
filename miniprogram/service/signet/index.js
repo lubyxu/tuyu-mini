@@ -17,7 +17,7 @@ export async function addToPage(params) {
     url: '/fuyu/stamp/addpage',
     data: {
       ...params,
-      from: 'webpage',
+      source: 'webpage',
     },
   });
 
