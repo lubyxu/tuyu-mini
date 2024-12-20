@@ -27,6 +27,7 @@ export default Behavior({
   methods: {
     async onRegister(e) {
       const code = e.detail.code;
+      console.log('===cpde', code)
       await registerAccount(code);
     }
   }
