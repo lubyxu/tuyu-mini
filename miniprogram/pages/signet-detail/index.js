@@ -163,7 +163,7 @@ Page({
     })
   },
   onPageGo(e) {
-    const path = e.detail.path + '&book_id=' + this.options.book_id;
+    const path = e.detail.path + '&book_id=' + this.options.book_id + '&pageNum=' + (this.data.curIndex + 1);
     wx.navigateTo({
       url: path,
       events: {
