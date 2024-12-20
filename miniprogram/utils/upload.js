@@ -35,7 +35,7 @@ export const getUploadParams = async (id = 4) => {
   } catch (err) {
     throw err;
   }
-  
+}
 export const uploadPhotos = async ({ filePath, path, userId = 4, productId = 4, id }) => {
   const host = 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com'
   const reducePath = path || `${userId}/${userId}/${productId}/${id}/${new Date().getTime()}.jpg`

@@ -12,11 +12,12 @@ export async function getBookInfo(bookId) {
   return data;
 }
 
-export async function addToPage(params) {
+export async function addToPage({ from, batch_key, ...params } = {}) {
   const { data } = await request({
     url: '/fuyu/stamp/addpage',
     data: {
       ...params,
+      key: batch_key,
       source: 'webpage',
     },
   });
@@ -54,6 +55,16 @@ export async function getSharePageInfo(user_stamp_id) {
       user_stamp_id: +user_stamp_id
     }
   });
-  console.log('--data', data);
+  return data;
+}
+
+export async function getStampInfo(product_id, key) {
+  const { data } = await request({
+    url: '/fuyu/stamp/detail',
+    data: {
+      product_id: +product_id,
+      key: key
+    }
+  });
   return data;
 }

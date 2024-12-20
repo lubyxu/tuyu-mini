@@ -11,6 +11,9 @@
           fallbackImg="{{bookConfig.empty_bg_img}}"
         ></signet-card>
       </view>
+      <view style="padding-right: 20px;">
+        <signet-card isBook img="{{book.show_image}}" />
+      </view>
     </view>
   </view>
 </scroll-view>

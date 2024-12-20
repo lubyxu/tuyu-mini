@@ -10,7 +10,7 @@
   </view>
 </view>
 <view style="margin-top: 24px;">
-  <section-title title="{{name}}" fontSize="32" />
+  <section-title title="{{name}}" fontSize="22" />
   <view class="flex items-center justify-center" style="font-size: 14px; color:#7F5C11;">
     印章收集完成
   </view>
@@ -19,7 +19,7 @@
 	bgImage="{{bgImage}}"
 	id="{{book.id}}"
 	book="{{book}}"
-  showFinishIcon="{{true}}"
+  showFinishIcon="{{false}}"
   signet="{{signet}}"
 />
 

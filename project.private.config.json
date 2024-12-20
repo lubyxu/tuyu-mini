@@ -8,6 +8,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "获取新印章",
+          "pathName": "pages/signet-add-page/index",
+          "query": "stamp_pid=5&key=1",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/book-info/index",
           "pathName": "pages/book-info/index",
           "query": "code=8",

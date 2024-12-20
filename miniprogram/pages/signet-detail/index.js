@@ -163,8 +163,7 @@ Page({
     })
   },
   onPageGo(e) {
-    const path = e.detail.path;
-    console.log('--path', path)
+    const path = e.detail.path + '&book_id=' + this.options.book_id;
     wx.navigateTo({
       url: path,
       events: {

@@ -137,7 +137,7 @@ Page({
   async onConfirm() {
     if (this.data.curIndex < 0) return;
 
-    // 添加到逻辑
+    // 移动的逻辑
     if (!this.options.stamp_pid) {
       await movePage({
         from_book_id: +this.options.from_book_id,
@@ -151,7 +151,9 @@ Page({
       return;
     }
     else {
+      // 添加到逻辑
       const cardInfo = this.data.cardInfo;
+      const key = this.options.key;
       await addToPage({
         book_id: this.data.curBook.book_id,
         page_num: this.data.curIndex + 1,
@@ -161,9 +163,12 @@ Page({
         name: cardInfo.name,
         image_url: cardInfo.image_url,
         stamp_pid: +cardInfo.stamp_pid,
+        batch_key: key
       });
-      // todo 跳转到列表也
-      wx.navigateBack();
+
+      wx.reLaunch({
+        url: '/pages/signet-detail/index?book_id=' + this.data.curBook.book_id,
+      });
     }
   },
   onCancel() {
