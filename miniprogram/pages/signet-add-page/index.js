@@ -42,7 +42,8 @@ Page({
 
   async initValue() {
     const date = dayjs();
-    if (this.options.book_id) {
+    // 上传图片入口
+    if (this.options.book_id && this.options.image) {
       const data = await getBookInfo(this.options.book_id);
       const bookInfo = data.BookInfo;
       const bookConfig = bookInfo.content.book_config;
@@ -62,8 +63,8 @@ Page({
         }
       });
     }
-
-    if (this.options.stamp_pid) {
+    // 扫一扫入口 or nfc 入口
+    else {
       const data = await getStampInfo(this.options.stamp_pid, this.options.key);
       // 如果返回的商品type 不是2，就报个错，提示无效二维码  1-正经文创  2-印章 3印章本
       if (data.product_info.type !== 2) {
@@ -230,6 +231,7 @@ Page({
       });
       return;
     }
+    // nfc 入口
     if (stamp_pid && !book_id) {
       wx.navigateTo({
         url: '/pages/signet-move/index?stamp_pid=' + stamp_pid,
