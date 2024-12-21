@@ -20,7 +20,9 @@ Component({
     location: Object,
     title: String,
     showFinishIcon: Boolean,
-    isHorizontal: Boolean
+    isHorizontal: Boolean,
+
+    isStampOrigin: true,
   },
   observers: {
     signet: function (signet) {
@@ -42,7 +44,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    
+    corppedStamp: '',
   },
 
   /**
@@ -83,7 +85,18 @@ Component({
         }
       })
     },
-    async onMapOpen() { 
+    async onStampChange() {
+      if (this.data.corppedStamp) {
+        this.setData({
+          isStampOrigin: !this.data.isStampOrigin
+        });
+        return;
+      }
+      const url = await corppedStamp(this.data.signet.image_url);
+      this.setData({
+        isStampOrigin: false,
+        corppedStamp: url
+      });
     }
   }
 });

@@ -57,3 +57,10 @@
   right: 50px;
   top: 30px;
 }
+
+.switch-button {
+  position: absolute;
+  right: 12px;
+  top: -32px;
+  z-index: 10;
+}

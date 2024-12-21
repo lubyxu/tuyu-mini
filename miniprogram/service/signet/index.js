@@ -68,3 +68,14 @@ export async function getStampInfo(product_id, key) {
   });
   return data;
 }
+
+export async function corpStamp(url) {
+  const { data } = await request({
+    url: '/fuyu/stamp/corp',
+    data: {
+      url,
+    }
+  });
+
+  return data.url;
+}

@@ -17,7 +17,10 @@
         <view class="btn" bind:tap="onScan">扫一扫</view>
       </view>
     </view>
-    <view wx:else>
+    <view wx:else class="relative">
+      <view class="switch-button">
+        <switch-btn checked="{{false}}" onChange="onStampChange" checkedText="印章" unCheckText="原图" />
+      </view>
       <image src="{{signet.image_url}}" style="width: 200px; max-height: 200px;" mode="{{isHorizontal ? 'widthFix' : 'heightFix'}}" />
     </view>
 
