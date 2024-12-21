@@ -10,14 +10,7 @@
         {
           "name": "pages/signet-add-page/index",
           "pathName": "pages/signet-add-page/index",
-          "query": "image=https%3A%2F%2Ffuyuoss.oss-cn-shanghai.aliyuncs.com%2Fuser-photos%2F4%2F4%2F35%2F1734762794321%2F1734762794321.jpg&pageNum=3&book_id=35",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "获取新印章",
-          "pathName": "pages/signet-add-page/index",
-          "query": "stamp_pid=5&key=1",
+          "query": "image=https%3A%2F%2Ffuyuoss.oss-cn-shanghai.aliyuncs.com%2Fuser-photos%2F4%2F4%2F35%2F1734790670139%2F1734790670139.jpg&pageNum=3&book_id=35",
           "launchMode": "default",
           "scene": null
         },

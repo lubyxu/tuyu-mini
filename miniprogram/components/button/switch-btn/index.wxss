@@ -17,10 +17,21 @@
 	position: absolute;
 	top: 2px;
 	left: 2px;
-	box-shadow: 0px 1px 3px 0px #0000000D;
+  box-shadow: 0px 1px 3px 0px #0000000D;
+  
+  transition: all 0.2s;
 }
 
 .switch-btn.switch-btn-unchecked .spin-text {
 	padding-left: 12px;
 	padding-top: 2px;
+}
+
+.switch-btn.switch-btn-checked .spin-text {
+  padding-left: 2px;
+  padding-right: 12px;
+	padding-top: 2px;
+}
+.switch-btn.switch-btn-checked .pin {
+  left: calc(100% - 14px);
 }

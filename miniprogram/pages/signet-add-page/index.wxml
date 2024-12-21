@@ -11,6 +11,8 @@
 	book="{{book}}"
   showFinishIcon="{{false}}"
   signet="{{signet}}"
+  canCorpStamp="{{canCorpStamp}}"
+  bind:isStampOrigin="isStampOrigin"
 />
 <view wx:if="{{!pageError}}">
   <view class="signet-title flex items-center">

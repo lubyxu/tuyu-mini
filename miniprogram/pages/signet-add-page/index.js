@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { addToPage, getBookInfo, getStampInfo } from '../../service/signet/index';
+import { addToPage, corpStamp, getBookInfo, getStampInfo } from '../../service/signet/index';
 import loginBehavior from '../../behaviors/login/index';
 const chooseLocation = requirePlugin('chooseLocation');
 Page({
@@ -19,7 +19,9 @@ Page({
     location: {},
     isEdit: false,
     modalValue: '',
-    pageError: false
+    pageError: false,
+    canCorpStamp: false,
+    isStampOrigin: false,
   },
 
   /**
@@ -30,8 +32,7 @@ Page({
     this.setData({
       from_book_id: this.options.book_id || 0
     });
-    const location = await wx.getLocation();
-    console.log('on location', location);
+    if (!this.data.isLogined) return;
     this.initValue();
   },
 
@@ -45,11 +46,19 @@ Page({
       const data = await getBookInfo(this.options.book_id);
       const bookInfo = data.BookInfo;
       const bookConfig = bookInfo.content.book_config;
+      const image_url = decodeURIComponent(this.options.image);
+      let corpped = this.data.signet.corppedStamp;
+      if (!corpped) {
+        corpped = await this.getCorppedStamp(image_url);
+      }
       this.setData({
         bgImage: bookConfig.page_bg_img,
         timeStr: date.format('YYYY年YY月DD日 HH:mm:ss'),
+        canCorpStamp: true,
+        isStampOrigin: false,
         signet: {
-          image_url: decodeURIComponent(this.options.image)
+          image_url,
+          corppedStamp: corpped
         }
       });
     }
@@ -77,11 +86,18 @@ Page({
         bgImage: bookConfig.page_bg_img,
         time: date.unix(),
         timeStr: date.format('YYYY年YY月DD日 HH:mm:ss'),
+        isStampOrigin: true,
         signet: {
           image_url: bookInfo.show_image
         }
       });
     }
+  },
+
+  async getCorppedStamp(imageUrl) {
+    const image = decodeURIComponent(imageUrl);
+    const cropped = await corpStamp(image);
+    return cropped;
   },
 
   /**
@@ -238,7 +254,7 @@ Page({
       book_id: +book_id,
       page_num: +pageNum,
       name: this.data.name,
-      image_url: this.data.signet.image_url,
+      image_url: this.data.isStampOrigin ? this.data.signet.image_url : this.data.signet.corppedStamp,
       location: this.data.location.name,
       loc_lat: this.data.location.loc_lat,
       loc_long: this.data.location.loc_long,
@@ -253,5 +269,11 @@ Page({
   async onRegisterAndRefresh(e) {
     await this.onRegister(e);
     this.initValue();
+  },
+  isStampOrigin(e) {
+    const { isStampOrigin } = e.detail;
+    this.setData({
+      isStampOrigin
+    });
   }
 })

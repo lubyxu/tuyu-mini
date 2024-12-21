@@ -9,6 +9,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    canCorpStamp: Boolean,
     book: Object,
     signetSrc: {
       type: String,
@@ -22,7 +23,10 @@ Component({
     showFinishIcon: Boolean,
     isHorizontal: Boolean,
 
-    isStampOrigin: true,
+    isStampOrigin: {
+      value: true,
+      type: Boolean
+    },
   },
   observers: {
     signet: function (signet) {
@@ -86,17 +90,12 @@ Component({
       })
     },
     async onStampChange() {
-      if (this.data.corppedStamp) {
-        this.setData({
-          isStampOrigin: !this.data.isStampOrigin
-        });
-        return;
-      }
-      const url = await corppedStamp(this.data.signet.image_url);
+      const val = !this.data.isStampOrigin
       this.setData({
-        isStampOrigin: false,
-        corppedStamp: url
+        isStampOrigin: val,
       });
+
+      this.triggerEvent('isStampOrigin', { isStampOrigin: val });
     }
   }
 });

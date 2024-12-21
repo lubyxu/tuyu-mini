@@ -18,10 +18,10 @@
       </view>
     </view>
     <view wx:else class="relative">
-      <view class="switch-button">
-        <switch-btn checked="{{false}}" onChange="onStampChange" checkedText="印章" unCheckText="原图" />
+      <view class="switch-button" wx:if="{{canCorpStamp}}">
+        <switch-btn checked="{{isStampOrigin}}" bind:onChange="onStampChange" checkedText="原图" unCheckText="印章" />
       </view>
-      <image src="{{signet.image_url}}" style="width: 200px; max-height: 200px;" mode="{{isHorizontal ? 'widthFix' : 'heightFix'}}" />
+      <image src="{{isStampOrigin ? signet.image_url : signet.corppedStamp}}" style="width: 200px; max-height: 200px;" mode="{{isHorizontal ? 'widthFix' : 'heightFix'}}" />
     </view>
 
     <view wx:if="{{showFinishIcon}}" class="finish-icon-container">
