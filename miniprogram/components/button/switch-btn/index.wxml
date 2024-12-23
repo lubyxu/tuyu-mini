@@ -1,0 +1,5 @@
+<view bind:tap="onSwitch" class="switch-btn {{checked ? 'switch-btn-checked' : 'switch-btn-unchecked'}}">
+  <view class="pin"></view>
+	<view class="spin-text">{{checked ? checkedText : unCheckText}}</view>
+  <view class="track"></view>
+</view>

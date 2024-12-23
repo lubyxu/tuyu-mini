@@ -1,0 +1,52 @@
+<view class="flex items-center" style="padding: 0 16px; gap: 12px; margin-top: 12px;">
+  <view>
+    <image style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid #fff;" src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FmNGdIQE6cjjdx2syTf8wJ%2F18202c814972873f6246209567b3b1d3.png"  />
+  </view>
+  <view class="banner-right">
+    <view class="nick-name">{{nickName}}</view>
+    <view class="desc">
+      累计<text style="font-size: 18px; margin: 0 2px;">{{stamp_count}}</text>枚印章
+    </view>
+  </view>
+</view>
+<view style="margin-top: 24px;">
+  <section-title title="{{name}}" fontSize="22" />
+  <view class="flex items-center justify-center" style="font-size: 14px; color:#7F5C11;">
+    印章收集完成
+  </view>
+</view>
+<signet-container
+	bgImage="{{bgImage}}"
+	id="{{book.id}}"
+	book="{{book}}"
+  showFinishIcon="{{false}}"
+  signet="{{signet}}"
+/>
+
+<view style="margin: 0 16px; padding-left: 40px; font-size: 14px;">
+  <view class="flex items-center gap-8">
+    <iconfont name="riqi" color="rgba(0, 0, 0, 0.65)" size="16" />
+    <view>
+      {{timeStr}}
+    </view>
+  </view>
+
+  <view class="mt-12">
+    <position-btn location="{{location}}" long="{{stamp_info.loc_long}}" lat="{{stamp_info.loc_lat}}">
+      <view class="flex items-center gap-8">
+        <iconfont name="position" color="rgba(0, 0, 0, 0.65)" size="16" />
+        <view>
+          {{location}}
+        </view>
+      </view>
+    </position-btn>
+  </view>
+</view>
+
+<view class="signet-add-footer" wx:if="{{!!rel_path_id}}" bind:tap="onGoto">
+  <view class="flex items-center justify-center w-full">
+    <chinese-btn bind:click="onAccept" width="320">立即获取</chinese-btn>
+  </view>
+</view>
+
+<map id="js-hidden-map" style="display: none;"></map>
