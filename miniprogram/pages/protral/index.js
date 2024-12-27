@@ -66,11 +66,11 @@ Page({
       avatar,
       nickname,
     } = user
-    const { product_count, stamp_count, visit_count } = user_stats
+    const { product_count, book_count, stamp_count, visit_count } = user_stats
 
     const statusList = [{
-      title: '印章',
-      value: stamp_count
+      title: '印章本',
+      value: book_count
     }, {
       title: '文创',
       value: product_count
@@ -132,8 +132,8 @@ Page({
         const { page_num, stamp_num } = item?.all_content?.book_config || {}
         return {
           img: item.show_image,
-          used: page_num,
-          total: stamp_num,
+          used: stamp_num,
+          total: page_num,
           id: item.id,
         }
       })

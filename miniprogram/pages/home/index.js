@@ -11,12 +11,33 @@ Page({
     }
   },
 
-  async onReady() {
+  async onLoad() {
+    if (!app.globalData?.user?.token) {
+      await getUser()
+    }
     await Promise.all([this.getInitData(), this.getBanners()])
     const isLogined = app?.globalData?.user?.token
-    console.log('isLogined', isLogined)
     this.setData({ isLogined: !!isLogined })
     this.setData({ showLoading: false })
+    await this.getUserInfo()
+  },
+
+  async onShow() {
+    this.runLoad = true
+    if (!this.runLoad) {
+      this.getUserInfo()
+    }
+    this.runLoad = false
+  },
+
+  async getUserInfo() {
+    const { data } = await request({
+      method: 'GET',
+      url: '/fuyu/getuserinfo',
+    });
+
+    const { user: { avatar } } = data;
+    avatar && this.setData({ avatar })
   },
 
   data: {
@@ -62,7 +83,8 @@ Page({
         index: 1,
       },
     ],
-    list: []
+    list: [],
+    avatar: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png',
   },
 
   async onRegisterAccount(e) {
@@ -80,9 +102,6 @@ Page({
   },
 
   async getInitData() {
-    if (!app.globalData?.user?.token) {
-      await getUser()
-    }
     const { data } = await request({
       method: 'POST',
       url: '/fuyu/spot/list',
@@ -110,10 +129,9 @@ Page({
     this.setData({ banners: list })
   },
 
-  scrollBottom() {
-    // this.getPoducts()
+  onLoginSuccess() {
+    this.setData({ isLogined: true })
   },
-
 
   bindscrolltoupper() {
     this.setData({ titleBarVisible: false })

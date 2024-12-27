@@ -1,7 +1,7 @@
 <view class="user-main-box">
     <image
         wx-if="{{readOnly}}"
-        src="{{avatar}}"
+        src="{{currentAvatar}}"
         class="home-icon"
         bindtap="getUserProfile"
     />
@@ -13,7 +13,7 @@
         class="home-icon-button"
     >
         <image
-            src="{{avatar}}"
+            src="{{currentAvatar}}"
             class="home-icon"
             bindtap="getUserProfile"
         />
@@ -23,14 +23,13 @@
             class="user-content-name"
             wx-if="{{readOnly}}"
         >
-            {{nickname}}
+            {{currentNickname}}
         </view>
         <view wx:else class="user-content-title">
-            🌷
             <input
                 class="user-content-name"
                 type="nickname"
-                placeholder="{{nickname}}"
+                value="{{currentNickname}}"
                 maxlength="14"
                 placeholder-style="color: #171534;"
                 bindchange="onNicknameChange"

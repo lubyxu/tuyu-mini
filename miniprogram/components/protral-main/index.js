@@ -21,19 +21,31 @@ Component({
     },
   },
 
+  data: {
+    currentAvatar: '',
+    currentNickname: '',
+  },
+
+  attached() {
+    const { avatar, nickname } = this.properties;
+    this.setData({
+      currentAvatar: avatar,
+      currentNickname: nickname,
+    })
+  },
+
   methods: {
     async updateUserInfo() {
-      const { avatar, nickname } = this.data;
+      const { currentAvatar, currentNickname } = this.data;
       try {
         const data = await request({
           method: 'POST',
           url: '/fuyu/updateuser',
           data: {
-            avatar,
-            nick_name: nickname,
+            avatar: currentAvatar,
+            nick_name: currentNickname,
           },
         });
-        console.log('data', data)
       } catch(err) {
         wx.showToast({
           title: '更新失败',
@@ -46,7 +58,7 @@ Component({
       const { avatarUrl } = data.detail;
       const res = await uploadPhotos({ filePath: avatarUrl, path: `avatar/${app?.globalData?.user?.token}.jpg` })
       this.setData({
-        avatar: res.filePath,
+        currentAvatar: res.filePath,
       })
       this.updateUserInfo()
     },
@@ -54,7 +66,7 @@ Component({
     onNicknameChange(e) {
       const { value } = e.detail;
       this.setData({
-        nickname: value,
+        currentNickname: value,
       })
       this.updateUserInfo()
     }

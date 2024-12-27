@@ -1,9 +1,10 @@
 import { request } from '../../utils/req';
 
-export async function getPathDetail({ user_path_id, path_id }) {
+export async function getPathDetail({ user_path_id, path_id, from }) {
 	if (user_path_id) {
+    const url = from === 'mine' ? '/fuyu/path/share/userpathdetail' : '/fuyu/path/userpathdetail';
 		const { data } = await request({
-			url: '/fuyu/path/userpathdetail',
+			url,
 			data: {
 				user_path_id: +user_path_id,
 			}
