@@ -55,7 +55,7 @@ Page({
       this.setData({
         bgImage: bookConfig.page_bg_img,
         timeStr: date.format('YYYY年YY月DD日 HH:mm:ss'),
-        canCorpStamp: true,
+        canCorpStamp: corpped && corpped !== 'FAILED' ? true : false,
         isStampOrigin: false,
         signet: {
           image_url,
@@ -96,9 +96,15 @@ Page({
   },
 
   async getCorppedStamp(imageUrl) {
-    const image = decodeURIComponent(imageUrl);
-    const cropped = await corpStamp(image);
-    return cropped;
+    try {
+      const image = decodeURIComponent(imageUrl);
+      const cropped = await corpStamp(image);
+      return cropped;
+    }
+    catch (e) {
+      return 'FAILED';
+    }
+    
   },
 
   /**
@@ -214,7 +220,13 @@ Page({
     });
   },
   onCancel() {
-    wx.navigateBack();
+    wx.navigateBack({
+      fail(e) {
+        wx.redirectTo({
+          url: '/pages/home/index',
+        });
+      }
+    });
   },
   async onConfirm() {
     if (!this.data.isUserAccount) return;

@@ -12,13 +12,15 @@
   showFinishIcon="{{false}}"
   signet="{{signet}}"
   canCorpStamp="{{canCorpStamp}}"
+  isStampOrigin="{{canCorpStamp ? isStampOrigin : true}}"
   bind:isStampOrigin="isStampOrigin"
 />
 <view wx:if="{{!pageError}}">
   <view class="signet-title flex items-center">
     <view class="inline-flex items-center">
-      <view>{{name}}</view>
-      <view style="margin-left: 8px;" bind:tap="onEdit">
+      <view wx:if="{{name}}">{{name}}</view>
+      <view class="text-gray-color-2" style="font-size: 18px; font-weight: 400;" wx:else>请填写印章名称</view>
+      <view style="margin-left: 8px; margin-top: 1px;" bind:tap="onEdit">
         <iconfont name="edit" color="rgba(0, 0, 34, 0.5)" size="24" />
       </view>
     </view>

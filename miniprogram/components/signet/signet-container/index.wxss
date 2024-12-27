@@ -60,7 +60,7 @@
 
 .switch-button {
   position: absolute;
-  right: 12px;
-  top: -32px;
+  right: 62px;
+  top: 52px;
   z-index: 10;
 }
