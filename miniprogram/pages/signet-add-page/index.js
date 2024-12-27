@@ -265,7 +265,7 @@ Page({
     // nfc 入口
     if (stamp_pid && !book_id) {
       wx.navigateTo({
-        url: '/pages/signet-move/index?stamp_pid=' + stamp_pid,
+        url: '/pages/signet-move/index?stamp_pid=' + stamp_pid + '&key=' + this.options.key,
         success: (res) => {
           res.eventChannel.emit(
             'stampInfo',
