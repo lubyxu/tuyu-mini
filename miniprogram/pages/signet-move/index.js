@@ -163,7 +163,7 @@ Page({
         name: cardInfo.name,
         image_url: cardInfo.image_url,
         stamp_pid: +cardInfo.stamp_pid,
-        batch_key: key
+        source: key
       });
 
       wx.reLaunch({

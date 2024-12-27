@@ -40,7 +40,7 @@ Page({
     this.initValue();
   },
 
-  async initValue() {
+  async initValueCore() {
     const date = dayjs();
     // 上传图片入口
     if (this.options.book_id && this.options.image) {
@@ -88,10 +88,29 @@ Page({
         time: date.unix(),
         timeStr: date.format('YYYY年YY月DD日 HH:mm:ss'),
         isStampOrigin: true,
+        // todo
+        // location: {
+        //   name: name.join(','),
+        //   loc_lat: location.latitude,
+        //   loc_long: location.longitude
+        // },
         signet: {
           image_url: bookInfo.show_image
         }
       });
+    }
+  },
+
+  async initValue() {
+    try {
+      wx.showLoading({
+        title: '加载中...',
+      });
+      await this.initValueCore();
+    }
+    catch (e) {}
+    finally {
+      wx.hideLoading();
     }
   },
 
@@ -264,7 +283,6 @@ Page({
     }
     await addToPage({
       stamp_pid: +stamp_pid,
-      from: "webpage",
       book_id: +book_id,
       page_num: +pageNum,
       name: this.data.name,
@@ -272,7 +290,7 @@ Page({
       location: this.data.location.name,
       loc_lat: this.data.location.loc_lat,
       loc_long: this.data.location.loc_long,
-      key: this.options.key,
+      source: this.options.key,
     });
 
     const ec = this.getOpenerEventChannel();

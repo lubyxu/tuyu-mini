@@ -1,4 +1,3 @@
-import { addToPage } from '../../../service/signet/index';
 import { chooseImage, uploadPhotos } from '../../../utils/upload';
 
 Component({
