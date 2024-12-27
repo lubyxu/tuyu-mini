@@ -42,7 +42,7 @@ Page({
       if (!app.globalData?.user?.token) {
         await getUser()
       }
-      this.getDetail({ user_path_id: options.userPathId});
+      this.getDetail({ user_path_id: options.userPathId, from: this.options.from });
       return
     }
     if (!this.data.isLogined) return;
@@ -135,8 +135,8 @@ Page({
       }, 1 * 1000);
     }
   },
-  async getDetail({ user_path_id, path_id }) {
-    const data = await getPathDetail({ user_path_id, path_id });
+  async getDetail({ user_path_id, path_id, from }) {
+    const data = await getPathDetail({ user_path_id, path_id, from });
     const { path_detail_info, place_visited } = data;
     this.setData({
       user_path_id: user_path_id || path_detail_info.user_path_id,

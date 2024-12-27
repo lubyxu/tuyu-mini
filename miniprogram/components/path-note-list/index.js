@@ -40,9 +40,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onLogin(e) {
+    async onLogin(e) {
       const code = e.detail.code;
-      registerAccount(code);
+      await registerAccount(code);
+      this.triggerEvent('onLoginSuccess')
     },
     async getPathList(group_id) {
       const data = await getPathList({ group_id });

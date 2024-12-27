@@ -22,7 +22,7 @@
   <view class="details-list">
     <view class="details-box" wx:for="{{placeDetails}}">
       <image src="../../../images/visited.png" class="visited-icon" />
-      <image src="{{item.product_icon}}" class="product-icon" />
+      <image src="{{item.image}}" class="product-icon" mode="widthFix" />
       <image
         src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/complete.png"
         class="complete-icon"

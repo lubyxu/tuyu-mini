@@ -12,13 +12,13 @@
         hover-class="none"
         style="width: auto;"
       >
-        <image
+        <cover-image
           src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/not-login.png"
           class="home-icon"
         />
       </button>
       <cover-image
-        src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png"
+        src="{{avatar}}"
         class="home-icon"
         bindtap="gotoProtral"
         wx:else
@@ -63,7 +63,7 @@
       <cardList list="{{list}}" bind:scrollBottom="scrollBottom" bind:ocrClick="ocrClick" bind:onFind="onFind"></cardList>
     </view>
     <view class="scroll-view-container" wx:else>
-      <path-notes />
+      <path-notes bind:onLoginSuccess="onLoginSuccess" />
     </view>
   </view>
 </view>
