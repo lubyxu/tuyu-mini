@@ -29,6 +29,14 @@ Page({
    */
   async onLoad(options) {
     this.options = options;
+    wx.getLocation({
+      success: (res) => {
+        this.currentLocation = {
+          latitude: res.latitude,
+          longitude: res.longitude
+        };
+      } 
+    });
     this.setData({
       from_book_id: this.options.book_id || 0
     });
@@ -228,9 +236,10 @@ Page({
   onMapOpen() {
     const key = 'LXABZ-P2ICT-ATAXX-VM4X3-LGHHE-ZBFHI';
     const referer = 'fuyu';
+
     const location = JSON.stringify({
-      latitude: 39.89631551,
-      longitude: 116.323459711
+      latitude: this.currentLocation.latitude,
+      longitude: this.currentLocation.longitude
     });
     const category = '生活服务,娱乐休闲';
      
