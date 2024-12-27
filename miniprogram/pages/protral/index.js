@@ -135,6 +135,7 @@ Page({
           used: stamp_num,
           total: page_num,
           id: item.id,
+          user_product_id: item.user_product_id
         }
       })
       books.push({
@@ -148,6 +149,7 @@ Page({
           img: item.show_image,
           name: item.name,
           id: item.id,
+          user_product_id: item.user_product_id
         }
       })
       this.setData({
@@ -173,6 +175,12 @@ Page({
       wx.navigateTo({
         url: `/pages/book-list/index`
       });
+    }
+    else {
+      const bid = event.currentTarget.dataset.bid;
+      wx.navigateTo({
+        url: '/pages/signet-detail/index?book_id=' + bid,
+      })
     }
   },
 

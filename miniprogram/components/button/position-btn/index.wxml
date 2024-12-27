@@ -1,0 +1,3 @@
+<view bind:tap="onPositionGo">
+  <slot />
+</view>

@@ -1,0 +1,42 @@
+<scroll-view scroll-x="{{true}}">
+  <view class="flex items-center gap-8" style="padding: 12px 16px 24px;">
+	  <view wx:for="{{books}}" class="signet-book" data-index="{{index}}" bind:tap="onBookSelect">
+      <radio class="signet-book-radio" color="#CE3219" checked="{{index == curBookIndex}}"></radio>
+		  <image src="{{item.show_image}}" class="w-full h-full" mode="widthFix" />
+		</view>
+	</view>
+</scroll-view>
+
+<view class="mt-20">
+	<section-title title="{{curBook.BookInfo.name}}" fontSize="15" />
+
+	<view class="signet-container">
+		<view class="signet-container-item">
+			<image src="{{curBook.BookInfo.show_image}}" class="w-full h-full" mode="widthFix" />
+			<view class="footer flex items-center justify-center">封面</view>
+		</view>
+
+		<view class="signet-container-item flex items-center justify-center" wx:for="{{curCards}}" data-index="{{index}}" bind:tap="onCardSelect">
+			<radio
+        color="#CE3219"
+        class="signet-book-radio"
+        checked="{{curIndex == index}}"
+        disabled="{{!!item.image_url}}"
+      />
+      <signet-card
+        bordered="{{false}}"
+        img="{{item.image_url}}"
+        fallbackImg="{{curBookConfig.empty_bg_img}}"
+        ></signet-card>
+		</view>
+	</view>
+</view>
+
+<view class="page-footer">
+  <view style="width: 100%" bind:tap="onCancel">
+		<chinese-btn unit="%" width="100" type="default">取消</chinese-btn>
+	</view>
+	<view style="width: 100%" bind:tap="onConfirm">
+		<chinese-btn unit="%" width="100">确认</chinese-btn>
+	</view>
+</view>

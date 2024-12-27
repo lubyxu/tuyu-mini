@@ -1,0 +1,69 @@
+<scroll-view scroll-x style="width: 100vw;">
+  <view style="padding-left: 16px;">
+    <view class="flex" style="gap: 2px; box-sizing: border-box;">
+      <view>
+        <signet-card isBook img="{{book.show_image}}" />
+      </view>
+      <view wx:for="{{signets}}" wx:key="index" class="signet-card" bind:tap="onCardSelect" data-index="{{index}}">
+        <radio class="signet-card-radio" color="#CE3219" checked="{{index == curIndex}}"></radio>
+        <signet-card
+          img="{{item.image_url}}"
+          fallbackImg="{{bookConfig.empty_bg_img}}"
+        ></signet-card>
+      </view>
+      <view style="padding-right: 20px;">
+        <signet-card isBook img="{{book.show_image}}" />
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<view style="margin-top: 24px;">
+  <section-title title="{{signets[curIndex].name || '印章'}}" />
+</view>
+
+<view>
+  <signet-container
+    id="{{book.id}}"
+    book="{{book}}"
+    bgImage="{{bgImage}}"
+    pageNum="{{curIndex}}"
+    signet="{{signets[curIndex]}}"
+    bind:onPageAdd="onPageAdd"
+    bind:onPageGo="onPageGo"
+  />
+  <view style="margin: 0 16px; padding-left: 40px; font-size: 14px;">
+    <view class="flex items-center gap-8">
+      <iconfont name="riqi" color="rgba(0, 0, 0, 0.65)" size="16" />
+      <view class="text-gray-color-2" wx:if="{{!signets[curIndex].time}}">暂无盖章时间</view>
+      <view wx:else>
+        {{signets[curIndex].time}}
+      </view>
+    </view>
+
+    <view class="flex items-center gap-8 mt-12">
+      <iconfont name="position" color="rgba(0, 0, 0, 0.65)" size="16" />
+      <view class="text-gray-color-2" wx:if="{{!signets[curIndex].location}}">暂无印章</view>
+        <position-btn wx:else location="{{signets[curIndex].location}}" lat="{{signets[curIndex].loc_lat}}" long="{{signets[curIndex].loc_long}}">
+          {{signets[curIndex].location}}
+        </position-btn>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{!!signets[curIndex]}}" class="footer">
+  <view style="width: 44px; text-align: center;" class="flex items-center flex-col" bind:tap="onPageDelete">
+    <iconfont name="shanchu" color="rgba(0, 0, 0, 0.65)" size="16" />
+    <view style="font-size: 12px; margin-top: 4px;">删除</view>
+  </view>
+  <view style="width: 100%; flex: 1;" bind:tap="onMovePage">
+		<chinese-btn unit="%" width="100" type="default">移动</chinese-btn>
+	</view>
+  <button open-type="share" class="btn-share" bind:tap="onShare">
+    <view style="width: 100%;">
+      <chinese-btn unit="%" width="100">分享</chinese-btn>
+    </view>
+  </button>
+</view>
+
+<map id="js-hidden-map" style="display: none;" />

@@ -1,0 +1,49 @@
+.section-title {
+  background: linear-gradient(90deg, #C17818 0%, #B16E16 15.47%, #5B390B 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+
+.section-title-before {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(270deg, #B16E16 -0.19%, rgba(177, 110, 22, 0) 99.81%);
+  position: relative;
+}
+
+.section-title-before::before {
+  position: absolute;
+  content: " ";
+  right: -3px;
+  top: -1px;
+  height: 3px;
+  width: 3px;
+  background-color: #B16E16;
+  border-radius: 50%;
+}
+
+.section-title-after {
+  position: relative;
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(270deg, rgba(177, 110, 22, 0) -0.19%, #B16E16 99.81%);
+}
+
+.section-title-after::before {
+  position: absolute;
+  content: " ";
+  left: -3px;
+  top: -1px;
+  height: 3px;
+  width: 3px;
+  background-color: #B16E16;
+  border-radius: 50%;
+}

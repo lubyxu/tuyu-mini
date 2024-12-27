@@ -8,9 +8,16 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	color: #fff;
+  color: #fff;
+  
+  color: #FFBD8F;
+  font-weight: 500;
 }
 
+.chinese-style-btn.primary-1 {
+  color: #7F5C11;
+  background-image: url(https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FRvYl-4w8dvSSUPklpHZYT%2Fbtn-%E5%B7%A6.svg), url(https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2F0sON3WwfeHw3nCMPYsoQq%2Fbtn-right.svg);
+}
 .chinese-style-btn::before {
 	z-index: -1;
 	position: absolute;
@@ -21,3 +28,11 @@
 	content: " ";
 	background: url(https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FyfsjPYHMoG7HYsiHZKMtg%2Fbtn-1px.svg) repeat-x;
 }
+.chinese-style-btn.primary-1::before {
+  top: 1px;
+  background: url(https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FLivlqNX0WYuZZRDtDxCZg%2Fbtn-%E4%B8%AD.svg) repeat-x;
+}
+
+/* left https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/27/1734358840979/1734358840979.jpg */
+/* right https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/27/1734358954727/1734358954727.jpg */
+/* middle https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/27/1734358979761/1734358979761.jpg */

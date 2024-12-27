@@ -33,6 +33,7 @@
           wx:for="{{books}}"
           wx:key="{{item.index}}"
           data-id="{{item.id}}"
+          data-bid="{{item.user_product_id}}"
           data-type="{{item.type}}"
           bindtap="onBookClick"
           class="book-item"

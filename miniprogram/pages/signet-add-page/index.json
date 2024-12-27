@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "signet-container": "/components/signet/signet-container/index",
+    "iconfont": "/iconfont/iconfont",
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "chinese-btn": "/components/button/chinese-btn",
+    "section-title": "/components/section-title/index"
+  },
+  "disableScroll": false,
+  "navigationBarBackgroundColor": "#F0EBDD"
+}
