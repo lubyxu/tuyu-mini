@@ -20,6 +20,7 @@
 	align-items: center;
 	padding: 0 3px;
 	color: rgba(241, 75, 63, 1);
+	margin-bottom: 2px;
 }
 
 .tag-hot-filled {

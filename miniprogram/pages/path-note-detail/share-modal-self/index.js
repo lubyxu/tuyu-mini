@@ -31,8 +31,8 @@ Component({
     visitedNumber: 0,
   },
 
-  ready() {
-    this.init()
+  async ready() {
+    await this.init()
     const placeDetails = this.properties.placeDetails || []
     const visitedNumber = placeDetails.filter(item => item.visited)?.length
     this.setData({

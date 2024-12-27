@@ -12,6 +12,7 @@ Page({
   },
 
   async onLoad() {
+    this.firstRender = true
     if (!app.globalData?.user?.token) {
       await getUser()
     }
@@ -20,14 +21,16 @@ Page({
     this.setData({ isLogined: !!isLogined })
     this.setData({ showLoading: false })
     await this.getUserInfo()
+    this.firstRender = false
   },
 
   async onShow() {
-    this.runLoad = true
-    if (!this.runLoad) {
+    if (!this.firstRender) {
+      if (!app.globalData?.user?.token) {
+        await getUser()
+      }
       this.getUserInfo()
     }
-    this.runLoad = false
   },
 
   async getUserInfo() {

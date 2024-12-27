@@ -1,4 +1,5 @@
 <view class="user-main-box">
+
     <image
         wx-if="{{readOnly}}"
         src="{{currentAvatar}}"

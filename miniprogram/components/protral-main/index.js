@@ -26,15 +26,26 @@ Component({
     currentNickname: '',
   },
 
-  attached() {
-    const { avatar, nickname } = this.properties;
-    this.setData({
-      currentAvatar: avatar,
-      currentNickname: nickname,
-    })
+  observers: {
+    'avatar': function() {
+      this.setDefaultUserInfo()
+    }
   },
 
+  ready() {
+    this.setDefaultUserInfo()
+  },
+
+
   methods: {
+
+    setDefaultUserInfo() {
+      const { avatar, nickname } = this.properties;
+      this.setData({
+        currentAvatar: avatar,
+        currentNickname: nickname,
+      })
+    },
     async updateUserInfo() {
       const { currentAvatar, currentNickname } = this.data;
       try {
@@ -56,10 +67,10 @@ Component({
 
     async onChooseAvatar(data) {
       const { avatarUrl } = data.detail;
-      const res = await uploadPhotos({ filePath: avatarUrl, path: `avatar/${app?.globalData?.user?.token}.jpg` })
       this.setData({
-        currentAvatar: res.filePath,
+        currentAvatar: avatarUrl
       })
+      const res = await uploadPhotos({ filePath: avatarUrl, path: `avatar/${app?.globalData?.user?.token}.jpg` })
       this.updateUserInfo()
     },
 
