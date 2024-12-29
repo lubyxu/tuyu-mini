@@ -1,5 +1,5 @@
 <view style="margin-top: 24px; margin-bottom: 12px;">
-  <section-title title="{{state === 'done' ? '印章已获取' : '获取新印章'}}" fontSize="32" />
+  <section-title title="{{owned ? '印章已获取' : '获取新印章'}}" fontSize="32" />
   <view class="flex items-center justify-center">
     <image src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FXxi9TnKZsfDWxkBha9AXw%2FObtain%20a%20new%20seal.svg" style="width: 102px; height: 14px;" />
   </view>
@@ -15,7 +15,7 @@
   isStampOrigin="{{canCorpStamp ? isStampOrigin : true}}"
   bind:isStampOrigin="isStampOrigin"
 />
-<view wx:if="{{!pageError}}">
+<view wx:if="{{!pageError}}" wx:if="{{!owned}}">
   <view class="signet-title flex items-center">
     <view class="inline-flex items-center">
       <view wx:if="{{name}}">{{name}}</view>
@@ -60,12 +60,6 @@
         </button>
         <text wx:else>添加到印章本</text>
       </chinese-btn>
-    </view>
-  </view>
-
-  <view class="signet-add-footer" wx:else>
-    <view class="text-gray-color-1 text-14 flex items-center justify-center text-strong w-full">
-      印章已获取
     </view>
   </view>
 </view>

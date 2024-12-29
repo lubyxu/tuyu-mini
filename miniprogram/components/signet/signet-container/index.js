@@ -80,12 +80,13 @@ Component({
           }
           this.triggerEvent('onPageGo', { path: '/' + path });
         },
-        error() {
+        fail() {
+          console.log('error failed')
           wx.showToast({
             icon: 'none',
             title: '扫码失败',
           });
-        }
+        },
       })
     },
     async onStampChange() {
