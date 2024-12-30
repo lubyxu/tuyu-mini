@@ -16,7 +16,18 @@
     <view class="book-name">{{name}}</view>
 
     <view class="btn-box">
-      <chinese-button bindtap="bindBook" width="320"> 确定 </chinese-button>
+      <button
+        data-item="btn-box"
+        catchtouchmove="preventD"
+        wx:if="{{!isLogined}}"
+        open-type="getPhoneNumber"
+        bindgetphonenumber="onRegisterAccount"
+        hover-class="none"
+        style="width: 100%;"
+      >
+        <chinese-button width="320"> 确定 </chinese-button>
+      </button>
+      <chinese-button wx:else bindtap="bindBook" width="320"> 确定 </chinese-button>
     </view>
   </view>
 </view>

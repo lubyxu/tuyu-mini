@@ -1,5 +1,5 @@
 const app = getApp()
-import { getUser } from '../../utils/auth'
+import { getUser, registerAccount } from '../../utils/auth'
 import { request, SUCCESS_CODE } from '../../utils/req';
 
 Page({
@@ -7,7 +7,12 @@ Page({
     this.options = options
   },
 
-  onReady() {
+  async onReady() {
+    if (!app.globalData?.user?.token) {
+      await getUser()
+    }
+    const isLogined = app?.globalData?.user?.token
+    this.setData({ isLogined: !!isLogined })
     this.getInitData()
   },
 
@@ -15,6 +20,7 @@ Page({
     preview: '',
     name: '',
     navBarHeight: app.globalData.navBarHeight,
+    isLogined: false,
   },
 
   async getInitData() {
@@ -45,6 +51,20 @@ Page({
       })
       console.log(error)
     }
+  },
+
+  async onRegisterAccount(e) {
+    const code = e.detail.code;
+    if (!code) {
+      wx.showToast({
+        icon: 'error',
+        title: '登陆失败，请重试'
+      })
+      return
+    }
+    await registerAccount(code);
+    this.setData({ isLogined: true })
+    this.bindBook(code);
   },
 
   async bindBook() {
