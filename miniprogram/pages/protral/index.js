@@ -79,29 +79,10 @@ Page({
       value: visit_count
     }]
 
-    const products = [{
-      img: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/p1.png',
-      name: '我在鼓楼',
-      id: 1,
-    }, {
-      img: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/p1.png',
-      name: '我在鼓楼',
-      id: 1,
-    }, {
-      img: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/p1.png',
-      name: '我在鼓楼',
-      id: 1,
-    }, {
-      img: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/p1.png',
-      name: '我在鼓楼',
-      id: 1,
-    }]
-
     this.setData({
       avatar: avatar || 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png',
       nickname: nickname || '小福鱼',
       countList: statusList,
-      products,
       stamp_count
     })
   },
@@ -149,7 +130,8 @@ Page({
           img: item.show_image,
           name: item.name,
           id: item.id,
-          user_product_id: item.user_product_id
+          user_product_id: item.user_product_id,
+          ...item
         }
       })
       this.setData({
@@ -186,6 +168,11 @@ Page({
 
   onProductClick(event) {
     const id = event.currentTarget.dataset.id
-    console.log('id=', id)
+    const item = this.data.products.find((item) => item.id = id)
+    const { resource, osd } = item?.ar_config
+    debugger
+    wx.navigateTo({
+      url: `/pages/osd-ar/index?id=${id}&videoUrl=${encodeURIComponent(resource)}&osd=${encodeURIComponent(osd)}`
+    });
   },
 });
