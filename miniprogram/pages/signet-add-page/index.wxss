@@ -28,3 +28,7 @@ page {
   right: 0;
   font-size: 18px;
 }
+
+.haha .weui-dialog {
+  margin-top: -100px !important;
+}

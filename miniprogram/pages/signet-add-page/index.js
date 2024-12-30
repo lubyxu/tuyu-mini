@@ -64,7 +64,7 @@ Page({
         bgImage: bookConfig.page_bg_img,
         timeStr: date.format('YYYY年YY月DD日 HH:mm:ss'),
         canCorpStamp: corpped && corpped !== 'FAILED' ? true : false,
-        isStampOrigin: false,
+        isStampOrigin: corpped === 'FAILED' ? true : false,
         signet: {
           image_url,
           corppedStamp: corpped
@@ -96,12 +96,6 @@ Page({
         time: date.unix(),
         timeStr: date.format('YYYY年YY月DD日 HH:mm:ss'),
         isStampOrigin: true,
-        // todo
-        // location: {
-        //   name: name.join(','),
-        //   loc_lat: location.latitude,
-        //   loc_long: location.longitude
-        // },
         signet: {
           image_url: bookInfo.show_image
         }
@@ -290,6 +284,8 @@ Page({
       });
       return;
     }
+
+    console.log('this.data.isStampOrigin', this.data.isStampOrigin);
     await addToPage({
       stamp_pid: +stamp_pid,
       book_id: +book_id,
