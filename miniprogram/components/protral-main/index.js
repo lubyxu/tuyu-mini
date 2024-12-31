@@ -53,7 +53,7 @@ Component({
           method: 'POST',
           url: '/fuyu/updateuser',
           data: {
-            avatar: currentAvatar,
+            avatar: this.avatar,
             nick_name: currentNickname,
           },
         });
@@ -71,6 +71,7 @@ Component({
         currentAvatar: avatarUrl
       })
       const res = await uploadPhotos({ filePath: avatarUrl, path: `avatar/${app?.globalData?.user?.token}.jpg` })
+      this.avatar = res.filePath
       this.updateUserInfo()
     },
 
