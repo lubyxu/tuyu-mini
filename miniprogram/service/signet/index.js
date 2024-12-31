@@ -17,8 +17,7 @@ export async function addToPage({ from, batch_key, ...params } = {}) {
     url: '/fuyu/stamp/addpage',
     data: {
       ...params,
-      key: batch_key,
-      source: 'webpage',
+      source: params.source || 'webpage'
     },
   });
 

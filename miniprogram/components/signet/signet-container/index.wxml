@@ -17,11 +17,13 @@
         <view class="btn" bind:tap="onScan">扫一扫</view>
       </view>
     </view>
+  
     <view wx:else class="relative">
-      <view class="switch-button" wx:if="{{canCorpStamp}}">
-        <switch-btn checked="{{isStampOrigin}}" bind:onChange="onStampChange" checkedText="原图" unCheckText="印章" />
-      </view>
       <image src="{{isStampOrigin ? signet.image_url : signet.corppedStamp}}" style="width: 200px; max-height: 200px;" mode="{{isHorizontal ? 'widthFix' : 'heightFix'}}" />
+    </view>
+
+    <view class="switch-button" wx:if="{{canCorpStamp}}">
+      <switch-btn checked="{{isStampOrigin}}" bind:onChange="onStampChange" checkedText="原图" unCheckText="印章" />
     </view>
 
     <view wx:if="{{showFinishIcon}}" class="finish-icon-container">

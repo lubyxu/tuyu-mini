@@ -1,6 +1,6 @@
 <view class="flex items-center" style="padding: 0 16px; gap: 12px; margin-top: 12px;">
   <view>
-    <image style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid #fff;" src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FmNGdIQE6cjjdx2syTf8wJ%2F18202c814972873f6246209567b3b1d3.png"  />
+    <image style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid #fff;" src="{{avatar}}"  />
   </view>
   <view class="banner-right">
     <view class="nick-name">{{nickName}}</view>

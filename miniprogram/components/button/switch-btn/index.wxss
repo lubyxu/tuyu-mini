@@ -1,7 +1,7 @@
 .switch-btn {
 	border-radius: 24px;
 	overflow: hidden;
-	height: 16px;
+	height: 20px;
 	padding: 0 6px;
 	font-size: 8px;
 	color: #603B0C;
@@ -11,8 +11,8 @@
 
 .switch-btn .pin {
 	background: #fff;
-	width: 12px;
-	height: 12px;
+	width: 16px;
+	height: 16px;
 	border-radius: 50%;
 	position: absolute;
 	top: 2px;
@@ -23,14 +23,14 @@
 }
 
 .switch-btn.switch-btn-unchecked .spin-text {
-	padding-left: 12px;
-	padding-top: 2px;
+	padding-left: 16px;
+	padding-top: 4px;
 }
 
 .switch-btn.switch-btn-checked .spin-text {
   padding-left: 2px;
-  padding-right: 12px;
-	padding-top: 2px;
+  padding-right: 16px;
+	padding-top: 4px;
 }
 .switch-btn.switch-btn-checked .pin {
   left: calc(100% - 14px);

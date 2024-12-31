@@ -29,6 +29,14 @@ Page({
    */
   async onLoad(options) {
     this.options = options;
+    wx.getLocation({
+      success: (res) => {
+        this.currentLocation = {
+          latitude: res.latitude,
+          longitude: res.longitude
+        };
+      } 
+    });
     this.setData({
       from_book_id: this.options.book_id || 0
     });
@@ -40,7 +48,7 @@ Page({
     this.initValue();
   },
 
-  async initValue() {
+  async initValueCore() {
     const date = dayjs();
     // 上传图片入口
     if (this.options.book_id && this.options.image) {
@@ -55,8 +63,8 @@ Page({
       this.setData({
         bgImage: bookConfig.page_bg_img,
         timeStr: date.format('YYYY年YY月DD日 HH:mm:ss'),
-        canCorpStamp: true,
-        isStampOrigin: false,
+        canCorpStamp: corpped && corpped !== 'FAILED' ? true : false,
+        isStampOrigin: corpped === 'FAILED' ? true : false,
         signet: {
           image_url,
           corppedStamp: corpped
@@ -95,10 +103,29 @@ Page({
     }
   },
 
+  async initValue() {
+    try {
+      wx.showLoading({
+        title: '加载中...',
+      });
+      await this.initValueCore();
+    }
+    catch (e) {}
+    finally {
+      wx.hideLoading();
+    }
+  },
+
   async getCorppedStamp(imageUrl) {
-    const image = decodeURIComponent(imageUrl);
-    const cropped = await corpStamp(image);
-    return cropped;
+    try {
+      const image = decodeURIComponent(imageUrl);
+      const cropped = await corpStamp(image);
+      return cropped;
+    }
+    catch (e) {
+      return 'FAILED';
+    }
+    
   },
 
   /**
@@ -203,9 +230,10 @@ Page({
   onMapOpen() {
     const key = 'LXABZ-P2ICT-ATAXX-VM4X3-LGHHE-ZBFHI';
     const referer = 'fuyu';
+
     const location = JSON.stringify({
-      latitude: 39.89631551,
-      longitude: 116.323459711
+      latitude: this.currentLocation.latitude,
+      longitude: this.currentLocation.longitude
     });
     const category = '生活服务,娱乐休闲';
      
@@ -214,7 +242,13 @@ Page({
     });
   },
   onCancel() {
-    wx.navigateBack();
+    wx.navigateBack({
+      fail(e) {
+        wx.redirectTo({
+          url: '/pages/home/index',
+        });
+      }
+    });
   },
   async onConfirm() {
     if (!this.data.isUserAccount) return;
@@ -234,7 +268,7 @@ Page({
     // nfc 入口
     if (stamp_pid && !book_id) {
       wx.navigateTo({
-        url: '/pages/signet-move/index?stamp_pid=' + stamp_pid,
+        url: '/pages/signet-move/index?stamp_pid=' + stamp_pid + '&key=' + this.options.key,
         success: (res) => {
           res.eventChannel.emit(
             'stampInfo',
@@ -250,9 +284,10 @@ Page({
       });
       return;
     }
+
+    console.log('this.data.isStampOrigin', this.data.isStampOrigin);
     await addToPage({
       stamp_pid: +stamp_pid,
-      from: "webpage",
       book_id: +book_id,
       page_num: +pageNum,
       name: this.data.name,
@@ -260,7 +295,7 @@ Page({
       location: this.data.location.name,
       loc_lat: this.data.location.loc_lat,
       loc_long: this.data.location.loc_long,
-      key: this.options.key,
+      source: this.options.key,
     });
 
     const ec = this.getOpenerEventChannel();
