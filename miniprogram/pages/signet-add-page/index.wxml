@@ -1,5 +1,5 @@
 <view style="margin-top: 24px; margin-bottom: 12px;">
-  <section-title title="{{state === 'done' ? '印章已获取' : '获取新印章'}}" fontSize="32" />
+  <section-title title="{{owned ? '印章已获取' : '获取新印章'}}" fontSize="32" />
   <view class="flex items-center justify-center">
     <image src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FXxi9TnKZsfDWxkBha9AXw%2FObtain%20a%20new%20seal.svg" style="width: 102px; height: 14px;" />
   </view>
@@ -12,13 +12,15 @@
   showFinishIcon="{{false}}"
   signet="{{signet}}"
   canCorpStamp="{{canCorpStamp}}"
+  isStampOrigin="{{canCorpStamp ? isStampOrigin : true}}"
   bind:isStampOrigin="isStampOrigin"
 />
-<view wx:if="{{!pageError}}">
+<view wx:if="{{!pageError}}" wx:if="{{!owned}}">
   <view class="signet-title flex items-center">
     <view class="inline-flex items-center">
-      <view>{{name}}</view>
-      <view style="margin-left: 8px;" bind:tap="onEdit">
+      <view wx:if="{{name}}">{{name}}</view>
+      <view class="text-gray-color-2" style="font-size: 18px; font-weight: 400;" wx:else>请填写印章名称</view>
+      <view style="margin-left: 8px; margin-top: 1px;" bind:tap="onEdit">
         <iconfont name="edit" color="rgba(0, 0, 34, 0.5)" size="24" />
       </view>
     </view>
@@ -60,12 +62,6 @@
       </chinese-btn>
     </view>
   </view>
-
-  <view class="signet-add-footer" wx:else>
-    <view class="text-gray-color-1 text-14 flex items-center justify-center text-strong w-full">
-      印章已获取
-    </view>
-  </view>
 </view>
 <view class="signet-add-footer" wx:if="{{state == 'done'}}">
   <view class="flex items-center justify-center w-full">
@@ -74,10 +70,19 @@
 </view>
 
 <mp-dialog
+  wx:if="{{isEdit}}"
+  extClass="haha"
   show="{{isEdit}}"
   title="印章名称"
   buttons="{{[{ text: '取消' }, { text: '确定' }]}}"
   bindbuttontap="onNameModalClick"
 >
-  <input value="{{modalValue}}" bindinput="onNameChange" />
+  <input
+    placeholder="请输入印章名称"
+    type="text"
+    value="{{modalValue}}"
+    bindinput="onNameChange"
+    focus="{{true}}"
+    adjust-position="{{true}}"
+  />
 </mp-dialog>

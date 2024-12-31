@@ -41,6 +41,7 @@ Page({
       nickName: user_info.nickname,
       stamp_count,
       rel_path_id,
+      avatar: user_info.avatar || 'http://vibktprfx-prod-prod-damo-eas-cn-shanghai.oss-cn-shanghai.aliyuncs.com/seg-common-image/2024-12-27/5fc8fae4-5a4f-4ceb-b69c-aa5f8e656ce0/image.png?Expires=1735305425&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRpDvh1&Signature=fkSz5W2Gz9rEyT0uqcCGNC3Qkn4%3D',
       bgImage: book_config.page_bg_img,
       signet: {
         image_url: stamp_info.image_url
