@@ -144,7 +144,7 @@ Page({
       path_info: path_detail_info.path_info,
       place_details: path_detail_info.place_details.map((item) => ({
         ...item,
-        visited: place_visited?.[item.product_id]
+        visited: place_visited?.[item.place_id]
       })),
       product_map: path_detail_info.product_map,
       products: path_detail_info.path_info.product_ids.map(id => {

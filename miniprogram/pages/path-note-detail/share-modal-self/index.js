@@ -35,6 +35,7 @@ Component({
     await this.init()
     const placeDetails = this.properties.placeDetails || []
     const visitedNumber = placeDetails.filter(item => item.visited)?.length
+    debugger
     this.setData({
       totlaNumber: placeDetails.length,
       visitedNumber
