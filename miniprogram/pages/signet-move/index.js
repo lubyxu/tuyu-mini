@@ -48,6 +48,7 @@ Page({
     const data = await getBookInfo(id);
     const config = data.BookInfo.content.book_config;
     const pages = data.Pages || [];
+
     const map = pages.reduce((prev, page) => {
       return {
         ...prev,
