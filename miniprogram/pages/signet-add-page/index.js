@@ -179,16 +179,6 @@ Page({
 
   },
 
-  onChooseLocation () {
-		wx.chooseLocation({
-			success: (res) => {
-				this.setData({
-					location: res
-				});
-			}
-		});
-	},
-
   /**
    * 用户点击右上角分享
    */
