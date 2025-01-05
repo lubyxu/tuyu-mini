@@ -20,7 +20,6 @@ Component({
     location: Object,
     title: String,
     showFinishIcon: Boolean,
-    isHorizontal: Boolean,
 
     isStampOrigin: {
       value: true,
@@ -31,6 +30,7 @@ Component({
     signet: function (signet) {
       if (!signet) {
         this.setData({
+          showImage: '',
           fetching: false
         });
         return;
@@ -38,6 +38,7 @@ Component({
       const src = signet.image_url;
       if (!src) {
         this.setData({
+          showImage: '',
           fetching: false
         });
         return;
@@ -45,12 +46,7 @@ Component({
       this.setData({
         fetching: true,
       });
-      wx.getImageInfo({
-        src,
-        success: (res) => {
-          this.setShowImage(res.width > res.height, this.data.isStampOrigin);
-        }
-      })
+      this.setShowImage(this.data.isStampOrigin);
     }
   },
 
@@ -61,19 +57,27 @@ Component({
   data: {
     fetching: true,
     corppedStamp: '',
-    showImage: ''
+    showImage: '',
   },
   /**
    * 组件的方法列表
    */
   methods: {
-    setShowImage(isHorizontal, isStampOrigin) {
+    setShowImage(isStampOrigin) {
+      if (this.timer1) {
+        clearTimeout(this.timer1);
+        this.timer1 = null;
+      }
       if (isStampOrigin) {
         this.setData({
-          fetching: false,
-          isHorizontal,
-          showImage: this.data.signet.image_url
+          showImage: this.data.signet.image_url,
         });
+
+        this.timer1 = setTimeout(() => {
+          this.setData({
+            fetching: false
+          })
+        }, 200)
       }
       else {
         this.setData({
@@ -124,6 +128,12 @@ Component({
       });
 
       this.triggerEvent('isStampOrigin', { isStampOrigin: val });
+    },
+    onReset() {
+      this.setData({
+        showImage: '',
+        fetching: true,
+      });
     }
   }
 });

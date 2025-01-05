@@ -24,8 +24,7 @@
 
 <view>
   <signet-container
-    wx:key="{{curIndex}}"
-    id="{{book.id}}"
+    id="signet-container"
     book="{{book}}"
     bgImage="{{bgImage}}"
     pageNum="{{curIndex}}"

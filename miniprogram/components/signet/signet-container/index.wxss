@@ -65,3 +65,27 @@
   top: 52px;
   z-index: 10;
 }
+
+.width-fix .image {
+  width: 200px !important;
+}
+
+.height-fix .image {
+  height: 200px !important;
+}
+
+.signet-image {
+  transition:  0.5s;
+  transform: scale(1);
+}
+
+.signet-image.fetching {
+  opacity: 0;
+  transform: scale(0.1);
+  transition: 0s;
+}
+
+.signet-image .image {
+  width: 200px;
+  height: 200px;
+}

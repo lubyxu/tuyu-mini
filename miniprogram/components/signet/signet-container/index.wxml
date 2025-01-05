@@ -18,8 +18,12 @@
       </view>
     </view>
   
-    <view wx:else class="relative" style="opacity: {{fetching ? 0 : 1}}; transition: opacity 0.2s">
-      <image src="{{showImage}}" style="{{isHorizontal ? 'width: 200px' : 'height: 200px'}}" mode="{{isHorizontal ? 'widthFix' : 'heightFix'}}" />
+    <view wx:else class="relative signet-image {{fetching ? 'fetching' : ''}}">
+      <image
+        src="{{showImage}}"
+        class="image"
+        mode="aspectFit"
+      />
     </view>
 
     <view class="switch-button" wx:if="{{canCorpStamp}}">

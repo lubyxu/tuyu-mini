@@ -112,6 +112,7 @@ Page({
   },
   onCardSelect(e) {
     const index = e.currentTarget.dataset.index;
+    this.selectComponent('#signet-container').onReset();
     this.setData({
       curIndex: index,
     });
