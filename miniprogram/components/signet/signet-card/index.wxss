@@ -15,3 +15,8 @@
   background-color: #FBE9BF;
   border-radius: 4px;
 }
+
+.signet-card:not(.signet-book) image {
+  width: 62px;
+  height: 70px;
+}
