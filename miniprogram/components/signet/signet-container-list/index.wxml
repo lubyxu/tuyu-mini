@@ -1,33 +1,32 @@
-<view class="signet-container">
-  <image src="{{bgImage}}" mode="widthFix" />
+<swiper current="{{curIndex}}" class="signet-swiper-container" wx:key="index" bindchange="onIndexChange" bindtransition="onTransition">
+  <swiper-item wx:for="{{signets}}">
+    <view class="signet-container">
+      <image src="{{bgImage}}" mode="widthFix" />
+          <view class="signet-container-content {{curIndex === index ? 'active' : ''}}">
+            <view class="signet-container-empty" wx:if="{{!item.image_url}}">
+              <view>
+                <empty
+                  empty="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2F7Kayw0D5pI5rCt4QaR2aP%2Fimage.svg"
+                  height="135"
+                  width="135"
+                  text="暂无印章"
+                />
+              </view>
 
-  <swiper current="{{curIndex}}" class="signet-swiper-container" wx:key="index" bindchange="onIndexChange" bindtransition="onTransition">
-    <swiper-item wx:for="{{signets}}">
-      <view class="signet-container-content {{curIndex === index ? 'active' : ''}}">
-        <view class="signet-container-empty" wx:if="{{!item.image_url}}">
-          <view>
-            <empty
-              empty="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2F7Kayw0D5pI5rCt4QaR2aP%2Fimage.svg"
-              height="135"
-              width="135"
-              text="暂无印章"
-            />
+              <view class="empty-btn-groups">
+                <view class="btn" bind:tap="onUpload">本地上传</view>
+                <view class="btn" bind:tap="onScan">扫一扫</view>
+              </view>
+            </view>
+          
+            <view wx:else class="relative signet-image {{false ? 'fetching' : ''}}">
+              <image
+                src="{{item.image_url}}"
+                class="image"
+                mode="aspectFit"
+              />
+            </view>
           </view>
-
-          <view class="empty-btn-groups">
-            <view class="btn" bind:tap="onUpload">本地上传</view>
-            <view class="btn" bind:tap="onScan">扫一扫</view>
-          </view>
-        </view>
-      
-        <view wx:else class="relative signet-image {{false ? 'fetching' : ''}}">
-          <image
-            src="{{item.image_url}}"
-            class="image"
-            mode="aspectFit"
-          />
-        </view>
-      </view>
-    </swiper-item>
-  </swiper>
-</view>
+    </view>
+  </swiper-item>
+</swiper>
