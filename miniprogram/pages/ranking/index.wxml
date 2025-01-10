@@ -1,0 +1,35 @@
+<!--index.wxml-->
+<view>
+  <view wx-if="{{!showLoading}}" class="page-section swiper"></view>
+  <view wx:else>
+    <navigation-bar sampleReturn="{{true}}"></navigation-bar>
+    <view class="page">
+      <view class="title">·行程满意度·</view>
+
+      <view class="rating">
+        <image
+          class="star"
+          wx:for="{{5}}"
+          wx:key="index"
+          src="{{index < rating? 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/star.png' : 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/start-white.png'}}" mode="scaleToFill"></image>
+      </view>
+
+      <view class="input-box">
+        <input class="custom-input" value="{{inputValue}}" bindinput="handleInput" />
+        <view 
+          wx:for="{{suggestions}}"
+          class="tips"
+          data-id="{{index}}"
+          bind:tap="onChose"
+        >
+          {{item}}
+        </view>
+      </view>
+
+    </view>
+
+    <view class="bottom-btn">
+			<chinese-button width="320">发布评论</chinese-button>
+		</view>
+  </view>
+</view>

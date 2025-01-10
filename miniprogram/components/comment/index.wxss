@@ -1,0 +1,101 @@
+.comments-box {
+	padding: 22rpx 32rpx;
+}
+
+.comments-item {
+	display: flex;
+}
+
+.poster-avatar {
+	width: 76rpx;
+	height: 76rpx;
+	border-radius: 50%;
+}
+
+.comments-content {
+	display: flex;
+	flex-direction: column;
+	margin-left: 24rpx;
+	flex: 1;
+}
+
+.rating {
+	display: flex;
+	align-items: center;
+}
+
+.rating-text {
+	font-family: 'PingFang SC';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 17px;	
+	color: rgba(0, 0, 34, 0.91);
+	margin-right: 20rpx;
+}
+  
+.star {
+	width: 34rpx;
+	height: 34rpx;
+	margin-right: 1px;
+}
+
+.comments-user-name {
+	font-family: 'PingFang SC';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 24px;
+	/* identical to box height, or 200% */
+	color: rgba(172, 172, 172, 0.91);
+}
+
+.comments-user-time-area {
+	display: flex;
+	font-family: 'PingFang SC';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 24px;
+	/* identical to box height, or 200% */
+	
+	color: rgba(172, 172, 172, 0.91);
+
+}
+
+.comments-user-content {
+	font-family: 'PingFang SC';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+	/* identical to box height */
+	
+	color: rgba(0, 0, 34, 0.91);
+}
+
+.comments-user-area {
+	margin-left: 8rpx;
+}
+
+.comments-user-content-reply {
+	font-family: 'PingFang SC';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 24px;
+	/* identical to box height, or 200% */
+	
+	color: rgba(172, 172, 172, 0.91);
+}
+
+.replay-box {
+	margin-top: 16rpx;
+	display: flex;
+}
+
+.replay-avatar {
+	width: 44rpx;
+	height: 44rpx;
+	border-radius: 50%;
+}

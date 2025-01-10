@@ -1,0 +1,46 @@
+<view class="comments-box">
+	<view wx:for="{{comments}}" class="comments-item">
+		<image
+			src="{{item.avatar}}"
+			class="poster-avatar"
+		/>
+		<view class="comments-content">
+			<view class="rating">
+				<view class="rating-text">行程满意度</view>
+				<image
+					class="star"
+					wx:for="{{item.source}}"
+					wx:key="index"
+					src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/star.png"
+					mode="scaleToFill"
+				/>
+			  </view>
+			<view class="comments-user-name">{{item.nickname}}</view>
+			<view class="comments-user-time-area">
+				<view class="comments-user-time">{{item.time}}</view>
+				<view class="comments-user-area">{{item.location}}</view>
+			</view>
+			<view class="comments-user-content">{{item.commment}}</view>
+			<view class="comments-user-content-reply">回复</view>
+
+			<view wx:for="{{item.childrens}}"  wx:for-item="replayItem">
+				<view class="replay-box">
+					<image
+						src="{{item.avatar}}"
+						class="replay-avatar"
+					/>
+					<view class="comments-content">
+						<view class="comments-user-name">{{replayItem.nickname}}</view>
+						<view class="comments-user-time-area">
+							<view class="comments-user-time">{{replayItem.time}}</view>
+							<view class="comments-user-area">{{replayItem.location}}</view>
+						</view>
+						<view class="comments-user-content">{{replayItem.commment}}</view>
+						<view class="comments-user-content-reply">回复</view>
+					</view>
+				</view>
+			</view>
+
+		</view>
+	</view>
+</view>

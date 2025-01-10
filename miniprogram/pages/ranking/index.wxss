@@ -1,0 +1,68 @@
+/**index.wxss**/
+
+.page {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fbeddb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  padding-top: 196rpx;
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  /* identical to box height */
+  color: #A98439;
+
+}
+
+.rating {
+  height: 140rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 56rpx;
+  margin-top: 20rpx;
+  box-sizing: border-box;
+}
+
+.star {
+  width: 96rpx;
+  height: 96rpx;
+}
+
+.input-box {
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.custom-input, .tips {
+  width: 100%;
+  height: 114rpx;
+  border: 1px solid #E5C991;
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 0 20px;
+  padding-left: 20px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.bottom-btn {
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

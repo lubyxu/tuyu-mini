@@ -26,7 +26,8 @@ Page({
     fin_place_count: 0,
     markers: [],
     expire: false,
-    showSelfShare: false
+    showSelfShare: false,
+    showComments: true
   },
 
   /**

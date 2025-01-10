@@ -91,3 +91,44 @@ page {
   width: 639rpx;
   height: 124rpx;
 }
+
+.path-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.path-tltle-main-text {
+  flex: 1;
+}
+
+.comment-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 21px;
+  letter-spacing: -0.21px;
+  
+  color: #CE3219;
+
+}
+
+.comment-icon {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.bottom-btn {
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

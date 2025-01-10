@@ -2,6 +2,7 @@
 <view class="flex">
   <view class="left">
 	  <image mode="aspectFill" class="place-image" src="{{image}}" />
+    <view class="order-btn">可预约</view>
 	</view>
 
 	<view class="right">
