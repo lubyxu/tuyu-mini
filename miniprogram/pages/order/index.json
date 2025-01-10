@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "业务示例",
+  "usingComponents": {
+    "navigation-bar": "/components/navigation-bar/index",
+    "loading": "/components/loading/index",
+    "chinese-button": "../../components/button/chinese-btn/index"
+  },
+  "navigationStyle": "custom",
+  "disableScroll": false
+}

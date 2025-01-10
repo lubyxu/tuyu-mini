@@ -1,0 +1,87 @@
+<!--index.wxml-->
+<view>
+  <loading wx-if="{{showLoading}}" />
+  <view wx-if="{{!showLoading}}" class="page">
+    <navigation-bar sampleReturn="{{true}}"></navigation-bar>
+    <view class="top">
+      <view class="title">
+        <image
+          class="title-icon"
+          src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/fire.png"
+        />
+        <view class="title-text">店铺接待能力有限建议预约前往，每天50人次（已预约23人）</view>
+      </view>
+      <view class="subtitle">国子监街</view>
+    </view>
+
+    <view class="order-content">
+      <view wx-if="{{!orderFinish}}">
+        <view class="order-tips">选择日期时间段（接受未来7天的预约）</view>
+        <view>
+          <view class="order-title">日期</view>
+          <view class="date-container">
+            <view
+              wx:for="{{date}}"
+              class="date-item {{item.disable?'date-item-disable':''}} {{selectDateIdx === index?'date-item-active':''}}"
+              data-id="{{item.id}}"
+              data-disable="{{item.disable}}"
+              data-index="{{index}}"
+              catch:tap="onDateSelect"
+            >
+              <view wx-if="{{item.title}}" class="date-item-title {{item.disable?'date-item-title-disable':''}}">{{item.title}}</view>
+              <view class="date-item-date {{item.disable?'date-item-title-disable':''}}">{{item.date}}</view>
+              <image
+                wx-if="{{selectDateIdx === index}}"
+                class="date-item-select-icon"
+                src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/date-select-icon.png"
+              />
+            </view>
+          </view>
+  
+          <view class="order-title">时间</view>
+          <view class="date-container">
+            <view
+              wx:for="{{time}}"
+              class="time-item {{item.disable?'date-item-disable':''}} {{selectTimeIdx === index?'date-item-active':''}}"
+              data-id="{{item.id}}"
+              data-disable="{{item.disable}}"
+              data-index="{{index}}"
+              catch:tap="onDateTime"
+            >
+              <view wx-if="{{item.title}}" class="date-item-title {{item.disable?'date-item-title-disable':''}}">{{item.title}}</view>
+              <view class="date-item-date {{item.disable?'date-item-title-disable':''}}">{{item.time}}</view>
+              <view class="date-item-date {{item.disable?'date-item-title-disable':''}}">{{item.subtitle}}</view>
+              <image
+                wx-if="{{selectTimeIdx === index}}"
+                class="date-item-select-icon"
+                src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/date-select-icon.png"
+              />
+            </view>
+          </view>
+        </view>
+      </view>
+      
+      <view wx:else class="order-success-box">
+        <image
+          class="success-icon"
+          src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/order-success.png"
+        />
+        <view class="success-text">预约成功</view>
+        <view class="success-time">12月31日 下午13:00-18:00</view>
+        <view class="success-number-box">
+          <view class="success-number-no">19</view>
+          <view class="success-number-text">号码</view>
+        </view>
+      </view>
+    </view>
+    <view class="btn-box">
+      <chinese-button wx-if="{{!orderFinish}}" width="320" bindtap="onOrder">确认预约</chinese-button>
+      <image
+        wx:else
+        src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/order-cancle.png"
+        class="order-cancle-btn"
+        catch:tap="onCancel"
+      />
+    </view>
+  </view>
+</view>
