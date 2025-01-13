@@ -60,12 +60,24 @@
 		</view>
 	</view>
 
-	<view style="padding: 0 16px; margin-top: 20px; margin-bottom: 32px;">
+	<view style="padding: 0 16px; margin-top: 20px; margin-bottom: 32px;" wx:if="{{couponList.length}}">
 		<view style="margin-bottom: 16px;" class="flex items-center gap-8">
 		  打卡完成奖励
 			<image src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/47/1736768629005/1736768629005.jpg" style="width: 24px; height: 24px;" />
 		</view>
 		<view>
+		  <view wx:for="{{couponList}}" class="mb-16">
+			  <coupon-card
+				  couponId="{{item.id}}"
+					source="{{item.source}}"
+					image="{{item.show_img}}"
+					name="{{item.name}}"
+					subTitle="{{item.info}}"
+					canUse="{{isUserPath && item.should_send}}"
+					isUsed="{{isUserPath && !!item.user_coupon_id}}"
+					bind:accept="onCouponAccept"
+				/>
+			</view>
 		</view>
 	</view>
 

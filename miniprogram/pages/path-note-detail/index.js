@@ -2,6 +2,7 @@
 import { getPathDetail, deleteUserPath, addUserPath } from '../../service/path-note/path-detail';
 import loginBehavior from '../../behaviors/login/index';
 import { getUser } from "../../utils/auth";
+import { getCouponsByUserPath, getCoupon, getCouponsByPath } from '../../service/coupons/index';
 const app = getApp();
 
 Page({
@@ -26,7 +27,8 @@ Page({
     fin_place_count: 0,
     markers: [],
     expire: false,
-    showSelfShare: false
+    showSelfShare: false,
+    couponList: []
   },
 
   /**
@@ -158,6 +160,37 @@ Page({
     });
 
     this.setMarkers();
+
+    this.getCouponList();
+  },
+  async getCouponList() {
+    let data = [];
+    if (!!this.options.user_path_id) {
+      data = await getCouponsByUserPath(+this.options.user_path_id);
+    }
+    else {
+      data = await getCouponsByPath(this.options.path_id);
+    }
+    console.log('couplist', data);
+    this.setData({
+      couponList: data
+    });
+  },
+  async onCouponAccept(e) {
+    try {
+      await getCoupon(+e.detail.id);
+      wx.showToast({
+        icon: 'none',
+        title: '领取成功',
+      });
+      this.getCouponList();
+    }
+    catch (e) {
+      wx.showToast({
+        icon: 'none',
+        title: '领取失败',
+      })
+    }
   },
   onPrivilege(e) {
     const info = e.detail;

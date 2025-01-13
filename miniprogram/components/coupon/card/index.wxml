@@ -1,0 +1,21 @@
+<view class="coupon-card flex items-center">
+  <view class="icon-pin">
+	  <image src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/47/1736772353526/1736772353526.jpg" style="width: 32px; height: 32px;" />
+	</view>
+	<view class="overflow-hidden" style="width: 110px; height: 110px">
+		<image src="{{image}}" style="width: 110px; height: 110px" mode="aspectFit" />
+	</view>
+	<view>
+	  <view class="title">{{name}}</view>
+		<view class="sub-title">{{subTitle}}</view>
+	</view>
+
+	<view wx:if="{{canUse}}" class="btn-go-to-use" bind:tap="onAccept">
+	  <image class="pin-image" src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/47/1736772897785/1736772897785.jpg" style="width: 31px; height: 33px;" />
+		{{useText || '去领取'}}
+	</view>
+
+	<view wx:if="{{isUsed}}" class="tag-is-done">
+	  <image src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/47/1736774505058/1736774505058.jpg" style="width: 100px; height: 100px;" />
+	</view>
+</view>

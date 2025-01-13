@@ -8,18 +8,18 @@
     "miniprogram": {
       "list": [
         {
+          "name": "奖励列表页",
+          "pathName": "pages/coupon/list/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": 1047
+        },
+        {
           "name": "pages/order/index",
           "pathName": "pages/order/index",
           "query": "",
           "launchMode": "default",
           "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/signet-add-page/index",
-          "query": "stamp_pid=5&key=hahaha",
-          "launchMode": "default",
-          "scene": 1047
         },
         {
           "name": "pages/signet-add-page/index",

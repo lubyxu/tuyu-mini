@@ -1,5 +1,5 @@
 const app = getApp()
-import { getCouponList } from '../../service/coupons';
+import { getCouponList } from '../../service/coupons/index';
 import { getUser } from '../../utils/auth'
 import { request, SUCCESS_CODE } from '../../utils/req';
 
@@ -9,7 +9,7 @@ const CARD_TYPE = 1 // 冰箱贴
 Page({
 
   onShow: function() {
-
+    this.getCouponData();
   },
 
   async onReady() {
@@ -145,9 +145,9 @@ Page({
   },
 
   async getCouponData() {
-    const data = await getCouponList({ status: 1 });
+    const data = await getCouponList({ status: 1, count_only: true });
     this.setData({
-      couponCount: data?.length
+      couponCount: data?.count
     });
   },
 
@@ -174,6 +174,11 @@ Page({
         url: '/pages/signet-detail/index?book_id=' + bid,
       })
     }
+  },
+  onGoToCoupon() {
+    wx.navigateTo({
+      url: '/pages/coupon/list/index',
+    });
   },
 
   onProductClick(event) {

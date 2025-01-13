@@ -1,0 +1,38 @@
+<view>
+  <section-title title="获得的奖品" />
+
+	<view class="coupon-tabs flex items-center">
+	  <view
+		  data-index="1"
+		  class="coupon-tabs-item {{activeTab == 1 ? 'active' : ''}}"
+			bind:tap="onTabClick"
+		>
+		  待使用
+		</view>
+		<view
+		  data-index="3"
+		  class="coupon-tabs-item {{activeTab == 3 ? 'active' : ''}}"
+			bind:tap="onTabClick"
+		>
+		  已使用
+		</view>
+	</view>
+
+	<view style="padding: 16px;">
+	  <view wx:for="{{list}}" class="mb-16">
+		  <coupon-card
+				couponId="{{item.id}}"
+				userCouponId="{{item.coupon_id}}"
+				source="{{item.source}}"
+				image="{{item.show_img}}"
+				type="{{item.type}}"
+				name="{{item.name}}"
+				subTitle="{{item.info}}"
+				canUse="{{item.status == 1}}"
+				useText="去使用"
+				isUsed="{{isUserPath && !!item.user_coupon_id}}"
+				bind:accept="onCouponAccept"
+			/>
+		</view>
+	</view>
+</view>
