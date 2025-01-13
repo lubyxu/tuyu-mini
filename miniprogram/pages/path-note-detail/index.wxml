@@ -60,14 +60,11 @@
 		</view>
 	</view>
 
-	<!-- <view style="padding: 0 16px; margin-top: 20px; margin-bottom: 32px;" wx:if="{{isUserPath}}">
-		<view style="margin-bottom: 16px;">专属回忆</view>
+	<view style="padding: 0 16px; margin-top: 20px; margin-bottom: 32px;">
+		<view style="margin-bottom: 16px;">打卡完成奖励</view>
 		<view>
-		<card-item
-		products="{{products}}"
-		/>
 		</view>
-	</view> -->
+	</view>
 
 	<view
 		wx:if="{{expire}}"
