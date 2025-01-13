@@ -18,7 +18,7 @@ Component({
     isUsed: Boolean,
     source: String,
     couponId: String,
-    userCouponId: String,
+    productId: String,
   },
 
   /**
@@ -33,7 +33,7 @@ Component({
    */
   methods: {
     onAccept() {
-      this.triggerEvent('accept', { source: this.data.source, id: this.data.couponId, type: this.data.type, userCouponId: this.data.userCouponId });
+      this.triggerEvent('accept', { source: this.data.source, id: this.data.couponId, type: this.data.type, productId: this.data.productId });
     }
   }
 })

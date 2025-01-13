@@ -22,7 +22,7 @@
 	  <view wx:for="{{list}}" class="mb-16">
 		  <coupon-card
 				couponId="{{item.id}}"
-				userCouponId="{{item.coupon_id}}"
+				productId="{{item.content.product_id}}"
 				source="{{item.source}}"
 				image="{{item.show_img}}"
 				type="{{item.type}}"

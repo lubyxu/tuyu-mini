@@ -16,7 +16,8 @@
     "pages/signet-share/index",
     "pages/signet-move/index",
     "pages/order/index",
-    "pages/coupon/list/index"
+    "pages/coupon/list/index",
+    "pages/book-select/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

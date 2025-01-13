@@ -1,0 +1,15 @@
+<view class="root">
+  <view wx:for="{{books}}" class="book-card">
+	  <image src="{{item.show_image}}" style="width: 107px; height: 150px;" mode="aspectFit" />
+
+		<view class="book-tips"></view>
+	</view>
+</view>
+
+<view class="page-footer">
+	<view class="w-full">
+	  <chinese-button unit="%" width="100" className="btn-confirm">
+		  <text style="font-size: 20px; line-height: 28px;">确认</text>
+		</chinese-button>
+	</view>
+</view>

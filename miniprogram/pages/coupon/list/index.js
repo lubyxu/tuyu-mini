@@ -96,9 +96,9 @@ Page({
         break;
     }
   },
-  goToSignetAdd({ source, userCouponId }) {
+  goToSignetAdd({ source, productId }) {
     wx.navigateTo({
-      url: `/pages/signet-add-page/index?stamp_pid=${userCouponId}&key=${source}`,
+      url: `/pages/signet-add-page/index?stamp_pid=${productId}&key=${source}`,
       events: {
         refresh: () => {
           this.getList(this.data.activeTab);

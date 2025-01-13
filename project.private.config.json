@@ -9,7 +9,7 @@
       "list": [
         {
           "name": "奖励列表页",
-          "pathName": "pages/coupon/list/index",
+          "pathName": "pages/book-select/index",
           "query": "",
           "launchMode": "default",
           "scene": 1047
