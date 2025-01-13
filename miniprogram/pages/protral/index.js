@@ -1,4 +1,5 @@
 const app = getApp()
+import { getCouponList } from '../../service/coupons';
 import { getUser } from '../../utils/auth'
 import { request, SUCCESS_CODE } from '../../utils/req';
 
@@ -14,6 +15,7 @@ Page({
   async onReady() {
     try {
       await Promise.all([
+        this.getCouponData(),
         this.getUserData(),
         this.getUserProductData(BOOK_TYPE)
       ])
@@ -30,6 +32,7 @@ Page({
   },
 
   data: {
+    couponCount: 0,
     showLoading: true,
     navBarHeight: app.globalData.navBarHeight,
     selected: 0,
@@ -139,6 +142,13 @@ Page({
         showProductEmpty: products.length === 0
       })
     }
+  },
+
+  async getCouponData() {
+    const data = await getCouponList({ status: 1 });
+    this.setData({
+      couponCount: data?.length
+    });
   },
 
   switchTab(event) {

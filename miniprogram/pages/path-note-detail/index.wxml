@@ -61,7 +61,7 @@
 	</view>
 
 	<view style="padding: 0 16px; margin-top: 20px; margin-bottom: 32px;">
-		<view style="margin-bottom: 16px;" class="flex items-center gap-4">
+		<view style="margin-bottom: 16px;" class="flex items-center gap-8">
 		  打卡完成奖励
 			<image src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/47/1736768629005/1736768629005.jpg" style="width: 24px; height: 24px;" />
 		</view>
