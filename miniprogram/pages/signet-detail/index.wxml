@@ -33,6 +33,12 @@
     bind:onPageGo="onPageGo"
   />
   <view style="margin: 0 16px; padding-left: 40px; font-size: 14px;">
+    <view class="flex items-center gap-8" wx:if="{{signets[curIndex].shared_num}}">
+      <view class="tag-tayin">
+        <image src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/47/1736768089284/1736768089284.jpg" style="width: 16px; height: 10px" />
+        <text style="color: #7F5C11; margin-left: 8px">已拓印 {{signets[curIndex].shared_num}} 次</text>
+      </view>
+    </view>
     <view class="flex items-center gap-8">
       <iconfont name="riqi" color="rgba(0, 0, 0, 0.65)" size="16" />
       <view class="text-gray-color-2" wx:if="{{!signets[curIndex].time}}">暂无盖章时间</view>
