@@ -1,34 +1,17 @@
 // components/auth-guard/index.js
 Component({
-  data: {
-    comments: [],
+  properties: {
+    comments: {
+      type: [Object],
+      value: [],
+    }
   },
 
-  ready: function () {
-    const comments = [{
-      nickname: "张三",
-      avatar: "https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png",
-      source: 4,
-      time: '12-9',
-      location: "北京",
-      commment: "我是评论我是评论我是评论我是评论我是评论我是评论",
-      childrens: [{
-        nickname: "张三",
-        parent: "张三",
-        avatar: "https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png",
-        time: '12-9',
-        location: "北京",
-        commment: "我是评论我是评论我是评论我是评论我是评论我是评论",
-      }, {
-        nickname: "张三",
-        avatar: "https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png",
-        time: '12-9',
-        location: "北京",
-        commment: "我是评论我是评论我是评论我是评论我是评论我是评论",
-      }]
-    }]
-    this.setData({
-      comments: comments,
-    })
-  },
+  methods: {
+    replyComment(e) {
+      const replyId = e.currentTarget.dataset.id;
+      console.log("replyId", replyId)
+      this.triggerEvent('replyComment', replyId);
+    }
+  }
 })

@@ -80,3 +80,14 @@ export async function getSpotDetail(spot_id) {
   });
   return data;
 }
+
+
+export async function getComments(path_id) {
+  const { data } = await request({
+    url: '/fuyu/path/comments',
+    data: {
+      path_id
+    }
+  });
+  return data;
+}

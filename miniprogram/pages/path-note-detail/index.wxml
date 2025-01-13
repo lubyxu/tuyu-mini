@@ -14,10 +14,10 @@
 		place_count="{{place_details.length}}"
 		isUserPath="{{isUserPath}}"
 	/>
-	<view wx-if="{{showComments}}">
-		<comments />
+	<view wx-if="{{commentsVisible}}">
+		<comments comments="{{comments}}" bind:replyComment="replyComment"/>
 		<view class="bottom-btn">
-			<chinese-button width="320">发布评论</chinese-button>
+			<chinese-button width="320" bindtap="addComment">发布评论</chinese-button>
 		</view>
 	</view>
 	<view wx:else>
@@ -49,7 +49,7 @@
 						class="comment-icon"
 						src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/comment.png"
 					/>
-					<view>查看评论（342）</view>
+					<view bindtap="showComments">查看评论（{{commentsTotal}}）</view>
 				</view>
 			</view>
 	

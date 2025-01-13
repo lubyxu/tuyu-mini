@@ -21,9 +21,13 @@
 				<view class="comments-user-area">{{item.location}}</view>
 			</view>
 			<view class="comments-user-content">{{item.commment}}</view>
-			<view class="comments-user-content-reply">回复</view>
+			<view
+				class="comments-user-content-reply"
+				data-id="{{item.id}}"
+				bindtap="replyComment"
+			>回复</view>
 
-			<view wx:for="{{item.childrens}}"  wx:for-item="replayItem">
+			<view wx:for="{{item.children}}"  wx:for-item="replayItem">
 				<view class="replay-box">
 					<image
 						src="{{item.avatar}}"
@@ -36,7 +40,11 @@
 							<view class="comments-user-area">{{replayItem.location}}</view>
 						</view>
 						<view class="comments-user-content">{{replayItem.commment}}</view>
-						<view class="comments-user-content-reply">回复</view>
+						<view
+							class="comments-user-content-reply"
+							data-id="{{replayItem.id}}"
+							bindtap="replyComment"
+						>回复</view>
 					</view>
 				</view>
 			</view>

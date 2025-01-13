@@ -44,15 +44,19 @@
 }
 
 .custom-input, .tips {
+  box-sizing: border-box;
   width: 100%;
-  height: 114rpx;
+  min-height: 114rpx;
   border: 1px solid #E5C991;
   background: #fff;
   border-radius: 24rpx;
-  padding: 0 20px;
+  padding: 9px 20px;
   padding-left: 20px;
   box-sizing: border-box;
   margin-bottom: 10px;
+}
+
+.tips {
   display: flex;
   align-items: center;
 }

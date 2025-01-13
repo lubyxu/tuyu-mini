@@ -1,7 +1,8 @@
 // pages/path-note-detail/index.js
-import { getPathDetail, deleteUserPath, addUserPath } from '../../service/path-note/path-detail';
+import { getPathDetail, deleteUserPath, addUserPath, getComments } from '../../service/path-note/path-detail';
 import loginBehavior from '../../behaviors/login/index';
 import { getUser } from "../../utils/auth";
+import { formatUnixTime } from "../../utils/index";
 const app = getApp();
 
 Page({
@@ -27,7 +28,9 @@ Page({
     markers: [],
     expire: false,
     showSelfShare: false,
-    showComments: true
+    commentsVisible: false,
+    commentsTotal: 0,
+    comments: [],
   },
 
   /**
@@ -65,6 +68,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    this.getComments();
     const options = this.options;
     if (!this.data.isLogined) return;
     this.getDetail({ user_path_id: options.user_path_id, path_id: options.path_id});
@@ -103,16 +107,77 @@ Page({
 
   },
 
+  getComments() {
+
+  },
+
+  convertToTree(flatArray, _parentId = 0) {
+    const formatComment = (item, parent = {}) => {
+      return {
+        ...item,
+        nickname: parent.id ? `${item.nickname} 回复 ${parent.nickname}` : item.nickname,
+        avatar: item.avatar || 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png',
+        source: item.start,
+        time: formatUnixTime(item.update_time, 'MM-DD'),
+        location: "北京",
+        commment: item.content,
+      }
+    }
+
+    const idMap = {};
+    const tree = [];
+    flatArray.forEach(item => {
+        idMap[item.id] = {
+          ...item,
+            children: []
+        };
+    });
+    flatArray.forEach((item) => {
+      let parent = idMap[item.reply_to];
+      if (parent) {
+        idMap[item.id].parent = parent
+        while(parent.parent) {
+          parent = parent.parent;
+        }
+        parent.children.push(formatComment(idMap[item.id], parent));
+      } else {
+        tree.push(formatComment(idMap[item.id]));
+      }
+    });
+
+    // 防止死循环
+    tree.map((item) => {
+      if (item.children?.length > 0) {
+        item.children.map((children) => {
+          delete children.parent
+          return children
+        })
+        return item
+      }
+    })
+    return tree;
+  },
+
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
-    const path_info = this.data.path_info;
-    return {
-      title: path_info.group_name + '|' + path_info.name,
-      path: `/pages/path-note-detail/index?path_id=${this.data.path_info.path_id}&from=${this.options.group_id}&userPathId=${this.data.user_path_id}`,
-      imageUrl: this.data.path_info.images[0],
-    };
+  async getComments() {
+    const path_id = this.options.path_id / 1;
+    try {
+      const { comments, total } = await getComments(path_id)
+      const formatComments = this.convertToTree(comments)
+      console.log('formatComments', formatComments);
+      this.setData({
+        comments: formatComments,
+        commentsTotal: total
+      })
+    } catch (err) {
+      console.log('err', err)
+      wx.showToast({
+        title: '获取评论失败',
+        icon: 'error',
+      })
+    }
   },
   onShareTimeline(res) {
     const path_info = this.data.path_info;
@@ -267,4 +332,21 @@ Page({
   //     }
   //   });
   // }
+
+  showComments() {
+    this.setData({
+      commentsVisible: true
+    })
+  },
+
+  replyComment(info) {
+    const reply_to = info.detail
+    this.addComment(reply_to)
+  },
+
+  addComment(reply_to = 0) {
+    wx.navigateTo({
+      url: `/pages/ranking/index?path_id=${this.data.path_id}&reply_to=${reply_to}`,
+    });
+  },
 })
