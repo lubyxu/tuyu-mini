@@ -54,6 +54,8 @@ Component({
     isUserPath: Boolean,
     loc_lat: Number,
     loc_long: Number,
+    showOrderBtn: Boolean,
+    orderStatus: Number, // 0 未预约
   },
 
   /**
@@ -142,6 +144,12 @@ Component({
         complete(res) {
           console.log(res)
         }
+      })
+    },
+
+    onOrder() {
+      wx.navigateTo({
+        url: `/pages/order/index?place_id=${this.properties.place_id}&user_path_id=${this.properties.user_path_id}&orderStatus=${this.properties.orderStatus}`,
       })
     }
   }

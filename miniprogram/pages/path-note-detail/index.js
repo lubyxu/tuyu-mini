@@ -203,14 +203,16 @@ Page({
   },
   async getDetail({ user_path_id, path_id, from }) {
     const data = await getPathDetail({ user_path_id, path_id, from });
-    const { path_detail_info, place_visited } = data;
+    const { path_detail_info, place_visited, place_reservation } = data;
     this.setData({
       user_path_id: user_path_id || path_detail_info.user_path_id,
       path_id: path_id,
       path_info: path_detail_info.path_info,
       place_details: path_detail_info.place_details.map((item) => ({
         ...item,
-        visited: place_visited?.[item.place_id]
+        visited: place_visited?.[item.place_id],
+        showOrderBtn: place_reservation[item.place_id].is_required,
+        orderStatus: place_reservation[item.place_id].user_reserv_id === 0 ? 0 : 1 // user_reserv_id=0未预约， user_reserv_id>0已预约
       })),
       product_map: path_detail_info.product_map,
       products: path_detail_info.path_info.product_ids.map(id => {

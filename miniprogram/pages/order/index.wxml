@@ -67,9 +67,9 @@
           src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/order-success.png"
         />
         <view class="success-text">预约成功</view>
-        <view class="success-time">12月31日 下午13:00-18:00</view>
+        <view class="success-time">{{orderTime}}</view>
         <view class="success-number-box">
-          <view class="success-number-no">19</view>
+          <view class="success-number-no">{{orderNo}}</view>
           <view class="success-number-text">号码</view>
         </view>
       </view>

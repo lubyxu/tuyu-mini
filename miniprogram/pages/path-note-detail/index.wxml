@@ -72,6 +72,8 @@
 					bind:onImageClick="onImageClick"
 			bind:spotChecked="onSpotChecked"
 					isUserPath="{{isUserPath}}"
+					showOrderBtn="{{item.showOrderBtn}}"
+					orderStatus="{{item.orderStatus}}"
 				/>
 			</view>
 		</view>

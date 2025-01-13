@@ -2,7 +2,13 @@
 <view class="flex">
   <view class="left">
 	  <image mode="aspectFill" class="place-image" src="{{image}}" />
-    <view class="order-btn">可预约</view>
+    <view
+      class="order-btn"
+      wx-if="{{showOrderBtn}}"
+      bindtap="onOrder"
+    >
+      {{orderStatus === 0 ? '可预约' : '查看预约码'}}
+    </view>
 	</view>
 
 	<view class="right">
