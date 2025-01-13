@@ -1,10 +1,10 @@
-<scroll-view scroll-x style="width: 100vw;">
+<scroll-view scroll-x style="width: 100vw;" scroll-into-view="{{focusedId}}" scroll-into-view-offset="160" scroll-with-animation>
   <view style="padding-left: 16px;">
-    <view class="flex" style="gap: 2px; box-sizing: border-box;">
-      <view>
+    <view class="flex" style="gap: 2px; box-sizing: border-box;" id="js-list">
+      <view id="js-book-cover">
         <signet-card isBook img="{{book.show_image}}" />
       </view>
-      <view wx:for="{{signets}}" wx:key="index" class="signet-card" bind:tap="onCardSelect" data-index="{{index}}">
+      <view wx:for="{{signets}}" wx:key="index" class="signet-card" id="js-card-{{index}}" bind:tap="onCardSelect" data-index="{{index}}">
         <radio class="signet-card-radio" color="#CE3219" checked="{{index == curIndex}}"></radio>
         <signet-card
           img="{{item.image_url}}"
@@ -23,14 +23,16 @@
 </view>
 
 <view>
-  <signet-container
-    id="{{book.id}}"
+  <signet-container-list
+    id="signet-container"
     book="{{book}}"
+    curIndex="{{curIndex}}"
     bgImage="{{bgImage}}"
     pageNum="{{curIndex}}"
-    signet="{{signets[curIndex]}}"
+    signets="{{signets}}"
     bind:onPageAdd="onPageAdd"
     bind:onPageGo="onPageGo"
+    bind:onIndexChange="onIndexChange"
   />
   <view style="margin: 0 16px; padding-left: 40px; font-size: 14px;">
     <view class="flex items-center gap-8">

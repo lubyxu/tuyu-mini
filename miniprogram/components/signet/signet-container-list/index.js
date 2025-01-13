@@ -8,23 +8,16 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    canCorpStamp: Boolean,
     book: Object,
-    signetSrc: {
-      type: String,
-      value: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/4/1733237670470/1733237670470.jpg'
-    },
-    signet: Object,
+    curIndex: Number,
+    signets: Object,
     bgImage: String,
     time: String,
     location: Object,
     title: String,
-    showFinishIcon: Boolean,
-
-    isStampOrigin: {
-      value: true,
-      type: Boolean
-    },
+    showFinishIcon: false,
+    isStampOrigin: true,
+    positionX: 0,
   },
   observers: {
     signet: function (signet) {
@@ -94,9 +87,6 @@ Component({
         productId: this.data.book.book_id,
       });
       const signetSrc = data.filePath;
-      this.setData({
-        signetSrc
-      });
       this.triggerEvent('onPageAdd', { imageUrl: signetSrc });
     },
     onScan() {
@@ -134,6 +124,10 @@ Component({
         showImage: '',
         fetching: true,
       });
+    },
+    onIndexChange(e) {
+      this.triggerEvent('onIndexChange', e.detail.current)
+
     }
   }
 });
