@@ -3,6 +3,7 @@
     "signet-card": "/components/signet/signet-card/index",
     "section-title": "/components/section-title/index",
     "signet-container": "/components/signet/signet-container/index",
+    "signet-container-list": "/components/signet/signet-container-list/index",
     "iconfont": "/iconfont/iconfont",
     "chinese-btn": "/components/button/chinese-btn",
     "position-btn": "/components/button/position-btn"

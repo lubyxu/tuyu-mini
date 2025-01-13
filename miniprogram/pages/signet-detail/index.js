@@ -13,7 +13,8 @@ Page({
     signets: [],
     bgImage: '',
     curIndex: 0,
-  },  
+    focusedId: 'js-book-over'
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -112,6 +113,7 @@ Page({
   },
   onCardSelect(e) {
     const index = e.currentTarget.dataset.index;
+    this.selectComponent('#signet-container').onReset();
     this.setData({
       curIndex: index,
     });
@@ -171,6 +173,18 @@ Page({
           this.getBookInfo(+this.options.book_id);
         }
       }
+    })
+  },
+  onIndexChange(e) {
+    this.setData({
+      curIndex: e.detail
+    });
+    this.onSetFocuseId(+e.detail);
+  },
+
+  onSetFocuseId(index) {
+    this.setData({
+      focusedId: index < 3 ? 'js-book-cover' : `js-card-${index - 3}`
     })
   }
 })

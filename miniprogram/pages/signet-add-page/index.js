@@ -62,7 +62,7 @@ Page({
       }
       this.setData({
         bgImage: bookConfig.page_bg_img,
-        timeStr: date.format('YYYY年YY月DD日 HH:mm:ss'),
+        timeStr: date.format('YYYY年MM月DD日 HH:mm:ss'),
         canCorpStamp: corpped && corpped !== 'FAILED' ? true : false,
         isStampOrigin: corpped === 'FAILED' ? true : false,
         signet: {
@@ -94,7 +94,7 @@ Page({
         name: bookInfo.name,
         bgImage: bookConfig.page_bg_img,
         time: date.unix(),
-        timeStr: date.format('YYYY年YY月DD日 HH:mm:ss'),
+        timeStr: date.format('YYYY年MM月DD日 HH:mm:ss'),
         isStampOrigin: true,
         signet: {
           image_url: bookInfo.show_image
@@ -178,16 +178,6 @@ Page({
   onReachBottom() {
 
   },
-
-  onChooseLocation () {
-		wx.chooseLocation({
-			success: (res) => {
-				this.setData({
-					location: res
-				});
-			}
-		});
-	},
 
   /**
    * 用户点击右上角分享

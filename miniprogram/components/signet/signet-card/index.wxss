@@ -9,10 +9,14 @@
 }
 .signet-card image {
   width: 64px;
-  background-color: #fff;
 }
 
 .signet-card.signet-book {
   background-color: #FBE9BF;
   border-radius: 4px;
+}
+
+.signet-card:not(.signet-book) image {
+  width: 62px;
+  height: 70px;
 }

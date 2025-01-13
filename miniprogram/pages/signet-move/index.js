@@ -48,20 +48,23 @@ Page({
     const data = await getBookInfo(id);
     const config = data.BookInfo.content.book_config;
     const pages = data.Pages || [];
+
     const map = pages.reduce((prev, page) => {
       return {
         ...prev,
         [page.page_num - 1]: page
       };
     }, {});
+    const curCards = new Array(config.page_num).fill(0).map((item, idx) => {
+      return map[idx] ? {
+        ...map[idx]
+      } : undefined;
+    });
     this.setData({
       curBook: data,
       curBookConfig: config,
-      curCards: new Array(config.page_num).fill(0).map((item, idx) => {
-        return map[idx] ? {
-          ...map[idx]
-        } : undefined;
-      })
+      curCards,
+      curIndex: curCards.findIndex(item => !item)
     });
   },
 

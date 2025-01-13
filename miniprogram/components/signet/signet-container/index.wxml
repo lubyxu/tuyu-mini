@@ -18,8 +18,12 @@
       </view>
     </view>
   
-    <view wx:else class="relative">
-      <image src="{{isStampOrigin ? signet.image_url : signet.corppedStamp}}" style="width: 200px; max-height: 200px;" mode="{{isHorizontal ? 'widthFix' : 'heightFix'}}" />
+    <view wx:else class="relative signet-image {{fetching ? 'fetching' : ''}}">
+      <image
+        src="{{showImage}}"
+        class="image"
+        mode="aspectFit"
+      />
     </view>
 
     <view class="switch-button" wx:if="{{canCorpStamp}}">
