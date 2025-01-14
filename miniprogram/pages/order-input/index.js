@@ -1,3 +1,5 @@
+import { useCoupon } from "../../service/coupons/index";
+
 // pages/order-input/index.js
 Page({
 
@@ -12,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.options = options;
   },
 
   /**
@@ -62,5 +64,55 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  onNameChange(e) {
+    this.setData({
+      name: e.detail.value
+    });
+  },
+  onPhoneChange(e) {
+    this.setData({
+      phone: e.detail.value
+    });
+  },
+  onAddressChange(e) {
+    this.setData({
+      address: e.detail.value
+    });
+  },
+  async onConfirm() {
+    const { name, phone, address } = this.data;
+    if (!name.trim()) {
+      wx.showToast({
+        icon: 'none',
+        title: '请填写姓名',
+      });
+      return;
+    }
+    if (!phone.trim()) {
+      wx.showToast({
+        icon: 'none',
+        title: '请填写电话',
+      });
+      return;
+    }
+    if (!address.trim()) {
+      wx.showToast({
+        icon: 'none',
+        title: '请填写地址',
+      });
+      return;
+    }
+    await useCoupon({
+      user_coupon_id: +this.options.coupon_id,
+      use_coupon_req: {
+        name,
+        phone,
+        address
+      }
+    });
+    const evc = this.getOpenerEventChannel();
+    evc.emit('refresh');
+    wx.navigateBack();
   }
 })

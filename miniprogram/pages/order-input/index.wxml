@@ -4,19 +4,19 @@
 		<view class="form-item">
 			<view class="form-label">姓名</view>
 			<view class="form-input-content">
-				<input class="form-input" placeholder="请填写姓名" />
+				<input class="form-input" placeholder="请填写姓名" bindchange="onNameChange" />
 			</view>
 		</view>
 		<view class="form-item">
 			<view class="form-label">电话</view>
 			<view class="form-input-content">
-				<input class="form-input" placeholder="请填写电话" type="digit" />
+				<input class="form-input" placeholder="请填写电话" type="digit" bindchange="onPhoneChange" />
 			</view>
 		</view>
 		<view class="form-item">
 			<view class="form-label">地址</view>
 			<view class="form-input-content">
-				<input class="form-input" placeholder="请填写地址"  />
+				<input class="form-input" placeholder="请填写地址" bindchange="onAddressChange" />
 			</view>
 		</view>
 	</view>

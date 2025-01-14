@@ -16,7 +16,7 @@ export default Behavior({
       }
     );
     if (globalData.user?.token) {
-      this.onLogined();
+      this.onLogined?.();
       return;
     }
 

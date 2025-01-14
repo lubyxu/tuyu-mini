@@ -35,5 +35,13 @@
 				bind:accept="onCouponAccept"
 			/>
 		</view>
+
+		<view wx:if="{{!list.length}}" class="w-full flex flex-col items-center justify-center">
+		  <image
+			  src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2F7Kayw0D5pI5rCt4QaR2aP%2Fimage.svg"
+				style="width: 135px; height: 135px; margin-top: 100px;"
+			/>
+			<view class="text-14 text-gray-color-1">暂无数据</view>
+		</view>
 	</view>
 </view>
