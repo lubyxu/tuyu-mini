@@ -106,9 +106,11 @@ Page({
     await useCoupon({
       user_coupon_id: +this.options.coupon_id,
       use_coupon_req: {
-        name,
-        phone,
-        address
+        shipping_info: {
+          name,
+          phone,
+          address
+        }
       }
     });
     const evc = this.getOpenerEventChannel();

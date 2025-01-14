@@ -33,6 +33,7 @@
 				useText="去使用"
 				isUsed="{{isUserPath && !!item.user_coupon_id}}"
 				bind:accept="onCouponAccept"
+				bind:click="onCouponClick"
 			/>
 		</view>
 

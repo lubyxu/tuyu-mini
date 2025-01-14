@@ -106,9 +106,9 @@ Page({
       }
     });
   },
-  goToSelectBook({userCouponId}) {
+  goToSelectBook({id}) {
     wx.navigateTo({
-      url: `/pages/book-select/index?coupon_id=${userCouponId}`,
+      url: `/pages/book-select/index?coupon_id=${id}`,
       events: {
         refresh: () => {
           this.getList(this.data.activeTab);
@@ -116,14 +116,21 @@ Page({
       }
     })
   },
-  goToFillInfo({ userCouponId }) {
+  goToFillInfo({ id }) {
     wx.navigateTo({
-      url: `/pages/order-input/index?coupon_id=${userCouponId}`,
+      url: `/pages/order-input/index?coupon_id=${id}`,
       events: {
         refresh: () => {
           this.getList(this.data.activeTab);
         }
       }
     })
+  },
+  onCouponClick(e) {
+    const { id, type } = e.detail;
+    if (type != '3') {
+      return;
+    }
+    this.goToFillInfo({ id });
   }
 })

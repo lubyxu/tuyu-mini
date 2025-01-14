@@ -42,7 +42,16 @@ Component({
           type: this.data.type,
           productId: this.data.productId,
           userCouponId: this.data.userCouponId,
-        });
+        }
+      );
+    },
+    onClick() {
+      this.triggerEvent(
+        'click',
+        {
+          ...this.data
+        }
+      );
     }
   }
 })
