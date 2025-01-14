@@ -41,3 +41,10 @@ export async function getCoupon(coupon_id) {
 		}
 	})
 }
+
+export async function useCoupon(data) {
+	await request({
+		url: '/fuyu/user/usecoupon',
+		data
+	});
+}

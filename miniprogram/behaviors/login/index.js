@@ -15,6 +15,10 @@ export default Behavior({
         isUserAccount: !!globalData.user?.token,
       }
     );
+    if (globalData.user?.token) {
+      this.onLogined();
+      return;
+    }
 
     getApp().globalData.event.on('login', (params) => {
       this.setData({

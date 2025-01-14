@@ -1,0 +1,32 @@
+<view class="root">
+
+	<view>
+		<view class="form-item">
+			<view class="form-label">姓名</view>
+			<view class="form-input-content">
+				<input class="form-input" placeholder="请填写姓名" />
+			</view>
+		</view>
+		<view class="form-item">
+			<view class="form-label">电话</view>
+			<view class="form-input-content">
+				<input class="form-input" placeholder="请填写电话" type="digit" />
+			</view>
+		</view>
+		<view class="form-item">
+			<view class="form-label">地址</view>
+			<view class="form-input-content">
+				<input class="form-input" placeholder="请填写地址"  />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-footer">
+		<view class="w-full">
+			<chinese-button unit="%" width="100" className="btn-confirm" bind:tap="onConfirm">
+				<text style="font-size: 20px; line-height: 28px;">确认</text>
+			</chinese-button>
+		</view>
+	</view>
+
+</view>

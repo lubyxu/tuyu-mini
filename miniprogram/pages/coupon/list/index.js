@@ -89,7 +89,7 @@ Page({
         this.goToSignetAdd(e.detail);
         break;
       case '2':
-        this.goToSelectBook();
+        this.goToSelectBook(e.detail);
         break;
       case '3':
         this.goToFillInfo();
@@ -106,6 +106,15 @@ Page({
       }
     });
   },
-  goToSelectBook() {},
+  goToSelectBook({userCouponId}) {
+    wx.navigateTo({
+      url: `/pages/book-select/index?coupon_id=${userCouponId}`,
+      events: {
+        refresh: () => {
+          this.getList(this.data.activeTab);
+        }
+      }
+    })
+  },
   goToFillInfo() {}
 })

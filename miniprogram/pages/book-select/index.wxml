@@ -1,14 +1,19 @@
 <view class="root">
-  <view wx:for="{{books}}" class="book-card">
+  <view wx:for="{{books}}" class="book-card" data-index="{{index}}" bind:tap="onBookClick">
+		<radio class="book-radio" color="#CE3219" checked="{{index == curIndex}}"></radio>
 	  <image src="{{item.show_image}}" style="width: 107px; height: 150px;" mode="aspectFit" />
 
-		<view class="book-tips"></view>
+		<view class="book-tips">
+		  <text style="color: #fff;">{{item.all_content.book_config.stamp_num}}</text>
+			<text style="margin: 0 2px;">/</text>
+			<text>{{item.all_content.book_config.page_num}}</text>
+		</view>
 	</view>
 </view>
 
 <view class="page-footer">
 	<view class="w-full">
-	  <chinese-button unit="%" width="100" className="btn-confirm">
+	  <chinese-button unit="%" width="100" className="btn-confirm" bind:tap="onConfirm">
 		  <text style="font-size: 20px; line-height: 28px;">确认</text>
 		</chinese-button>
 	</view>

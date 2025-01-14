@@ -1,5 +1,6 @@
 import { getSignetBooks } from '../../service/signet/index';
 import loginBehavior from '../../behaviors/login/index';
+import { useCoupon } from '../../service/coupons/index';
 Page({
   behaviors: [loginBehavior],
 
@@ -7,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    books: []
+    books: [],
+    curIndex: 0
   },
   onLogined() {
     this.initValue();
@@ -17,7 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.options = options;
   },
 
   /**
@@ -74,5 +76,20 @@ Page({
     this.setData({
       books
     })
+  },
+  onBookClick(e) {
+    console.log(e)
+    const index = e.currentTarget.dataset.index;
+    const book = this.data.books[index];
+    this.setData({
+      curIndex: index,
+    });
+  },
+  async onConfirm() {
+    const id = this.options.coupon_id;
+    await useCoupon({ user_coupon_id: +id, use_coupon_req: {} });
+    const evc = this.getOpenerEventChannel();
+    evc.emit('refresh');
+    wx.navigateBack();
   }
 })

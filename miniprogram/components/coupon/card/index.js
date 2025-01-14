@@ -19,6 +19,7 @@ Component({
     source: String,
     couponId: String,
     productId: String,
+    userCouponId: String,
   },
 
   /**
@@ -33,7 +34,15 @@ Component({
    */
   methods: {
     onAccept() {
-      this.triggerEvent('accept', { source: this.data.source, id: this.data.couponId, type: this.data.type, productId: this.data.productId });
+      this.triggerEvent(
+        'accept',
+        {
+          source: this.data.source,
+          id: this.data.couponId,
+          type: this.data.type,
+          productId: this.data.productId,
+          userCouponId: this.data.userCouponId,
+        });
     }
   }
 })
