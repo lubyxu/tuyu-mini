@@ -33,6 +33,7 @@ Page({
 
   async initValue() {
     const { stamp_info, user_info, stamp_count, book_config, rel_path_id } = await getSharePageInfo(this.options.user_stamp_id);
+    this.stamp_pid = stamp_info.stamp_pid;
     this.setData({
       stamp_info,
       name: stamp_info.name,
@@ -56,7 +57,7 @@ Page({
   },
   onAccept(e) {
     wx.navigateTo({
-      url: `/pages/signet-add-page/index?stamp_pid=${this.options.user_stamp_id}&key=copy_${this.options.user_stamp_id}`,
+      url: `/pages/signet-add-page/index?stamp_pid=${this.stamp_pid}&key=copy_${this.stamp_pid}`,
       events: {
         refresh: () => {
           this.initValue();

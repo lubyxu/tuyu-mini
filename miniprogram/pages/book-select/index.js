@@ -87,7 +87,12 @@ Page({
   },
   async onConfirm() {
     const id = this.options.coupon_id;
-    await useCoupon({ user_coupon_id: +id, use_coupon_req: { book_id: this.data.books[this.data.curIndex].id } });
+    await useCoupon({
+      user_coupon_id: +id,
+      use_coupon_req: {
+        book_id: this.data.books[this.data.curIndex].user_product_id
+      }
+    });
     const evc = this.getOpenerEventChannel();
     evc.emit('refresh');
     wx.navigateBack();

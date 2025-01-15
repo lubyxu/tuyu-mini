@@ -168,8 +168,8 @@ Page({
         source: key
       });
 
-      if (this.options.from) {
-        await useCoupon({ user_coupon_id: +cardInfo.stamp_pid, use_coupon_req: {} })
+      if (this.options.couponId) {
+        await useCoupon({ user_coupon_id: +this.options.couponId, use_coupon_req: {} })
       }
 
       wx.reLaunch({

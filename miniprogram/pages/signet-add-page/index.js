@@ -266,9 +266,9 @@ Page({
     }
     // nfc 入口
     if (stamp_pid && !book_id) {
-      const from = this.options.from;
+      const couponId = this.options.couponId;
       wx.navigateTo({
-        url: '/pages/signet-move/index?stamp_pid=' + stamp_pid + '&key=' + this.options.key + (from ? `&from=${from}` : ''),
+        url: '/pages/signet-move/index?stamp_pid=' + stamp_pid + '&key=' + this.options.key + (couponId ? `&couponId=${couponId}` : ''),
         success: (res) => {
           res.eventChannel.emit(
             'stampInfo',
