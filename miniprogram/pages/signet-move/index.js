@@ -1,5 +1,6 @@
 import { getSignetBooks, getBookInfo, addToPage, movePage } from '../../service/signet/index';
 import loginBehavior from '../../behaviors/login/index';
+import { useCoupon } from '../../service/coupons/index';
 
 Page({
   behaviors: [loginBehavior],
@@ -145,6 +146,7 @@ Page({
         to_book_id: this.data.curBook.book_id,
         to_page_num: this.data.curIndex + 1
       });
+      
       const ev = this.getOpenerEventChannel();
       ev.emit('refresh');
       wx.navigateBack();
@@ -165,6 +167,10 @@ Page({
         stamp_pid: +cardInfo.stamp_pid,
         source: key
       });
+
+      if (this.options.from) {
+        await useCoupon({ user_coupon_id: +cardInfo.stamp_pid, use_coupon_req: {} })
+      }
 
       wx.reLaunch({
         url: '/pages/signet-detail/index?book_id=' + this.data.curBook.book_id,

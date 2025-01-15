@@ -16,7 +16,9 @@ export default Behavior({
       }
     );
     if (globalData.user?.token) {
-      this.onLogined?.();
+      setTimeout(() => {
+        this.onLogined?.();
+      }, 0);
       return;
     }
 

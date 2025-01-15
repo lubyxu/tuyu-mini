@@ -40,7 +40,8 @@ Page({
       timeStr: dayjs(stamp_info.create_time * 1000).format('YYYY年MM月DD日 HH:mm:ss'),
       nickName: user_info.nickname,
       stamp_count,
-      rel_path_id,
+      // todo remove
+      rel_path_id: 1,
       avatar: user_info.avatar || 'http://vibktprfx-prod-prod-damo-eas-cn-shanghai.oss-cn-shanghai.aliyuncs.com/seg-common-image/2024-12-27/5fc8fae4-5a4f-4ceb-b69c-aa5f8e656ce0/image.png?Expires=1735305425&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRpDvh1&Signature=fkSz5W2Gz9rEyT0uqcCGNC3Qkn4%3D',
       bgImage: book_config.page_bg_img,
       signet: {
@@ -51,6 +52,16 @@ Page({
   onGoto() {
     wx.navigateTo({
       url: '/pages/path-note-detail/index?path_id=' + this.data.rel_path_id,
+    });
+  },
+  onAccept(e) {
+    wx.navigateTo({
+      url: `/pages/signet-add-page/index?stamp_pid=${this.options.user_stamp_id}&key=copy_${this.options.user_stamp_id}`,
+      events: {
+        refresh: () => {
+          this.initValue();
+        }
+      }
     });
   }
 })

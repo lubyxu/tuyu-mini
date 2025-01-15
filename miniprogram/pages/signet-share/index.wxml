@@ -43,9 +43,12 @@
   </view>
 </view>
 
-<view class="signet-add-footer" wx:if="{{!!rel_path_id}}" bind:tap="onGoto">
-  <view class="flex items-center justify-center w-full">
-    <chinese-btn bind:click="onAccept" width="320">立即获取</chinese-btn>
+<view class="signet-add-footer">
+  <view class="flex items-center justify-center flex-1" style="flex: 1" wx:if="{{!!rel_path_id}}" bind:tap="onGoto">
+    <chinese-btn style="width: 100%;" bind:click="onAccept" type="default"  width="100" unit="%">去获取</chinese-btn>
+  </view>
+  <view  class="flex items-center justify-center" style="flex: 1" bind:tap="onAccept">
+    <chinese-btn style="width: 100%;" bind:click="onAccept" width="100" unit="%">拓印</chinese-btn>
   </view>
 </view>
 
