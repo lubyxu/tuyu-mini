@@ -16,7 +16,8 @@ Page({
     stamp_count: 0,
     rel_path_id: 0,
     signet: {},
-    stamp_info: {}
+    stamp_info: {},
+    copy_config: {}
   },
 
   /**
@@ -24,17 +25,16 @@ Page({
    */
   onLoad(options) {
     this.options = options;
-    if (!this.data.isLogined) return;
-    this.initValue();
   },
   onLogined() {
     this.initValue();
   },
 
   async initValue() {
-    const { stamp_info, user_info, stamp_count, book_config, rel_path_id } = await getSharePageInfo(this.options.user_stamp_id);
+    const { stamp_info, user_info, stamp_count, book_config, rel_path_id, copy_config } = await getSharePageInfo(this.options.user_stamp_id);
     this.stamp_pid = stamp_info.stamp_pid;
     this.setData({
+      copy_config,
       stamp_info,
       name: stamp_info.name,
       location: stamp_info.location,
