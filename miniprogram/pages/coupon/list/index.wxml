@@ -29,6 +29,7 @@
 				type="{{item.type}}"
 				name="{{item.name}}"
 				subTitle="{{item.info}}"
+        extraData="{{item.content}}"
 				canUse="{{item.status == 1}}"
 				useText="去使用"
 				isUsed="{{isUserPath && !!item.user_coupon_id}}"

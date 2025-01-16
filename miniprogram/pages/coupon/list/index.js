@@ -116,13 +116,17 @@ Page({
       }
     })
   },
-  goToFillInfo({ id }) {
+  goToFillInfo(card) {
+    const { id } = card;
     wx.navigateTo({
       url: `/pages/order-input/index?coupon_id=${id}`,
       events: {
         refresh: () => {
           this.getList(this.data.activeTab);
         }
+      },
+      success(res) {
+        res.eventChannel.emit('initValue', card);
       }
     })
   },
@@ -131,6 +135,6 @@ Page({
     if (type != '3') {
       return;
     }
-    this.goToFillInfo({ id });
+    this.goToFillInfo(e.detail);
   }
 })

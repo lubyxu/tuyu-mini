@@ -55,14 +55,16 @@ Page({
         [page.page_num - 1]: page
       };
     }, {});
+    const curCards = new Array(config.page_num).fill(0).map((item, idx) => {
+      return map[idx] ? {
+        ...map[idx]
+      } : undefined;
+    });
     this.setData({
       curBook: data,
       curBookConfig: config,
-      curCards: new Array(config.page_num).fill(0).map((item, idx) => {
-        return map[idx] ? {
-          ...map[idx]
-        } : undefined;
-      })
+      curCards,
+      curIndex: curCards.findIndex(item => !item)
     });
   },
 
@@ -136,7 +138,13 @@ Page({
   },
 
   async onConfirm() {
-    if (this.data.curIndex < 0) return;
+    if (this.data.curIndex < 0) {
+      wx.showToast({
+        icon: 'none',
+        title: '请选择一个添加印章的页面',
+      });
+      return;
+    }
 
     // 移动的逻辑
     if (!this.options.stamp_pid) {
@@ -165,12 +173,9 @@ Page({
         name: cardInfo.name,
         image_url: cardInfo.image_url,
         stamp_pid: +cardInfo.stamp_pid,
-        source: key
+        source: key,
+        couponId: this.options.couponId
       });
-
-      if (this.options.couponId) {
-        await useCoupon({ user_coupon_id: +this.options.couponId, use_coupon_req: {} })
-      }
 
       wx.reLaunch({
         url: '/pages/signet-detail/index?book_id=' + this.data.curBook.book_id,

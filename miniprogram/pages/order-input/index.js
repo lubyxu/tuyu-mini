@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    editable: true,
   },
 
   /**
@@ -15,6 +15,20 @@ Page({
    */
   onLoad(options) {
     this.options = options;
+
+    const evt =  this.getOpenerEventChannel();
+    evt.on('initValue', info => {
+      const val = info.extraData.shipping_info;
+      if (val.name) {
+        this.setData({
+          name: val.name,
+          phone: val.phone,
+          address: val.address,
+          shopping_code: val.shipping_code,
+          editable: false,
+        })
+      }
+    })
   },
 
   /**

@@ -20,6 +20,7 @@ Component({
     couponId: String,
     productId: String,
     userCouponId: String,
+    extraData: Object,
   },
 
   /**

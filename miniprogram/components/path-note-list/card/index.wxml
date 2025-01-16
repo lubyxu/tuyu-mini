@@ -2,12 +2,16 @@
 <view class="card relative" bind:tap="onClick">
   <view class="title">{{item.name}}</view>
 	<view class="container">
-	  <view class="flex w-full">
+	  <view class="flex w-full" style="flex-wrap: wrap;">
 		  <view><text class="text-error-color">{{item.n_involved}}</text> 人已参与</view>
 			<view wx:if="{{item.spot_count}}" class="divider"></view>
 			<view wx:if="{{item.spot_count}}"><text class="text-strong text-gray-color">{{item.spot_count}}</text> 个游玩景点</view>
 			<view wx:if="{{item.product_ids.length}}" class="divider"></view>
 			<view wx:if="{{item.product_ids.length}}"><text class="text-strong text-gray-color">{{item.product_ids.length}}</text> 个好物推荐</view>
+      <view wx:if="{{item.coupon_count}}" class="divider"></view>
+      <view wx:if="{{item.coupon_count}}">
+        <text class="text-strong text-gray-color">{{item.coupon_count}}</text> 个打卡奖品
+      </view>
 		</view>
 
 		<view class="w-full info">
