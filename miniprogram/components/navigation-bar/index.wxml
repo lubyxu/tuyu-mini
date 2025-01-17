@@ -1,5 +1,5 @@
 
-<cover-view class="{{ title ?  'nav-bar-with-title' : 'nav-bar'}} {{className}}" style="height:{{navBarHeight}}px;">
+<cover-view class="{{ title ?  'nav-bar-with-title' : 'nav-bar'}} {{className}}" style="background-color: {{background}};height:{{navBarHeight}}px;">
     <cover-view
         wx-if="{{title}}"
         class="title-bar-title"

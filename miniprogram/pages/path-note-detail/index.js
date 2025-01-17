@@ -53,6 +53,18 @@ Page({
     this.getDetail({ user_path_id: options.user_path_id, path_id: options.path_id});
   },
 
+  customReturn() {
+    if (this.data.commentsVisible) {
+      this.setData({
+        commentsVisible: false
+      })
+      return
+    }
+    wx.navigateBack({
+      delta: 1,
+    })
+  },
+
   onLogined() {
     const options = this.options;
     this.getDetail({ user_path_id: options.user_path_id, path_id: options.path_id});

@@ -12,8 +12,10 @@ Page({
     orderFinish: false,
     orderNo: '',
     orderTime: '',
+    user_reserv_id: -1
   },
   async onLoad(options) {
+    console.log('options', )
     this.firstRender = true
     if (!app.globalData?.user?.token) {
       await getUser()
@@ -21,7 +23,7 @@ Page({
     this.user_path_id = options.user_path_id / 1
     this.place_id = options.place_id / 1,
     this.orderStatus = options.orderStatus / 1
-    console.log('options', options)
+    this.options = options
     if (this.orderStatus == 0) {
       await this.getInitData()
     } else {
@@ -115,13 +117,13 @@ Page({
         place_id: this.place_id
       }
     });
-    const { code, start_hour, end_hour, date } = data
+    const { code, start_hour, end_hour, date, user_reserv_id } = data
     const timePrefix = start_hour.split(':')[0] / 1 > 12 ? '下午' : '上午'
-    console.log(`${date.slice(4,6)}月${date.slice(6)}日 ${timePrefix} ${start_hour}-${end_hour}`)
     this.setData({
       orderFinish: true,
       orderNo: code,
       orderTime: `${date.slice(4,6)}月${date.slice(6)}日 ${timePrefix} ${start_hour}-${end_hour}`,
+      user_reserv_id
     })
   },
 
@@ -160,12 +162,13 @@ Page({
           path_resv_id: time.path_reserv_id
         }
       });
-      const { code } = data
+      const { code, date, user_reserv_id, start_hour, end_hour } = data
+      const timePrefix = start_hour.split(':')[0] / 1 > 12 ? '下午' : '上午'
       this.setData({
         orderFinish: true,
         orderNo: code,
-        orderTime: time.time,
-        orderDate: time.date,
+        orderTime: `${date.slice(4,6)}月${date.slice(6)}日 ${timePrefix} ${start_hour}-${end_hour}`,
+        user_reserv_id: user_reserv_id
       })
     } catch(err) {
       wx.showToast({
@@ -174,18 +177,37 @@ Page({
       })
     }
   },
-
   onCancel(){
     wx.showModal({
       content: '确认要取消预约吗？', 
       confirmText: '确认', 
       cancelText: '取消', 
-      success: (res) => { 
+      success: async (res) => { 
         if (res.confirm) {
-          console.log("取消预约")
+          try {
+            await this.cancelOrder()
+            await this.getInitData()
+            this.setData({
+              orderFinish: false
+            })
+          } catch(err) {
+            wx.showToast({
+              icon: 'error',
+              title: '取消预约失败，请重试'
+            })
+          }
         }
       }
     });
-    console.log("取消预约")
+  },
+
+  cancelOrder(user_reserv_id){
+    return request({
+      method: 'POST',
+      url: '/fuyu/path/reservation/cancel',
+      data: {
+        user_reserv_id: this.data.user_reserv_id
+      }
+    });
   }
 });

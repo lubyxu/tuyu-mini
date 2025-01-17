@@ -1,137 +1,140 @@
 <!--pages/path-note-detail/index.wxml-->
-<view style="padding-bottom: {{btnClass === 'fixed' ? '100px' : ''}}">
-  <share-modal-self
-	placeDetails="{{place_details}}"
-	pathId="{{path_id}}"
-	bind:onPrivilege="onPrivilege"
-	wx-if="{{showSelfShare}}"
-  />
-  <view wx:else>
-	<header
-		name="{{path_info.group_name ? (path_info.group_name + '|' + path_info.name) : ''}}"
-		images="{{path_info.images}}"
-		fin_place_count="{{fin_place_count}}"
-		place_count="{{place_details.length}}"
-		isUserPath="{{isUserPath}}"
+<view style="margin-top: 164rpx; background-color: #FBEDDB;">
+	<navigation-bar background="#FBEDDB" sampleReturn="{{true}}" bind:customReturn="customReturn" useCustomReturn="{{true}}"></navigation-bar>
+	<view style="padding-bottom: {{btnClass === 'fixed' ? '100px' : ''}}">
+	<share-modal-self
+		placeDetails="{{place_details}}"
+		pathId="{{path_id}}"
+		bind:onPrivilege="onPrivilege"
+		wx-if="{{showSelfShare}}"
 	/>
-	<view wx-if="{{commentsVisible}}">
-		<comments comments="{{comments}}" bind:replyComment="replyComment"/>
-		<view class="bottom-btn">
-			<chinese-button width="320" bindtap="addComment">发布评论</chinese-button>
-		</view>
-	</view>
 	<view wx:else>
-		<view style="padding: 0 16px; margin-top: 20px;">
-			<view style="margin-bottom: 16px;" class="user-path-header">
-			🗺️ 行程概览
-			<button open-type="share"  class="btn-share" bind:tap="onShare">
-			<image src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FHu4rdvgxp1vLBVX4-K9s1%2F%E5%88%86%E4%BA%AB.svg" style="width: 20px; height: 20px;" />
-			<view>分享</view>
-			</button>
-		</view>
-			<view class="map-container" bind:tap="openMap">
-			<scen-map markers="{{markers}}" latitude="{{markers[0].latitude}}" longitude="{{markers[0].longitude}}" />
-			<view wx:if="{{!modal.type}}" bind:tap="onGotoMap" class="btn-see-map">
-			<iconfont style="margin-right: 4px;" name="map" color="rgba(0, 0, 0, 0.65)" />
-			查看地图
-			</view>
-			<view><map id="myPageMap" /></view>
-				<!-- placeholder
-				<map id="myMap"></map> -->
+		<header
+			name="{{path_info.group_name ? (path_info.group_name + '|' + path_info.name) : ''}}"
+			images="{{path_info.images}}"
+			fin_place_count="{{fin_place_count}}"
+			place_count="{{place_details.length}}"
+			isUserPath="{{isUserPath}}"
+		/>
+		<view wx-if="{{commentsVisible}}">
+			<comments comments="{{comments}}" bind:replyComment="replyComment"/>
+			<view class="bottom-btn">
+				<chinese-button width="320" bindtap="addComment">发布评论</chinese-button>
 			</view>
 		</view>
-	
-		<view style="padding: 0 16px; margin-top: 20px;">
-			<view class="path-title">
-				<view class="path-tltle-main-text">🎯 行程打卡点</view>
-				<view class="comment-box">
-					<image
-						class="comment-icon"
-						src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/comment.png"
-					/>
-					<view bindtap="showComments">查看评论（{{commentsTotal}}）</view>
+		<view wx:else>
+			<view style="padding: 0 16px; margin-top: 20px;">
+				<view style="margin-bottom: 16px;" class="user-path-header">
+				🗺️ 行程概览
+				<button open-type="share"  class="btn-share" bind:tap="onShare">
+				<image src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FHu4rdvgxp1vLBVX4-K9s1%2F%E5%88%86%E4%BA%AB.svg" style="width: 20px; height: 20px;" />
+				<view>分享</view>
+				</button>
+			</view>
+				<view class="map-container" bind:tap="openMap">
+				<scen-map markers="{{markers}}" latitude="{{markers[0].latitude}}" longitude="{{markers[0].longitude}}" />
+				<view wx:if="{{!modal.type}}" bind:tap="onGotoMap" class="btn-see-map">
+				<iconfont style="margin-right: 4px;" name="map" color="rgba(0, 0, 0, 0.65)" />
+				查看地图
+				</view>
+				<view><map id="myPageMap" /></view>
+					<!-- placeholder
+					<map id="myMap"></map> -->
 				</view>
 			</view>
-	
-			<view style="margin-bottom: 16px; padding: 12px 0;" wx:for="{{place_details}}">
-				<spot
-					image="{{item.image}}"
-					name="{{item.name}}"
-					place_id="{{item.place_id}}"
-			location="{{item.location}}"
-			loc_long="{{item.loc_long}}"
-			loc_lat="{{item.loc_lat}}"
-					user_path_id="{{user_path_id}}"
-					product_ids="{{item.product_id ? [item.product_id] : []}}"
-					product_map="{{product_map}}"
-					checked="{{!!place_visited[item.place_id]}}"
-					c_visited="{{item.c_visited}}"
-					content_info="{{item.content_info}}"
-					plain_text="{{item.plain_text}}"
-					bind:onPrivilege="onPrivilege"
-					bind:onImageClick="onImageClick"
-			bind:spotChecked="onSpotChecked"
-					isUserPath="{{isUserPath}}"
-					showOrderBtn="{{item.showOrderBtn}}"
-					orderStatus="{{item.orderStatus}}"
+		
+			<view style="padding: 0 16px; margin-top: 20px;">
+				<view class="path-title">
+					<view class="path-tltle-main-text">🎯 行程打卡点</view>
+					<view class="comment-box">
+						<image
+							class="comment-icon"
+							src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/comment.png"
+						/>
+						<view bindtap="showComments">查看评论（{{commentsTotal}}）</view>
+					</view>
+				</view>
+		
+				<view style="margin-bottom: 16px; padding: 12px 0;" wx:for="{{place_details}}">
+					<spot
+						image="{{item.image}}"
+						name="{{item.name}}"
+						place_id="{{item.place_id}}"
+				location="{{item.location}}"
+				loc_long="{{item.loc_long}}"
+				loc_lat="{{item.loc_lat}}"
+						user_path_id="{{user_path_id}}"
+						product_ids="{{item.product_id ? [item.product_id] : []}}"
+						product_map="{{product_map}}"
+						checked="{{!!place_visited[item.place_id]}}"
+						c_visited="{{item.c_visited}}"
+						content_info="{{item.content_info}}"
+						plain_text="{{item.plain_text}}"
+						bind:onPrivilege="onPrivilege"
+						bind:onImageClick="onImageClick"
+				bind:spotChecked="onSpotChecked"
+						isUserPath="{{isUserPath}}"
+						showOrderBtn="{{item.showOrderBtn}}"
+						orderStatus="{{item.orderStatus}}"
+					/>
+				</view>
+			</view>
+		
+			<!-- <view style="padding: 0 16px; margin-top: 20px; margin-bottom: 32px;" wx:if="{{isUserPath}}">
+				<view style="margin-bottom: 16px;">专属回忆</view>
+				<view>
+				<card-item
+				products="{{products}}"
+				/>
+				</view>
+			</view> -->
+		
+			<view
+				wx:if="{{expire}}"
+				class="expire-btn-box"
+			>
+				<image
+					class="expire-btn"
+					src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/finish.png"
 				/>
 			</view>
-		</view>
-	
-		<!-- <view style="padding: 0 16px; margin-top: 20px; margin-bottom: 32px;" wx:if="{{isUserPath}}">
-			<view style="margin-bottom: 16px;">专属回忆</view>
-			<view>
-			<card-item
-			products="{{products}}"
-			/>
-			</view>
-		</view> -->
-	
-		<view
-			wx:if="{{expire}}"
-			class="expire-btn-box"
-		>
-			<image
-				class="expire-btn"
-				src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/finish.png"
-			/>
-		</view>
-	
-		<view
-			wx:elif="{{!isUserPath}}"
-			class="flex items-center justify-center footer {{btnClass}}"
-			style="padding-bottom: 30px;"
-		>
-			<chinese-button width="300" wx:if="{{!isUserAccount}}">
-				<button style="background: transparent; width: 100%" open-type="getPhoneNumber" bindgetphonenumber="onRegisterAndAddToPlan">
+		
+			<view
+				wx:elif="{{!isUserPath}}"
+				class="flex items-center justify-center footer {{btnClass}}"
+				style="padding-bottom: 30px;"
+			>
+				<chinese-button width="300" wx:if="{{!isUserAccount}}">
+					<button style="background: transparent; width: 100%" open-type="getPhoneNumber" bindgetphonenumber="onRegisterAndAddToPlan">
+						<view class="btn-add-to-plan">添加为我的计划</view>
+					</button>
+				</chinese-button>
+				<chinese-button wx:elif="{{isUserAccount && !hasUserPath}}" width="300" bind:tap="onAddToPlan">
 					<view class="btn-add-to-plan">添加为我的计划</view>
-				</button>
-			</chinese-button>
-			<chinese-button wx:elif="{{isUserAccount && !hasUserPath}}" width="300" bind:tap="onAddToPlan">
-				<view class="btn-add-to-plan">添加为我的计划</view>
-			</chinese-button>
-		<chinese-button width="300" bind:tap="goToMyPlan" wx:else>
-				<view class="btn-add-to-plan">查看我的计划</view>
-			</chinese-button>
+				</chinese-button>
+			<chinese-button width="300" bind:tap="goToMyPlan" wx:else>
+					<view class="btn-add-to-plan">查看我的计划</view>
+				</chinese-button>
+			</view>
+			<view wx:else style="padding-bottom: 40px;">
+				<view class="text-gray-color-1 text-16 text-center text-strong" bind:tap="onClick">删除本次计划</view>
+			</view>
+		
+			<privilege-modal
+			show="{{modal && modal.type === 'privilege'}}"
+				desc="{{modal.props.desc}}"
+				bind:close="onModalClose"
+			/>
+		
+			<place-modal
+				show="{{modal && modal.type === 'place-images'}}"
+				images="{{modal.props.images}}"
+				curIndex="{{modal.props.index}}"
+				bind:close="onModalClose"
+			/>
 		</view>
-		<view wx:else style="padding-bottom: 40px;">
-			<view class="text-gray-color-1 text-16 text-center text-strong" bind:tap="onClick">删除本次计划</view>
-		</view>
-	
-		<privilege-modal
-		show="{{modal && modal.type === 'privilege'}}"
-			desc="{{modal.props.desc}}"
-			bind:close="onModalClose"
-		/>
-	
-		<place-modal
-			show="{{modal && modal.type === 'place-images'}}"
-			images="{{modal.props.images}}"
-			curIndex="{{modal.props.index}}"
-			bind:close="onModalClose"
-		/>
-	</view>
 
-	
-  </view>
+		
+	</view>
+	</view>
 </view>

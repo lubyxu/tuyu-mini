@@ -1,7 +1,9 @@
 {
   "disableScroll": false,
   "navigationBarBackgroundColor": "#FBEDDB",
+  "navigationStyle": "custom",
   "usingComponents": {
+    "navigation-bar": "/components/navigation-bar/index",
     "header": "./header/index",
     "spot": "../../components/path-note-list/spot/index",
     "privilege-modal": "./privilege-modal/index",

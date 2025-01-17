@@ -133,4 +133,5 @@ page {
   justify-content: center;
   background: #f6f6f6;
   padding-bottom: 64rpx;
+  background-color: #FBEDDB;
 }

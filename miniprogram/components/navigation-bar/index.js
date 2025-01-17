@@ -21,6 +21,12 @@ Component({
             type: Boolean,
             observer: function(newVal, oldVal) {}
         },
+        useCustomReturn: {
+            type: Boolean,
+        },
+        background: {
+            type: String,
+        },
     },
     data: {
         navBarHeight: app.globalData.navBarHeight,
@@ -46,6 +52,10 @@ Component({
             })
         },
         navigateBack() {
+            if (this.properties.useCustomReturn) {
+                this.triggerEvent('customReturn');
+                return
+            }
             wx.navigateBack({})
         }
     }

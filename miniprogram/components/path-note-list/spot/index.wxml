@@ -7,7 +7,7 @@
       wx-if="{{showOrderBtn}}"
       bindtap="onOrder"
     >
-      {{orderStatus === 0 ? '可预约' : '查看预约码'}}
+      {{orderStatus === 0 ? '可预约' : '查看预约'}}
     </view>
 	</view>
 
