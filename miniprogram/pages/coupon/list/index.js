@@ -15,6 +15,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    if (options.tab == 3) {
+      this.setData({
+        activeTab: 3
+      })
+      this.getList(3);
+      return;
+    }
     this.getList(1)
   },
 

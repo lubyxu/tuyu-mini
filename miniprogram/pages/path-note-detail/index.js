@@ -2,7 +2,7 @@
 import { getPathDetail, deleteUserPath, addUserPath } from '../../service/path-note/path-detail';
 import loginBehavior from '../../behaviors/login/index';
 import { getUser } from "../../utils/auth";
-import { getCouponsByUserPath, getCoupon, getCouponsByPath } from '../../service/coupons/index';
+import { getCouponsByUserPath, getCoupon, getCouponsByPath, couponInfo } from '../../service/coupons/index';
 const app = getApp();
 
 Page({
@@ -28,7 +28,8 @@ Page({
     markers: [],
     expire: false,
     showSelfShare: false,
-    couponList: []
+    couponList: [],
+    info: null
   },
 
   /**
@@ -162,6 +163,10 @@ Page({
     this.setMarkers();
 
     this.getCouponList();
+
+    if (!this.info) {
+      this.getCouponInfo(path_id);
+    }
   },
   async getCouponList() {
     let data = [];
@@ -171,9 +176,25 @@ Page({
     else {
       data = await getCouponsByPath(this.options.path_id);
     }
-    console.log('couplist', data);
     this.setData({
       couponList: data
+    });
+  },
+  async getCouponInfo(path_id) {
+    const { data } = await couponInfo(path_id);
+    this.setData({
+      info: data
+    });
+  },
+  onCouponInfoClick() {
+    if (!this.data.info) return;
+    this.setData({
+      modal: {
+        type: 'coupon-info',
+        props: {
+          desc: this.data.info
+        }
+      }
     });
   },
   async onCouponAccept(e) {
@@ -287,16 +308,12 @@ Page({
       markers: ret
     });
   },
-  // onShare() {
-  //   wx.showShareMenu({
-  //     withShareTicket: true,
-  //     menus: ['shareAppMessage', 'shareTimeline'],
-  //     success(res) {
-  //       console.log('---rest', res);
-  //     },
-  //     fail(e) {
-  //       console.log('--e', e);
-  //     }
-  //   });
-  // }
+  onCouponClick(e) {
+    const { userCouponId } = e.detail;
+    if (this.data.isUserPath && !!userCouponId) {
+      wx.navigateTo({
+        url: '/pages/coupon/list/index?tab=3',
+      })
+    }
+  }
 })

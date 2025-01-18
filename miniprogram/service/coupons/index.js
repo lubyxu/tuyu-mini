@@ -48,3 +48,14 @@ export async function useCoupon(data) {
 		data
 	});
 }
+
+export async function couponInfo(path_id) {
+	const { data } = await request({
+		url: '/fuyu/config/info',
+		data: {
+      key: 'path_coupon',
+      from: '' + path_id
+    }
+  });
+  return { data: data.data };
+}

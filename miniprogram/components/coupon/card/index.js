@@ -21,6 +21,8 @@ Component({
     productId: String,
     userCouponId: String,
     extraData: Object,
+    content: Object,
+    status: Number,
   },
 
   /**

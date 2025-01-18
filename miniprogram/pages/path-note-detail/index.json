@@ -13,6 +13,7 @@
     "scen-map": "/components/map/index",
     "iconfont": "/iconfont/iconfont",
     "share-modal-self": "./share-modal-self/index",
-    "coupon-card": "/components/coupon/card/index"
+    "coupon-card": "/components/coupon/card/index",
+    "info-modal": "./info-modal/index"
   }
 }

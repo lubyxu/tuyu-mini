@@ -1,28 +1,31 @@
 <view class="root">
 
 	<view>
-    <view class="form-item" wx:if="{{shopping_code}}">
+    <view class="form-item" wx:if="{{!editable}}">
       <view class="form-label">订单号</view>
 			<view class="form-input-content">
-				<input class="form-input" disabled="{{!editable}}" value="{{shopping_code}}" placeholder="请填写姓名" bindchange="onNameChange" />
+			  {{shopping_code || '--'}}
 			</view>
     </view>
 		<view class="form-item">
 			<view class="form-label">姓名</view>
 			<view class="form-input-content">
-				<input disabled="{{!editable}}" value="{{name}}" class="form-input" placeholder="请填写姓名" bindchange="onNameChange" />
+				<input wx:if="{{editable}}" value="{{name}}" class="form-input" placeholder="请填写姓名" bindchange="onNameChange" />
+        <view wx:else>{{name}}</view>
 			</view>
 		</view>
 		<view class="form-item">
 			<view class="form-label">电话</view>
 			<view class="form-input-content">
-				<input class="form-input" disabled="{{!editable}}" value="{{phone}}" placeholder="请填写电话" type="digit" bindchange="onPhoneChange" />
+				<input class="form-input" wx:if="{{editable}}" value="{{phone}}" placeholder="请填写电话" type="digit" bindchange="onPhoneChange" />
+        <view wx:else>{{phone}}</view>
 			</view>
 		</view>
 		<view class="form-item">
 			<view class="form-label">地址</view>
 			<view class="form-input-content">
-				<input class="form-input" value="{{address}}" disabled="{{!editable}}" placeholder="请填写地址" bindchange="onAddressChange" />
+				<input class="form-input" value="{{address}}" wx:if="{{editable}}" placeholder="请填写地址" bindchange="onAddressChange" />
+        <view wx:else>{{address}}</view>
 			</view>
 		</view>
 	</view>

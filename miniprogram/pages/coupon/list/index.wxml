@@ -30,11 +30,13 @@
 				name="{{item.name}}"
 				subTitle="{{item.info}}"
         extraData="{{item.content}}"
-				canUse="{{item.status == 1}}"
-				useText="去使用"
+				canUse="{{item.status == 1 || (item.status == 3 && item.type == 3)}}"
+        status="{{item.status}}"
+				useText="{{item.status == 3 && item.type == 3 ? '去查看' : '去使用'}}"
 				isUsed="{{isUserPath && !!item.user_coupon_id}}"
 				bind:accept="onCouponAccept"
 				bind:click="onCouponClick"
+        content="{{item.content}}"
 			/>
 		</view>
 

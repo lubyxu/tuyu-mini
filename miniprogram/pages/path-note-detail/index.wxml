@@ -42,9 +42,9 @@
 				image="{{item.image}}"
 				name="{{item.name}}"
 				place_id="{{item.place_id}}"
-		location="{{item.location}}"
-		loc_long="{{item.loc_long}}"
-		loc_lat="{{item.loc_lat}}"
+        location="{{item.location}}"
+        loc_long="{{item.loc_long}}"
+        loc_lat="{{item.loc_lat}}"
 				user_path_id="{{user_path_id}}"
 				product_ids="{{item.product_id ? [item.product_id] : []}}"
 				product_map="{{product_map}}"
@@ -61,9 +61,9 @@
 	</view>
 
 	<view style="padding: 0 16px; margin-top: 20px; margin-bottom: 32px; overflow-x: hidden;" wx:if="{{couponList.length}}">
-		<view style="margin-bottom: 16px;" class="flex items-center gap-8">
+		<view style="margin-bottom: 16px;" class="flex items-center gap-8" bind:tap="onCouponInfoClick">
 		  打卡完成奖励
-			<image src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/47/1736768629005/1736768629005.jpg" style="width: 24px; height: 24px;" />
+			<image wx:if="{{info}}" src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/47/1736768629005/1736768629005.jpg" style="width: 24px; height: 24px;" />
 		</view>
 		<view>
 		  <view wx:for="{{couponList}}" class="mb-16">
@@ -75,7 +75,9 @@
 					subTitle="{{item.info}}"
 					canUse="{{isUserPath && item.should_send}}"
 					isUsed="{{isUserPath && !!item.user_coupon_id}}"
+          userCouponId="{{item.user_coupon_id}}"
 					bind:accept="onCouponAccept"
+          bind:click="onCouponClick"
 				/>
 			</view>
 		</view>
@@ -113,7 +115,7 @@
 	</view>
 
 	<privilege-modal
-	show="{{modal && modal.type === 'privilege'}}"
+    show="{{modal && modal.type === 'privilege'}}"
 		desc="{{modal.props.desc}}"
 		bind:close="onModalClose"
 	/>
@@ -122,6 +124,12 @@
 		show="{{modal && modal.type === 'place-images'}}"
 		images="{{modal.props.images}}"
 		curIndex="{{modal.props.index}}"
+		bind:close="onModalClose"
+	/>
+
+  <info-modal
+		show="{{modal && modal.type === 'coupon-info'}}"
+		desc="{{modal.props.desc}}"
 		bind:close="onModalClose"
 	/>
   </view>
