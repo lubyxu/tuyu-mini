@@ -2,7 +2,8 @@
   "setting": {
     "compileHotReLoad": true,
     "urlCheck": false,
-    "bigPackageSizeSupport": true
+    "bigPackageSizeSupport": true,
+    "skylineRenderEnable": true
   },
   "condition": {
     "miniprogram": {

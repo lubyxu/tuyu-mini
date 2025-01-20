@@ -89,3 +89,8 @@
   width: 200px;
   height: 200px;
 }
+
+.signet-swiper-container {
+  /* height: 100%; */
+  min-height: 380px;
+}

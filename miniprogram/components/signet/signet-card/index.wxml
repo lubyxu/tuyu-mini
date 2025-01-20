@@ -1,3 +1,3 @@
 <view class="signet-card flex items-center justify-center {{isBook ? 'signet-book' : ''}} {{bordered ? 'signet-bordered' : ''}}">
-  <image src="{{img || fallbackImg}}" mode="widthFix" />
+  <image src="{{img || fallbackImg}}" mode="aspectFit"/>
 </view>

@@ -32,7 +32,7 @@
 	</view>
 </view>
 
-<view class="page-footer">
+<view class="page-footer" wx:if="{{curIndex >= 0}}">
   <view style="width: 100%" bind:tap="onCancel">
 		<chinese-btn unit="%" width="100" type="default">取消</chinese-btn>
 	</view>
