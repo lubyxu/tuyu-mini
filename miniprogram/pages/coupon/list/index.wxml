@@ -1,0 +1,52 @@
+<view>
+  <section-title title="获得的奖品" />
+
+	<view class="coupon-tabs flex items-center">
+	  <view
+		  data-index="1"
+		  class="coupon-tabs-item {{activeTab == 1 ? 'active' : ''}}"
+			bind:tap="onTabClick"
+		>
+		  待使用
+		</view>
+		<view
+		  data-index="3"
+		  class="coupon-tabs-item {{activeTab == 3 ? 'active' : ''}}"
+			bind:tap="onTabClick"
+		>
+		  已使用
+		</view>
+	</view>
+
+	<view style="padding: 16px;">
+	  <view wx:for="{{list}}" class="mb-16">
+		  <coupon-card
+				couponId="{{item.id}}"
+				userCouponId="{{item.coupon_id}}"
+				productId="{{item.content.product_id}}"
+				source="{{item.source}}"
+				image="{{item.show_img}}"
+				type="{{item.type}}"
+				name="{{item.name}}"
+				subTitle="{{item.info}}"
+        extraData="{{item.content}}"
+				canUse="{{item.status == 1 || (item.status == 3 && item.type == 3)}}"
+        status="{{item.status}}"
+				showIcon="{{!(item.status == 3 && item.type == 3)}}"
+				useText="{{item.status == 3 && item.type == 3 ? '去查看' : '去使用'}}"
+				isUsed="{{isUserPath && !!item.user_coupon_id}}"
+				bind:accept="onCouponAccept"
+				bind:click="onCouponClick"
+        content="{{item.content}}"
+			/>
+		</view>
+
+		<view wx:if="{{!list.length}}" class="w-full flex flex-col items-center justify-center">
+		  <image
+			  src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2F7Kayw0D5pI5rCt4QaR2aP%2Fimage.svg"
+				style="width: 135px; height: 135px; margin-top: 100px;"
+			/>
+			<view class="text-14 text-gray-color-1">暂无数据</view>
+		</view>
+	</view>
+</view>

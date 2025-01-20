@@ -1,5 +1,6 @@
 import { getSignetBooks, getBookInfo, addToPage, movePage } from '../../service/signet/index';
 import loginBehavior from '../../behaviors/login/index';
+import { useCoupon } from '../../service/coupons/index';
 
 Page({
   behaviors: [loginBehavior],
@@ -138,7 +139,13 @@ Page({
   },
 
   async onConfirm() {
-    if (this.data.curIndex < 0) return;
+    if (this.data.curIndex < 0) {
+      wx.showToast({
+        icon: 'none',
+        title: '请选择一个添加印章的页面',
+      });
+      return;
+    }
 
     // 移动的逻辑
     if (!this.options.stamp_pid) {
@@ -148,6 +155,7 @@ Page({
         to_book_id: this.data.curBook.book_id,
         to_page_num: this.data.curIndex + 1
       });
+      
       const ev = this.getOpenerEventChannel();
       ev.emit('refresh');
       wx.navigateBack();
@@ -166,7 +174,8 @@ Page({
         name: cardInfo.name,
         image_url: cardInfo.image_url,
         stamp_pid: +cardInfo.stamp_pid,
-        source: key
+        source: key,
+        couponId: this.options.couponId
       });
 
       wx.reLaunch({

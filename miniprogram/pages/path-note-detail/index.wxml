@@ -1,5 +1,4 @@
-<!--pages/path-note-detail/index.wxml-->
-<view style="margin-top: 164rpx; background-color: #FBEDDB;">
+<view style="margin-top: 164rpx; background-color:{{commentsVisible ? '#FBEDDB' : 'inherit'}} ;">
 	<navigation-bar background="#FBEDDB" sampleReturn="{{true}}" bind:customReturn="customReturn" useCustomReturn="{{true}}"></navigation-bar>
 	<view style="padding-bottom: {{btnClass === 'fixed' ? '100px' : ''}}">
 	<share-modal-self
@@ -79,15 +78,29 @@
 					/>
 				</view>
 			</view>
-		
-			<!-- <view style="padding: 0 16px; margin-top: 20px; margin-bottom: 32px;" wx:if="{{isUserPath}}">
-				<view style="margin-bottom: 16px;">专属回忆</view>
-				<view>
-				<card-item
-				products="{{products}}"
-				/>
+
+			<view style="padding: 0 16px; margin-top: 20px; margin-bottom: 32px; overflow-x: hidden;" wx:if="{{couponList.length}}">
+				<view style="margin-bottom: 16px;" class="flex items-center gap-8" bind:tap="onCouponInfoClick">
+					打卡完成奖励
+					<image wx:if="{{info}}" src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/47/1736768629005/1736768629005.jpg" style="width: 24px; height: 24px;" />
 				</view>
-			</view> -->
+				<view>
+					<view wx:for="{{couponList}}" class="mb-16">
+						<coupon-card
+							couponId="{{item.id}}"
+							source="{{item.source}}"
+							image="{{item.show_img}}"
+							name="{{item.name}}"
+							subTitle="{{item.info}}"
+							canUse="{{isUserPath && item.should_send}}"
+							isUsed="{{isUserPath && !!item.user_coupon_id}}"
+							userCouponId="{{item.user_coupon_id}}"
+							bind:accept="onCouponAccept"
+							bind:click="onCouponClick"
+						/>
+					</view>
+				</view>
+			</view>
 		
 			<view
 				wx:if="{{expire}}"
@@ -130,6 +143,11 @@
 				show="{{modal && modal.type === 'place-images'}}"
 				images="{{modal.props.images}}"
 				curIndex="{{modal.props.index}}"
+				bind:close="onModalClose"
+			/>
+			<info-modal
+				show="{{modal && modal.type === 'coupon-info'}}"
+				desc="{{modal.props.desc}}"
 				bind:close="onModalClose"
 			/>
 		</view>

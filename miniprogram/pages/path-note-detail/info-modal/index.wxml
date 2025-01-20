@@ -6,7 +6,7 @@
   closabled="{{false}}"
 >
   <view class="title-container" slot="title">
-    <view class="title">权益中心</view>
+    <view class="title">打卡完成奖励</view>
     <view
       class="close"
       bind:tap="onClose"
@@ -23,7 +23,7 @@
 	  <image style="width: 200px; height: 20px;" src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FfUlYgtPIS2mGKgEQKXS-F%2Fprivileag.svg" />
 
 		<view class="content">
-		  {{desc}}
+		  <view wx:for="{{lines}}">{{item}}</view>
 		</view>
 	</view>
 </half-screen-dialog>

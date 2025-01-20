@@ -1,0 +1,7 @@
+{
+  "navigationBarBackgroundColor": "#F0EBDD",
+  "navigationBarTitleText": "订单填写",
+  "usingComponents": {
+    "chinese-button": "/components/button/chinese-btn"
+  }
+}

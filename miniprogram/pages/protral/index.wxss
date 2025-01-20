@@ -5,11 +5,12 @@
 .user-info-box {
   box-sizing: border-box;
   width: 100vw;
-  height: 676rpx;
+  /* height: 676rpx; */
   background: url('https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/protral-bg.png');
   background-repeat: no-repeat;
   background-size: cover;
   padding: 0 32rpx;
+  padding-bottom: 90rpx;
 }
 
 .count-box {
@@ -253,4 +254,19 @@
 
   color: rgba(0, 0, 34, 0.91);
   margin: 0 4rpx;
+}
+
+.coupon-box.count-box {
+  gap: 8px;
+  padding: 0 16px;
+  color: #D89236;
+  font-size: 17px;
+}
+
+.coupon-btn {
+  background: linear-gradient(87.44deg, #ECCD82 -26.98%, #D89236 117.08%);
+  color: #fff;
+  border-radius: 90px;
+  padding: 2px 9px;
+  font-size: 12px;
 }

@@ -1,0 +1,9 @@
+{
+  "backgroundColor": "#fbeddb",
+  "navigationBarBackgroundColor": "#fbeddb",
+  "disableScroll": false,
+  "usingComponents": {
+    "section-title": "/components/section-title/index",
+    "coupon-card": "/components/coupon/card/index"
+  }
+}
