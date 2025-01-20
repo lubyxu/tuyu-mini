@@ -1,0 +1,7 @@
+{
+  "navigationBarBackgroundColor": "#F0EBDD",
+  "navigationBarTitleText": "选择印章本",
+  "usingComponents": {
+    "chinese-button": "/components/button/chinese-btn"
+  }
+}

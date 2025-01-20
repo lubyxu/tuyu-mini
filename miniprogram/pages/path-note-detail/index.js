@@ -3,6 +3,7 @@ import { getPathDetail, deleteUserPath, addUserPath, getComments } from '../../s
 import loginBehavior from '../../behaviors/login/index';
 import { getUser } from "../../utils/auth";
 import { formatUnixTime } from "../../utils/index";
+import { getCouponsByUserPath, getCoupon, getCouponsByPath, couponInfo } from '../../service/coupons/index';
 const app = getApp();
 
 Page({
@@ -31,6 +32,8 @@ Page({
     commentsVisible: false,
     commentsTotal: 0,
     comments: [],
+    couponList: [],
+    info: null
   },
 
   /**
@@ -238,6 +241,57 @@ Page({
     });
 
     this.setMarkers();
+
+    this.getCouponList();
+
+    if (!this.info) {
+      this.getCouponInfo(path_id);
+    }
+  },
+  async getCouponList() {
+    let data = [];
+    if (!!this.options.user_path_id) {
+      data = await getCouponsByUserPath(+this.options.user_path_id);
+    }
+    else {
+      data = await getCouponsByPath(this.options.path_id);
+    }
+    this.setData({
+      couponList: data
+    });
+  },
+  async getCouponInfo(path_id) {
+    const { data } = await couponInfo(path_id);
+    this.setData({
+      info: data
+    });
+  },
+  onCouponInfoClick() {
+    if (!this.data.info) return;
+    this.setData({
+      modal: {
+        type: 'coupon-info',
+        props: {
+          desc: this.data.info
+        }
+      }
+    });
+  },
+  async onCouponAccept(e) {
+    try {
+      await getCoupon(+e.detail.id);
+      wx.showToast({
+        icon: 'none',
+        title: '领取成功',
+      });
+      this.getCouponList();
+    }
+    catch (e) {
+      wx.showToast({
+        icon: 'none',
+        title: '领取失败',
+      })
+    }
   },
   onPrivilege(e) {
     const info = e.detail;
@@ -363,4 +417,12 @@ Page({
       url: `/pages/ranking/index?path_id=${this.data.path_id}&reply_to=${reply_to}`,
     });
   },
+  onCouponClick(e) {
+    const { userCouponId } = e.detail;
+    if (this.data.isUserPath && !!userCouponId) {
+      wx.navigateTo({
+        url: '/pages/coupon/list/index?tab=3',
+      })
+    }
+  }
 })

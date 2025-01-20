@@ -1,0 +1,57 @@
+.coupon-card {
+	border-radius: 12px;
+	border: 2px solid #E6C8A0;
+	background-color: #FFF3E7;
+	position: relative;
+	color: #844F2B;
+	padding-left: 30px;
+	padding-right: 12px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	gap: 8px;
+}
+
+.icon-pin {
+	position: absolute;
+	top: -4px;
+	left: 12px;	
+}
+
+.coupon-card.light {
+	background-color: #fff;
+}
+
+.coupon-card .title {
+	font-size: 14px;
+	font-weight: 500;
+}
+.coupon-card .sub-title {
+	font-size: 12px;
+	font-weight: 400;
+}
+
+.btn-go-to-use {
+	background: url(https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/47/1736772770100/1736772770100.jpg);	
+	width: 100px;
+	height: 41px;
+	position: absolute;
+	right: 12px;
+	bottom: 14px;
+	font-size: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pin-image {
+	position: absolute;
+	left: -10px;
+	top: 2px;
+}
+
+.tag-is-done {
+	position: absolute;
+	top: -12px;
+	right: -12px;
+	transform: rotate(-20deg);
+}

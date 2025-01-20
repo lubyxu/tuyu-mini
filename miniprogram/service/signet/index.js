@@ -1,4 +1,5 @@
 import { request } from '../../utils/req';
+import { useCoupon } from '../coupons/index';
 import { getProductList } from '../product/index';
 
 export async function getBookInfo(bookId) {
@@ -12,7 +13,21 @@ export async function getBookInfo(bookId) {
   return data;
 }
 
-export async function addToPage({ from, batch_key, ...params } = {}) {
+export async function addToPage({ from, batch_key, couponId, ...params } = {}) {
+  if (couponId) {
+    await useCoupon({
+      user_coupon_id: +couponId,
+      use_coupon_req: {
+        stamp_info: {
+          ...params,
+          source: params.source || 'webpage'
+        },
+        book_id: +params.book_id,
+        user_stamp_id: +params.stamp_pid,
+      }
+    });
+    return;
+  }
   const { data } = await request({
     url: '/fuyu/stamp/addpage',
     data: {

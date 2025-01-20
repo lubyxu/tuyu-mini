@@ -1,0 +1,31 @@
+page {
+	background-color: #fbeddb;	
+}
+
+.coupon-tabs {
+	margin-top: 12px;
+	font-size: 15px;
+	padding: 8px 16px;
+	gap: 32px;
+}
+
+.coupon-tabs-item {
+	color: #00002280;
+}
+
+.coupon-tabs-item.active {
+	color: #000022E8;
+	position: relative;
+}
+
+.coupon-tabs-item.active:after {
+	content: " ";
+	position: absolute;
+	left: 50%;
+	margin-left: -10px;
+	height: 2px;
+	width: 20px;
+	background-color: #CE3219;
+	border-radius: 2px 2px 0 0;
+	bottom: -10px;
+}
