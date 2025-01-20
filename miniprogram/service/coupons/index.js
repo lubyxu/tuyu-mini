@@ -4,7 +4,7 @@ export async function getCouponList({status, count_only}) {
   const { data } = await request({
 		url: '/fuyu/user/coupons',
 		data: {
-			status,
+			status: +status,
 			count_only: count_only || false
 		}
   });
