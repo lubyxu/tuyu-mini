@@ -223,8 +223,8 @@ Page({
       place_details: path_detail_info.place_details.map((item) => ({
         ...item,
         visited: place_visited?.[item.place_id],
-        showOrderBtn: place_reservation[item.place_id].is_required,
-        orderStatus: place_reservation[item.place_id].user_reserv_id === 0 ? 0 : 1 // user_reserv_id=0未预约， user_reserv_id>0已预约
+        showOrderBtn: place_reservation?.[item.place_id]?.is_required,
+        orderStatus: place_reservation?.[item.place_id]?.user_reserv_id === 0 ? 0 : 1 // user_reserv_id=0未预约， user_reserv_id>0已预约
       })),
       product_map: path_detail_info.product_map,
       products: path_detail_info.path_info.product_ids.map(id => {

@@ -1,5 +1,5 @@
 <!--pages/path-note-detail/index.wxml-->
-<view style="margin-top: 164rpx; background-color: #FBEDDB;">
+<view class="page" style="margin-top: 164rpx; background-color: #FBEDDB;">
 	<navigation-bar background="#FBEDDB" sampleReturn="{{true}}" bind:customReturn="customReturn" useCustomReturn="{{true}}"></navigation-bar>
 	<view style="padding-bottom: {{btnClass === 'fixed' ? '100px' : ''}}">
 	<share-modal-self

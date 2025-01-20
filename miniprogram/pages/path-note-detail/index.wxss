@@ -1,5 +1,7 @@
 /* pages/path-note-detail/index.wxss */
-page {
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .map-container {
