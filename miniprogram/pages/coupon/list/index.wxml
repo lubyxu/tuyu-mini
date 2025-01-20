@@ -32,6 +32,7 @@
         extraData="{{item.content}}"
 				canUse="{{item.status == 1 || (item.status == 3 && item.type == 3)}}"
         status="{{item.status}}"
+				showIcon="{{!(item.status == 3 && item.type == 3)}}"
 				useText="{{item.status == 3 && item.type == 3 ? '去查看' : '去使用'}}"
 				isUsed="{{isUserPath && !!item.user_coupon_id}}"
 				bind:accept="onCouponAccept"

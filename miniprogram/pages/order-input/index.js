@@ -18,6 +18,7 @@ Page({
 
     const evt =  this.getOpenerEventChannel();
     evt.on('initValue', info => {
+      console.log('---info', info);
       const val = info.extraData.shipping_info;
       if (val.name) {
         this.setData({
@@ -92,6 +93,11 @@ Page({
   onAddressChange(e) {
     this.setData({
       address: e.detail.value
+    });
+  },
+  onCodeChange(e) {
+    this.setData({
+      shopping_code: e.detail.value
     });
   },
   async onConfirm() {

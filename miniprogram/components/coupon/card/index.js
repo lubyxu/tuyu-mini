@@ -23,6 +23,10 @@ Component({
     extraData: Object,
     content: Object,
     status: Number,
+    showIcon: {
+      type: Boolean,
+      value: true
+    }
   },
 
   /**
@@ -45,6 +49,7 @@ Component({
           type: this.data.type,
           productId: this.data.productId,
           userCouponId: this.data.userCouponId,
+          ...this.data
         }
       );
     },

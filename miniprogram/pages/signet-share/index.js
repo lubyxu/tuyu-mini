@@ -55,6 +55,8 @@ Page({
     });
   },
   onAccept(e) {
+    if (!this.data.isUserAccount) return;
+
     wx.navigateTo({
       url: `/pages/signet-add-page/index?stamp_pid=${this.stamp_pid}&key=copy_${this.stamp_pid}`,
       events: {
@@ -63,5 +65,11 @@ Page({
         }
       }
     });
+  },
+  async onRegisterAndAccept(e) {
+    await this.onRegister(e);
+    setTimeout(() => {
+      this.onAccept();
+    }, 10);
   }
 })

@@ -8,6 +8,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "分享落地页",
+          "pathName": "pages/signet-share/index",
+          "query": "user_stamp_id=128",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "奖励列表页",
           "pathName": "pages/order-input/index",
           "query": "",

@@ -8,13 +8,10 @@
 	<view>
 	  <view class="title">{{name}}</view>
 		<view class="sub-title">{{subTitle}}</view>
-    <view wx:if="{{type == '3' && status == 3}}" style="font-size: 12px;">
-      运单号： {{content.shipping_info.shipping_code || '--'}}
-    </view>
 	</view>
 
 	<view wx:if="{{canUse}}" class="btn-go-to-use" catch:tap="onAccept">
-	  <image class="pin-image" src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/47/1736772897785/1736772897785.jpg" style="width: 31px; height: 33px;" />
+	  <image class="pin-image" wx:if="{{showIcon}}" src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/47/1736772897785/1736772897785.jpg" style="width: 31px; height: 33px;" />
 		{{useText || '去领取'}}
 	</view>
 

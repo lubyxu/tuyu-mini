@@ -48,7 +48,12 @@
     <chinese-btn style="width: 100%;" bind:click="onGoto" type="default"  width="100" unit="%">去获取</chinese-btn>
   </view>
   <view class="flex items-center justify-center" style="flex: 1" wx:if="{{copy_config.open_copy && !copy_config.already_has}}">
-    <chinese-btn style="width: 100%;" bind:click="onAccept" width="100" unit="%">拓印</chinese-btn>
+    <chinese-btn style="width: 100%;" bind:click="onAccept" width="100" unit="%">
+      <button wx:if="{{!isUserAccount}}" style="background: transparent; width: 100%; color: inherit" open-type="getPhoneNumber" bindgetphonenumber="onRegisterAndAccept">
+        拓印
+        </button>
+        <text wx:else>拓印</text>
+    </chinese-btn>
   </view>
 </view>
 
