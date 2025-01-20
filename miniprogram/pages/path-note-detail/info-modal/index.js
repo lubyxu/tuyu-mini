@@ -20,7 +20,7 @@ Component({
 
   observers: {
     desc(val) {
-      const lines = val.split(/\n/g);
+      const lines = val.split(/\\n/g);
       this.setData({
         lines
       })

@@ -23,6 +23,7 @@ export function request({ url, data, method, Authorization }) {
 				resolve(ret);
 			},
 			fail: function (e) {
+				console.log('=eeee', e);
 				reject(e)
 			}
 		});
