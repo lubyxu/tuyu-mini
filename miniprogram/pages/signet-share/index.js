@@ -59,7 +59,7 @@ Page({
     if (!this.data.isUserAccount) return;
 
     wx.navigateTo({
-      url: `/pages/signet-add-page/index?stamp_pid=${this.stamp_pid}&key=copy_${this.stamp_pid}`,
+      url: `/pages/signet-add-page/index?stamp_pid=${this.stamp_pid}&key=copy`,
       events: {
         refresh: () => {
           this.initValue();
