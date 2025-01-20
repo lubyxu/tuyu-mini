@@ -29,6 +29,7 @@ Page({
    */
   async onLoad(options) {
     this.options = options;
+    console.log('--options', options)
     wx.getLocation({
       success: (res) => {
         this.currentLocation = {
@@ -40,8 +41,6 @@ Page({
     this.setData({
       from_book_id: this.options.book_id || 0
     });
-    if (!this.data.isLogined) return;
-    this.initValue();
   },
 
   onLogined() {
@@ -257,8 +256,9 @@ Page({
     }
     // nfc 入口
     if (stamp_pid && !book_id) {
+      const couponId = this.options.couponId;
       wx.navigateTo({
-        url: '/pages/signet-move/index?stamp_pid=' + stamp_pid + '&key=' + this.options.key,
+        url: '/pages/signet-move/index?stamp_pid=' + stamp_pid + '&key=' + this.options.key + (couponId ? `&couponId=${couponId}` : ''),
         success: (res) => {
           res.eventChannel.emit(
             'stampInfo',
@@ -275,7 +275,6 @@ Page({
       return;
     }
 
-    console.log('this.data.isStampOrigin', this.data.isStampOrigin);
     await addToPage({
       stamp_pid: +stamp_pid,
       book_id: +book_id,
@@ -302,5 +301,5 @@ Page({
     this.setData({
       isStampOrigin
     });
-  }
+  },
 })

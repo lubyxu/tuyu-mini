@@ -15,6 +15,12 @@ export default Behavior({
         isUserAccount: !!globalData.user?.token,
       }
     );
+    if (globalData.user?.token) {
+      setTimeout(() => {
+        this.onLogined?.();
+      }, 0);
+      return;
+    }
 
     getApp().globalData.event.on('login', (params) => {
       this.setData({

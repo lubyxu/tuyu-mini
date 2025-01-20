@@ -43,9 +43,17 @@
   </view>
 </view>
 
-<view class="signet-add-footer" wx:if="{{!!rel_path_id}}" bind:tap="onGoto">
-  <view class="flex items-center justify-center w-full">
-    <chinese-btn bind:click="onAccept" width="320">立即获取</chinese-btn>
+<view class="signet-add-footer">
+  <view class="flex items-center justify-center flex-1" style="flex: 1" wx:if="{{!!rel_path_id}}">
+    <chinese-btn style="width: 100%;" bind:click="onGoto" type="default"  width="100" unit="%">去获取</chinese-btn>
+  </view>
+  <view class="flex items-center justify-center" style="flex: 1" wx:if="{{copy_config.open_copy && !copy_config.already_has}}">
+    <chinese-btn style="width: 100%;" bind:click="onAccept" width="100" unit="%">
+      <button wx:if="{{!isUserAccount}}" style="background: transparent; width: 100%; color: inherit" open-type="getPhoneNumber" bindgetphonenumber="onRegisterAndAccept">
+        拓印
+        </button>
+        <text wx:else>拓印</text>
+    </chinese-btn>
   </view>
 </view>
 

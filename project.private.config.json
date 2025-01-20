@@ -30,6 +30,13 @@
           "scene": 1047
         },
         {
+          "name": "pages/order/index",
+          "pathName": "pages/order/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/signet-add-page/index",
           "pathName": "pages/signet-add-page/index",
           "query": "image=https%3A%2F%2Ffuyuoss.oss-cn-shanghai.aliyuncs.com%2Fuser-photos%2F4%2F4%2F35%2F1734790670139%2F1734790670139.jpg&pageNum=3&book_id=35",

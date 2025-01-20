@@ -1,0 +1,42 @@
+page {
+	background: #F0EBDD;
+}
+
+.root {
+	padding: 60px 32px;
+}
+
+.form-item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 16px;
+	font-size: 16px;
+}
+.form-label {
+	width: 60px;
+}
+
+.form-input-content {
+	flex: 1;
+}
+
+.form-input {
+	border: 1px solid rgba(229, 201, 145, 1);
+	border-radius: 12px;
+	height: 44px;
+	padding-left: 12px;
+}
+
+.page-footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+  right: 0;
+  z-index: 11;
+	background-color: #F0EBDD;
+
+	display: flex;
+	gap: 16px;
+
+	padding: 10px 16px 42px;
+}

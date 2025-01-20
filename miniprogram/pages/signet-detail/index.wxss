@@ -35,3 +35,12 @@ page {
   flex: 1;
   min-width: auto;
 }
+
+.tag-tayin {
+  padding: 4px 8px;
+  background-color: #FFFEE9;
+  border: 0.5px solid #A6A294;
+  border-radius: 50px;
+  margin-bottom: 12px;
+  margin-top: -20px;
+}

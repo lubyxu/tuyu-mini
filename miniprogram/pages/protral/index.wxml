@@ -17,6 +17,16 @@
             <view class="count-item-title">{{item.title}}</view>
         </view>
       </view>
+
+      <view class="count-box coupon-box" style="height: 48px;" bind:tap="onGoToCoupon">
+        <view class="flex items-center gap-8">
+          <image src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/47/1736768948454/1736768948454.jpg" style="width: 20px; height: 20px;" />
+          <text>获得的奖品</text>
+        </view>
+        <view class="coupon-btn" wx:if="{{couponCount}}">
+          待使用 {{couponCount}}
+        </view>
+      </view>
     </view>
 
     <view class="content-top-section">
