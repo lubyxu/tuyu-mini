@@ -39,11 +39,7 @@
           </view>
   
           <view class="order-title">时间</view>
-<<<<<<< HEAD
           <view class="time-container">
-=======
-          <view class="date-container">
->>>>>>> origin/feature_v4_release
             <view
               wx:for="{{time}}"
               class="time-item {{item.disable?'date-item-disable':''}} {{selectTimeIdx === index?'date-item-active':''}}"

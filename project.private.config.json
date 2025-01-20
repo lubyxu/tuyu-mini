@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "分享落地页",
+          "pathName": "pages/path-note-detail/index",
+          "query": "path_id=2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/order/index",
           "pathName": "pages/order/index",
           "query": "",
