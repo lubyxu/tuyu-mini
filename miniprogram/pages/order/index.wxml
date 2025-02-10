@@ -9,12 +9,15 @@
           class="title-icon"
           src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/fire.png"
         />
-        <view class="title-text">店铺接待能力有限建议预约前往，每天50人次（已预约23人）</view>
+        <view class="title-text">{{hint}}</view>
       </view>
       <view class="subtitle">国子监街</view>
     </view>
 
-    <view class="order-content">
+    <view wx-if="{{notAvailable}}" class="order-tips" style="padding: 0 24rpx;">
+      暂无可预约日期
+    </view>
+    <view class="order-content" wx:else>
       <view wx-if="{{!orderFinish}}">
         <view class="order-tips">选择日期时间段（接受未来7天的预约）</view>
         <view>
@@ -74,7 +77,7 @@
         </view>
       </view>
     </view>
-    <view class="btn-box">
+    <view class="btn-box" wx-if="{{!notAvailable}}">
       <chinese-button wx-if="{{!orderFinish}}" width="320" bindtap="onOrder">确认预约</chinese-button>
       <image
         wx:else

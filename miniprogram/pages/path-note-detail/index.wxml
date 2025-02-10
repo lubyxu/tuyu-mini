@@ -76,6 +76,8 @@
 						isUserPath="{{isUserPath}}"
 						showOrderBtn="{{item.showOrderBtn}}"
 						orderStatus="{{item.orderStatus}}"
+						hint="{{item.hint}}"
+
 					/>
 				</view>
 			</view>

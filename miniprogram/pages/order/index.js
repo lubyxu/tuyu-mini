@@ -12,10 +12,12 @@ Page({
     orderFinish: false,
     orderNo: '',
     orderTime: '',
-    user_reserv_id: -1
+    user_reserv_id: -1,
+    notAvailable: false,
+    hint: ''
   },
   async onLoad(options) {
-    console.log('options', )
+    console.log('options', options)
     this.firstRender = true
     if (!app.globalData?.user?.token) {
       await getUser()
@@ -30,7 +32,7 @@ Page({
       await this.getReservationDetail()
     }
 
-    this.setData({ showLoading: false })
+    this.setData({ showLoading: false, hint: options.hint  })
   },
 
   async getInitData(){
@@ -42,6 +44,14 @@ Page({
         place_id: this.place_id
       }
     });
+
+    if (Object.keys(data).length === 0) {
+      this.setData({
+        date: [],
+        notAvailable: true,
+      })
+      return
+    }
 
     const _data = Object.keys(data)
       .sort()

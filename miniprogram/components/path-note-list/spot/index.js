@@ -56,6 +56,7 @@ Component({
     loc_long: Number,
     showOrderBtn: Boolean,
     orderStatus: Number, // 0 未预约
+    hint: String,
   },
 
   /**
@@ -149,7 +150,7 @@ Component({
 
     onOrder() {
       wx.navigateTo({
-        url: `/pages/order/index?place_id=${this.properties.place_id}&user_path_id=${this.properties.user_path_id}&orderStatus=${this.properties.orderStatus}`,
+        url: `/pages/order/index?place_id=${this.properties.place_id}&user_path_id=${this.properties.user_path_id}&orderStatus=${this.properties.orderStatus}&hint=${this.properties.hint}`,
       })
     }
   }
