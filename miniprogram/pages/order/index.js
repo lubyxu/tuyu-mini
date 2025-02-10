@@ -117,8 +117,8 @@ Page({
         place_id: this.place_id
       }
     });
-    const { code, start_hour, end_hour, date, user_reserv_id } = data
-    const timePrefix = start_hour.split(':')[0] / 1 > 12 ? '下午' : '上午'
+    const { code, start_hour, end_hour, date, user_reserv_id, session } = data
+    const timePrefix = session === 1 ? '上午' : '下午'
     this.setData({
       orderFinish: true,
       orderNo: code,
@@ -162,8 +162,8 @@ Page({
           path_resv_id: time.path_reserv_id
         }
       });
-      const { code, date, user_reserv_id, start_hour, end_hour } = data
-      const timePrefix = start_hour.split(':')[0] / 1 > 12 ? '下午' : '上午'
+      const { code, date, user_reserv_id, start_hour, end_hour, session } = data
+      const timePrefix = session === 1 ? '上午' : '下午'
       this.setData({
         orderFinish: true,
         orderNo: code,

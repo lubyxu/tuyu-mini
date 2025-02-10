@@ -65,7 +65,7 @@ Page({
         url: '/fuyu/path/addcomment',
         data: {
           path_id,
-          rating,
+          start: rating,
           content,
           reply_to
         },

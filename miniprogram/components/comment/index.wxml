@@ -9,7 +9,7 @@
 				<view class="rating-text">行程满意度</view>
 				<image
 					class="star"
-					wx:for="{{item.source}}"
+					wx:for="{{item.star}}"
 					wx:key="index"
 					src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/star.png"
 					mode="scaleToFill"
