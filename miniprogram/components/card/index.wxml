@@ -1,0 +1,15 @@
+<view class="card-container">
+	<view class="card-title-box">
+		<view class="card-title-text">
+			{{title}}
+		</view>
+		<view class="card-subtitle-text" bindtap="triggerParentFunction">
+			{{subtitle}}
+		</view>
+		<image
+			class="card-arrow"
+			src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/arrow.png"
+		/>
+	</view>
+	<slot></slot>
+</view>

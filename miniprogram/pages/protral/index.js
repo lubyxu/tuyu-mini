@@ -17,7 +17,8 @@ Page({
       await Promise.all([
         this.getCouponData(),
         this.getUserData(),
-        this.getUserProductData(BOOK_TYPE)
+        this.getUserProductData(BOOK_TYPE),
+        this.getUserProductData(CARD_TYPE)
       ])
       this.setData({ showLoading: false })
     } catch (error) {
@@ -28,6 +29,14 @@ Page({
         title: '获取失败，请重试',
       })
       console.log(error)
+    }
+  },
+
+  onShow: function () {
+    const selected = app.globalData?.tabBarParams?.selected || 0;
+    this.setData({ selected })
+    if (app.globalData && app.globalData.tabBarParams) {
+      app.globalData.tabBarParams.selected = 0;
     }
   },
 

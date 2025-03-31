@@ -1,0 +1,39 @@
+.card-container {
+	background: #FFFFFF;
+	border-radius: 8px;
+}
+
+.card-title-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 9.5px 10px;
+}
+
+.card-title-text {
+	flex: 1;
+	font-family: 'PingFang SC';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 21px;
+	/* identical to box height */
+	color: #38220D;
+} 
+
+.card-subtitle-text {
+	font-family: 'PingFang SC';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 17px;
+	/* identical to box height */
+	display: flex;
+	align-items: center;
+	color: rgba(0, 0, 34, 0.56);
+} 
+
+.card-arrow {
+	width: 16px;
+	height: 16px;
+}

@@ -1,6 +1,6 @@
 export function request({ url, data, method, Authorization }) {
 	const authorization = getApp().globalData?.user?.token || '';
-	// const authorization = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIzMSIsImV4cCI6MTc2MzIwOTU5N30.vZrhCuqxhGnsUczxFohvv0uubWnodE0p9QrvSHk6UOQ'
+	// const authorization = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1MiIsImV4cCI6MTc3NjE0MTUzM30.PB7fExN12VjY6r2POFdw8_8hoHQwDzS5EzFQjv2Ww1I'
 	console.log('authorization', authorization)
 	const baseurl = 'https://storyhub.cc/stage'
 	// const baseurl = 'https://storyhub.cc' //production

@@ -2,7 +2,6 @@
 <view>
   <loading wx-if="{{showLoading}}" />
   <view wx-if="{{!showLoading}}" class="page-section swiper">
-    <navigation-bar sampleReturn="{{true}}"></navigation-bar>
     <view class="user-info-box" style="padding-top: {{navBarHeight + 20}}px;">
       <protral-main avatar="{{avatar}}" nickname="{{nickname}}">
         <view class="user-content-subtitle">

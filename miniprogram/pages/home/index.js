@@ -1,6 +1,7 @@
 const app = getApp()
 import { getUser, registerAccount } from '../../utils/auth'
 import { request } from '../../utils/req';
+import { getPathList } from '../../components/path-note-list/service/group';
 
 Page({
   onShareAppMessage() {
@@ -11,44 +12,14 @@ Page({
     }
   },
 
-  async onLoad() {
-    this.firstRender = true
-    if (!app.globalData?.user?.token) {
-      await getUser()
-    }
-    await Promise.all([this.getInitData(), this.getBanners()])
-    const isLogined = app?.globalData?.user?.token
-    this.setData({ isLogined: !!isLogined })
-    this.setData({ showLoading: false })
-    await this.getUserInfo()
-    this.firstRender = false
-  },
-
-  async onShow() {
-    if (!this.firstRender) {
-      if (!app.globalData?.user?.token) {
-        await getUser()
-      }
-      this.getUserInfo()
-    }
-  },
-
-  async getUserInfo() {
-    const { data } = await request({
-      method: 'GET',
-      url: '/fuyu/getuserinfo',
-    });
-
-    const { user: { avatar } } = data;
-    avatar && this.setData({ avatar })
-  },
-
   data: {
     navBarHeight: app.globalData.navBarHeight,
     menuRight: app.globalData.menuRight,
     menuBotton: app.globalData.menuBotton,
     menuHeight: app.globalData.menuHeight,
     menuTop: app.globalData.menuTop,
+    stamp_count: '',
+    user_path_count: '',
     position: "北京",
     isLogined: false,
     swiper: [],
@@ -70,24 +41,92 @@ Page({
     titleBarVisible: false,
     selected: 0,
     banners: [],
+    pathList: [],
     latitude: 23.096994,
     longitude: 113.324520,
     selectList: [
       {
-        text: "路书",
-        iconPath: "../../images/icons/icon-1.png",
-        selectedIconPath: "../../images/icons/icon-1-active.png",
+        text: "热门活动",
         index: 0,
       },
       {
-        text: "文创",
-        iconPath: "../../images/icons/icon-2.png",
-        selectedIconPath: "../../images/icons/icon-2-active.png",
+        text: "热销商品",
         index: 1,
       },
     ],
     list: [],
     avatar: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png',
+    products: [],
+    subtitleClick() {
+      app.globalData.tabBarParams = {
+        selected: 1
+      };
+      wx.switchTab({
+        url: `/pages/protral/index`,
+      });
+    },
+  },
+
+  async onLoad() {
+    this.firstRender = true
+    if (!app.globalData?.user?.token) {
+      await getUser()
+    }
+    await Promise.all([
+      this.getBanners(),
+      this.getUserInfo(),
+      this.getUserRecentBuy(),
+      this.getProductSuggestList(),
+      this.getProductSuggestPathList()
+    ])
+    const isLogined = app?.globalData?.user?.token
+    this.setData({ isLogined: !!isLogined })
+    this.setData({ showLoading: false })
+    this.firstRender = false
+  },
+
+  async onShow() {
+    if (!this.firstRender) {
+      if (!app.globalData?.user?.token) {
+        await getUser()
+      }
+      this.getUserInfo()
+    }
+  },
+
+  async getUserInfo() {
+    const { data } = await request({
+      method: 'GET',
+      url: '/fuyu/getuserinfo',
+    });
+
+    const { user: { avatar }, user_stats: { stamp_count, user_path_count } } = data;
+    avatar && this.setData({ avatar, stamp_count, user_path_count })
+  },
+
+  async getUserRecentBuy() {
+    const { data } = await request({
+      url: '/fuyu/product/user/recent',
+      data: {
+        "province": "beijing",
+        "type": 3
+      }
+    });
+    this.setData({ products: data })
+
+    console.log('data', data)
+  },
+
+  async getProductSuggestPathList() {
+    const { data } = await request({
+      url: '/fuyu/path/suggest/pathlist',
+      data: {
+        "province": "beijing",
+        "group_id": 1,
+      }
+    });
+
+    this.setData({ pathList: data, })
   },
 
   async onRegisterAccount(e) {
@@ -104,17 +143,18 @@ Page({
     this.gotoProtral()
   },
 
-  async getInitData() {
+  async getProductSuggestList() {
     const { data } = await request({
       method: 'POST',
       url: '/fuyu/spot/list',
       data: {
-        province: "beijing"
+        province: "beijing",
+        act_id: -1
       }
     });
-    let { list = [], center_geo: { loc_long, loc_lat } } = data
+    let { list = []} = data
     list = list.sort((a, b) => (a.sort - b.sort))
-    this.setData({ list, latitude: loc_lat, longitude: loc_long })
+    this.setData({ list})
   },
 
   async getBanners() {
@@ -164,8 +204,55 @@ Page({
   },
 
   gotoProtral() {
-    wx.navigateTo({
+    wx.switchTab({
       url: `/pages/protral/index`,
     });
-  }
+  },
+
+  gotoActive() {
+    wx.switchTab({
+      url: `/pages/active/index`,
+    });
+  },
+
+  onItemClick(e) {
+    const detail = e.detail;
+    const queryArr = [
+      detail.user_path_id && `user_path_id=${detail.user_path_id}`,
+      `path_id=${detail.path_id}`,
+      `group_id=${this.data.group_id}`
+    ].filter(Boolean);
+
+    wx.navigateTo({
+      url: `/pages/path-note-detail/index?${queryArr.join('&')}`,
+      fail: function (e) {
+        console.log(e)
+      },
+      events: {
+        refresh: () => {
+          this.refresh();
+        }
+      }
+    });
+  },
+
+  onBookClick(e) {
+    const type = e.currentTarget.dataset.type
+    const bookid = e.currentTarget.dataset.bookid
+    const productid = e.currentTarget.dataset.productid
+    console.log('type', type, bookid, productid)
+    if (type == 1) {
+      wx.navigateTo({
+        url: `/pages/detail/index?id=${productid}`
+      });
+    } else if (type == 2) {
+      wx.navigateTo({
+        url: '/pages/signet-detail/index?book_id=' + bookid,
+      })
+    }
+
+    wx.switchTab({
+      url: '/pages/protral/index',
+    })
+  },
 });

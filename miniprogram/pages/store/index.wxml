@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view>
+  <loading wx-if="{{showLoading}}" />
+  <view wx-if="{{!showLoading}}" class="page-section swiper" style="padding-top: {{navBarHeight}}px;">
+    <cover-view class="position-box">
+      <cover-image
+          src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/position.png"
+          class="positon-icon"
+      />
+      <cover-view class="position-text">{{position}}</cover-view>
+    </cover-view>
+    <view class="scroll-view-container">
+      <cardList list="{{list}}" bind:scrollBottom="scrollBottom" bind:ocrClick="ocrClick" bind:onFind="onFind"></cardList>
+    </view>
+  </view>
+</view>

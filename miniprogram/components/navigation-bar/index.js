@@ -47,7 +47,7 @@ Component({
     },
     methods: {
         navigateToHome() {
-            wx.navigateTo({
+            wx.switchTab({
                 url: '/pages/home/index',
             })
         },

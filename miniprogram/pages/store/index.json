@@ -3,12 +3,9 @@
   "usingComponents": {
     "navigation-bar": "/components/navigation-bar/index",
     "notification": "/components/notification/index",
-    "card-item": "/components/card-item/index",
+    "cardList": "/components/card-list/index",
     "loading": "/components/loading/index",
-    "path-notes": "/components/path-note-list",
-    "card": "/components/card",
-    "pathCard": "/components/path-note-list/card/index",
-    "empty-list": "/components/empty/empty-list/index"
+    "path-notes": "/components/path-note-list"
   },
   "navigationStyle": "custom",
   "disableScroll": false

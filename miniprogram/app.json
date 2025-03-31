@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/home/index",
+    "pages/active/index",
+    "pages/store/index",
+    "pages/home1/index",
     "pages/protral/index",
     "pages/scenic-map/index",
     "pages/osd-ar/index",
@@ -48,5 +51,41 @@
       "version": "1.1.1",
       "provider": "wx76a9a06e5b4e693e"
     }
+  },
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#ce3219",
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconSize": 24,
+        "iconPath": "images/tabbar/icon-1.png",
+        "selectedIconPath": "images/tabbar/icon-1-select.png"
+      },
+      {
+        "pagePath": "pages/active/index",
+        "text": "活动",
+        "iconSize": 24,
+        "iconPath": "images/tabbar/icon-2.png",
+        "selectedIconPath": "images/tabbar/icon-2-select.png"
+      },
+      {
+        "pagePath": "pages/store/index",
+        "text": "市集",
+        "iconSize": 24,
+        "iconPath": "images/tabbar/icon-3.png",
+        "selectedIconPath": "images/tabbar/icon-3-select.png"
+      },
+      {
+        "pagePath": "pages/protral/index",
+        "text": "我的",
+        "iconSize": 24,
+        "iconPath": "images/tabbar/icon-4.png",
+        "selectedIconPath": "images/tabbar/icon-4-select.png"
+      }
+    ]
   }
 }

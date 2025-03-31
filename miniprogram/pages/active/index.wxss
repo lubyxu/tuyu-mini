@@ -1,0 +1,187 @@
+/**index.wxss**/
+
+page {
+  width: 100vw;
+  height: 100vh;
+  /* background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/bg-02.png?sign=5028f3b71b8083a94ac6daf788e32723&t=1720144655'); */
+  background-color: #fafafa;
+
+}
+
+.scroll-view-container {
+  width: 100%;
+  height: 80vh;
+}
+
+.card-scroll {
+  height: 95vh;
+}
+
+.page-section {
+  padding-bottom: 60rpx;
+  width: 100vw;
+  height: 100vh;
+}
+
+.top-section-img {
+  width: 100%;
+  height: 221rpx;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+}
+
+.swiper .wx-swiper-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiper .wx-swiper-dot {
+  width: 12rpx;
+  height: 12rpx;
+  background: #D18068;
+  border-radius: 12rpx;
+}
+
+.swiper .wx-swiper-dot.wx-swiper-dot-active {
+  width: 24rpx;
+  height: 24rpx;
+  position: relative;
+  background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/Vector.png?sign=4a7cec29b953e252e0254d41f534682f&t=1718604911');
+  background-color: transparent; 
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position: center;
+}
+
+.banner-item {
+  width: 100%;
+}
+
+.top-section {
+  background-image: url('https://636c-cloud1-0gq8f3qi3903d318-1327253936.tcb.qcloud.la/app-assets/top-bg.png?sign=94705f3f7681be02d607f3984fda6c88&t=1718606479');
+  background-color: transparent; 
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-size: 100%;
+  position: relative;
+  top: -40rpx;
+  padding-top: 80rpx;
+}
+
+/* V2 */
+.swiper-box {
+  position: relative;
+}
+
+swiper {
+  width: 100%;
+  height: 380rpx;
+}
+
+.banner-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.banner-img {
+  width: 100%;
+  height: 190px;
+  position: absolute;
+  bottom: 0;
+}
+
+.position-box {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.home-icon {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+}
+
+.positon-icon {
+    width: 48rpx;
+    height: 48rpx;
+    margin-left: 16rpx;
+}
+
+.position-text {
+    font-family: 'PingFang SC';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #000000;
+    margin-left: 4px;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  height: 70rpx;
+  justify-content: center;
+}
+
+.nav-container-box {
+  width: 304rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-box, .nav-box-active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.nav-box:last-child {
+  margin-left: 0;
+}
+
+.tab-bar-text, .tab-bar-text-active {
+  z-index: 1;
+  width: 40px;
+  margin-left: 8rpx;
+  font-family: 'Neue Frutiger World';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32rpx;
+  line-height: 28px;
+  text-align: center;
+  letter-spacing: -0.21px;
+  color: #333333;
+}
+
+.tab-bar-text-active {
+  position: relative;
+  color: #ce3219;
+  font-weight: 600;
+}
+
+.nav-box-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 106rpx;
+  border-radius: 20rpx;
+  height: 10px; /* 横条的高度 */
+  background: linear-gradient(90deg, #F4F0E7 0%, #F9E7DB 100%);
+  z-index: 0;
+}
+
+.nav-icon {
+  width: 32rpx;
+  height: 32rpx;
+  z-index: 1;
+}

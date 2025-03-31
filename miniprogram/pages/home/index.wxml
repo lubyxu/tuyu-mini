@@ -50,20 +50,93 @@
     </swiper>
   </view>
 
-  <view class="nav-container">
-    <view class="nav-container-box">
-      <view wx:for="{{selectList}}" wx:key="{{item.index}}" data-id="{{item.index}}" bindtap="switchTab" class="{{selected === index ? 'nav-box-active' : 'nav-box'}}">
-        <image class="nav-icon" src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></image>
-        <view class="{{selected === index ? 'tab-bar-text-active' : 'tab-bar-text'}}">{{item.text}}</view>
+  <view class="content-container">
+    <view class="title-container">
+      <view class="title-item">
+        <image
+          class="title-icon"
+          src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/code.png"
+          mode="scaleToFill"
+          
+        />
+        <view class="title-box" bindtap="gotoProtral">
+          <view class="title">印章</view>
+          <view class="sub-title">已收集 {{stamp_count}}</view>
+        </view>
+      </view>
+      <view class="title-item">
+        <image
+          class="title-icon"
+          src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/active.png"
+          mode="scaleToFill"
+        />
+        <view class="title-box" bindtap="gotoActive">
+          <view class="title">活动</view>
+          <view class="sub-title">
+            <text>待打卡 {{user_path_count}}</text>
+          </view>
+        </view>
+        <view class="tag">福利</view>
+      </view>
+    </view>
+  
+    <view class="card-box" wx-if="{{products.length > 0}}">
+      <card
+        title="最近收集"
+        subtitle="查看更多"
+        subtitle-click="{{subtitleClick}}"
+      >
+      <view class="swiper-view-container">
+        <view class="swiper-container" indicator-dots="{{false}}">
+          <block wx:for="{{products}}" wx:key="index">
+            <view class="swiper-item" bindtap="onBookClick" data-type="{{item.product_type}}" data-bookid="{{item.book_id}}" data-productid="{{item.product_id}}">
+              <view class="swiper-item-content">
+                <image
+                  class="swiper-item-content-product"
+                  src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/gegee.png"
+                  mode="scaleToFill"
+                />
+                <view class="swiper-item-content-name">{{item.product_name}}</view>
+                <view class="swiper-item-content-description">{{item.sub_title}}</view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+
+      </card>
+    </view>
+
+    <view class="nav-container">
+      <view class="nav-container-box">
+        <view wx:for="{{selectList}}" wx:key="{{item.index}}" data-id="{{item.index}}" bindtap="switchTab" class="{{selected === index ? 'nav-box-active' : 'nav-box'}}">
+          <view class="{{selected === index ? 'tab-bar-text-active' : 'tab-bar-text'}}">{{item.text}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="scroll-view-container" wx:if="{{selected === 1}}">
+      <view
+        wx:for="{{list}}"
+        wx:key="index"
+        bind:tap="ocrClick"
+        data-item="{{item}}"
+      >
+        <card-item products="{{item.products}}" isVisited="{{item.is_visited}}" spot="{{item.spot}}" />
+      </view>
+
+      <view class="flex items-center justify-center" style="margin-top: 32px;" wx:if="{{!list.length}}">
+        <empty-list width="135" height="{{135}}" text="暂无" />
+      </view>
+    </view>
+    <view class="scroll-view-container" wx:else>
+      <view class="mt-16">
+        <pathCard wx:for="{{pathList}}" item="{{item}}" showProgress="{{true}}" bind:click="onItemClick" />
+        <view class="flex items-center justify-center" style="margin-top: 32px;" wx:if="{{!pathList.length}}">
+          <empty-list width="135" height="{{135}}" text="暂无计划" />
+        </view>
       </view>
     </view>
   </view>
-
-    <view class="scroll-view-container" wx:if="{{selected === 1}}">
-      <cardList list="{{list}}" bind:scrollBottom="scrollBottom" bind:ocrClick="ocrClick" bind:onFind="onFind"></cardList>
-    </view>
-    <view class="scroll-view-container" wx:else>
-      <path-notes bind:onLoginSuccess="onLoginSuccess" />
-    </view>
-  </view>
+</view>
 </view>

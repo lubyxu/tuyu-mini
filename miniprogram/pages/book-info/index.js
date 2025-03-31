@@ -83,7 +83,7 @@ Page({
         })
         return
       }
-      wx.navigateTo({
+      wx.switchTab({
         url: '/pages/protral/index',
       })
     } catch (error) {
