@@ -11,14 +11,27 @@ Page({
     this.options = options;
   },
   onLogined() {
-    const url = 'https://oss-whale-alivia.meetwhale.com/H5Pages/game/index.html';
+    if (!this.data.isUserAccount) {
+      wx.showModal({
+        content: '请先注册用户',
+        complete: (res) => {
+          wx.redirectTo({
+            url: '/pages/home/index',
+          })
+        }
+      })
+      return;
+    }
+    const url = 'https://oss-whale-alivia.meetwhale.com/H5Pages/game/v3/index.html';
+    // const url = 'http://192.168.3.51:8080/index.html'
     const query = [
       getEnv() === 'stage' ? 'env=stage' : 'env=production',
-      'token=' + getApp().globalData?.user?.token,
+      'token=' + encodeURIComponent(getApp().globalData?.user?.token),
       'id=' + (this.options.id || '1'),
     ]
 
-    const path = decodeURIComponent(url + '?' + query.join('&'))
+    const path = (url + '?' + query.join('&'))
+    console.log('--', path)
     this.setData({
       url: path
     });
