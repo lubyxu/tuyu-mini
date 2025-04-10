@@ -101,6 +101,12 @@ Page({
     } 
     this.setData({ isLogined: true })
     await registerAccount(code);
+
+    const currentTarget = e.currentTarget;
+    if (currentTarget && currentTarget.dataset?.id === 'h5') {
+      this.bannerClick(e)
+      return
+    }
     this.gotoProtral()
   },
 
@@ -174,7 +180,7 @@ Page({
     const banner = this.data.banners[index]
     if (!banner) return
     const target_type = banner.target_type;
-    if (target_type === 0) {
+    if (target_type === 1) {
       wx.navigateTo({
         url: `/pages/game/index`
       })
