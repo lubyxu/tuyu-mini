@@ -22,7 +22,7 @@ Page({
       })
       return;
     }
-    const url = 'https://oss-whale-alivia.meetwhale.com/H5Pages/game/v3/index.html';
+    const url = 'https://oss-whale-alivia.meetwhale.com/H5Pages/game/v4/index.html';
     // const url = 'http://192.168.3.51:8080/index.html'
     const query = [
       getEnv() === 'stage' ? 'env=stage' : 'env=production',
