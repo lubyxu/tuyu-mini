@@ -180,9 +180,10 @@ Page({
     const banner = this.data.banners[index]
     if (!banner) return
     const target_type = banner.target_type;
-    if (target_type === 1) {
+    const id = banner.target_value;
+    if (target_type === 2) {
       wx.navigateTo({
-        url: `/pages/game/index`
+        url: `/pages/game/index?id=` + id
       })
     }
   }

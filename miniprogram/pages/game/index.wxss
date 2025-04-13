@@ -2,3 +2,13 @@
   height: 100vh;
   width: 100vw;
 }
+
+page {
+  overflow: hidden;
+  height: 100%;
+}
+
+/* 或者更具体的针对微信的样式 */
+.weui-webview__header {
+  display: none !important;
+}

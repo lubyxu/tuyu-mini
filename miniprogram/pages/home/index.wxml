@@ -38,7 +38,7 @@
     >
       <block wx:for="{{banners}}" wx:key="*this">
         <swiper-item>
-          <view class="banner-img-wrap relative" data-index="{{index}}" bindtap="bannerClick1">
+          <view class="banner-img-wrap relative" data-index="{{index}}" bindtap="bannerClick">
             <image
               src="{{item.url}}"
               class="banner-img"
