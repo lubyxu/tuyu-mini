@@ -1,7 +1,7 @@
 {
   "usingComponents": {
+    "chinese-button": "../../components/button/chinese-btn/index"
   },
-  "navigationStyle": "custom",
   "disableScroll": false,
   "enablePullDownRefresh": false
 }
