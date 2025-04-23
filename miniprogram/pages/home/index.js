@@ -140,6 +140,12 @@ Page({
     } 
     this.setData({ isLogined: true })
     await registerAccount(code);
+
+    const currentTarget = e.currentTarget;
+    if (currentTarget && currentTarget.dataset?.id === 'h5') {
+      this.bannerClick(e)
+      return
+    }
     this.gotoProtral()
   },
 
@@ -166,8 +172,8 @@ Page({
       }
     });
     let { list = []} = data
-    list = list.map(({ banner_img }) => {
-      return { url: banner_img }
+    list = list.map(({ banner_img, target_type }) => {
+      return { url: banner_img, target_type }
     })
     this.setData({ banners: list })
   },
@@ -255,4 +261,16 @@ Page({
       url: '/pages/protral/index',
     })
   },
+  bannerClick(e) {
+    const index = e.currentTarget.dataset.index
+    const banner = this.data.banners[index]
+    if (!banner) return
+    const target_type = banner.target_type;
+    const id = banner.target_value;
+    if (target_type === 2) {
+      wx.navigateTo({
+        url: `/pages/game/index?id=` + id
+      })
+    }
+  }
 });
