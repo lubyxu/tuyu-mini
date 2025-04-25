@@ -232,6 +232,19 @@
   height: 446rpx;
 }
 
+.user-content-subtitle {
+  display: flex;
+  align-items: center;
+  font-family: 'PingFang SC';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  /* identical to box height */
+
+  color: rgba(0, 0, 34, 0.91);
+}
+
 .user-content-login {
   display: flex;
   align-items: center;

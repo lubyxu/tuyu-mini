@@ -9,7 +9,7 @@ const CARD_TYPE = 1 // 冰箱贴
 Page({
 
   onShow: function() {
-    this.getCouponData();
+    this.getCouponData()
   },
 
   onLoginSuccess() {
@@ -44,6 +44,8 @@ Page({
       }
       const isLogined = app?.globalData?.user?.token
       this.setData({ isLogined: !!isLogined })
+    } else {
+      this.setData({ isLogined: true })
     }
     if (this.data.isLogined) {
       this.initData()
