@@ -3,21 +3,21 @@
   <loading wx-if="{{showLoading}}" />
   <view wx-if="{{!showLoading}}" class="page-section swiper">
     <view class="user-info-box" style="padding-top: {{navBarHeight + 20}}px;">
-      <protral-main avatar="{{avatar}}" nickname="{{nickname}}">
-        <view class="user-content-subtitle">
+      <protral-main avatar="{{avatar}}" nickname="{{nickname}}" isLogined="{{isLogined}}" bind:onLoginSuccess="onLoginSuccess">
+        <view class="user-content-subtitle" wx-if="{{isLogined}}">
             累计收集
             <view class="count">{{stamp_count}}</view>
             枚印章
         </view>
       </protral-main>
-      <view class="count-box">
+      <view class="count-box" wx-if="{{isLogined}}">
         <view wx:for="{{countList}}" wx:key="{{item.index}}" class="count-item">
             <view class="count-item-value">{{item.value}}</view>
             <view class="count-item-title">{{item.title}}</view>
         </view>
       </view>
 
-      <view class="count-box coupon-box" style="height: 48px;" bind:tap="onGoToCoupon">
+      <view class="count-box coupon-box" style="height: 48px;" bind:tap="onGoToCoupon" wx-if="{{isLogined}}">
         <view class="flex items-center gap-8">
           <image src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/47/1736768948454/1736768948454.jpg" style="width: 20px; height: 20px;" />
           <text>获得的奖品</text>

@@ -18,8 +18,8 @@ Page({
     menuBotton: app.globalData.menuBotton,
     menuHeight: app.globalData.menuHeight,
     menuTop: app.globalData.menuTop,
-    stamp_count: '',
-    user_path_count: '',
+    stamp_count: 0,
+    user_path_count: 0,
     position: "北京",
     isLogined: false,
     swiper: [],
@@ -69,16 +69,20 @@ Page({
 
   async onLoad() {
     this.firstRender = true
-    if (!app.globalData?.user?.token) {
-      await getUser()
+    try {
+      await Promise.all([
+        this.getBanners(),
+        this.getUserRecentBuy(),
+        this.getProductSuggestList(),
+        this.getProductSuggestPathList()
+      ])
+      if (!app.globalData?.user?.token) {
+        await getUser()
+        await this.getUserInfo()
+      }
+    } catch(err) {
+
     }
-    await Promise.all([
-      this.getBanners(),
-      this.getUserInfo(),
-      this.getUserRecentBuy(),
-      this.getProductSuggestList(),
-      this.getProductSuggestPathList()
-    ])
     const isLogined = app?.globalData?.user?.token
     this.setData({ isLogined: !!isLogined })
     this.setData({ showLoading: false })
@@ -245,10 +249,12 @@ Page({
       wx.navigateTo({
         url: `/pages/detail/index?id=${productid}`
       });
+      return
     } else if (type == 2) {
       wx.navigateTo({
         url: '/pages/signet-detail/index?book_id=' + bookid,
       })
+      return
     }
 
     wx.switchTab({

@@ -19,11 +19,16 @@ Component({
       type: String,
       value: '小福鱼',
     },
+    isLogined: {
+      type: Boolean,
+      value: true,
+    }
   },
 
   data: {
     currentAvatar: '',
     currentNickname: '',
+    
   },
 
   observers: {
@@ -36,11 +41,22 @@ Component({
     this.setDefaultUserInfo()
   },
 
-
   methods: {
-
+    async onRegisterAccount(e) {
+      const code = e.detail.code;
+      if (!code) {
+        wx.showToast({
+          icon: 'error',
+          title: '登陆失败，请重试'
+        })
+        return
+      } 
+      await registerAccount(code);
+      this.setData({ isLogined: true })
+      this.triggerEvent('onLoginSuccess')
+    },
     setDefaultUserInfo() {
-      const { avatar, nickname } = this.properties;
+      const { avatar, nickname,  } = this.properties;
       this.setData({
         currentAvatar: avatar,
         currentNickname: nickname,

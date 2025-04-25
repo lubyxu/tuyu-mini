@@ -94,6 +94,9 @@ swiper {
 }
 
 .position-box {
+  position: absolute;
+  padding-top:  110rpx;
+  margin-left: 28rpx;
   width: fit-content;
   display: flex;
   align-items: center;

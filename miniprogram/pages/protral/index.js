@@ -12,7 +12,11 @@ Page({
     this.getCouponData();
   },
 
-  async onReady() {
+  onLoginSuccess() {
+    this.initData()
+  },
+
+  async initData() {
     try {
       await Promise.all([
         this.getCouponData(),
@@ -22,13 +26,29 @@ Page({
       ])
       this.setData({ showLoading: false })
     } catch (error) {
-      console.log('error', error)
       this.setData({ showLoading: false })
       wx.showToast({
         icon: 'error',
         title: '获取失败，请重试',
       })
       console.log(error)
+    }
+  },
+
+  async onReady() {
+    if (!app.globalData?.user?.token) {
+      try {
+        await getUser()
+      } catch(err) {
+
+      }
+      const isLogined = app?.globalData?.user?.token
+      this.setData({ isLogined: !!isLogined })
+    }
+    if (this.data.isLogined) {
+      this.initData()
+    } else {
+      this.setData({ showLoading: false })
     }
   },
 
@@ -41,6 +61,7 @@ Page({
   },
 
   data: {
+    isLogined: false,
     couponCount: 0,
     showLoading: true,
     navBarHeight: app.globalData.navBarHeight,
@@ -65,9 +86,6 @@ Page({
   },
 
   async getUserData() {
-    if (!app.globalData?.user?.token) {
-      await getUser()
-    }
     const { data } = await request({
       method: 'GET',
       url: '/fuyu/getuserinfo',
@@ -100,9 +118,6 @@ Page({
   },
 
   async getUserProductData(type) {
-    if (!app.globalData?.user?.token) {
-      await getUser()
-    }
     const { data, errno } = await request({
       method: 'POST',
       url: '/fuyu/product/user/list',
@@ -112,7 +127,7 @@ Page({
       }
     });
 
-    if (SUCCESS_CODE != errno) {
+    if (SUCCESS_CODE != errno && this.data.isLogined) {
       wx.showToast({
         icon: 'error',
         title: '获取失败，请重试',

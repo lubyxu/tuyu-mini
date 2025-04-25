@@ -19,7 +19,7 @@
             bindtap="getUserProfile"
         />
     </button>
-    <view class="user-content">
+    <view class="user-content" wx-if="{{isLogined}}">
         <view
             class="user-content-name"
             wx-if="{{readOnly}}"
@@ -37,5 +37,21 @@
             />
         </view>
         <slot></slot>
+    </view>
+    <view wx:else>
+          <button
+            catchtouchmove="preventD"
+            open-type="getPhoneNumber"
+            bindgetphonenumber="onRegisterAccount"
+            hover-class="none"
+            style="width: auto;"
+      >
+        <view
+            class="user-content-name"
+        >
+            点击登陆
+        </view>
+      </button>
+
     </view>
 </view>

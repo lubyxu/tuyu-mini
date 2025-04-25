@@ -20,7 +20,11 @@ Page({
     console.log('options', options)
     this.firstRender = true
     if (!app.globalData?.user?.token) {
-      await getUser()
+      try {
+        await getUser()
+      } catch(err) {
+
+      }
     }
     this.user_path_id = options.user_path_id / 1
     this.place_id = options.place_id / 1,

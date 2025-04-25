@@ -14,7 +14,11 @@ Page({
   async onLoad() {
     this.firstRender = true
     if (!app.globalData?.user?.token) {
-      await getUser()
+      try {
+        await getUser()
+      } catch(err) {
+
+      }
     }
     await Promise.all([this.getInitData(), this.getBanners()])
     const isLogined = app?.globalData?.user?.token
@@ -122,7 +126,8 @@ Page({
       method: 'POST',
       url: '/fuyu/banner',
       data: {
-        province: "beijing"
+        province: "beijing",
+        from: 'path'
       }
     });
     let { list = []} = data

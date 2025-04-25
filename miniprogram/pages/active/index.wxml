@@ -1,14 +1,35 @@
 <!--index.wxml-->
 <view>
   <loading wx-if="{{showLoading}}" />
-  <view wx-if="{{!showLoading}}" class="page-section swiper" style="padding-top: {{navBarHeight}}px;">
-    <cover-view class="position-box">
-      <cover-image
-          src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/position.png"
-          class="positon-icon"
-      />
-      <cover-view class="position-text">{{position}}</cover-view>
-    </cover-view>
+  <view wx-if="{{!showLoading}}" class="page-section swiper">
+  <view class="swiper-box">
+      <cover-view class="position-box">
+        <cover-image
+            src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/position.png"
+            class="positon-icon"
+        />
+        <cover-view class="position-text">{{position}}</cover-view>
+      </cover-view>
+      <swiper
+        indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}"
+        interval="{{interval}}"
+        duration="{{duration}}"
+        style="height: 190px;"
+      >
+        <block wx:for="{{banners}}" wx:key="*this">
+          <swiper-item>
+            <view class="banner-img-wrap">
+              <image
+                src="{{item.url}}"
+                class="banner-img"
+                mode="widthFix"
+              />
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
     <view class="scroll-view-container">
       <path-notes bind:onLoginSuccess="onLoginSuccess" />
     </view>
