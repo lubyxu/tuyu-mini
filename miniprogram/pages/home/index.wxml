@@ -89,7 +89,7 @@
             <text>待打卡 {{user_path_count}}</text>
           </view>
         </view>
-        <view class="tag">福利</view>
+        <view class="tag" wx-if="{{false}}">福利</view>
       </view>
     </view>
   
@@ -107,6 +107,7 @@
                 <image
                   class="swiper-item-content-product"
                   src="{{item.product_img}}"
+                  mode="aspectFit"
                 />
                 <view class="swiper-item-content-name">{{item.product_name}}</view>
                 <view class="swiper-item-content-description">{{item.sub_title}}</view>

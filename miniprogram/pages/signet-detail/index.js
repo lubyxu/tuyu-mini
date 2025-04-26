@@ -84,6 +84,7 @@ Page({
   },
   async getBookInfo(id) {
     const data = await getBookInfo(id);
+    console.log('data', data)
 
     const bookInfo = data.BookInfo;
     const pages = data.Pages;
@@ -99,6 +100,12 @@ Page({
       };
     }, {});
 
+    if (this.options.stamp_pid) {
+      const cur = pages.find(({ stamp_pid }) => (stamp_pid == this.options.stamp_pid))
+      this.setData({
+        curIndex: pages.indexOf(cur)
+      })
+    }
     this.setData({
       bookConfig,
       book: { ...bookInfo, book_id: data.book_id },
@@ -114,6 +121,7 @@ Page({
   onCardSelect(e) {
     const index = e.currentTarget.dataset.index;
     this.selectComponent('#signet-container').onReset();
+    debugger
     this.setData({
       curIndex: index,
     });

@@ -58,9 +58,9 @@ Page({
     avatar: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/home-icon.png',
     products: [],
     subtitleClick() {
-      app.globalData.tabBarParams = {
-        selected: 1
-      };
+      // app.globalData.tabBarParams = {
+      //   selected: 1
+      // };
       wx.switchTab({
         url: `/pages/protral/index`,
       });
@@ -70,16 +70,16 @@ Page({
   async onLoad() {
     this.firstRender = true
     try {
+      if (!app.globalData?.user?.token) {
+        await getUser()
+      }
       await Promise.all([
+        this.getUserInfo(),
         this.getBanners(),
         this.getUserRecentBuy(),
         this.getProductSuggestList(),
         this.getProductSuggestPathList()
       ])
-      if (!app.globalData?.user?.token) {
-        await getUser()
-      }
-      await this.getUserInfo()
     } catch(err) {
 
     }
@@ -95,6 +95,11 @@ Page({
         await getUser()
       }
       this.getUserInfo()
+    }
+    const isLogined = app?.globalData?.user?.token
+    this.setData({ isLogined: !!isLogined })
+    if (isLogined) {
+      this.getUserRecentBuy()
     }
   },
 
@@ -150,7 +155,6 @@ Page({
       this.bannerClick(e)
       return
     }
-    this.gotoProtral()
   },
 
   async getProductSuggestList() {
@@ -258,7 +262,7 @@ Page({
       return
     } else if (type == 2) {
       wx.navigateTo({
-        url: '/pages/signet-detail/index?book_id=' + bookid,
+        url: `/pages/signet-detail/index?book_id=${bookid}&stamp_pid=${productid}`,
       })
       return
     }
