@@ -59,3 +59,16 @@ export async function couponInfo(path_id) {
   });
   return { data: data.data };
 }
+
+export async function getActivityInfo(id) {
+	try {
+		const data = await request({
+			method: 'GET',
+			url: '/fuyu/activity/detail?id=' + id,
+		});
+		return data
+	}
+	catch (e) {
+		return {}
+	}
+}
