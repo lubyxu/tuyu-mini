@@ -35,6 +35,8 @@ Page({
       }
       this.getUserInfo()
     }
+    const isLogined = app?.globalData?.user?.token
+    this.setData({ isLogined: !!isLogined })
   },
 
   async getUserInfo() {

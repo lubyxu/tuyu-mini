@@ -89,7 +89,7 @@
             <text>待打卡 {{user_path_count}}</text>
           </view>
         </view>
-        <view class="tag">福利</view>
+        <view class="tag" wx-if="{{false}}">福利</view>
       </view>
     </view>
   

@@ -9,10 +9,20 @@ const CARD_TYPE = 1 // 冰箱贴
 Page({
 
   onShow: function() {
-    this.getCouponData()
+    const isLogined = app?.globalData?.user?.token
+    this.setData({ isLogined: !!isLogined })
+    const selected = app.globalData?.tabBarParams?.selected || 0;
+    this.setData({ selected })
+    if (app.globalData && app.globalData.tabBarParams) {
+      app.globalData.tabBarParams.selected = 0;
+    }
+    if (isLogined) {
+      this.initData()
+    }
   },
 
   onLoginSuccess() {
+    this.setData({ isLogined: true })
     this.initData()
   },
 
@@ -51,14 +61,6 @@ Page({
       this.initData()
     } else {
       this.setData({ showLoading: false })
-    }
-  },
-
-  onShow: function () {
-    const selected = app.globalData?.tabBarParams?.selected || 0;
-    this.setData({ selected })
-    if (app.globalData && app.globalData.tabBarParams) {
-      app.globalData.tabBarParams.selected = 0;
     }
   },
 
