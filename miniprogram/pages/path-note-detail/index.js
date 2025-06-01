@@ -57,15 +57,24 @@ Page({
   },
 
   customReturn() {
+    console.log('--hahaha')
     if (this.data.commentsVisible) {
       this.setData({
         commentsVisible: false
       })
       return
     }
-    wx.navigateBack({
-      delta: 1,
-    })
+    const pages = getCurrentPages();
+    if (pages.length > 1) {
+      wx.navigateBack({
+        delta: 1,
+      })
+    }
+    else {
+      wx.reLaunch({
+        url: '/pages/home/index'
+      })
+    }
   },
 
   onLogined() {
@@ -124,6 +133,32 @@ Page({
 
   getComments() {
 
+  },
+
+  onMarkertap(e) {
+    if (!e.detail.markerId) return;
+    const ret = this.data.markers.find(item => item.id === e.detail.markerId)
+    if (!ret) return;
+    const { latitude, longitude, title } = ret
+    const mp = wx.createMapContext('myPageMap');
+    mp.openMapApp({
+      longitude: longitude,
+      latitude: latitude,
+      destination: title,
+      success: function (res) {
+        console.log('-- success',)
+      },
+      fail: function () {
+        console.log('error');
+        wx.showToast({
+          icon: 'none',
+          title: '调起地图应用失败'
+        });
+      },
+      complete(res) {
+        console.log(res)
+      }
+    })
   },
 
   convertToTree(flatArray, _parentId = 0) {

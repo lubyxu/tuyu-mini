@@ -55,9 +55,11 @@ Component({
     },
   
     markertap(e) {
-      console.log('@@@ markertap', e)
+      console.log('@@@ markertap111', e)
+      this.triggerEvent('markertap', e.detail)
     },
     callouttap(e) {
+      this.triggerEvent('markertap', e.detail)
       return;
       const { markerId } = e
       const current = this.data.markers.find(item => item.id === markerId)
@@ -78,6 +80,7 @@ Component({
     labeltap(e) {
       console.log('@@@ labeltap', e)
     },
+
   
     onChange() {
     }

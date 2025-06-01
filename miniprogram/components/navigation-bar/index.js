@@ -38,7 +38,7 @@ Component({
     },
     attached: function() {},
     ready() {
-        console.log('navigation-bar ready', this.properties.showBack, this.properties.returnTitle)    
+        console.log('navigation-bar ready', this.properties.showBack, this.properties.returnTitle, this.properties.sampleReturn)    
         if (!this.properties.title && !this.properties.showBack) {
             this.setData({
                 showHome: true

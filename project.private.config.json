@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/path-note-detail/index",
+          "pathName": "pages/path-note-detail/index",
+          "query": "path_id=22&group_id=undefined",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "H5",
           "pathName": "pages/game/index",
           "query": "id=1",
