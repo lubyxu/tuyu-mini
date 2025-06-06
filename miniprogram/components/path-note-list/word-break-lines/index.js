@@ -26,6 +26,7 @@ Component({
       this.setData({
         lines: (this.data.text).split('\n')
       });
+      return
       const _that = this;
       const query = wx.createSelectorQuery().in(this);
       query.selectAll('.plain-text').fields({ size: true }).exec(function (res) {

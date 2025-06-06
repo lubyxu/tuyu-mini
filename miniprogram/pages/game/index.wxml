@@ -17,6 +17,6 @@
   <view
     class="bg"
   >
-    <image class="image" mode="aspectFill" style="width: 100vw;" src="https://oss.storyhub.cc/h5/20250414-214818.jpeg" />
+    <image class="image" mode="aspectFill" style="width: 100vw;" src="{{bgImage}}" />
   </view>
 </view>

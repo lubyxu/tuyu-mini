@@ -9,6 +9,20 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/path-note-detail/index",
+          "pathName": "pages/path-note-detail/index",
+          "query": "path_id=22&group_id=undefined",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "H5",
+          "pathName": "pages/game/index",
+          "query": "id=1",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/signet-add-page/index",
           "pathName": "pages/signet-add-page/index",
           "query": "stamp_pid=15&key= activity_1",
@@ -18,13 +32,6 @@
         {
           "name": "pages/book-list/index",
           "pathName": "pages/book-list/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "H5",
-          "pathName": "pages/game/index",
           "query": "",
           "launchMode": "default",
           "scene": null
