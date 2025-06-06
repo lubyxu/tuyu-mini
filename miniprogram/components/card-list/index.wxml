@@ -1,7 +1,7 @@
 <view
     class="card-list"
 >
-    <view class="card-title">
+    <view class="card-title" wx-if="{{false}}">
         <view class="card-title-text">福鱼文创系列</view>
         <button wx:if="{{!isLogined}}" open-type="getPhoneNumber" bindgetphonenumber="onRegisterAccount" hover-class="none"  class="login-btn">
             <image class="find-icon" src="../../images/find-icon.svg" />

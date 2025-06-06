@@ -1,0 +1,42 @@
+<view class="scroll-view-container">
+    <view
+        wx:for="{{list}}"
+        wx:key="index"
+        wx:if="{{list.length > 0}}"
+    >
+        <cover-view
+            class="card-item"
+            bind:tap="onItemClick"
+            data-id="{{item.id}}"
+            data-name="{{item.name}}"
+        >
+            <cover-image class="background-image" src="{{item.content.bg_img}}" mode="widthFix"></cover-image>
+            <cover-image src="{{item.content.show_img}}" class="preview" />
+        
+            <cover-view class="card-right-box">
+                <cover-view class='desc-top-box' style="color:{{item.content.style === 'light' ? '#ffbd8f': '#77270d'}}">
+                    <cover-view class="desc-title">
+                        {{item.name}}
+                        <cover-view class="kong" />
+                    </cover-view>
+
+                    <view class="desc-subtitle-box">
+                        <cover-view class="desc-subtitle">
+                            {{item.content.description}}
+                            <cover-view class="kong" />
+                        </cover-view>
+                    </view>
+                </cover-view>
+            </cover-view>
+
+            <button open-type="share" class="share-btn">
+                <image class="share-box" src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/share.png" />
+            </button>
+            
+        </cover-view>
+    </view>
+
+    <view class="flex items-center justify-center" style="margin-top: 32px;" wx:if="{{!list.length}}">
+        <empty-list width="135" height="{{135}}" text="暂无" />
+    </view>
+</view>

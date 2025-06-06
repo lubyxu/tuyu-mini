@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "card-item": "/components/card-item/index"
+    "card-item": "/components/card-store-item/index"
   }
 }

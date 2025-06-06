@@ -3,7 +3,7 @@
   "usingComponents": {
     "navigation-bar": "/components/navigation-bar/index",
     "notification": "/components/notification/index",
-    "card-item": "/components/card-item/index",
+    "card-item": "/components/card-store-item/index",
     "loading": "/components/loading/index",
     "path-notes": "/components/path-note-list",
     "card": "/components/card",

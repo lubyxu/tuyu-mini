@@ -1,8 +1,24 @@
-<!--index.wxml-->
 <view>
   <loading wx-if="{{showLoading}}" />
-  <view wx-if="{{!showLoading}}" class="page">
-    <navigation-bar></navigation-bar>
-    <store-product appid="{{appid}}" product-id="{{productId}}"></store-product>
+  <view wx-if="{{!showLoading}}" class="page" >
+    <navigation-bar sampleReturn="{{true}}" returnTitle="{{title}}"></navigation-bar>
+    <view class="content" style="padding-top: {{navBarHeight + 18}}px;">
+      <view class="search-bar">
+        <icon type="search" size="20"></icon>
+        <input type="text" placeholder="搜索..." bindinput="handleInput" value="{{searchValue}}"></input>
+         <icon type="clear" size="20"  bindtap="onClear" wx-if="{{searchValue}}"></icon>
+      </view>
+      <view class="store-list" style="padding-top: 18px;">
+        <view wx-if="{{list.length > 0}}" >
+          <view wx:for="{{list}}" class="store-item" wx:key="{{item.shop_config.item_code}}">
+            <store-product
+              appid="{{item.shop_config.app_id}}"
+              product-id="{{item.shop_config.item_code}}"
+              custom-style="{{customStyle}}"
+            />
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
 </view>

@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "store-list",
+          "pathName": "pages/store-list/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/path-note-detail/index",
           "pathName": "pages/path-note-detail/index",
           "query": "path_id=22&group_id=undefined",
@@ -32,13 +39,6 @@
         {
           "name": "pages/book-list/index",
           "pathName": "pages/book-list/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/book-select/index",
-          "pathName": "pages/book-select/index",
           "query": "",
           "launchMode": "default",
           "scene": null

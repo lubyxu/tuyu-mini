@@ -128,20 +128,7 @@
       </view>
     </view>
 
-    <view class="scroll-view-container" wx:if="{{selected === 1}}">
-      <view
-        wx:for="{{list}}"
-        wx:key="index"
-        bind:tap="ocrClick"
-        data-item="{{item}}"
-      >
-        <card-item products="{{item.products}}" isVisited="{{item.is_visited}}" spot="{{item.spot}}" />
-      </view>
-
-      <view class="flex items-center justify-center" style="margin-top: 32px;" wx:if="{{!list.length}}">
-        <empty-list width="135" height="{{135}}" text="暂无" />
-      </view>
-    </view>
+    <card-item wx:if="{{selected === 1}}" />
     <view class="scroll-view-container" wx:else>
       <view class="mt-16">
         <pathCard wx:for="{{pathList}}" item="{{item}}" showProgress="{{true}}" bind:click="onItemClick" />

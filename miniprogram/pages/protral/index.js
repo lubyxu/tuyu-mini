@@ -150,10 +150,10 @@ Page({
           user_product_id: item.user_product_id
         }
       })
-      books.push({
-        img: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/add-book.png',
-        type: 'add',
-      })
+      // books.push({
+      //   img: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/add-book.png',
+      //   type: 'add',
+      // })
       this.setData({ books })
     } else {
       const products = data.map((item) => {

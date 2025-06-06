@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "empty-list": "/components/empty/empty-list/index"
+  }
+}

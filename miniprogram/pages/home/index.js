@@ -77,7 +77,7 @@ Page({
         this.getUserInfo(),
         this.getBanners(),
         this.getUserRecentBuy(),
-        this.getProductSuggestList(),
+        // this.getProductSuggestList(),
         this.getProductSuggestPathList()
       ])
     } catch(err) {
@@ -157,19 +157,19 @@ Page({
     }
   },
 
-  async getProductSuggestList() {
-    const { data } = await request({
-      method: 'POST',
-      url: '/fuyu/spot/list',
-      data: {
-        province: "beijing",
-        act_id: -1
-      }
-    });
-    let { list = []} = data
-    list = list.sort((a, b) => (a.sort - b.sort))
-    this.setData({ list})
-  },
+  // async getProductSuggestList() {
+  //   const { data } = await request({
+  //     method: 'POST',
+  //     url: '/fuyu/spot/list',
+  //     data: {
+  //       province: "beijing",
+  //       act_id: -1
+  //     }
+  //   });
+  //   let { list = []} = data
+  //   list = list.sort((a, b) => (a.sort - b.sort))
+  //   this.setData({ list})
+  // },
 
   async getBanners() {
     const { data } = await request({
