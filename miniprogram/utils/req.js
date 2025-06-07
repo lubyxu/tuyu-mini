@@ -32,8 +32,8 @@ export function request({ url, data, method, Authorization }) {
 }
 
 export function getEnv() {
-	// return 'stage'
-	return 'production'
+	return 'stage'
+	// return 'production'
 }
 
 export const SUCCESS_CODE = 10000;

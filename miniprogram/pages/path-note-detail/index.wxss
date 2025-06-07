@@ -137,3 +137,18 @@
   padding-bottom: 64rpx;
   background-color: #FBEDDB;
 }
+
+.path-name {
+  font-weight: 500;
+  font-size: 20px;
+  color: #000000F2;
+  padding: 32rpx 32rpx 0;
+  border-radius: 32rpx 32rpx 0 0;
+}
+
+.path-name {
+  margin-top: -30rpx;
+  z-index: 2000;
+  background-color: #f6f6f6;
+  position: relative;
+}

@@ -8,8 +8,11 @@
 		/>
 		<view class="striped w-full"></view>
 	</view>
-	<view wx:if="{{!isDone}}" class="text-undone text">
-		<text>{{done}}/{{total}}</text>
+	<view wx:if="{{!isDone && !isPending}}" class="text-undone text">
+		<text>进行中 {{done}}/{{total}}</text>
+	</view>
+	<view wx:elif="{{!isDone && isPending}}" class="text-undone text" style="margin-left: -12px;">
+		<text>待开始</text>
 	</view>
 	<view wx:else class="text-done text">
 	  已打卡

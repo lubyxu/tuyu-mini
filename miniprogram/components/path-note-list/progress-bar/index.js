@@ -16,6 +16,10 @@ Component({
       observer() {
         this.update();
       }
+    },
+    isPending: {
+      type: Boolean,
+      value: false
     }
   },
 

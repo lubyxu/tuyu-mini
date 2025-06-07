@@ -135,7 +135,13 @@ Page({
       }
     });
 
-    this.setData({ pathList: data, })
+    this.setData({ pathList: data.map(item => ({
+      ...item,
+      companies: [
+        { avatar: 'https://wos.stage.meetwhale.com/Ogdvf1WxPz7EWh_MSTpFo?wos-process=image%2Fstyle%2Cpreview', name: '北京同仁堂' },
+        { avatar: 'https://wos.stage.meetwhale.com/Ogdvf1WxPz7EWh_MSTpFo?wos-process=image%2Fstyle%2Cpreview', name: '北京同仁堂' }
+      ]
+    })), })
   },
 
   async onRegisterAccount(e) {

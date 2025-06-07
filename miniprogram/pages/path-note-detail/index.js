@@ -57,7 +57,6 @@ Page({
   },
 
   customReturn() {
-    console.log('--hahaha')
     if (this.data.commentsVisible) {
       this.setData({
         commentsVisible: false
