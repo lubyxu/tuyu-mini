@@ -45,10 +45,16 @@
 			</view>
 		</view>
 
-		<view class="mt-8 flex items-center text-gray-color" bind:tap="onSpotGoTo">
-		  <iconfont name="position" size="13" color="rgba(0, 0, 0, 0.35)" />
-			<view class="ml-4 text-gray-color-2 text-12">{{location || '北京'}}</view>
-			<iconfont name="right-arrow" color="rgba(0, 0, 0, 0.35)" size="13" class="ml-4" />
+		<view class="mt-8 gap-8 flex items-center text-gray-color-2 text-12">
+      <view class="company-logo">
+        <image src="{{company_info.logo}}"/>
+        <view class="company-name">{{company_info.name}}</view>
+      </view>
+		  <view class="flex items-center"  bind:tap="onSpotGoTo">
+        <iconfont name="position" size="13" color="rgba(0, 0, 0, 0.35)" />
+        <view class="ml-4 text-gray-color-2 text-12">{{location || '北京'}}</view>
+        <iconfont name="right-arrow" color="rgba(0, 0, 0, 0.35)" size="13" class="ml-4" />
+      </view>
 		</view>
 	</view>
 

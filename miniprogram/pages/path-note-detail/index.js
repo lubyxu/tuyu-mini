@@ -4,6 +4,7 @@ import loginBehavior from '../../behaviors/login/index';
 import { getUser } from "../../utils/auth";
 import { formatUnixTime } from "../../utils/index";
 import { getCouponsByUserPath, getCoupon, getCouponsByPath, couponInfo } from '../../service/coupons/index';
+import dayjs from 'dayjs';
 const app = getApp();
 
 Page({
@@ -256,7 +257,11 @@ Page({
     this.setData({
       user_path_id: user_path_id || path_detail_info.user_path_id,
       path_id: path_id,
-      path_info: path_detail_info.path_info,
+      path_info: {
+        ...path_detail_info.path_info,
+        create_time_text: path_detail_info.path_info?.start_time > 1 ? dayjs(path_detail_info.path_info.start_time * 1000).format('MM月DD日 HH:mm') : null,
+        end_time_text: path_detail_info.path_info?.end_time > 1 ? dayjs(path_detail_info.path_info.end_time * 1000).format('MM月DD日 HH:mm') : null
+      },
       place_details: path_detail_info.place_details.map((item) => ({
         ...item,
         hint: place_reservation?.[item.place_id]?.hint,

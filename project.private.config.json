@@ -11,7 +11,7 @@
         {
           "name": "pages/path-note-detail/index",
           "pathName": "pages/path-note-detail/index",
-          "query": "path_id=5&group_id=undefined",
+          "query": "path_id=24&group_id=undefined",
           "launchMode": "default",
           "scene": null
         },

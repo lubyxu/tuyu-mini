@@ -152,3 +152,10 @@
   background-color: #f6f6f6;
   position: relative;
 }
+
+.path-time-tag {
+  font-size: 26rpx;
+  padding: 10rpx 26rpx;
+  background-color: #FDFAD8;
+  color: #724120;
+}

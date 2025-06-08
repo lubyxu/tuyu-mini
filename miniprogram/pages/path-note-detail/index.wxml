@@ -1,7 +1,14 @@
 
 <view class="page" style="background-color:{{commentsVisible ? '#FBEDDB' : 'inherit'}} ;">
-	<view style="position: absolute; z-index: 111;">
-	  <navigation-bar background="#FBEDDB" sampleReturn="{{true}}" bind:customReturn="customReturn" useCustomReturn="{{true}}"></navigation-bar>
+	<view style="position: absolute; z-index: 200;">
+		<view style="margin-top: 100px; color: #fff;" class="flex items-center justify-between">
+		  <view class="iconfont icon-back"></view>
+			<view class="flex items-center gap-16 flex-1">
+			  <view class="iconfont icon-collect" />
+				<view class="iconfont icon-share" />
+			</view>
+		</view>
+	  <!-- <navigation-bar  sampleReturn="{{true}}" bind:customReturn="customReturn" useCustomReturn="{{true}}"></navigation-bar> -->
 	</view>
 	<view style="padding-bottom: {{btnClass === 'fixed' ? '100px' : ''}}">
 	<share-modal-self
@@ -25,6 +32,10 @@
 		<view class="path-name">
 		  <view class="text">
 				{{path_info.group_name ? (path_info.group_name + '|' + path_info.name) : ''}}
+			</view>
+			<view class="inline-flex items-center gap-8 path-time-tag" wx:if="{{path_info.create_time_text}}">
+				<iconfont name="riqi" color="rgba(0, 0, 0, 0.65)" size="16" />
+			  {{path_info.create_time_text}} 至 {{path_info.end_time_text}}
 			</view>
 		</view>
 		<view wx-if="{{commentsVisible}}">
@@ -79,6 +90,7 @@
 						product_map="{{product_map}}"
 						checked="{{!!place_visited[item.place_id]}}"
 						c_visited="{{item.c_visited}}"
+						company_info="{{item.company_info}}"
 						content_info="{{item.content_info}}"
 						plain_text="{{item.plain_text}}"
 						bind:onPrivilege="onPrivilege"

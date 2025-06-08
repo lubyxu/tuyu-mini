@@ -57,6 +57,7 @@ Component({
     showOrderBtn: Boolean,
     orderStatus: Number, // 0 未预约
     hint: String,
+    company_info: Object
   },
 
   /**
