@@ -34,7 +34,7 @@
 	</view>
 
 	<view class="w-full progress" wx:if="{{showProgress}}">
-		<progress-bar isPending done="{{item.fin_place_count}}" total="{{item.place_count}}" />
+		<progress-bar isPending="{{item.status_flag == 4}}" done="{{item.fin_place_count}}" total="{{item.place_count}}" />
 	</view>
 
 	<view class="right-bottom-image">

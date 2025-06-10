@@ -16,6 +16,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    navigateTop: app.globalData.navBarHeight - 38,
     user_path_id: 0,
     path_id: 0,
     path_info: {},

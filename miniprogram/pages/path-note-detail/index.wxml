@@ -1,11 +1,14 @@
 
 <view class="page" style="background-color:{{commentsVisible ? '#FBEDDB' : 'inherit'}} ;">
-	<view style="position: absolute; z-index: 200;">
-		<view style="margin-top: 100px; color: #fff;" class="flex items-center justify-between">
-		  <view class="iconfont icon-back"></view>
-			<view class="flex items-center gap-16 flex-1">
-			  <view class="iconfont icon-collect" />
-				<view class="iconfont icon-share" />
+	<view style="position: absolute; z-index: 200; left: 20rpx; right: 220rpx">
+		<view style="margin-top: {{navigateTop}}px; color: #fff;" class="flex items-center justify-between">
+		  <view bind:tap="customReturn" class="iconfont icon-back navigator-rounded-btn" style="font-size: 20px"></view>
+			<view class="flex items-center flex-1" style="flex-direction: row-reverse; gap: 32rpx;">
+			  <button open-type="share" class="navigator-rounded-btn" style="padding: 0; width: 64rpx; margin: 0;" bind:tap="onShare">
+					<view class="iconfont icon-share " style="font-size: 20px" />
+				</button>
+				
+			  <view class="iconfont icon-collect navigator-rounded-btn" style="font-size: 20px" />
 			</view>
 		</view>
 	  <!-- <navigation-bar  sampleReturn="{{true}}" bind:customReturn="customReturn" useCustomReturn="{{true}}"></navigation-bar> -->
@@ -29,7 +32,7 @@
 				/>
 			</view>
 		</view>
-		<view class="path-name">
+		<view class="path-name" style="{{commentsVisible ? 'background-color: #FBEDDB' : ''}}">
 		  <view class="text">
 				{{path_info.group_name ? (path_info.group_name + '|' + path_info.name) : ''}}
 			</view>
@@ -48,10 +51,10 @@
 			<view style="padding: 0 16px; margin-top: 20px;">
 				<view style="margin-bottom: 16px;" class="user-path-header">
 				🗺️ 行程概览
-				<button open-type="share"  class="btn-share" bind:tap="onShare">
+				<!-- <button open-type="share"  class="btn-share" bind:tap="onShare">
 				<image src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FHu4rdvgxp1vLBVX4-K9s1%2F%E5%88%86%E4%BA%AB.svg" style="width: 20px; height: 20px;" />
 				<view>分享</view>
-				</button>
+				</button> -->
 			</view>
 				<view class="map-container" bind:tap="openMap">
 				<scen-map markers="{{markers}}" bind:markertap="onMarkertap" latitude="{{markers[0].latitude}}" longitude="{{markers[0].longitude}}" />

@@ -159,3 +159,16 @@
   background-color: #FDFAD8;
   color: #724120;
 }
+
+.navigator-rounded-btn {
+  width: 64rpx;
+  height: 64rpx;
+  color: #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00000066;
+  font-weight: 500;
+}
