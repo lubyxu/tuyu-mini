@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "iconfont": "/iconfont/iconfont",
+    "mp-msg": "weui-miniprogram/msg/msg",
+    "mp-icon": "weui-miniprogram/icon/icon"
+  }
+}

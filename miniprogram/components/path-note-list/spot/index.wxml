@@ -14,7 +14,10 @@
 	<view class="right">
 	  <view class="flex title">
 		  <view class="name">{{name}}</view>
-			<switcher wx:if="{{isUserPath}}" checked="{{checked || isChecked}}" bind:click="onChecked" />
+			<switcher wx:if="{{isUserAccount}}" checked="{{checked || isChecked}}" bind:click="onChecked" />
+      <button wx:else style="background-color: transparent; font-weight: 400; width: auto; padding: 0; margin: 0; " open-type="getPhoneNumber" bindgetphonenumber="onLoginChecked">
+        <switcher checked="{{checked || isChecked}}" />
+      </button>
 		</view>
 
     <icons

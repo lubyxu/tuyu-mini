@@ -148,7 +148,7 @@
 
 .path-name {
   margin-top: -30rpx;
-  z-index: 2000;
+  z-index: 1000;
   background-color: #f6f6f6;
   position: relative;
 }

@@ -1,7 +1,9 @@
 // components/path-note-list/spot/index.js
 import { checkPath } from '../../../service/path-note/path-detail';
+import loginBehavior from '../../../behaviors/login/index';
 
 function validatePos(source, target) {
+  return true
   return getDistance(source.latitude, source.longitude, target.latitude, target.longitude) < 5;
 }
 
@@ -35,12 +37,14 @@ Component({
   options: {
     addGlobalClass: true
   },
+  behaviors: [loginBehavior],
 
   /**
    * 组件的属性列表
    */
   properties: {
     place_id: String,
+    path_id: String,
     user_path_id: String,
     image: String,
     name: String,
@@ -95,7 +99,7 @@ Component({
       if (this.pending) return;
       this.pending = true;
       try {
-        await checkPath({ place_id: this.data.place_id, user_path_id: this.data.user_path_id });
+        await checkPath({ place_id: this.data.place_id, path_id: this.data.path_id });
         this.triggerEvent('spotChecked');
         this.setData({
           isChecked: true
@@ -104,6 +108,10 @@ Component({
       catch (e) {
         this.pending = false;
       }
+    },
+    async onLoginChecked(e) {
+      await this.onRegister(e)
+      this.onChecked(e)
     },
     onClickProduct(e) {
       const id = e.currentTarget.dataset.info;

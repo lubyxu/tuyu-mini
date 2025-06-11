@@ -88,6 +88,7 @@
 				location="{{item.location}}"
 				loc_long="{{item.loc_long}}"
 				loc_lat="{{item.loc_lat}}"
+				    path_id="{{path_id}}"
 						user_path_id="{{user_path_id}}"
 						product_ids="{{item.product_id ? [item.product_id] : []}}"
 						product_map="{{product_map}}"
@@ -99,7 +100,7 @@
 						bind:onPrivilege="onPrivilege"
 						bind:onImageClick="onImageClick"
 				bind:spotChecked="onSpotChecked"
-						isUserPath="{{isUserPath}}"
+						isUserPath="{{true}}"
 						showOrderBtn="{{item.showOrderBtn}}"
 						orderStatus="{{item.orderStatus}}"
 						hint="{{item.hint}}"
@@ -141,7 +142,7 @@
 				/>
 			</view>
 		
-			<view
+			<!-- <view
 				wx:elif="{{!isUserPath}}"
 				class="flex items-center justify-center footer {{btnClass}}"
 				style="padding-bottom: 30px;"
@@ -157,10 +158,10 @@
 			<chinese-button width="300" bind:tap="goToMyPlan" wx:else>
 					<view class="btn-add-to-plan">查看我的计划</view>
 				</chinese-button>
-			</view>
-			<view wx:else style="padding-bottom: 40px;">
+			</view> -->
+			<!-- <view wx:else style="padding-bottom: 40px;">
 				<view class="text-gray-color-1 text-16 text-center text-strong" bind:tap="onClick">删除本次计划</view>
-			</view>
+			</view> -->
 		
 			<privilege-modal
 			show="{{modal && modal.type === 'privilege'}}"
@@ -184,4 +185,5 @@
 		
 	</view>
 	</view>
+	<finish-modal />
 </view>

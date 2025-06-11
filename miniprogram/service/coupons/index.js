@@ -72,3 +72,23 @@ export async function getActivityInfo(id) {
 		return {}
 	}
 }
+
+export async function finshedPath(path_id) {
+	try {
+		const data = await request({
+			method: 'POST',
+			url: '/fuyu/path/userpathcheck/finishedcheck',
+			data: {
+				path_id: +path_id
+			}
+		})
+
+		return {
+			is_finished: data.is_finished,
+			coupon_list: data.coupon_list
+		}
+	}
+	catch (e) {
+		throw e
+	}
+}

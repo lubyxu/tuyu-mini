@@ -17,6 +17,7 @@
     "share-modal-self": "./share-modal-self/index",
     "comments": "/components/comment/index",
     "coupon-card": "/components/coupon/card/index",
-    "info-modal": "./info-modal/index"
+    "info-modal": "./info-modal/index",
+    "finish-modal": "./finish-modal/index"
   }
 }
