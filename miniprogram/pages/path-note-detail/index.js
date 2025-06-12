@@ -3,7 +3,7 @@ import { getPathDetail, deleteUserPath, addUserPath, getComments } from '../../s
 import loginBehavior from '../../behaviors/login/index';
 import { getUser } from "../../utils/auth";
 import { formatUnixTime } from "../../utils/index";
-import { getCouponsByUserPath, getCoupon, getCouponsByPath, couponInfo } from '../../service/coupons/index';
+import { getCouponsByUserPath, getCoupon, getCouponsByPath, couponInfo, finshedPath } from '../../service/coupons/index';
 import dayjs from 'dayjs';
 const app = getApp();
 
@@ -258,6 +258,7 @@ Page({
     this.setData({
       user_path_id: user_path_id || path_detail_info.user_path_id,
       path_id: path_id,
+      is_user_liked: data.is_user_liked,
       path_info: {
         ...path_detail_info.path_info,
         create_time_text: path_detail_info.path_info?.start_time > 1 ? dayjs(path_detail_info.path_info.start_time * 1000).format('MM月DD日 HH:mm') : null,
@@ -297,6 +298,7 @@ Page({
     else {
       data = await getCouponsByPath(this.options.path_id);
     }
+
     this.setData({
       couponList: data
     });
@@ -405,7 +407,19 @@ Page({
     this.needRefreshList = true;
   },
 
-  finishSpotCheck() {},
+  async finishSpotCheck() {
+    const { is_finished, coupon_list } = await finshedPath(this.options.path_id)
+    if (is_finished) {
+      this.setData({
+        modal: {
+          type: coupon_list?.length ? 'finish-gift-modal' : 'finish-modal',
+          props: {
+            coupon_list
+          }
+        }
+      })
+    }
+  },
   onGotoMap() {
     const { user_path_id, path_id } = this.data;
     const query = [

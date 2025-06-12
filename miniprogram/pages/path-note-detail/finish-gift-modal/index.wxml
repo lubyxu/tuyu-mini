@@ -37,7 +37,8 @@
       <scroll-view class="gift-list" scroll-y="true">
         <view class="gift-item" wx:for="{{giftList}}" wx:key="index">
           <view class="gift-icon {{item.iconClass}}">
-            <iconfont name="{{item.icon}}" class="icon"></iconfont>
+            <!-- <iconfont name="{{item.icon}}" class="icon"></iconfont> -->
+            <image mode="aspectFit" src="{{item.show_img}}" class="avatar" />
           </view>
           <view class="gift-name">{{item.name}}</view>
         </view>

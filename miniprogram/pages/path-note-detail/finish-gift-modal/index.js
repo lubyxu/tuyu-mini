@@ -24,33 +24,7 @@ Component({
    */
   data: {
     // 默认奖品列表
-    giftList: [
-      {
-        icon: 'card_giftcard',
-        iconClass: 'red-gradient',
-        name: '惊喜好礼券'
-      },
-      {
-        icon: 'emoji_events',
-        iconClass: 'yellow-gradient',
-        name: '成就徽章一枚'
-      },
-      {
-        icon: 'star',
-        iconClass: 'green-gradient',
-        name: '幸运星积分'
-      },
-      {
-        icon: 'redeem',
-        iconClass: 'blue-gradient',
-        name: '神秘小包裹'
-      },
-      {
-        icon: 'workspace_premium',
-        iconClass: 'purple-gradient',
-        name: '尊享体验卡'
-      }
-    ]
+    giftList: []
   },
 
   /**

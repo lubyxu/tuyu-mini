@@ -8,7 +8,8 @@
 					<view class="iconfont icon-share " style="font-size: 20px" />
 				</button>
 				
-			  <view class="iconfont icon-collect navigator-rounded-btn" style="font-size: 20px" />
+			  <view wx:if="{{is_user_liked}}" class="iconfont icon-collect navigator-rounded-btn" style="font-size: 20px" />
+				<view wx:else=""></view>
 			</view>
 		</view>
 	  <!-- <navigation-bar  sampleReturn="{{true}}" bind:customReturn="customReturn" useCustomReturn="{{true}}"></navigation-bar> -->
@@ -185,6 +186,15 @@
 		
 	</view>
 	</view>
-	<finish-modal  />
-	<finish-gift-modal show />
+	<finish-modal
+	  show="{{modal && modal.type === 'finish-modal'}}"
+		bind:close="onModalClose"
+		bind:confirm="onModalConfirm"
+	/>
+	<finish-gift-modal
+		gifts="{{modal.props.coupon_list}}"
+		bind:close="onModalClose"
+		show="{{modal && modal.type === 'finish-gift-modal'}}"
+		bind:confirm="onModalConfirm"
+	/>
 </view>

@@ -160,7 +160,7 @@
 
 /* 底部按钮区域 */
 .button-area {
-  padding: 48rpx;
+  padding: 48rpx 0;
   width: 100%;
   background-color: #fff;
 }
