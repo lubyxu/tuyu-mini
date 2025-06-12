@@ -1,0 +1,53 @@
+<!-- 完成打卡有奖品奖励弹窗 -->
+<view class="popup-overlay" wx:if="{{show}}" bindtap="onOverlayTap">
+  <view class="popup-content" catchtap="onContentTap">
+    
+    <!-- 庆祝背景区域 -->
+    <view class="celebration-background">
+      <!-- 彩色纸屑动画 -->
+      <view class="confetti confetti-1"></view>
+      <view class="confetti confetti-2"></view>
+      <view class="confetti confetti-3"></view>
+      <view class="confetti confetti-4"></view>
+      <view class="confetti confetti-5"></view>
+      <view class="confetti confetti-6"></view>
+      <view class="confetti confetti-7"></view>
+      <view class="confetti confetti-8"></view>
+      <view class="confetti confetti-9"></view>
+      <view class="confetti confetti-10"></view>
+      <view class="confetti confetti-11"></view>
+      <view class="confetti confetti-12"></view>
+      
+      <!-- 庆祝图标 -->
+      <iconfont name="celebration" class="celebration-icon"></iconfont>
+      
+      <!-- 主标题 -->
+      <view class="main-title">太棒啦！打卡成功！</view>
+      
+      <!-- 副标题 -->
+      <view class="sub-title">属于你的惊喜已送达 🎉</view>
+    </view>
+    
+    <!-- 奖品内容区域 -->
+    <view class="content-area">
+      <!-- 提示文字 -->
+      <view class="hint-text">快来看看你获得了什么奖励吧：</view>
+      
+      <!-- 奖品列表 -->
+      <scroll-view class="gift-list" scroll-y="true">
+        <view class="gift-item" wx:for="{{giftList}}" wx:key="index">
+          <view class="gift-icon {{item.iconClass}}">
+            <iconfont name="{{item.icon}}" class="icon"></iconfont>
+          </view>
+          <view class="gift-name">{{item.name}}</view>
+        </view>
+      </scroll-view>
+      
+      <!-- 确认按钮 -->
+      <button class="confirm-button" bindtap="onConfirm">
+        心满意足，收下啦！
+      </button>
+    </view>
+    
+  </view>
+</view> 

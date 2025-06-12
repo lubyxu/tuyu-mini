@@ -18,6 +18,7 @@
     "comments": "/components/comment/index",
     "coupon-card": "/components/coupon/card/index",
     "info-modal": "./info-modal/index",
-    "finish-modal": "./finish-modal/index"
+    "finish-modal": "./finish-modal/index",
+    "finish-gift-modal": "./finish-gift-modal/index"
   }
 }

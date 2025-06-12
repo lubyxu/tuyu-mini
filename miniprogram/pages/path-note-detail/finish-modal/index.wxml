@@ -1,3 +1,37 @@
-<mp-dialog show>
-  <view>asjfdsajlfjasjlkfdaf</view>
-</mp-dialog>
+<!-- 完成全部打卡奖励弹窗 -->
+<view class="popup-overlay" wx:if="{{show}}" bindtap="onOverlayTap">
+  <view class="popup-content" catchtap="onContentTap">
+    
+    <!-- 庆祝背景区域 -->
+    <view class="celebration-background">
+      <!-- 彩色纸屑动画 -->
+      <view class="confetti confetti-1"></view>
+      <view class="confetti confetti-2"></view>
+      <view class="confetti confetti-3"></view>
+      <view class="confetti confetti-4"></view>
+      <view class="confetti confetti-5"></view>
+      <view class="confetti confetti-6"></view>
+      <view class="confetti confetti-7"></view>
+      <view class="confetti confetti-8"></view>
+      <view class="confetti confetti-9"></view>
+      <view class="confetti confetti-10"></view>
+      
+      <!-- 奖杯图标 -->
+      <iconfont name="emoji_events" class="trophy-icon"></iconfont>
+      
+      <!-- 主标题 -->
+      <view class="main-title">完成全部打卡！</view>
+      
+      <!-- 副标题 -->
+      <view class="sub-title">太棒了！💪</view>
+    </view>
+    
+    <!-- 底部按钮区域 -->
+    <view class="button-area">
+      <button class="confirm-button" bindtap="onConfirm">
+        好的~
+      </button>
+    </view>
+    
+  </view>
+</view>

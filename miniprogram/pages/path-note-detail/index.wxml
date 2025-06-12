@@ -185,5 +185,6 @@
 		
 	</view>
 	</view>
-	<finish-modal />
+	<finish-modal  />
+	<finish-gift-modal show />
 </view>
