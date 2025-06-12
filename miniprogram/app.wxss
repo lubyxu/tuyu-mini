@@ -109,6 +109,10 @@ page {
   color: rgba(76, 173, 95, 1);
 }
 
+.text-main-color {
+  color: rgba(0, 0, 0, 0.85);
+}
+
 .text-gray-color {
   color: rgba(0, 0, 0, 0.65);
 }

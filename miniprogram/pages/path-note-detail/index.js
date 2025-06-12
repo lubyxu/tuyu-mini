@@ -1,5 +1,5 @@
 // pages/path-note-detail/index.js
-import { getPathDetail, deleteUserPath, addUserPath, getComments } from '../../service/path-note/path-detail';
+import { getPathDetail, deleteUserPath, addUserPath, getComments, likePath } from '../../service/path-note/path-detail';
 import loginBehavior from '../../behaviors/login/index';
 import { getUser } from "../../utils/auth";
 import { formatUnixTime } from "../../utils/index";
@@ -481,6 +481,35 @@ Page({
       wx.navigateTo({
         url: '/pages/coupon/list/index?tab=3',
       })
+    }
+  },
+
+  async onLikePath() {
+    if (this.isPending) return;
+    this.isPending = true;
+    try {
+      await likePath(this.options.path_id, 1)
+      this.setData({
+        is_user_liked: true
+      })
+    }
+    catch (e) {}
+    finally {
+      this.isPending = false;
+    }
+  },
+  async onUnLikePath() {
+    if (this.isPending) return;
+    this.isPending = true;
+    try {
+      await likePath(this.options.path_id, 0)
+      this.setData({
+        is_user_liked: false
+      })
+    }
+    catch (e) {}
+    finally {
+      this.isPending = false;
     }
   }
 })

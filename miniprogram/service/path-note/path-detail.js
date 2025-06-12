@@ -104,3 +104,14 @@ export async function getComments(path_id) {
   });
   return data;
 }
+
+
+export async function likePath(path_id, is_like) {
+  return request({
+    url: '/fuyu/path/like/op',
+    data: {
+      path_id: +path_id,
+      like_type: is_like ? 1 : 0
+    }
+  });
+}

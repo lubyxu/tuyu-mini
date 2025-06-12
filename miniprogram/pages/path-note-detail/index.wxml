@@ -8,8 +8,8 @@
 					<view class="iconfont icon-share " style="font-size: 20px" />
 				</button>
 				
-			  <view wx:if="{{is_user_liked}}" class="iconfont icon-collect navigator-rounded-btn" style="font-size: 20px" />
-				<view wx:else=""></view>
+			  <view wx:if="{{!is_user_liked}}" class="iconfont icon-collect navigator-rounded-btn" style="font-size: 24px" bind:tap="onLikePath" />
+				<view wx:else  class="iconfont icon-collect-fill navigator-rounded-btn" style="color: #d81e06; opacity: 0.8; font-size: 20px;" bind:tap="onUnLikePath"></view>
 			</view>
 		</view>
 	  <!-- <navigation-bar  sampleReturn="{{true}}" bind:customReturn="customReturn" useCustomReturn="{{true}}"></navigation-bar> -->

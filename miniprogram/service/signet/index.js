@@ -93,3 +93,16 @@ export async function corpStamp(url) {
 
   return data.url;
 }
+
+export async function getStampPage(book_id, page_num) {
+  const { data } = await request({
+    url: '/fuyu/stamp/page',
+    data: {
+      book_id,
+      page_num
+    }
+  });
+
+  return data
+
+}

@@ -6,7 +6,8 @@
     "signet-container-list": "/components/signet/signet-container-list/index",
     "iconfont": "/iconfont/iconfont",
     "chinese-btn": "/components/button/chinese-btn",
-    "position-btn": "/components/button/position-btn"
+    "position-btn": "/components/button/position-btn",
+    "signet-logo": "/components/signet-logo/index"
   },
   "disableScroll": false,
   "navigationBarBackgroundColor": "#F0EBDD"
