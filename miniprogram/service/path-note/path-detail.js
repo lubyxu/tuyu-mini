@@ -111,7 +111,7 @@ export async function likePath(path_id, is_like) {
     url: '/fuyu/path/like/op',
     data: {
       path_id: +path_id,
-      like_type: is_like ? 1 : 0
+      like_type: is_like ? 1 : 2
     }
   });
 }
