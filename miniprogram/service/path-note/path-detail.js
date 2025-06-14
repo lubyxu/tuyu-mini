@@ -8,7 +8,7 @@ export async function getPathDetail({ user_path_id, path_id, from }) {
     }
   })
   return {
-    is_user_liked: data.is_user_liked,
+    is_user_liked: data.path_detail_info.is_user_liked,
     path_detail_info: data.path_detail_info,
     place_reservation: data.place_reservation,
     place_visited: data.place_visited,

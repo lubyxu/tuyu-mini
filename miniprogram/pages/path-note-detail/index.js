@@ -424,7 +424,8 @@ Page({
     const { user_path_id, path_id } = this.data;
     const query = [
       `path_id=${path_id}`,
-      user_path_id ? `user_path_id=${user_path_id}` : ''
+      user_path_id ? `user_path_id=${user_path_id}` : '',
+      'type=navigator'
     ].filter(Boolean);
     wx.navigateTo({
       url: `/pages/scenic-map/index?${query.join('&')}`

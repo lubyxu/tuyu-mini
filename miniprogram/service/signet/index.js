@@ -106,3 +106,16 @@ export async function getStampPage(book_id, page_num) {
   return data
 
 }
+
+export async function getArtInfo(id) {
+  const { data } = await request({
+    url: '/fuyu/artist/detail?id=' + id,
+    method: 'GET',
+  })
+
+  return data;
+}
+
+export async function likeTheArt(id) {
+  return Promise.resolve()
+}

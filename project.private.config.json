@@ -9,16 +9,16 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/signet-detail/index",
-          "pathName": "pages/signet-detail/index",
-          "query": "book_id=65",
+          "name": "pages/path-note-detail/index",
+          "pathName": "pages/path-note-detail/index",
+          "query": "path_id=2&group_id=undefined",
           "launchMode": "default",
           "scene": null
         },
         {
-          "name": "pages/path-note-detail/index",
-          "pathName": "pages/path-note-detail/index",
-          "query": "path_id=24&group_id=undefined",
+          "name": "pages/signet-detail/index",
+          "pathName": "pages/signet-detail/index",
+          "query": "book_id=65",
           "launchMode": "default",
           "scene": null
         },

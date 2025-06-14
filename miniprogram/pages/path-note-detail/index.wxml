@@ -22,7 +22,7 @@
 		wx-if="{{showSelfShare}}"
 	/>
 	<view wx:else>
-		<view style="height: 592rpx;">
+		<view style="height: 592rpx; overflow: hidden;">
 		  <view  style="z-index: 111; position: absolute; height: 592rpx;">
 				<header
 					name="{{path_info.group_name ? (path_info.group_name + '|' + path_info.name) : ''}}"
@@ -197,4 +197,8 @@
 		show="{{modal && modal.type === 'finish-gift-modal'}}"
 		bind:confirm="onModalConfirm"
 	/>
+
+	<view style="position: fixed; bottom: 8rpx; left: 0; right: 0; height: 160rpx;">
+	  <official-account></official-account>
+	</view>
 </view>

@@ -1,9 +1,12 @@
 // components/signet-logo/index.js
-import { getStampPage } from '../../service/signet/index'
+import { getStampPage, getArtInfo, likeTheArt } from '../../service/signet/index'
+import loginBehavior from '../../behaviors/login/index'
+
 Component({
   options: {
     addGlobalClass: true
   },
+  behaviors: [loginBehavior],
   /**
    * 组件的属性列表
    */
@@ -18,7 +21,9 @@ Component({
   data: {
     artist_info: null,
     company_info: null,
-    visible: false
+    visible: false,
+    desc: null,
+    like_num: 0
   },
 
   observers: {
@@ -29,6 +34,15 @@ Component({
     },
     page_num: function (pagenum) {
       this.getData(this.data.book_id, pagenum)
+    },
+    visible: function (val) {
+      if (!val) {
+        return
+      }
+      if (this.data.desc) {
+        return;
+      }
+      this.getDescInfo()
     }
   },
 
@@ -52,6 +66,29 @@ Component({
       this.setData({
         visible: false
       })
+    },
+    async getDescInfo() {
+      if (!this.data.artist_info?.id) return
+      const data = await getArtInfo(this.data.artist_info?.id)
+      this.setData({
+        desc: data.description,
+        like_num: data.like
+      })
+    },
+
+    async onLikeTap() {
+      if (!this.isUserAccount) return
+      this.isPending = true
+      try {
+        await likeTheArt(this.data.artist_info.id)
+        this.setData({
+          like_num: this.data.like_num + 1
+        })
+      }
+      catch (e) {}
+      finally {
+        this.isPending = false
+      }
     }
   }
 })
