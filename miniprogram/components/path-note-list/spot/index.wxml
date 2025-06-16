@@ -14,7 +14,10 @@
 	<view class="right">
 	  <view class="flex title">
 		  <view class="name">{{name}}</view>
-			<switcher wx:if="{{isUserPath}}" checked="{{checked || isChecked}}" bind:click="onChecked" />
+			<switcher wx:if="{{isUserAccount}}" checked="{{checked || isChecked}}" bind:click="onChecked" />
+      <button wx:else style="background-color: transparent; font-weight: 400; width: auto; padding: 0; margin: 0; " open-type="getPhoneNumber" bindgetphonenumber="onLoginChecked">
+        <switcher checked="{{checked || isChecked}}" />
+      </button>
 		</view>
 
     <icons
@@ -45,10 +48,16 @@
 			</view>
 		</view>
 
-		<view class="mt-8 flex items-center text-gray-color" bind:tap="onSpotGoTo">
-		  <iconfont name="position" size="13" color="rgba(0, 0, 0, 0.35)" />
-			<view class="ml-4 text-gray-color-2 text-12">{{location || '北京'}}</view>
-			<iconfont name="right-arrow" color="rgba(0, 0, 0, 0.35)" size="13" class="ml-4" />
+		<view class="mt-8 gap-8 flex items-center text-gray-color-2 text-12">
+      <view class="company-logo">
+        <image src="{{company_info.logo}}"/>
+        <view class="company-name">{{company_info.name}}</view>
+      </view>
+		  <view class="flex items-center"  bind:tap="onSpotGoTo">
+        <iconfont name="position" size="13" color="rgba(0, 0, 0, 0.35)" />
+        <view class="ml-4 text-gray-color-2 text-12">{{location || '北京'}}</view>
+        <iconfont name="right-arrow" color="rgba(0, 0, 0, 0.35)" size="13" class="ml-4" />
+      </view>
 		</view>
 	</view>
 

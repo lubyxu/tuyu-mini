@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    book_id: 0,
     book: {},
     bookConfig: {},
     signets: [],
@@ -21,6 +22,9 @@ Page({
    */
   onLoad(options) {
     this.options = options;
+    this.setData({
+      book_id: options.book_id
+    })
     if (!this.data.isLogined) return;
     this.getBookInfo(this.options.book_id);
   },
@@ -84,7 +88,6 @@ Page({
   },
   async getBookInfo(id) {
     const data = await getBookInfo(id);
-    console.log('data', data)
 
     const bookInfo = data.BookInfo;
     const pages = data.Pages;

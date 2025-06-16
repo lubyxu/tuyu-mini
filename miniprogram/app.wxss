@@ -1,5 +1,6 @@
 /**app.wxss**/
 @import './component.wxss';
+@import './icon.wxss';
 
 .container {
   display: flex;
@@ -40,6 +41,9 @@ page {
 .flex {
   display: flex;
 }
+.flex-1 {
+  flex-grow: 1;
+}
 .flex-wrap {
   flex-wrap: wrap;
 }
@@ -63,6 +67,9 @@ page {
 }
 .gap-8 {
   gap: 8px;
+}
+.gap-4 {
+  gap: 4px;
 }
 .relative {
   position: relative;
@@ -100,6 +107,10 @@ page {
 }
 .text-success-color {
   color: rgba(76, 173, 95, 1);
+}
+
+.text-main-color {
+  color: rgba(0, 0, 0, 0.85);
 }
 
 .text-gray-color {
@@ -175,4 +186,20 @@ page {
 }
 .rounded-4 {
   border-radius: 4px;
+}
+
+.company-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.company-logo image {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  overflow: hidden;
+
+  font-size: inherit;
+  
 }

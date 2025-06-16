@@ -1,5 +1,11 @@
 <!--components/path-note-list/card/index.wxml-->
 <view class="card relative" bind:tap="onClick">
+  <view class="flex gap-8 company-banner" wx:if="{{item.companies.length}}">
+	  <view class="flex items-center gap-4 company-description" wx:for="{{item.companies}}">
+		  <image src="{{item.avatar}}" mode="aspectFit" class="company-avatar" />
+			<text>{{item.name}}</text>
+		</view>
+	</view>
   <view class="title">{{item.name}}</view>
 	<view class="container">
 	  <view class="flex w-full" style="flex-wrap: wrap;">
@@ -28,7 +34,7 @@
 	</view>
 
 	<view class="w-full progress" wx:if="{{showProgress}}">
-		<progress-bar done="{{item.fin_place_count}}" total="{{item.place_count}}" />
+		<progress-bar isPending="{{item.status_flag == 4}}" done="{{item.fin_place_count}}" total="{{item.place_count}}" />
 	</view>
 
 	<view class="right-bottom-image">

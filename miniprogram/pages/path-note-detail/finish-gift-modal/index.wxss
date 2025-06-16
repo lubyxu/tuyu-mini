@@ -1,0 +1,286 @@
+/* 完成打卡有奖品奖励弹窗样式 */
+@import "../../../component.wxss";
+
+/* 弹窗遮罩层 */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* 弹窗内容容器 */
+.popup-content {
+  background-color: #fff;
+  border-radius: 48rpx;
+  width: 90%;
+  max-width: 800rpx;
+  box-shadow: 0 20rpx 50rpx rgba(0, 0, 0, 0.1), 0 10rpx 20rpx rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  position: relative;
+}
+
+/* 庆祝背景区域 */
+.celebration-background {
+  background: linear-gradient(135deg, #FF6B6B 0%, #FFC371 100%);
+  background-size: 200% 200%;
+  animation: gradientBG 5s ease infinite;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 96rpx 0 80rpx 0;
+}
+
+/* 渐变背景动画 */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 彩色纸屑基础样式 */
+.confetti {
+  position: absolute;
+  width: 20rpx;
+  height: 20rpx;
+  background-color: #fff;
+  opacity: 0.7;
+  border-radius: 50%;
+  animation: fall 3s linear infinite;
+}
+
+/* 每个纸屑的个性化样式 */
+.confetti-1 { 
+  left: 10%; 
+  animation-duration: 2s; 
+  animation-delay: 0s; 
+  background-color: #FFD700;
+}
+.confetti-2 { 
+  left: 20%; 
+  animation-duration: 2.5s; 
+  animation-delay: 0.5s; 
+  background-color: #FF69B4;
+}
+.confetti-3 { 
+  left: 30%; 
+  animation-duration: 3s; 
+  animation-delay: 1s; 
+  background-color: #ADD8E6;
+}
+.confetti-4 { 
+  left: 40%; 
+  animation-duration: 2.2s; 
+  animation-delay: 0.2s; 
+  background-color: #90EE90;
+}
+.confetti-5 { 
+  left: 50%; 
+  animation-duration: 2.8s; 
+  animation-delay: 0.8s; 
+  background-color: #FFA07A;
+}
+.confetti-6 { 
+  left: 60%; 
+  animation-duration: 3.5s; 
+  animation-delay: 1.5s; 
+  background-color: #BA55D3;
+}
+.confetti-7 { 
+  left: 70%; 
+  animation-duration: 2.1s; 
+  animation-delay: 0.3s; 
+  background-color: #FFD700;
+}
+.confetti-8 { 
+  left: 80%; 
+  animation-duration: 2.6s; 
+  animation-delay: 0.6s; 
+  background-color: #FF69B4;
+}
+.confetti-9 { 
+  left: 90%; 
+  animation-duration: 3.2s; 
+  animation-delay: 1.2s; 
+  background-color: #ADD8E6;
+}
+.confetti-10 { 
+  left: 15%; 
+  animation-duration: 2.4s; 
+  animation-delay: 0.4s; 
+  background-color: #90EE90;
+}
+.confetti-11 { 
+  left: 25%; 
+  animation-duration: 2.9s; 
+  animation-delay: 0.9s; 
+  background-color: #FFA07A;
+}
+.confetti-12 { 
+  left: 35%; 
+  animation-duration: 3.3s; 
+  animation-delay: 1.3s; 
+  background-color: #BA55D3;
+}
+
+/* 纸屑下落动画 */
+@keyframes fall {
+  0% { 
+    transform: translateY(-40rpx) rotate(0deg); 
+    opacity: 0.7; 
+  }
+  100% { 
+    transform: translateY(300rpx) rotate(720deg); 
+    opacity: 0; 
+  }
+}
+
+/* 庆祝图标 */
+.celebration-icon {
+  color: #fff;
+  font-size: 120rpx !important;
+  margin-bottom: 16rpx;
+  filter: drop-shadow(0 4rpx 8rpx rgba(0,0,0,0.2));
+}
+
+/* 主标题 */
+.main-title {
+  font-size: 60rpx;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 4rpx 8rpx rgba(0,0,0,0.2);
+  letter-spacing: 0.05em;
+}
+
+/* 副标题 */
+.sub-title {
+  font-size: 28rpx;
+  color: #fff;
+  opacity: 0.9;
+  margin-top: 16rpx;
+  text-shadow: 0 2rpx 4rpx rgba(0,0,0,0.1);
+}
+
+/* 奖品内容区域 */
+.content-area {
+  padding: 32rpx 0 48rpx 0;
+  width: 100%;
+  background-color: #fff;
+}
+
+/* 提示文字 */
+.hint-text {
+  font-size: 28rpx;
+  color: #6B7280;
+  margin-bottom: 32rpx;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* 奖品列表 */
+.gift-list {
+  width: 100%;
+  height: 448rpx;
+  border: 2rpx solid #E5E7EB;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  background-color: #F9FAFB;
+  margin-bottom: 48rpx;
+}
+
+/* 奖品项 */
+.gift-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.gift-item:last-child {
+  margin-bottom: 0;
+}
+
+.gift-item:active {
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+/* 奖品图标容器 */
+.gift-icon {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 32rpx;
+  /* box-shadow: inset 0 2rpx 4rpx rgba(0, 0, 0, 0.1); */
+}
+
+/* 不同奖品图标背景色 */
+.gift-icon.red-gradient {
+  background: linear-gradient(135deg, #EF4444, #EC4899);
+}
+
+.gift-icon.yellow-gradient {
+  background: linear-gradient(135deg, #FACC15, #F97316);
+}
+
+.gift-icon.green-gradient {
+  background: linear-gradient(135deg, #22C55E, #14B8A6);
+}
+
+.gift-icon.blue-gradient {
+  background: linear-gradient(135deg, #3B82F6, #6366F1);
+}
+
+.gift-icon.purple-gradient {
+  background: linear-gradient(135deg, #A855F7, #EC4899);
+}
+
+/* 奖品图标 */
+.gift-icon .avatar {
+  color: #fff;
+  width: 96rpx;
+  height: 96rpx;
+}
+
+/* 奖品名称 */
+.gift-name {
+  color: #374151;
+  font-weight: 500;
+  font-size: 32rpx;
+}
+
+/* 确认按钮 */
+.confirm-button {
+  width: fit-content;
+  background: linear-gradient(to right, #f87171, #fb923c);
+  color: #fff;
+  font-weight: 600;
+  padding: 28rpx 0;
+  border-radius: 24rpx;
+  border: none;
+  outline: none;
+  box-shadow: 0 16rpx 32rpx rgba(248, 113, 113, 0.3);
+  transition: all 0.3s ease;
+  font-size: 32rpx;
+  margin: 0 auto;
+}
+
+.confirm-button:active {
+  background: linear-gradient(to right, #dc2626, #ea580c);
+  transform: scale(0.98);
+} 

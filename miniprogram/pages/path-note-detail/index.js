@@ -1,9 +1,10 @@
 // pages/path-note-detail/index.js
-import { getPathDetail, deleteUserPath, addUserPath, getComments } from '../../service/path-note/path-detail';
+import { getPathDetail, deleteUserPath, addUserPath, getComments, likePath } from '../../service/path-note/path-detail';
 import loginBehavior from '../../behaviors/login/index';
 import { getUser } from "../../utils/auth";
 import { formatUnixTime } from "../../utils/index";
-import { getCouponsByUserPath, getCoupon, getCouponsByPath, couponInfo } from '../../service/coupons/index';
+import { getCouponsByUserPath, getCoupon, getCouponsByPath, couponInfo, finshedPath } from '../../service/coupons/index';
+import dayjs from 'dayjs';
 const app = getApp();
 
 Page({
@@ -15,6 +16,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    navigateTop: app.globalData.navBarHeight - 38,
     user_path_id: 0,
     path_id: 0,
     path_info: {},
@@ -57,7 +59,6 @@ Page({
   },
 
   customReturn() {
-    console.log('--hahaha')
     if (this.data.commentsVisible) {
       this.setData({
         commentsVisible: false
@@ -257,7 +258,12 @@ Page({
     this.setData({
       user_path_id: user_path_id || path_detail_info.user_path_id,
       path_id: path_id,
-      path_info: path_detail_info.path_info,
+      is_user_liked: data.is_user_liked,
+      path_info: {
+        ...path_detail_info.path_info,
+        create_time_text: path_detail_info.path_info?.start_time > 1 ? dayjs(path_detail_info.path_info.start_time * 1000).format('MM月DD日 HH:mm') : null,
+        end_time_text: path_detail_info.path_info?.end_time > 1 ? dayjs(path_detail_info.path_info.end_time * 1000).format('MM月DD日 HH:mm') : null
+      },
       place_details: path_detail_info.place_details.map((item) => ({
         ...item,
         hint: place_reservation?.[item.place_id]?.hint,
@@ -292,6 +298,7 @@ Page({
     else {
       data = await getCouponsByPath(this.options.path_id);
     }
+
     this.setData({
       couponList: data
     });
@@ -396,13 +403,29 @@ Page({
     this.setData({
       fin_place_count: this.data.fin_place_count + 1
     });
+    this.getDetail({ user_path_id: this.options.user_path_id, path_id: this.options.path_id});
     this.needRefreshList = true;
+  },
+
+  async finishSpotCheck() {
+    const { is_finished, coupon_list } = await finshedPath(this.options.path_id)
+    if (is_finished) {
+      this.setData({
+        modal: {
+          type: coupon_list?.length ? 'finish-gift-modal' : 'finish-modal',
+          props: {
+            coupon_list
+          }
+        }
+      })
+    }
   },
   onGotoMap() {
     const { user_path_id, path_id } = this.data;
     const query = [
       `path_id=${path_id}`,
-      user_path_id ? `user_path_id=${user_path_id}` : ''
+      user_path_id ? `user_path_id=${user_path_id}` : '',
+      'type=navigator'
     ].filter(Boolean);
     wx.navigateTo({
       url: `/pages/scenic-map/index?${query.join('&')}`
@@ -459,6 +482,35 @@ Page({
       wx.navigateTo({
         url: '/pages/coupon/list/index?tab=3',
       })
+    }
+  },
+
+  async onLikePath() {
+    if (this.isPending) return;
+    this.isPending = true;
+    try {
+      await likePath(this.options.path_id, 1)
+      this.setData({
+        is_user_liked: true
+      })
+    }
+    catch (e) {}
+    finally {
+      this.isPending = false;
+    }
+  },
+  async onUnLikePath() {
+    if (this.isPending) return;
+    this.isPending = true;
+    try {
+      await likePath(this.options.path_id, 0)
+      this.setData({
+        is_user_liked: false
+      })
+    }
+    catch (e) {}
+    finally {
+      this.isPending = false;
     }
   }
 })

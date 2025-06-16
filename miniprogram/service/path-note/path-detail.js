@@ -1,27 +1,40 @@
 import { request } from '../../utils/req';
 
 export async function getPathDetail({ user_path_id, path_id, from }) {
-	if (user_path_id) {
-    const url = from === 'mine' ? '/fuyu/path/share/userpathdetail' : '/fuyu/path/userpathdetail';
-		const { data } = await request({
-			url,
-			data: {
-				user_path_id: +user_path_id,
-			}
-		});
-		return data;
-	}
-	else {
-		const { data } = await request({
-			url: '/fuyu/path/detail',
-			data: {
-				path_id: +path_id,
-			}
-		});
-		return {
-			path_detail_info: data
-		}; 
-	}
+  const { data } = await request({
+    url: '/fuyu/path/detail/new',
+    data: {
+      path_id: +path_id
+    }
+  })
+  return {
+    is_user_liked: data.path_detail_info.is_user_liked,
+    path_detail_info: data.path_detail_info,
+    place_reservation: data.place_reservation,
+    place_visited: data.place_visited,
+    user_path_id: data.user_path_id
+  }
+	// if (user_path_id) {
+  //   const url = from === 'mine' ? '/fuyu/path/share/userpathdetail' : '/fuyu/path/userpathdetail';
+	// 	const { data } = await request({
+	// 		url,
+	// 		data: {
+	// 			user_path_id: +user_path_id,
+	// 		}
+	// 	});
+	// 	return data;
+	// }
+	// else {
+	// 	const { data } = await request({
+	// 		url: '/fuyu/path/detail',
+	// 		data: {
+	// 			path_id: +path_id,
+	// 		}
+	// 	});
+	// 	return {
+	// 		path_detail_info: data
+	// 	}; 
+	// }
 }
 
 
@@ -31,11 +44,11 @@ export async function getPathDetail({ user_path_id, path_id, from }) {
  * @returns 
  */
 
-export async function checkPath({ user_path_id, place_id }) {
+export async function checkPath({ path_id, place_id }) {
 	return request({
 		url: '/fuyu/path/userpathcheck',
 		data: {
-			user_path_id: +user_path_id,
+			path_id: +path_id,
 			place_id: +place_id,
 		}
 	});
@@ -90,4 +103,15 @@ export async function getComments(path_id) {
     }
   });
   return data;
+}
+
+
+export async function likePath(path_id, is_like) {
+  return request({
+    url: '/fuyu/path/like/op',
+    data: {
+      path_id: +path_id,
+      like_type: is_like ? 1 : 2
+    }
+  });
 }

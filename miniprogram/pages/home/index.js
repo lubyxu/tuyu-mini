@@ -135,7 +135,18 @@ Page({
       }
     });
 
-    this.setData({ pathList: data, })
+    this.setData({ pathList: data.map(item => ({
+      ...item,
+      companies: (item?.places || []).map(item => {
+        if (!item.company_info) {
+          return false
+        }
+        return {
+          avatar: item.company_info.logo,
+          name: item.company_info.name
+        }
+      }).filter(Boolean)
+    })), })
   },
 
   async onRegisterAccount(e) {
