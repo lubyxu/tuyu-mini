@@ -404,6 +404,7 @@ Page({
       fin_place_count: this.data.fin_place_count + 1
     });
     this.getDetail({ user_path_id: this.options.user_path_id, path_id: this.options.path_id});
+    this.finishSpotCheck()
     this.needRefreshList = true;
   },
 

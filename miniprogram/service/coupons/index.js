@@ -75,7 +75,7 @@ export async function getActivityInfo(id) {
 
 export async function finshedPath(path_id) {
 	try {
-		const data = await request({
+		const { data } = await request({
 			method: 'POST',
 			url: '/fuyu/path/userpathcheck/finishedcheck',
 			data: {
