@@ -23,7 +23,8 @@ Component({
     company_info: null,
     visible: false,
     desc: null,
-    like_num: 0
+    like_num: 0,
+    is_user_liked: false
   },
 
   observers: {
@@ -33,6 +34,7 @@ Component({
       }
     },
     page_num: function (pagenum) {
+      if (page_num < 0) return
       this.getData(this.data.book_id, pagenum)
     },
     visible: function (val) {
@@ -72,17 +74,20 @@ Component({
       const data = await getArtInfo(this.data.artist_info?.id)
       this.setData({
         desc: data.description,
-        like_num: data.like
+        like_num: data.like,
+        is_user_liked: data.is_user_liked
       })
     },
 
     async onLikeTap() {
-      if (!this.isUserAccount) return
+      if (!this.data.isUserAccount) return
       this.isPending = true
       try {
-        await likeTheArt(this.data.artist_info.id)
+        const is_like = !this.data.is_user_liked
+        await likeTheArt(this.data.artist_info.id, is_like)
         this.setData({
-          like_num: this.data.like_num + 1
+          like_num: (this.data.like_num || 0) + (is_like ? 1 : (-1)),
+          is_user_liked: is_like
         })
       }
       catch (e) {}

@@ -116,6 +116,12 @@ export async function getArtInfo(id) {
   return data;
 }
 
-export async function likeTheArt(id) {
-  return Promise.resolve()
+export async function likeTheArt(artist_id, is_like) {
+  return request({
+    url: '/fuyu/artist/like/op',
+    data: {
+      artist_id: +artist_id,
+      like_type: is_like ? 1 : 2
+    }
+  });
 }

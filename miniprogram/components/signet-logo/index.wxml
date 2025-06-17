@@ -22,9 +22,10 @@
 				  <image src="{{artist_info.avatar}}" mode="aspectFit" style="width: 140rpx; height: 140rpx; border-radius: 50%; overflow: hidden; border: 0.5px solid #80808033" />
 					<view>{{artist_info.name}}</view>
 				</view>
-				<view wx:if="{{!like_num}}" class="text-gray-color-1 flex items-center gap-8" style="font-weight: 400;" bind:tap="onLikeTap">
-				  <view>{{like_num}}</view>
-					<view class="iconfont icon-like" style="font-size: 34rpx;"></view>
+				<view class="text-gray-color-1 flex items-center gap-8" style="font-weight: 400;" bind:tap="onLikeTap">
+				  <view wx:if="{{like_num}}">{{like_num}}</view>
+					<view wx:if="{{!is_user_liked}}" class="iconfont icon-like" style="font-size: 34rpx;"></view>
+					<view wx:else class="iconfont icon-liked" style="font-size: 34rpx; color: #B16E16"></view>
 				</view>
 			</view>
 		</view>
