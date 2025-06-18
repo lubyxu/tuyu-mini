@@ -1,4 +1,4 @@
-<view style="margin-top: 24px; margin-bottom: 12px;">
+<view style="margin-top: 24px; margin-bottom: 0;">
   <section-title title="{{owned ? '印章已获取' : '获取新印章'}}" fontSize="32" />
   <view class="flex items-center justify-center">
     <image src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FXxi9TnKZsfDWxkBha9AXw%2FObtain%20a%20new%20seal.svg" style="width: 102px; height: 14px;" />
@@ -6,16 +6,16 @@
 </view>
 <signet-container
   wx:if="{{!pageError}}"
-	bgImage="{{bgImage}}"
-	id="{{book.id}}"
-	book="{{book}}"
+  bgImage="{{bgImage}}"
+  id="{{book.id}}"
+  book="{{book}}"
   showFinishIcon="{{false}}"
   signet="{{signet}}"
   canCorpStamp="{{canCorpStamp}}"
   isStampOrigin="{{canCorpStamp ? isStampOrigin : true}}"
   bind:isStampOrigin="isStampOrigin"
 />
-<view wx:if="{{!pageError}}" wx:if="{{!owned}}">
+<view wx:if="{{!pageError}}" wx:if="{{!owned}}" style="margin-top: -16px;">
   <view class="signet-title flex items-center">
     <view class="inline-flex items-center">
       <view wx:if="{{name}}">{{name}}</view>
@@ -41,6 +41,10 @@
       <view wx:else bind:tap="onMapOpen">
         {{location.name}}
       </view>
+    </view>
+
+    <view class="flex items-center gap-8 mx-auto"  style="margin: 0 16px; padding-left: 40px;">
+      <signet-logo wx:if="{{!!artist}}" artist="{{artist}}" company="{{company}}" />
     </view>
   </view>
 </view>

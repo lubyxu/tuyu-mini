@@ -12,7 +12,9 @@ Component({
    */
   properties: {
     book_id: String,
-    page_num: Number
+    page_num: Number,
+    artist: Object,
+    company: Object
   },
 
   /**
@@ -34,7 +36,7 @@ Component({
       }
     },
     page_num: function (pagenum) {
-      if (page_num < 0) return
+      if (pagenum < 0 || !this.data.book_id) return
       this.getData(this.data.book_id, pagenum)
     },
     visible: function (val) {
@@ -45,6 +47,20 @@ Component({
         return;
       }
       this.getDescInfo()
+    },
+  },
+  lifetimes: {
+    attached: function () {
+      if (this.properties.artist) {
+        this.setData({
+          artist_info: this.properties.artist
+        })
+      }
+      if (this.properties.company) {
+        this.setData({
+          company_info: this.properties.company
+        })
+      }
     }
   },
 
@@ -74,7 +90,7 @@ Component({
       const data = await getArtInfo(this.data.artist_info?.id)
       this.setData({
         desc: data.description,
-        like_num: data.like,
+        like_num: data.like_num,
         is_user_liked: data.is_user_liked
       })
     },
@@ -84,9 +100,9 @@ Component({
       this.isPending = true
       try {
         const is_like = !this.data.is_user_liked
-        await likeTheArt(this.data.artist_info.id, is_like)
+        const { data } = await likeTheArt(this.data.artist_info.id, is_like)
         this.setData({
-          like_num: (this.data.like_num || 0) + (is_like ? 1 : (-1)),
+          like_num: data.like_num,
           is_user_liked: is_like
         })
       }

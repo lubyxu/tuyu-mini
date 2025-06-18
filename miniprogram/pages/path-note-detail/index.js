@@ -81,6 +81,7 @@ Page({
   onLogined() {
     const options = this.options;
     this.getDetail({ user_path_id: options.user_path_id, path_id: options.path_id});
+
   },
 
   /**
@@ -255,6 +256,7 @@ Page({
   async getDetail({ user_path_id, path_id, from }) {
     const data = await getPathDetail({ user_path_id, path_id, from });
     const { path_detail_info, place_visited, place_reservation } = data;
+    this.options.user_path_id = user_path_id;
     this.setData({
       user_path_id: user_path_id || path_detail_info.user_path_id,
       path_id: path_id,
@@ -478,6 +480,7 @@ Page({
     });
   },
   onCouponClick(e) {
+    console.log('----e', e)
     const { userCouponId } = e.detail;
     if (this.data.isUserPath && !!userCouponId) {
       wx.navigateTo({

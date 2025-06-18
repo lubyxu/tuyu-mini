@@ -31,7 +31,7 @@
     <!-- 奖品内容区域 -->
     <view class="content-area">
       <!-- 提示文字 -->
-      <view class="hint-text">快来看看你获得了什么奖励吧：</view>
+      <view class="hint-text">快来看看你获得了什么奖励~</view>
       
       <!-- 奖品列表 -->
       <scroll-view class="gift-list" scroll-y="true">

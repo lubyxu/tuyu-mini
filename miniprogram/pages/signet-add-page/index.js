@@ -22,6 +22,8 @@ Page({
     pageError: false,
     canCorpStamp: false,
     isStampOrigin: false,
+    artist: null,
+    company: null
   },
 
   /**
@@ -87,6 +89,7 @@ Page({
       }
       const bookInfo = data.product_info;
       const bookConfig = bookInfo.content.book_config;
+      console.log('--bookInfo', bookInfo)
       this.setData({
         owned: data.owned,
         stamp_pid: this.options.stamp_pid,
@@ -97,7 +100,9 @@ Page({
         isStampOrigin: true,
         signet: {
           image_url: bookInfo.show_image
-        }
+        },
+        artist: { ...bookInfo.artist },
+        company: {...bookInfo.company }
       });
     }
   },

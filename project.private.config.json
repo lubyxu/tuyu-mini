@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/signet-add-page/index",
+          "pathName": "pages/signet-add-page/index",
+          "query": "stamp_pid=18&key=path&couponId=71",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "store-list",
           "pathName": "pages/store-list/index",
           "query": "",

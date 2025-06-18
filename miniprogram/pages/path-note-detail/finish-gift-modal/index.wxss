@@ -188,7 +188,7 @@
 
 /* 奖品列表 */
 .gift-list {
-  width: 100%;
+  width: calc(100% - 48rpx);
   height: 448rpx;
   border: 2rpx solid #E5E7EB;
   border-radius: 24rpx;

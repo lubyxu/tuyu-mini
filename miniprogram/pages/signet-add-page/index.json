@@ -4,7 +4,8 @@
     "iconfont": "/iconfont/iconfont",
     "mp-dialog": "weui-miniprogram/dialog/dialog",
     "chinese-btn": "/components/button/chinese-btn",
-    "section-title": "/components/section-title/index"
+    "section-title": "/components/section-title/index",
+    "signet-logo": "/components/signet-logo/index"
   },
   "disableScroll": false,
   "navigationBarBackgroundColor": "#F0EBDD"
