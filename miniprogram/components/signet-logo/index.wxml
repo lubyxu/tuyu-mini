@@ -1,0 +1,38 @@
+<!--components/signet-logo/index.wxml-->
+<view>
+	<view class="flex items-center gap-8 mt-12" wx:if="{{company_info}}">
+		<image src="{{company_info.logo}}" style="width: 16px; height: 16px; border-radius: 50%; overflow: hidden" mode="aspectFit" />
+		<view>{{company_info.name}}</view>
+	</view>
+  <view class="flex items-center gap-8 mt-12" wx:if="{{artist_info}}" bind:tap="onArtTap">
+		<image src="{{artist_info.avatar}}" style="width: 16px; height: 16px; border-radius: 50%; overflow: hidden;" mode="aspectFit" />
+		<view>{{artist_info.name}}</view>
+	</view>
+
+	<half-screen-dialog
+		show="{{visible}}"
+		title=""
+		ext-class="fuyu-half-screen-dialog"
+		bindclose="onClose"
+		closabled="{{false}}"
+	>
+		<view class="title-container" slot="title">
+			<view class="flex items-center" style="margin-top: 64rpx;">
+			  <view class="flex-1 flex items-center gap-8">
+				  <image src="{{artist_info.avatar}}" mode="aspectFit" style="width: 140rpx; height: 140rpx; border-radius: 50%; overflow: hidden; border: 0.5px solid #80808033" />
+					<view>{{artist_info.name}}</view>
+				</view>
+				<view class="text-gray-color-1 flex items-center gap-8" style="font-weight: 400;" bind:tap="onLikeTap">
+				  <view wx:if="{{like_num}}">{{like_num}}</view>
+					<view wx:if="{{!is_user_liked}}" class="iconfont icon-like" style="font-size: 34rpx;"></view>
+					<view wx:else class="iconfont icon-liked" style="font-size: 34rpx; color: #B16E16"></view>
+				</view>
+			</view>
+		</view>
+		<view slot="desc">
+			<view class="content text-main-color" style="margin-top: 36rpx; max-height: 60vh; overflow: auto; font-weight: 400;">
+			  {{artist_info.description || '暂无介绍'}}
+			</view>
+		</view>
+	</half-screen-dialog>
+</view>

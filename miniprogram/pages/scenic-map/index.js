@@ -126,7 +126,30 @@ Page({
     const current = this.data.markers.find(item => item.id === markerId)
     const currentScenic = this.data.list.find(item => item.spot.id === markerId)
     const { products = [], is_visited, spot } = currentScenic
-    const { latitude, longitude } = current
+    const { latitude, longitude, title } = current
+
+    if (this.options.type === 'navigator') {
+      const mp = wx.createMapContext('myMap');
+      mp.openMapApp({
+        longitude: longitude,
+        latitude: latitude,
+        destination: title,
+        success: function (res) {
+          console.log('-- success',)
+        },
+        fail: function () {
+          console.log('error');
+          wx.showToast({
+            icon: 'none',
+            title: '调起地图应用失败'
+          });
+        },
+        complete(res) {
+          console.log(res)
+        }
+      })
+      return;
+    }
     if (!products.length) {
       return;
     }

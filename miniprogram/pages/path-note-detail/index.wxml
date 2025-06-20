@@ -1,6 +1,19 @@
 
-<view class="page" style="margin-top: 164rpx; background-color:{{commentsVisible ? '#FBEDDB' : 'inherit'}} ;">
-	<navigation-bar background="#FBEDDB" sampleReturn="{{true}}" bind:customReturn="customReturn" useCustomReturn="{{true}}"></navigation-bar>
+<view class="page" style="background-color:{{commentsVisible ? '#FBEDDB' : 'inherit'}} ;">
+	<view style="position: absolute; z-index: 200; left: 20rpx; right: 220rpx">
+		<view style="margin-top: {{navigateTop}}px; color: #fff;" class="flex items-center justify-between">
+		  <view bind:tap="customReturn" class="iconfont icon-back navigator-rounded-btn" style="font-size: 20px"></view>
+			<view class="flex items-center flex-1" style="flex-direction: row-reverse; gap: 32rpx;">
+			  <button open-type="share" class="navigator-rounded-btn" style="padding: 0; width: 64rpx; margin: 0;" bind:tap="onShare">
+					<view class="iconfont icon-share " style="font-size: 20px" />
+				</button>
+				
+			  <view wx:if="{{!is_user_liked}}" class="iconfont icon-collect navigator-rounded-btn" style="font-size: 24px" bind:tap="onLikePath" />
+				<view wx:else  class="iconfont icon-collect-fill navigator-rounded-btn" style="color: #d81e06; opacity: 0.8; font-size: 20px;" bind:tap="onUnLikePath"></view>
+			</view>
+		</view>
+	  <!-- <navigation-bar  sampleReturn="{{true}}" bind:customReturn="customReturn" useCustomReturn="{{true}}"></navigation-bar> -->
+	</view>
 	<view style="padding-bottom: {{btnClass === 'fixed' ? '100px' : ''}}">
 	<share-modal-self
 		placeDetails="{{place_details}}"
@@ -9,13 +22,26 @@
 		wx-if="{{showSelfShare}}"
 	/>
 	<view wx:else>
-		<header
-			name="{{path_info.group_name ? (path_info.group_name + '|' + path_info.name) : ''}}"
-			images="{{path_info.images}}"
-			fin_place_count="{{fin_place_count}}"
-			place_count="{{place_details.length}}"
-			isUserPath="{{isUserPath}}"
-		/>
+		<view style="height: 592rpx; overflow: hidden;">
+		  <view  style="z-index: 111; position: absolute; height: 592rpx;">
+				<header
+					name="{{path_info.group_name ? (path_info.group_name + '|' + path_info.name) : ''}}"
+					images="{{path_info.images}}"
+					fin_place_count="{{fin_place_count}}"
+					place_count="{{place_details.length}}"
+					isUserPath="{{isUserPath}}"
+				/>
+			</view>
+		</view>
+		<view class="path-name" style="{{commentsVisible ? 'background-color: #FBEDDB' : ''}}">
+		  <view class="text">
+				{{path_info.group_name ? (path_info.group_name + '|' + path_info.name) : ''}}
+			</view>
+			<view class="inline-flex items-center gap-8 path-time-tag" wx:if="{{path_info.create_time_text}}">
+				<iconfont name="riqi" color="rgba(0, 0, 0, 0.65)" size="16" />
+			  {{path_info.create_time_text}} 至 {{path_info.end_time_text}}
+			</view>
+		</view>
 		<view wx-if="{{commentsVisible}}">
 			<comments comments="{{comments}}" bind:replyComment="replyComment"/>
 			<view class="bottom-btn">
@@ -26,10 +52,10 @@
 			<view style="padding: 0 16px; margin-top: 20px;">
 				<view style="margin-bottom: 16px;" class="user-path-header">
 				🗺️ 行程概览
-				<button open-type="share"  class="btn-share" bind:tap="onShare">
+				<!-- <button open-type="share"  class="btn-share" bind:tap="onShare">
 				<image src="https://oss-whale-peach.meetwhale.com/wos%2Fharbor%2FHu4rdvgxp1vLBVX4-K9s1%2F%E5%88%86%E4%BA%AB.svg" style="width: 20px; height: 20px;" />
 				<view>分享</view>
-				</button>
+				</button> -->
 			</view>
 				<view class="map-container" bind:tap="openMap">
 				<scen-map markers="{{markers}}" bind:markertap="onMarkertap" latitude="{{markers[0].latitude}}" longitude="{{markers[0].longitude}}" />
@@ -63,17 +89,19 @@
 				location="{{item.location}}"
 				loc_long="{{item.loc_long}}"
 				loc_lat="{{item.loc_lat}}"
+				    path_id="{{path_id}}"
 						user_path_id="{{user_path_id}}"
 						product_ids="{{item.product_id ? [item.product_id] : []}}"
 						product_map="{{product_map}}"
 						checked="{{!!place_visited[item.place_id]}}"
 						c_visited="{{item.c_visited}}"
+						company_info="{{item.company_info}}"
 						content_info="{{item.content_info}}"
 						plain_text="{{item.plain_text}}"
 						bind:onPrivilege="onPrivilege"
 						bind:onImageClick="onImageClick"
 				bind:spotChecked="onSpotChecked"
-						isUserPath="{{isUserPath}}"
+						isUserPath="{{true}}"
 						showOrderBtn="{{item.showOrderBtn}}"
 						orderStatus="{{item.orderStatus}}"
 						hint="{{item.hint}}"
@@ -115,7 +143,7 @@
 				/>
 			</view>
 		
-			<view
+			<!-- <view
 				wx:elif="{{!isUserPath}}"
 				class="flex items-center justify-center footer {{btnClass}}"
 				style="padding-bottom: 30px;"
@@ -131,10 +159,10 @@
 			<chinese-button width="300" bind:tap="goToMyPlan" wx:else>
 					<view class="btn-add-to-plan">查看我的计划</view>
 				</chinese-button>
-			</view>
-			<view wx:else style="padding-bottom: 40px;">
+			</view> -->
+			<!-- <view wx:else style="padding-bottom: 40px;">
 				<view class="text-gray-color-1 text-16 text-center text-strong" bind:tap="onClick">删除本次计划</view>
-			</view>
+			</view> -->
 		
 			<privilege-modal
 			show="{{modal && modal.type === 'privilege'}}"
@@ -157,5 +185,20 @@
 
 		
 	</view>
+	</view>
+	<finish-modal
+	  show="{{modal && modal.type === 'finish-modal'}}"
+		bind:close="onModalClose"
+		bind:confirm="onModalConfirm"
+	/>
+	<finish-gift-modal
+		gifts="{{modal.props.coupon_list}}"
+		bind:close="onModalClose"
+		show="{{modal && modal.type === 'finish-gift-modal'}}"
+		bind:confirm="onModalConfirm"
+	/>
+
+	<view style="position: fixed; bottom: 8rpx; left: 0; right: 0; height: 160rpx;">
+	  <official-account></official-account>
 	</view>
 </view>

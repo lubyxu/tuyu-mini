@@ -23,7 +23,7 @@
 .container.pending.starting .text {
 	color: rgba(241, 75, 63, 1);
 	left: 50%;
-	margin-left: -10px;
+	margin-left: -30px;
 }
 
 .pin {

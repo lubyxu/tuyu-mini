@@ -18,7 +18,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    current: 0
   },
 
   /**
@@ -27,10 +27,14 @@ Component({
   methods: {
     onImageClick(e) {
       const index = e.currentTarget.dataset.index;
-      wx.previewImage({
-        urls: this.data.images,
-        current: this.data.images[index]
-      });
+      // wx.previewImage({
+      //   urls: this.data.images,
+      //   current: this.data.images[index]
+      // });
+
+      this.setData({
+        current: index
+      })
     }
   }
 })

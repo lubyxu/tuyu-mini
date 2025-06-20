@@ -1,18 +1,25 @@
 <!--pages/path-note-detail/header/index.wxml-->
 <view class="header">
-  <view class="title">{{name}}</view>
+  <view class="bg-image">
+    <image mode="heightFix" src="{{images[current]}}" />
+  </view>
 	<view class="sub-title flex items-center gap-8">
-	  <view
-      wx:for="{{images}}"
-      class="flex items-center gap-8"
-      bind:tap="onImageClick"
-      data-index="{{index}}"
-    >
-		  <image mode="aspectFill" src="{{item}}" class="image" />
-		</view>
+	  <scroll-view style="width: 100vw;" scroll-x>
+      <view class="flex flex-nowrap items-center gap-8">
+        <view
+          wx:for="{{images}}"
+          bind:tap="onImageClick"
+          data-index="{{index}}"
+        >
+          <image mode="aspectFill" src="{{item}}" class="image" />
+        </view>
+      </view>
+    </scroll-view>
 
-		<view class="progress-bar-pin">
+		<!-- <view class="progress-bar-pin">
       <progress-bar wx:if="{{isUserPath}}" done="{{fin_place_count}}" total="{{place_count}}" />
-    </view>
+    </view> -->
 	</view>
+
+  <!-- <view class="title">{{name}}</view> -->
 </view>

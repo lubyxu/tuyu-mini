@@ -12,6 +12,18 @@ export async function getTabs() {
 	return data;
 }
 
+function getCompaines(places) {
+	return (places || []).map(it => {
+		if (!it.company_info) return false;
+		else {
+			return {
+				avatar: it.company_info.logo,
+				name: it.company_info.name
+			}
+		}
+	}).filter(Boolean)
+}
+
 export async function getPathList({ group_id }) {
 	if (group_id === 'mine') {
     const app = getApp();
@@ -24,7 +36,12 @@ export async function getPathList({ group_id }) {
 				province: "beijing"
 			}
 		});
-		return data;
+		return data.map(item => {
+			return {
+				...item,
+				companies: getCompaines(item?.places)
+			}
+		});
 	}
 	else {
 		const { data } = await request({
@@ -34,6 +51,11 @@ export async function getPathList({ group_id }) {
 				group_id: +group_id,
 			}
 		});
-		return data;
+		return data.map(item => {
+			return {
+				...item,
+				companies: getCompaines(item?.places)
+			}
+		});
 	}
 }

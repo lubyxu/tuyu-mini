@@ -18,11 +18,11 @@
   </view>
 </scroll-view>
 
-<view style="margin-top: 24px;">
+<view style="margin-top: 18px;">
   <section-title title="{{signets[curIndex].name || '印章'}}" />
 </view>
 
-<view>
+<view style="margin-top: -14px;">
   <signet-container-list
     id="signet-container"
     book="{{book}}"
@@ -34,7 +34,7 @@
     bind:onPageGo="onPageGo"
     bind:onIndexChange="onIndexChange"
   />
-  <view style="margin: 0 16px; padding-left: 40px; font-size: 14px;">
+  <view style="margin: 0 16px; margin-top: -24px; padding-left: 40px; font-size: 14px;">
     <view class="flex items-center gap-8" wx:if="{{signets[curIndex].shared_num}}">
       <view class="tag-tayin">
         <image src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/user-photos/4/4/47/1736768089284/1736768089284.jpg" style="width: 16px; height: 10px" />
@@ -56,6 +56,8 @@
           {{signets[curIndex].location}}
         </position-btn>
     </view>
+
+    <signet-logo book_id="{{book.book_id}}" page_num="{{curIndex + 1}}" />
   </view>
 </view>
 

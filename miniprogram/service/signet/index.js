@@ -93,3 +93,35 @@ export async function corpStamp(url) {
 
   return data.url;
 }
+
+export async function getStampPage(book_id, page_num) {
+  const { data } = await request({
+    url: '/fuyu/stamp/page',
+    data: {
+      book_id,
+      page_num
+    }
+  });
+
+  return data
+
+}
+
+export async function getArtInfo(id) {
+  const { data } = await request({
+    url: '/fuyu/artist/detail?id=' + id,
+    method: 'GET',
+  })
+
+  return data;
+}
+
+export async function likeTheArt(artist_id, is_like) {
+  return request({
+    url: '/fuyu/artist/like/op',
+    data: {
+      artist_id: +artist_id,
+      like_type: is_like ? 1 : 2
+    }
+  });
+}
