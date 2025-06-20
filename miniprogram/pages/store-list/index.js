@@ -34,6 +34,19 @@ Page({
     title: '',
   },
 
+  customReturn() {
+    console.log('customReturn', this.options.from)
+    if (this.options.from === 'share') {
+      wx.switchTab({
+        url: '/pages/home/index'
+      });
+    } else {
+      wx.navigateBack({
+        delta: 1
+      });
+    }
+  },
+
   async getProduct() {
     try {
       const { data, errno } = await request({

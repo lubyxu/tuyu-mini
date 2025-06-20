@@ -4,9 +4,19 @@ import { request } from '../../utils/req';
 import { getPathList } from '../../components/path-note-list/service/group';
 
 Page({
-  onShareAppMessage() {
+  onShareAppMessage(res) {
+    if (res.from === 'button') {
+      const { id, name, trigger } = res.target.dataset;
+      if (trigger === 'product') {
+        return {
+          title: '拾光坊',
+          path: `/pages/store-list/index?activity_id=${id}&name=${name}&from=share`,
+          imageUrl: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/share-mini.png'
+        }
+      }
+    }
     return {
-      title: '福鱼文创',
+      title: '拾光坊',
       path: 'pages/home/index',
       imageUrl: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/share-mini.png'
     }

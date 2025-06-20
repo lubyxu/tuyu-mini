@@ -15,6 +15,19 @@ Page({
   ]
   },
 
+  onShareAppMessage(res) {
+    if (res.from === 'button') {
+      const { id, name, trigger } = res.target.dataset;
+      if (trigger === 'product') {
+        return {
+          title: '拾光坊',
+          path: `/pages/store-list/index?activity_id=${id}&name=${name}&from=share`,
+          imageUrl: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/share-mini.png'
+        }
+      }
+    }
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -69,10 +82,4 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })
