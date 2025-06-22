@@ -1,7 +1,7 @@
 <view>
   <loading wx-if="{{showLoading}}" />
   <view wx-if="{{!showLoading}}" class="page" >
-    <navigation-bar sampleReturn="{{true}}" returnTitle="{{title}}"></navigation-bar>
+    <navigation-bar sampleReturn="{{true}}" returnTitle="{{title}}" useCustomReturn="{{true}}" bind:customReturn="customReturn"></navigation-bar>
     <view class="content" style="padding-top: {{navBarHeight + 18}}px;">
       <view class="search-bar">
         <icon type="search" size="20"></icon>
