@@ -3,7 +3,6 @@ import { checkPath } from '../../../service/path-note/path-detail';
 import loginBehavior from '../../../behaviors/login/index';
 
 function validatePos(source, target) {
-  return true
   return getDistance(source.latitude, source.longitude, target.latitude, target.longitude) < 5;
 }
 
