@@ -20,7 +20,7 @@ Page({
 
       }
     }
-    await Promise.all([this.getInitData(), this.getBanners()])
+    await Promise.all([this.getBanners()])
     const isLogined = app?.globalData?.user?.token
     this.setData({ isLogined: !!isLogined })
     this.setData({ showLoading: false })

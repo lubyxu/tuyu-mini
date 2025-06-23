@@ -14,6 +14,7 @@ Component({
 
   methods: {
     async onInit() {
+      console.log('onInit')
       const { data } = await request({
         method: 'POST',
         url: '/fuyu/activity/list',

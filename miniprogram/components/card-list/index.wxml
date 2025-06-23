@@ -8,12 +8,5 @@
         </button>
         <image wx:else class="find-icon" src="../../images/find-icon.svg" bind:tap="onFind" />
     </view>
-    <view
-        wx:for="{{list}}"
-        wx:key="index"
-        bind:tap="ocrClick"
-        data-item="{{item}}"
-    >
-        <card-item products="{{item.products}}" isVisited="{{item.is_visited}}" spot="{{item.spot}}" />
-    </view>
+    <card-item />
 </view>
