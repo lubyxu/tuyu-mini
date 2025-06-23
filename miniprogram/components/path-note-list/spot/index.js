@@ -1,8 +1,12 @@
 // components/path-note-list/spot/index.js
 import { checkPath } from '../../../service/path-note/path-detail';
 import loginBehavior from '../../../behaviors/login/index';
+import { getEnv } from '../../../utils/req';
 
 function validatePos(source, target) {
+  if (getEnv() === 'stage') {
+    return true;
+  }
   return getDistance(source.latitude, source.longitude, target.latitude, target.longitude) < 5;
 }
 
