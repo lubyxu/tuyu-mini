@@ -40,12 +40,12 @@ Page({
 
   onShareAppMessage(res) {
     if (res.from === 'button') {
-      const { id, name, trigger } = res.target.dataset;
+      const { id, name, trigger, img } = res.target.dataset;
       if (trigger === 'product') {
         return {
-          title: '拾光坊',
+          title: name,
           path: `/pages/store-list/index?activity_id=${id}&name=${name}&from=share`,
-          imageUrl: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/share-mini.png'
+          imageUrl: img
         }
       }
     }

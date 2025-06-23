@@ -29,8 +29,8 @@
                 </cover-view>
             </cover-view>
 
-            <button open-type="share" class="share-btn" data-trigger="product" data-id="{{item.id}}" data-name="{{item.name}}">
-                <image class="share-box" src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/share.png" />
+            <button open-type="share" class="share-btn" data-trigger="product" data-id="{{item.id}}" data-img="{{item.content.show_img}}" data-name="{{item.name}}">
+                <cover-image class="share-box" src="https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/share.png" />
             </button>
             
         </cover-view>
