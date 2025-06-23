@@ -3,7 +3,17 @@ import { getUser, registerAccount } from '../../utils/auth'
 import { request } from '../../utils/req';
 
 Page({
-  onShareAppMessage() {
+  onShareAppMessage(res) {
+    if (res.from === 'button') {
+      const { id, name, trigger, img } = res.target.dataset;
+      if (trigger === 'product') {
+        return {
+          title: name,
+          path: `/pages/store-list/index?activity_id=${id}&name=${name}&from=share`,
+          imageUrl: img
+        }
+      }
+    }
     return {
       title: '福鱼文创',
       path: 'pages/home/index',
