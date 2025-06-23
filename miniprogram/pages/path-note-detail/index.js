@@ -276,8 +276,8 @@ Page({
       is_user_liked: data.is_user_liked,
       path_info: {
         ...path_detail_info.path_info,
-        create_time_text: path_detail_info.path_info?.start_time > 1 ? dayjs(path_detail_info.path_info.start_time * 1000).format('MM月DD日 HH:mm') : null,
-        end_time_text: path_detail_info.path_info?.end_time > 1 ? dayjs(path_detail_info.path_info.end_time * 1000).format('MM月DD日 HH:mm') : null
+        create_time_text: path_detail_info.path_info?.start_time > 1 ? dayjs(path_detail_info.path_info.start_time * 1000).format('MM月DD日') : null,
+        end_time_text: path_detail_info.path_info?.end_time > 1 ? dayjs(path_detail_info.path_info.end_time * 1000).format('MM月DD日') : null
       },
       place_details: path_detail_info.place_details.map((item) => ({
         ...item,
