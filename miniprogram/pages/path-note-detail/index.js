@@ -94,6 +94,7 @@ Page({
   onLogined() {
     const options = this.options;
     this.getDetail({ user_path_id: options.user_path_id, path_id: options.path_id});
+
   },
 
   /**
@@ -268,14 +269,15 @@ Page({
   async getDetail({ user_path_id, path_id, from }) {
     const data = await getPathDetail({ user_path_id, path_id, from });
     const { path_detail_info, place_visited, place_reservation } = data;
+    this.options.user_path_id = user_path_id;
     this.setData({
       user_path_id: user_path_id || path_detail_info.user_path_id,
       path_id: path_id,
       is_user_liked: data.is_user_liked,
       path_info: {
         ...path_detail_info.path_info,
-        create_time_text: path_detail_info.path_info?.start_time > 1 ? dayjs(path_detail_info.path_info.start_time * 1000).format('MM月DD日 HH:mm') : null,
-        end_time_text: path_detail_info.path_info?.end_time > 1 ? dayjs(path_detail_info.path_info.end_time * 1000).format('MM月DD日 HH:mm') : null
+        create_time_text: path_detail_info.path_info?.start_time > 1 ? dayjs(path_detail_info.path_info.start_time * 1000).format('MM月DD日') : null,
+        end_time_text: path_detail_info.path_info?.end_time > 1 ? dayjs(path_detail_info.path_info.end_time * 1000).format('MM月DD日') : null
       },
       place_details: path_detail_info.place_details.map((item) => ({
         ...item,
@@ -491,6 +493,7 @@ Page({
     });
   },
   onCouponClick(e) {
+    console.log('----e', e)
     const { userCouponId } = e.detail;
     if (this.data.isUserPath && !!userCouponId) {
       wx.navigateTo({

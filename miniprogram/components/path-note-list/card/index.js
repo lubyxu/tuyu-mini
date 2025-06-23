@@ -7,6 +7,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    // status_flag 4 未开始 1 进行中 3 已完成 2 已结束
     item: {
       type: Object,
       value: {}

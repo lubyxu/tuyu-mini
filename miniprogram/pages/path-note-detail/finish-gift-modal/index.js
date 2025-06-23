@@ -63,6 +63,9 @@ Component({
      * 点击确认按钮
      */
     onConfirm() {
+      wx.navigateTo({
+        url: '/pages/coupon/list/index',
+      })
       // 触发确认事件，通知父组件
       this.triggerEvent('confirm', {
         gifts: this.data.giftList
