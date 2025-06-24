@@ -11,6 +11,10 @@ Component({
     list: {
       type: [Object],
       value: [],
+    },
+    activity_type: {
+      type: Number,
+      value: 3
     }
   },
 

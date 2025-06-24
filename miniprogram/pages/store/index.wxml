@@ -31,7 +31,7 @@
       </swiper>
     </view>
     <view class="scroll-view-container">
-      <cardList list="{{list}}" bind:scrollBottom="scrollBottom" bind:ocrClick="ocrClick" bind:onFind="onFind"></cardList>
+      <cardList activity_type="{{2}}" list="{{list}}" bind:scrollBottom="scrollBottom" bind:ocrClick="ocrClick" bind:onFind="onFind"></cardList>
     </view>
   </view>
 </view>
