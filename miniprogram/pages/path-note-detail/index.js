@@ -39,8 +39,8 @@ Page({
   },
 
   onShareAppMessage(res) {
+    const { id, name, trigger, img } = res.target.dataset || {};
     if (res.from === 'button') {
-      const { id, name, trigger, img } = res.target.dataset;
       if (trigger === 'product') {
         return {
           title: name,
@@ -48,6 +48,11 @@ Page({
           imageUrl: img
         }
       }
+    }
+    return {
+      title: name,
+      path: `/pages/store-list/index?activity_id=${id}&name=${name}&from=share`,
+      imageUrl: img
     }
   },
 
