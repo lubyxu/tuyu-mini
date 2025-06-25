@@ -24,8 +24,8 @@ Component({
       const tabs = await getTabs();
       this.setData({
         tabs: [
-          { key: 'mine', name: '🌟 我的计划' },
           ...tabs.map(item => ({ key: item.id, name: item.name })),
+          { key: 'mine', name: '🌟 我的计划' },
         ],
         curKey: 'mine',
       });
