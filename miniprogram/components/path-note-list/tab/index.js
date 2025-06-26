@@ -15,20 +15,23 @@ Component({
    * 组件的初始数据
    */
   data: {
-    curKey: 'mine',
+    curKey: '',
     tabs: []
   },
 
   lifetimes: {
     attached: async function () {
       const tabs = await getTabs();
+      const uiTabs = [
+        ...tabs.map(item => ({ key: item.id, name: item.name })),
+        { key: 'mine', name: '🌟 我的计划' },
+      ]
       this.setData({
-        tabs: [
-          ...tabs.map(item => ({ key: item.id, name: item.name })),
-          { key: 'mine', name: '🌟 我的计划' },
-        ],
-        curKey: 'mine',
+        tabs: uiTabs,
+        curKey: uiTabs[0].key,
       });
+
+      this.triggerEvent('change', uiTabs[0]);
     }
   },
 

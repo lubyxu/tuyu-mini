@@ -24,17 +24,17 @@ Component({
   },
 
   lifetimes: {
-    attached() {
-      if (this.data.isUserAccount) {
-        this.getPathList('mine');
-        return;
-      }
-      getApp().globalData.event.on('login', (params) => {
-        if (params.type !== 'loginFailed') {
-          this.getPathList('mine');
-        }
-      })
-    },
+    // attached() {
+    //   if (this.data.isUserAccount) {
+    //     this.getPathList('mine');
+    //     return;
+    //   }
+    //   getApp().globalData.event.on('login', (params) => {
+    //     if (params.type !== 'loginFailed') {
+    //       this.getPathList('mine');
+    //     }
+    //   })
+    // },
   },
   /**
    * 组件的方法列表

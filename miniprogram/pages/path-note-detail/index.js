@@ -35,7 +35,7 @@ Page({
     commentsTotal: 0,
     comments: [],
     couponList: [],
-    info: null
+    info: null,
   },
 
   onShareAppMessage(res) {
@@ -56,7 +56,6 @@ Page({
    */
   async onLoad(options) {
     this.options = options;
-    console.log('this.options', this.options)
     if (this.options.from === 'mine') {
       this.setData({
         showSelfShare: true

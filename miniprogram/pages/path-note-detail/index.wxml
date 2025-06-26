@@ -44,7 +44,7 @@
 		</view>
 		<view wx-if="{{commentsVisible}}">
 			<comments comments="{{comments}}" bind:replyComment="replyComment"/>
-			<view class="bottom-btn">
+			<view class="bottom-btn" style="z-index: 1000;">
 				<chinese-button width="320" bindtap="addComment">发布评论</chinese-button>
 			</view>
 		</view>
