@@ -49,11 +49,6 @@ Page({
         }
       }
     }
-    return {
-      title: name,
-      path: `/pages/store-list/index?activity_id=${id}&name=${name}&from=share`,
-      imageUrl: img
-    }
   },
 
   /**
