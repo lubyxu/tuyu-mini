@@ -42,6 +42,7 @@
   flex-direction: column;
   padding: 32rpx;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .store-item {
@@ -51,4 +52,14 @@
   background: #FFFFFF;
   border-radius: 16px;
   box-sizing: border-box;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #f2f3f7;
+  padding-bottom: 16px;
 }
