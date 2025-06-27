@@ -8,5 +8,5 @@
         </button>
         <image wx:else class="find-icon" src="../../images/find-icon.svg" bind:tap="onFind" />
     </view>
-    <card-item />
+    <card-item activity_type="{{activity_type}}" />
 </view>

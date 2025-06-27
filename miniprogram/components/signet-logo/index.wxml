@@ -31,7 +31,7 @@
 		</view>
 		<view slot="desc">
 			<view class="content text-main-color" style="margin-top: 36rpx; max-height: 60vh; overflow: auto; font-weight: 400;">
-			  {{artist_info.description || '暂无介绍'}}
+			  {{desc || '暂无介绍'}}
 			</view>
 		</view>
 	</half-screen-dialog>

@@ -4,6 +4,12 @@ const app = getApp();
 
 // components/notification/index.js
 Component({
+  properties: {
+    activity_type: {
+      type: Number,
+      value: 3
+    }
+  },
   data: {
     list: []
   },
@@ -19,7 +25,7 @@ Component({
         method: 'POST',
         url: '/fuyu/activity/list',
         data: {
-          activity_type: 3,
+          activity_type: this.properties.activity_type,
         }
       });
       this.setData({

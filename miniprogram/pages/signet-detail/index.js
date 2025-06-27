@@ -124,7 +124,6 @@ Page({
   onCardSelect(e) {
     const index = e.currentTarget.dataset.index;
     this.selectComponent('#signet-container').onReset();
-    debugger
     this.setData({
       curIndex: index,
     });

@@ -35,12 +35,12 @@ Page({
     commentsTotal: 0,
     comments: [],
     couponList: [],
-    info: null
+    info: null,
   },
 
   onShareAppMessage(res) {
+    const { id, name, trigger, img } = res.target.dataset || {};
     if (res.from === 'button') {
-      const { id, name, trigger, img } = res.target.dataset;
       if (trigger === 'product') {
         return {
           title: name,
@@ -56,7 +56,6 @@ Page({
    */
   async onLoad(options) {
     this.options = options;
-    console.log('this.options', this.options)
     if (this.options.from === 'mine') {
       this.setData({
         showSelfShare: true
