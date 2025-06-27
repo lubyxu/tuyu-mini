@@ -15,7 +15,7 @@ Page({
       }
     }
     return {
-      title: '福鱼文创',
+      title: '拾光坊',
       path: 'pages/home/index',
       imageUrl: 'https://fuyuoss.oss-cn-shanghai.aliyuncs.com/front-end/share-mini.png'
     }

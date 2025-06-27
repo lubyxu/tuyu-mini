@@ -170,6 +170,7 @@
 
 
 .share-btn{
+    position: absolute;
     top: 12px;
     right: 12px;
     width: 32px !important;
