@@ -7,6 +7,13 @@ import { getCouponsByUserPath, getCoupon, getCouponsByPath, couponInfo, finshedP
 import dayjs from 'dayjs';
 const app = getApp();
 
+function formatOpeningTime(time) {
+  if (!time) return '';
+  const hours = Math.floor(time / 3600);
+  const minutes = Math.floor((time % 3600) / 60);
+  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+}
+
 Page({
   options: {
     addGlobalClass: true
@@ -280,6 +287,8 @@ Page({
       },
       place_details: path_detail_info.place_details.map((item) => ({
         ...item,
+        open_time_str: formatOpeningTime(item.open_time),
+        close_time_str: formatOpeningTime(item.close_time),
         hint: place_reservation?.[item.place_id]?.hint,
         visited: place_visited?.[item.place_id],
         showOrderBtn: place_reservation?.[item.place_id]?.is_required,
