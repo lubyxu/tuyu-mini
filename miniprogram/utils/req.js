@@ -32,7 +32,7 @@ export function request({ url, data, method, Authorization }) {
 }
 
 export function getEnv() {
-	return 'stage'
+	// return 'stage'
 	return 'production'
 }
 
