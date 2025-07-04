@@ -236,6 +236,13 @@ Page({
     });
   },
   onCancel() {
+    const pages = getCurrentPages();
+    if (pages.length === 1) {
+      wx.reLaunch({
+        url: '/pages/home/index'
+      })
+      return;
+    }
     wx.navigateBack({
       fail(e) {
         wx.redirectTo({
