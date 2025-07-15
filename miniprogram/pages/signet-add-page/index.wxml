@@ -15,7 +15,7 @@
   isStampOrigin="{{canCorpStamp ? isStampOrigin : true}}"
   bind:isStampOrigin="isStampOrigin"
 />
-<view wx:if="{{!pageError}}" wx:if="{{!owned}}" style="margin-top: -16px; z-index: 1;">
+<view wx:if="{{!pageError}}" wx:if="{{!owned}}" style="margin-top: -16px; padding-bottom: 118px; z-index: 1;">
   <view class="signet-title flex items-center">
     <view class="inline-flex items-center"  bind:tap="onEdit">
       <view wx:if="{{name}}">{{name}}</view>
