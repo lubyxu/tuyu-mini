@@ -1,4 +1,4 @@
-export function request({ url, data, method, Authorization }) {
+export function request({ url, data, method }) {
 	const authorization = getApp().globalData?.user?.token || '';
 	// const authorization = '111eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIyIiwiZXhwIjoxNzc3MDgzMTU0fQ.OOC6hJwJe4QDnGXK12BJB_AOo4XHL4zJMoRihYEZC9M'
 	console.log('authorization', authorization)
@@ -32,8 +32,8 @@ export function request({ url, data, method, Authorization }) {
 }
 
 export function getEnv() {
-	// return 'stage'
-	return 'production'
+	return 'stage'
+	// return 'production'
 }
 
 export const SUCCESS_CODE = 10000;
