@@ -5,7 +5,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    id: Number,
+    taskId: Number,
     name: String,
     value: Number,
     isCompeleted: Boolean
@@ -23,7 +23,7 @@ Component({
    */
   methods: {
     onShare() {
-      this.triggerEvent('share', { id: this.properties.id })
+      this.triggerEvent('share', { id: this.data.taskId })
     }
   }
 })

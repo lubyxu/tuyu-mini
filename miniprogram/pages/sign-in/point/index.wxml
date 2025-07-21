@@ -10,7 +10,7 @@
 	</view>
 
 	<view class="share-button-root" wx:if="{{!isCompeleted}}">
-	  <button open-type="share" class="share-button">
+	  <button open-type="share" class="share-button" bind:tap="onShare">
 	    <point-icon size="22" />
 		  <text>分享</text>
 		</button>

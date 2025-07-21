@@ -1,5 +1,5 @@
 import loginBehavior from '../../behaviors/login/index';
-import { getPointRecentList, completeSignIn, getPointCount, getMemberTasks } from '../../service/point/index'
+import { getPointRecentList, completeSignIn, getPointCount, getMemberTasks, completeMemberTask } from '../../service/point/index'
 Page({
 
   behaviors: [loginBehavior],
@@ -7,6 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    has_checkin_active: false,
+    task_id: 0,
     pointCount: 0,
     checkCount: '',
     checkList: [],
@@ -18,6 +20,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.getPointCount()
+    this.getPointDetail()
+    this.getMemberTasks()
+  },
+
+  onLogined() {
     this.getPointCount()
     this.getPointDetail()
     this.getMemberTasks()
@@ -88,23 +96,26 @@ Page({
     const data = ret.user_checkin_info;
 
     this.setData({
+      has_checkin_active: ret.has_checkin_active,
+      task_id: ret.user_checkin_info.task_id,
       checkCount: data.cycle_days,
       checkList: (data?.rewards || []).map(item => {
         return {
-          date: `第${item.day}天`,
+          date: item.display_key,
           isChecked: item.is_checked_in,
           count: item.value
         }
       }),
       todayIsChecked: data.today_checked_in
     })
+
   },
 
   async onChecked() {
     if (this.isPending) return
     this.isPending = true
     try {
-      await completeSignIn()
+      await completeSignIn(this.data.task_id)
       this.getPointDetail()
     } catch (error) {
       wx.showToast({
@@ -120,23 +131,37 @@ Page({
     const data = await getMemberTasks()
     this.setData({
       memberTasks: (data.list || []).map(item => {
-        const value = (function (){
+        const pointValue = (function (){
           try {
             const ret = JSON.parse(item.reward_config)
             return ret.day_rewards?.[0]?.value || 0
           }
-          finally {
+          catch (e) {
             return 0
           }
         })() 
         return {
           id: item.id,
           name: item.name,
-          value: value,
+          value: pointValue,
           isCompeleted: item.is_completed
         }
       })
     })
   },
-
+  async onShare(e) {
+    if (this.isPending) return
+    this.isPending = true
+    const id = e.detail.id;
+    try {
+      await completeMemberTask(id)
+      this.getPointDetail()
+      this.getMemberTasks()
+    }
+    catch (e) {
+    }
+    finally {
+      this.isPending = false;
+    }
+  }
 })

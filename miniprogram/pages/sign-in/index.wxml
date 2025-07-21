@@ -11,7 +11,7 @@
     </view>
   </view>
 
-  <view class="w-full" style="margin-top: 36rpx;">
+  <view wx:if="{{has_checkin_active}}" class="w-full" style="margin-top: 36rpx;">
     <check-detail
       bind:checked="onChecked"
       todayIsChecked="{{todayIsChecked}}"
@@ -27,7 +27,7 @@
   <view  style="margin-top: 24rpx;">
     <view wx:for="{{memberTasks}}">
       <point
-        id="{{item.id}}"
+        taskId="{{item.id}}"
         name="{{item.name}}"
         value="{{item.value}}"
         isCompeleted="{{item.isCompeleted}}"

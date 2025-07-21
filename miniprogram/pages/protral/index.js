@@ -73,6 +73,7 @@ Page({
     countList: [],
     stamp_count: 0,
     show_checked_in: false,
+    member_points: 0,
     selectList: [
       {
         text: "我的印章本",
@@ -101,7 +102,7 @@ Page({
       avatar,
       nickname,
     } = user
-    const { product_count, book_count, stamp_count, visit_count, show_checked_in } = user_stats
+    const { product_count, book_count, stamp_count, visit_count, show_checked_in, member_points } = user_stats
 
     const statusList = [{
       title: '印章本',
@@ -119,7 +120,8 @@ Page({
       nickname: nickname || '小福鱼',
       countList: statusList,
       stamp_count,
-      show_checked_in
+      show_checked_in,
+      member_points
     })
   },
 
@@ -222,7 +224,6 @@ Page({
   },
 
   onGoToCheckIn() {
-    console.log('this.data.show_checked_in', this.data.show_checked_in)
     if (this.data.show_checked_in) {
       wx.navigateTo({
         url: '/pages/sign-in/index',
