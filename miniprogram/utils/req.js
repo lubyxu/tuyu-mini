@@ -37,3 +37,7 @@ export function getEnv() {
 }
 
 export const SUCCESS_CODE = 10000;
+
+export function qsString(obj) {
+	return Object.keys(obj).map(key => `${key}=${obj[key]}`).join('&')
+}

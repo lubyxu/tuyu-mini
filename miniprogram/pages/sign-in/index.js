@@ -163,5 +163,11 @@ Page({
     finally {
       this.isPending = false;
     }
+  },
+
+  onGoToDetail() {
+    wx.navigateTo({
+      url: '/pages/sign-in-detail/index',
+    })
   }
 })

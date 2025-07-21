@@ -1,4 +1,4 @@
-import { request } from "../../utils/req";
+import { request, qsString } from "../../utils/req";
 
 export function getPointRecentList() {
 	return request({
@@ -41,4 +41,12 @@ export function completeMemberTask(id) {
 			task_id: id
 		}
 	})
+}
+
+
+export function getPointHistory(params) {
+	return request({
+		method: 'GET',
+		url: '/fuyu/points/records?' + qsString(params)
+	}).then(res => res.data)
 }

@@ -25,7 +25,8 @@
     "pages/order-input/index",
     "pages/game/index",
     "pages/store-list/index",
-    "pages/sign-in/index"
+    "pages/sign-in/index",
+    "pages/sign-in-detail/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
