@@ -1,5 +1,5 @@
 import loginBehavior from '../../behaviors/login/index';
-import { getPointRecentList, completeSignIn, getPointCount, getMemberTasks, completeMemberTask } from '../../service/point/index'
+import { getPointRecentList, completeSignIn, getPointCount, getMemberTasks, completeMemberTask, getMemberActivity } from '../../service/point/index'
 Page({
 
   behaviors: [loginBehavior],
@@ -13,13 +13,15 @@ Page({
     checkCount: '',
     checkList: [],
     // 积分列表
-    memberTasks: []
+    memberTasks: [],
+    activity: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.getActivity()
     this.getPointCount()
     this.getPointDetail()
     this.getMemberTasks()
@@ -42,7 +44,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.getPointCount()
   },
 
   /**
@@ -84,7 +86,26 @@ Page({
     }
   },
 
+  async getActivity() {
+    try {
+      const data = await getMemberActivity()
+      this.setData({
+        activity: {
+          id: '' + data.id,
+          point: 88
+        }
+      })
+    }
+    catch (e) {
+      this.setData({
+        activity: null
+      })
+    }
+
+  },
+
   async getPointCount() {
+
     const data = await getPointCount()
     this.setData({
       pointCount: data.available_points
@@ -117,6 +138,7 @@ Page({
     try {
       await completeSignIn(this.data.task_id)
       this.getPointDetail()
+      this.getPointCount()
     } catch (error) {
       wx.showToast({
         title: '签到失败',
@@ -155,7 +177,7 @@ Page({
     const id = e.detail.id;
     try {
       await completeMemberTask(id)
-      this.getPointDetail()
+      this.getPointCount()
       this.getMemberTasks()
     }
     catch (e) {

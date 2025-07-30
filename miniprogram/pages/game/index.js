@@ -26,7 +26,7 @@ Page({
     
   },
   goView() {
-    const url = 'https://oss.storyhub.cc/h5/game/v11/index.html';
+    const url = 'https://oss.storyhub.cc/h5/game/v13/game/index.html';
     // const url = 'http://192.168.71.132:8080/index.html'
     const query = [
       getEnv() === 'stage' ? 'env=stage' : 'env=production',

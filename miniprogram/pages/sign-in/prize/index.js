@@ -5,6 +5,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    activityId: String,
     prizeCount: Number
   },
 
@@ -19,6 +20,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
-  }
+    onGoToCoupon() {
+      wx.navigateTo({
+        url: '/pages/game/index?id=' + this.properties.activityId,
+      })
+    }
+  },
+  
 })

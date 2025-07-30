@@ -224,10 +224,8 @@ Page({
   },
 
   onGoToCheckIn() {
-    if (this.data.show_checked_in) {
-      wx.navigateTo({
-        url: '/pages/sign-in/index',
-      })
-    }
+    wx.navigateTo({
+      url: '/pages/sign-in/index',
+    })
   }
 });

@@ -8,7 +8,6 @@ page {
 }
 
 .head-value {
-  font-family: Inter;
   font-weight: 700;
   font-style: Bold;
   font-size: 64rpx;

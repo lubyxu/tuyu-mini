@@ -4,7 +4,7 @@
 	</view>
   <view class="head">
 	  <view>
-			<view class="head-title">立即抽奖</view>
+			<view class="head-title" bind:tap="onGoToCoupon">立即抽奖</view>
 			<view class="head-title-description">单次消耗 {{prizeCount}} 积分</view>
 		</view>
 	</view>

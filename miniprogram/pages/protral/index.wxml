@@ -13,7 +13,7 @@
         </protral-main>
         <view class="point-box" bindtap="onGoToCheckIn">
           <view style="height: 44rpx; margin-right: 24rpx;"><point size="22" /></view>
-          <view class="">{{member_points}}</view>
+          <view class="roboto" style="font-size: 36rpx;">{{member_points}}</view>
           <view class="check-in-tag" wx:if="{{show_checked_in}}">
             <text>去签到</text>
           </view>

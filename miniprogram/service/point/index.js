@@ -50,3 +50,10 @@ export function getPointHistory(params) {
 		url: '/fuyu/points/records?' + qsString(params)
 	}).then(res => res.data)
 }
+
+export function getMemberActivity() {
+	return request({
+		method: 'GET',
+		url: '/fuyu/activity/detail/member'
+	}).then(res => res.data)
+}

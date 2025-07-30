@@ -4,7 +4,7 @@
       <image style="height: 46rpx" mode="heightFix" src="https://oss.storyhub.cc/icons/%E7%B4%AF%E8%AE%A1%E7%A7%AF%E5%88%86.svg" />
     
     </view>
-    <view class="head-value" bind:tap="onGoToDetail">{{pointCount ? pointCount : ''}}</view>
+    <view class="head-value roboto" bind:tap="onGoToDetail">{{pointCount ? pointCount : ''}}</view>
 
     <view class="background">
       <background />
@@ -20,8 +20,8 @@
     />
   </view>
 
-  <view style="margin-top: 24rpx;">
-    <prize prizeCount="88" />
+  <view style="margin-top: 24rpx;" wx:if="{{activity}}">
+    <prize prizeCount="{{activity.point}}" activityId="{{activity.id}}" />
   </view>
 
   <view  style="margin-top: 24rpx;">
