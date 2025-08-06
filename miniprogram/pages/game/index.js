@@ -26,13 +26,14 @@ Page({
     
   },
   goView() {
-    const url = 'https://oss.storyhub.cc/h5/game/v13/game/index.html';
+    const url = 'https://oss.storyhub.cc/h5/game/v14/game/index.html';
     // const url = 'http://192.168.71.132:8080/index.html'
     const query = [
       getEnv() === 'stage' ? 'env=stage' : 'env=production',
       'token=' + encodeURIComponent(getApp().globalData?.user?.token),
       'id=' + (this.options.id || '1'),
-    ]
+      this.options.activity ? 'activity=' + this.options.activity : ''
+    ].filter(Boolean)
 
     const path = (url + '?' + query.join('&'))
     this.setData({

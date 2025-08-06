@@ -1,0 +1,35 @@
+/* components/scrolling-number/index.wxss */
+.scrolling-number-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.digit-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.digit-container {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  font-weight: bold;
+}
+
+.digit-scroll {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease-out;
+}
+
+.digit-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1em;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}

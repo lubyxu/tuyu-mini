@@ -22,7 +22,7 @@ Component({
   methods: {
     onGoToCoupon() {
       wx.navigateTo({
-        url: '/pages/game/index?id=' + this.properties.activityId,
+        url: '/pages/game/index?id=' + this.properties.activityId + '&activity=member',
       })
     }
   },
