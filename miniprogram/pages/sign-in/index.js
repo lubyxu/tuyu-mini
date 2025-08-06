@@ -16,7 +16,7 @@ Page({
     memberTasks: [],
     activity: {},
     showRule: false,
-    ruleContent: ""
+    ruleContent: "",
   },
 
   /**
@@ -27,6 +27,7 @@ Page({
     this.getPointCount()
     this.getPointDetail()
     this.getMemberTasks()
+
   },
 
   onLogined() {

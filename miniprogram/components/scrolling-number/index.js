@@ -1,5 +1,8 @@
 // components/scrolling-number/index.js
 Component({
+  options: {
+    addGlobalClass: true
+  },
   /**
    * 组件的属性列表
    */
@@ -10,7 +13,7 @@ Component({
       value: 0,
       observer: function(newVal, oldVal) {
         if (newVal !== oldVal) {
-          this.updateNumber(newVal);
+          this.updateNumber(newVal, oldVal);
         }
       }
     },
@@ -27,7 +30,7 @@ Component({
     // 数字大小
     fontSize: {
       type: Number,
-      value: 32
+      value: 12
     },
     // 数字颜色
     color: {
@@ -37,7 +40,7 @@ Component({
     // 数字间距
     spacing: {
       type: Number,
-      value: 8
+      value: 0
     }
   },
 
@@ -46,7 +49,8 @@ Component({
    */
   data: {
     digitList: [], // 数字列表
-    animationData: [] // 动画数据
+    animationData: [], // 动画数据
+    isInitialized: false // 是否已初始化
   },
 
   /**
@@ -56,7 +60,8 @@ Component({
     /**
      * 更新数字
      */
-    updateNumber(newNumber) {
+    updateNumber(newNumber, oldNumber = null) {
+      // debugger
       const numStr = String(newNumber);
       const digits = this.properties.digits || numStr.length;
       
@@ -73,8 +78,39 @@ Component({
       
       this.setData({ digitList });
       
-      // 开始滚动动画
-      this.startScrollAnimation();
+      // 只有在非初始化状态且数字发生变化时才执行滚动动画
+      if (this.data.isInitialized && oldNumber !== null) {
+        this.startScrollAnimation();
+      } else {
+        // 初始化时直接设置到目标位置，不执行动画
+        this.setInitialPosition();
+      }
+    },
+
+    /**
+     * 设置初始位置（不执行动画）
+     */
+    setInitialPosition() {
+      const { digitList } = this.data;
+      
+      digitList.forEach((digit, index) => {
+        const animation = wx.createAnimation({
+          duration: 0 // 无动画
+        });
+        
+        // 计算滚动距离（每个数字高度为fontSize）
+        const scrollDistance = digit.value * this.properties.fontSize;
+        
+        // 直接设置到目标位置
+        animation.translateY(-scrollDistance).step();
+        
+        this.setData({
+          [`animationData[${index}]`]: animation.export()
+        });
+      });
+      
+      // 标记为已初始化
+      this.setData({ isInitialized: true });
     },
 
     /**
