@@ -8,6 +8,7 @@ Component({
   properties: {
     checkCount: Number,
     todayIsChecked: Boolean,
+    ruleContent: String,
     checkItems: {
       type: Array,
       value: [
@@ -49,7 +50,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    
+    showRule: false,
   },
 
   /**
@@ -58,6 +59,16 @@ Component({
   methods: {
     onCheckIn() {
       this.triggerEvent('checked')
+    },
+    onRuleShow() {
+      this.setData({
+        showRule: true
+      })
+    },
+    onRuleClose() {
+      this.setData({
+        showRule: false
+      })
     }
   }
 })

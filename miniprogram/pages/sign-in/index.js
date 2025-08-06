@@ -14,7 +14,9 @@ Page({
     checkList: [],
     // 积分列表
     memberTasks: [],
-    activity: {}
+    activity: {},
+    showRule: false,
+    ruleContent: ""
   },
 
   /**
@@ -92,7 +94,7 @@ Page({
       this.setData({
         activity: {
           id: '' + data.id,
-          point: 88
+          point: data.conds.draw_points
         }
       })
     }
@@ -120,6 +122,7 @@ Page({
       has_checkin_active: ret.has_checkin_active,
       task_id: ret.user_checkin_info.task_id,
       checkCount: data.cycle_days,
+      ruleContent: data.content?.description,
       checkList: (data?.rewards || []).map(item => {
         return {
           date: item.display_key,

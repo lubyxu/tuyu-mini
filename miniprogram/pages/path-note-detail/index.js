@@ -315,12 +315,12 @@ Page({
   },
   async getCouponList() {
     let data = [];
-    if (!!this.options.user_path_id) {
-      data = await getCouponsByUserPath(+this.options.user_path_id);
-    }
-    else {
-      data = await getCouponsByPath(this.options.path_id);
-    }
+    // if (!!this.options.user_path_id) {
+    //   data = await getCouponsByUserPath(+this.options.user_path_id, +this.options.path_id);
+    // }
+    // else {
+    data = await getCouponsByPath(this.options.path_id);
+    // }
 
     this.setData({
       couponList: data
@@ -501,7 +501,6 @@ Page({
     });
   },
   onCouponClick(e) {
-    console.log('----e', e)
     const { userCouponId } = e.detail;
     if (this.data.isUserPath && !!userCouponId) {
       wx.navigateTo({

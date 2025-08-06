@@ -5,7 +5,7 @@
       <text>天</text>
       <text class="text-gray-color-1">连续签到</text>
     </view>
-    <view class="inline-flex items-center text-gray-color-1">
+    <view class="inline-flex items-center text-gray-color-1" wx:if="{{ruleContent}}" bind:tap="onRuleShow">
       <view class="iconfont icon-guizewendang" style="margin-right: 4rpx;"></view>
       规则
     </view>
@@ -31,3 +31,5 @@
     <view style="text-align: center; margin-top: 24rpx;" class="text-gray-color-2 text-14" wx:else>已签到</view>
   </view>
 </view>
+
+<rule-modal show="{{showRule}}" content="{{ruleContent}}" bidn:close="onRuleClose" />

@@ -44,3 +44,7 @@
 .icon-sign-in::before {
   content: "\e610";
 }
+
+.icon-right-arrow::before {
+  content: "\e605";
+}

@@ -23,4 +23,8 @@ page {
   top: 20rpx;
 }
 
-
+.head-title {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
