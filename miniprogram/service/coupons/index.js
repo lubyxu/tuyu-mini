@@ -34,7 +34,8 @@ export async function getCouponsByPath(path_id) {
 	return (data || []).map(item => {
 		return {
 			...item,
-			user_coupon_id: item.type === 3 ? -1 : item.user_coupon_id
+			user_coupon_id: item.type === 4 ? -1 : item.user_coupon_id,
+			should_send: item.type === 4 ? false : item.should_send
 		}
 	});
 }

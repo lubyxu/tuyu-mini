@@ -43,6 +43,7 @@ Page({
     comments: [],
     couponList: [],
     info: null,
+    headerHeight: 592
   },
 
   onShareAppMessage(res) {
@@ -75,6 +76,7 @@ Page({
     }
     if (!this.data.isLogined) return;
     this.getDetail({ user_path_id: options.user_path_id, path_id: options.path_id});
+
   },
 
   customReturn() {
@@ -154,6 +156,12 @@ Page({
 
   getComments() {
 
+  },
+
+  onHeaderHeight(e) {
+    this.setData({
+      headerHeight: e.detail || 592
+    })
   },
 
   onMarkertap(e) {
